@@ -3,11 +3,13 @@ from flask_sqlalchemy import SQLAlchemy
 from api.weather import weather_data
 from flask_bcrypt import Bcrypt
 from flask_login import login_user, LoginManager, login_required, logout_user
+from flask import request
 app = Flask(__name__)
 
 app.register_blueprint(weather_data)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SECRET_KEY']='seecetrky'
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager()
@@ -25,17 +27,18 @@ def server():
 
 @app.route('/usertest')
 def test():
-    return "<h1>User exists in database</h1>"
+    return "<h1>Test failed</h1>"
 
 from models import LoginForm, RegisterForm, User
 
 @app.route('/register', methods = ['GET', 'POST'])
 def Register():
-    form = RegisterForm()
-
-    if form.validate_on_submit():
-        hashed_password = bcrypt.generate_password_hash(form.password.data) #hashing password for security
-        new_user = User(username=form.username.data, password=hashed_password)
+    if request.method == 'POST':
+        #form = RegisterForm()
+        username = request.form['email']
+        password = request.form['password']
+        hashed_password = bcrypt.generate_password_hash(password).decode('utf-8') #hashing password for security
+        new_user = User(username=username, password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
         return redirect('http://localhost:3000/') #redirecting to login page
@@ -44,15 +47,16 @@ def Register():
     
 
 @app.route('/login', methods=['GET', 'POST'])
-def login():
-    form = LoginForm()
-
-    if form.validate_on_submit():
-        user = User.query.filter_by(username = form.username.data).first() #checks if the user exists
-        if user:
-            if bcrypt.check_password_hash(user.password, form.password.data) : #if password matched continue
-                login_user(user)
-                redirect('http://localhost:3000/UserPage') #redircts to userpage
+def Login():
+    #form = LoginForm()
+    if request.method == 'POST':
+        #username = request.form['email']
+        #password = request.form['password']
+        #user = User.query.filter_by(username = username).first() #checks if the user exists
+        #if user:
+        #    if bcrypt.checkpw(user.password, password): #if password matched continue
+        #        login_user(user)
+        redirect('http://localhost:3000/userPage') #redircts to userpage
 
 #return redirect('http://localhost:3000/', form = form)
 

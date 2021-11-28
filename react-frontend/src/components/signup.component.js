@@ -19,7 +19,7 @@ return (
 
 
   <Modal show={show} onHide={handleClose}>
-  <form action='http://localhost:5000/signup' method='post'>
+  <form action='http://localhost:5000/register' method='post'>
   <Modal.Header closeButton>
     <Modal.Title><h3> Sign up</h3></Modal.Title>
   </Modal.Header>
