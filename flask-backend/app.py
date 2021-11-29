@@ -66,5 +66,15 @@ def getlists():
         #able to return json file because we serialized the data 
         return jsonify(lists)
 
+@app.route('/removelist', methods=['GET','POST'])
+def removelist():
+    if request.method == 'GET':
+        user_id = session.get("user_id")
+        lists = ListOfLists.query.filter_by(user_id = user_id).all()
+        id = request.form['id']
+        list = lists.query.filter_by(id = id).first()
+        db.session.remove(list)
+
+
 if __name__ == '__main__':
     app.run(debug = True)
