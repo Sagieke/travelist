@@ -1,8 +1,6 @@
 ## Fundamentals of Software Engineering Project Team 24
 
-###### initialization
-
-__server initialization__
+###### server initialization
 
 python installation required
 
@@ -13,7 +11,7 @@ install python requirements by running `pip install -r requirements.txt`
 `flask run` to initialize the server
 
 
-__client initialization__
+###### client initialization
 
 Node.js installation required
 
