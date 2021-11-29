@@ -2,13 +2,9 @@ import React from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import logo from './logo.svg';
-import AddPlace from "./components/AddPlace";
-import GetRequestHooks from "./components/react-hook-get";
-import PostRequestHooks from "./components/react-hook-post";
 import MainPage from "./components/MainPage";
 import UserPage from "./components/UserPage";
 import LogOut from "./components/LogOut";
-
 import "./App.css";
 import Logo from "./components/Logo";
 import Admin from "./components/Admin";
@@ -33,12 +29,6 @@ function App() {
               <Route exact path="/userPage" component={UserPage}/>
             </Switch>
       </div>
-      <footer>
-      
-        <GetRequestHooks/>
-        <PostRequestHooks/>
-        <AddPlace/>
-      </footer>
     </Router>
     
   );
