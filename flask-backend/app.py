@@ -30,7 +30,7 @@ def Register():
     if request.method == 'POST':
         username = request.form['email']
         password = request.form['password']
-        new_user = User(username=username, password=password)
+        new_user = User(username=username, password=password) #user table constructor
         db.session.add(new_user)
         db.session.commit()
         return redirect('http://localhost:3000/mainpage')
