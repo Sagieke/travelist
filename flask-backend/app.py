@@ -69,11 +69,8 @@ def getlists():
     if request.method == 'GET':
         user_id = session.get("user_id")
         lists = ListOfLists.query.filter_by(user_id = user_id).all()
-        response =ListOfLists_Schema.dump(lists,many=True)
-        
-     
-        print(type(response)) 
-        return response
+        response = ListOfLists_Schema.dump(lists,many=True)
+        return jsonify(response)
         
 if __name__ == '__main__':
     app.run(debug = True)
