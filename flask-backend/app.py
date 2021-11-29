@@ -63,7 +63,7 @@ def getlists():
     if request.method == 'GET':
         user_id = session.get("user_id")
         lists = ListOfLists.query.filter_by(user_id = user_id).all()
-        #able to return json file because we serialized the data
+        #able to return json file because we serialized the data 
         return jsonify(lists)
 
 if __name__ == '__main__':
