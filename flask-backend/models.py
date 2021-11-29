@@ -1,5 +1,6 @@
 from app import db, ma
 
+
 class User(db.Model): #user data base
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(100),unique = True, nullable = False)
@@ -13,7 +14,7 @@ class ListOfLists(db.Model):
 
 class ListOfListsSchema(ma.SQLAlchemySchema):
     class Meta:
-        model = ListOfLists
+        model = ListOfLists()
 
     id = ma.auto_field()
     name = ma.auto_field()

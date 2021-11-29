@@ -8,11 +8,11 @@ export default function PostRequestHooks() {
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title:'test'})
+            body: JSON.stringify({ result:'test'})
         };
         fetch('https://jsonplaceholder.typicode.com/posts', requestOptions)
             .then(response => response.json())
-            .then(data => setPostId(data.title));
+            .then(data => setPostId(data.result));
 
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
     }, []);

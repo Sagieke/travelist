@@ -3,6 +3,8 @@ from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from api.weather import weather_data
+import json
+from flask_cors import CORS
 
 #flask app initialization
 app = Flask(__name__)
@@ -13,6 +15,7 @@ Session(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
+CORS(app)
 
 app.register_blueprint(weather_data)
 
@@ -64,10 +67,12 @@ def addlist():
 def getlists():
     if request.method == 'GET':
         user_id = session.get("user_id")
-        lists = ListOfLists.query.filter_by(user_id = user_id).first()
-        response = jsonify(ListOfLists_Schema.dump(lists))
-        response.headers.add('Access-Control-Allow-Origin', '*')
+        lists = ListOfLists.query.filter_by(user_id = user_id).all()
+        response =ListOfLists_Schema.dump(lists,many=True)
+        
+     
+        print(type(response)) 
         return response
-
+        
 if __name__ == '__main__':
     app.run(debug = True)

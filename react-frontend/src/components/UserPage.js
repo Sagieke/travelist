@@ -4,30 +4,6 @@ import {Row,ListGroup} from "react-bootstrap";
 
 
 export default function  UserPage()  {
-  const [allValues, setAllValues] = useState({
-    color: '',
-    name: '',
- });
-
-  useEffect(() => {
-    fetch('http://localhost:5000/getlists')
-    .then(response => response.json())  
-    .then(data => setAllValues(data.color))
-    .then(data => setAllValues(data.name))
-  },[])
-  const ListGroupItem = (lgi, index) => {
-    return (
-
-<ListGroup.Item  variant="default"    key={index} style={{ textAlign: 'right', color: "white", background: lgi.color }} as="li" action href="#link1" >
- {lgi.title}            
-</ListGroup.Item>
-
-
-    )
-
-     
-  };
-
 
 
 
@@ -41,7 +17,7 @@ export default function  UserPage()  {
           <hr class="my-4"></hr>
           <Row>
           <ListGroup defaultActiveKey="#link1" as="ol" numbered>
-            {ListGroupItem.map(allValues)}
+            
         </ListGroup>
           </Row>
           <br />
