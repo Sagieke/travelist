@@ -3,6 +3,7 @@ from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from api.weather import weather_data
+import json
 from flask_cors import CORS
 
 #flask app initialization
@@ -32,7 +33,7 @@ def Register():
         new_user = User(username=username, password=password)
         db.session.add(new_user)
         db.session.commit()
-        return redirect('http://localhost:3000/mainpage') #redirecting to login page  
+        return redirect('http://localhost:3000/mainpage')
 
 @app.route('/login', methods=['GET', 'POST'])
 def Login():
@@ -67,7 +68,10 @@ def getlists():
     if request.method == 'GET':
         user_id = session.get("user_id")
         lists = ListOfLists.query.filter_by(user_id = user_id).all()
-        response = ListOfLists_Schema.dump(lists,many=True)
+        response =ListOfLists_Schema.dump(lists,many=True)
+        
+     
+        print(type(response)) 
         return response
         
 if __name__ == '__main__':
