@@ -1,8 +1,8 @@
 ## Fundamentals of Software Engineering Project Team 24
 
-###### server initialization
+## server initialization
 
-python installation required
+>python installation required
 
 `cd` into flask-backend, 
 
@@ -11,9 +11,9 @@ install python requirements by running `pip install -r requirements.txt`
 `flask run` to initialize the server
 
 
-###### client initialization
+## client initialization
 
-Node.js installation required
+>Node.js installation required
 
 `cd` into react-frontend,
 
