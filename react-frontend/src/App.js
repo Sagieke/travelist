@@ -8,7 +8,6 @@ import PostRequestHooks from "./components/react-hook-post";
 import MainPage from "./components/MainPage";
 import UserPage from "./components/UserPage";
 import LogOut from "./components/LogOut";
-import Dog from "./components/dogs";
 
 import "./App.css";
 import Logo from "./components/Logo";

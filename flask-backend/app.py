@@ -1,24 +1,26 @@
-from flask import Flask, request, redirect, session, jsonify, g
+from flask import Flask, request, redirect, session, jsonify
 from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
-
+from flask_marshmallow import Marshmallow
 from api.weather import weather_data
+
+#flask app initialization
 app = Flask(__name__)
-
-app.register_blueprint(weather_data)
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 app.config['SECRET_KEY'] = 'R4gP2Bq2Oc#`*@d'
 Session(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 db = SQLAlchemy(app)
+ma = Marshmallow(app)
+
+app.register_blueprint(weather_data)
 
 @app.route('/')
 def server():
     return "<h1>Hello, this is the server, nothing of interest here :)</h1>"
 
-from models import User,ListOfLists
+from models import User,ListOfLists,ListOfLists_Schema
 
 @app.route('/register', methods = ['GET', 'POST'])
 def Register():
@@ -62,9 +64,10 @@ def addlist():
 def getlists():
     if request.method == 'GET':
         user_id = session.get("user_id")
-        lists = ListOfLists.query.filter_by(user_id = user_id).all()
-        #able to return json file because we serialized the data
-        return jsonify(lists)
+        lists = ListOfLists.query.filter_by(user_id = user_id).first()
+        response = jsonify(ListOfLists_Schema.dump(lists))
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return response
 
 if __name__ == '__main__':
     app.run(debug = True)
