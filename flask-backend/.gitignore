@@ -5,5 +5,5 @@ database.db
 /flask_session
 
 #cache files
-__pycache__/
+/__pycache__
 *.py[cod]
