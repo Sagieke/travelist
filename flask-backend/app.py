@@ -3,7 +3,6 @@ from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from api.weather import weather_data
-import json
 from flask_cors import CORS
 
 #flask app initialization
@@ -68,10 +67,7 @@ def getlists():
     if request.method == 'GET':
         user_id = session.get("user_id")
         lists = ListOfLists.query.filter_by(user_id = user_id).all()
-        response =ListOfLists_Schema.dump(lists,many=True)
-        
-     
-        print(type(response)) 
+        response = ListOfLists_Schema.dump(lists,many=True)
         return response
         
 if __name__ == '__main__':
