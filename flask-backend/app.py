@@ -57,6 +57,7 @@ def addlist():
         db.session.commit()
         return redirect('http://localhost:3000/userPage')
 
+#todo
 @app.route('/getlists', methods=['GET','POST'])
 def getlists():
     if request.method == 'GET':
