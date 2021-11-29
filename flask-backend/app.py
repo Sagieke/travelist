@@ -33,7 +33,7 @@ def Register():
         new_user = User(username=username, password=password)
         db.session.add(new_user)
         db.session.commit()
-        return redirect('http://localhost:3000/mainpage') #redirecting to login page  
+        return redirect('http://localhost:3000/mainpage')
 
 @app.route('/login', methods=['GET', 'POST'])
 def Login():
