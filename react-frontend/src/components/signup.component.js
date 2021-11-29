@@ -1,5 +1,5 @@
 import React,{ useState } from "react";
-import {Container,Row, Col,Button,Modal} from "react-bootstrap";
+import {Button,Modal} from "react-bootstrap";
 
 export default function  SignUp()  {
   const [show, setShow] = useState(false);
