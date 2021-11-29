@@ -42,6 +42,7 @@ def Login():
         password = request.form['password']
         user = User.query.filter_by(username = username).first()
         if user and user.password == password:
+            #save user to session
             session['user_id'] = user.id
             session['username'] = username
             return redirect('http://localhost:3000/userPage')
