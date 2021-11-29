@@ -7,7 +7,7 @@ export default function GetRequestHooks() {
         // GET request using fetch inside useEffect React hook
         fetch('http://localhost:5000/getlists')
             .then(response => response.json())
-            .then(data => console.log(data));
+            .then(data => setTotalReactPackages(data.name));
 
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
     }, []);
