@@ -1,11 +1,9 @@
-import React, { useState } from "react";
-import {Container,Row, Col,Button,ListGroup} from "react-bootstrap";
+import React from "react";
 import  Login from "./login.component";
 import  SignUp from "./signup.component";
 
 
 
-import AddList from "./addlist";
 
 export default function  MainPage()  {
    

@@ -5,9 +5,9 @@ export default function GetRequestHooks() {
     const city = 'ashkelon'
     useEffect(() => {
         // GET request using fetch inside useEffect React hook
-        fetch('http://api.openweathermap.org/data/2.5/weather?q='+city+'&units=metric&appid=e53647cd71abcf81c779b83f1a8807c1')
+        fetch('http://localhost:5000/getlists')
             .then(response => response.json())
-            .then(data => setTotalReactPackages(data.main.temp));
+            .then(data => console.log(data));
 
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
     }, []);

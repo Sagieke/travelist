@@ -1,26 +1,20 @@
 import AddList from "./addlist";
-import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import {Container,Row, Col,Button,ListGroup} from "react-bootstrap";
-import logo from '../logo.svg';
-import LogOut from "./LogOut";
+import React, {useState, useEffect}from "react";
+import {Row,ListGroup} from "react-bootstrap";
+
 
 export default function  UserPage()  {
-  const listgiInfo = [
-    {
-      title: "Lebron James",
-      color: "#df0c0c",
-    },
-    {
-      title: "Alex Caruso",
-      color: "#73b71f",
-    },
-    {
-      
-      title: "Steph Curry",
-      color: "#04e000",
-    },
-  ];
+  const [allValues, setAllValues] = useState({
+    color: '',
+    name: '',
+ });
+
+  useEffect(() => {
+    fetch('http://localhost:5000/getlists')
+    .then(response => response.json())  
+    .then(data => setAllValues(data.color))
+    .then(data => setAllValues(data.name))
+  },[])
   const ListGroupItem = (lgi, index) => {
     return (
 
@@ -47,7 +41,7 @@ export default function  UserPage()  {
           <hr class="my-4"></hr>
           <Row>
           <ListGroup defaultActiveKey="#link1" as="ol" numbered>
-          {listgiInfo.map(ListGroupItem)}
+            {ListGroupItem.map(allValues)}
         </ListGroup>
           </Row>
           <br />
