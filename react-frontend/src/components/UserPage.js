@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import {Container,Row, Col,Button,ListGroup} from "react-bootstrap";
 import logo from '../logo.svg';
 import LogOut from "./LogOut";
+import RemoveList from "./RemoveList";
 
 export default function  UserPage()  {
   const listgiInfo = [
@@ -46,6 +47,7 @@ export default function  UserPage()  {
           <h1>my lists</h1>
           <hr class="my-4"></hr>
           <Row>
+            <RemoveList/>
           <ListGroup defaultActiveKey="#link1" as="ol" numbered>
           {listgiInfo.map(ListGroupItem)}
         </ListGroup>
