@@ -12,8 +12,8 @@ export default function  UserPage()  {
   useEffect(() => {
     fetch('http://localhost:5000/getlists')
     .then(response => response.json())  
-    .then(data => setAllValues.color(data.color))
-    .then(data => setAllValues.name(data.name))
+    .then(data => setAllValues(data.color))
+    .then(data => setAllValues(data.name))
   },[])
   const ListGroupItem = (lgi, index) => {
     return (
@@ -41,7 +41,7 @@ export default function  UserPage()  {
           <hr class="my-4"></hr>
           <Row>
           <ListGroup defaultActiveKey="#link1" as="ol" numbered>
-          {ListGroupItem.map(allValues)}
+            {ListGroupItem.map(allValues)}
         </ListGroup>
           </Row>
           <br />
