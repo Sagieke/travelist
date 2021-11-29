@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, session
+from flask import Flask, request, redirect, session, jsonify
 from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
 from api.weather import weather_data
@@ -60,9 +60,16 @@ def addlist():
 @app.route('/getlists', methods=['GET','POST'])
 def getlists():
     if request.method == 'GET':
+        data = {}
         user_id = session.get("user_id")
-        lists = ListOfLists.query.filter_by(user_id = user_id)
-        return lists.json()
+        lists = ListOfLists.query.filter_by(user_id = user_id).all()
+        for list in lists:
+            for list.id in list:
+                list.id = {}
+                data["name"] = list.name
+                data["color"]= list.color
+        return jsonify(data)
+
 
 if __name__ == '__main__':
     app.run(debug = True)
