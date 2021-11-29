@@ -10,7 +10,7 @@ export default function  UserPage()  {
  });
 
   useEffect(() => {
-    fetch('http://localhost:5000/addlist')
+    fetch('http://localhost:5000/getlists')
     .then(response => response.json())  
     .then(data => setAllValues.color(data.color))
     .then(data => setAllValues.name(data.name))
