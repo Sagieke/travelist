@@ -8,6 +8,7 @@ class User(db.Model): #user data base
 
 @dataclass
 class ListOfLists(db.Model):
+    #serialize using dataclass from dataclasses
     name: str
     color: str
 
