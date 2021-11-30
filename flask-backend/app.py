@@ -30,7 +30,7 @@ def Register():
     if request.method == 'POST':
         username = request.form['email']
         password = request.form['password']
-        new_user = User(username=username, password=password)
+        new_user = User(username=username, password=password) #user table constructor
         db.session.add(new_user)
         db.session.commit()
         return redirect('http://localhost:3000/mainpage')
@@ -42,6 +42,7 @@ def Login():
         password = request.form['password']
         user = User.query.filter_by(username = username).first()
         if user and user.password == password:
+            #save user to session
             session['user_id'] = user.id
             session['username'] = username
             return redirect('http://localhost:3000/userPage')
@@ -68,11 +69,8 @@ def getlists():
     if request.method == 'GET':
         user_id = session.get("user_id")
         lists = ListOfLists.query.filter_by(user_id = user_id).all()
-        response =ListOfLists_Schema.dump(lists,many=True)
-        
-     
-        print(type(response)) 
-        return response
+        response = ListOfLists_Schema.dump(lists,many=True)
+        return jsonify(response)
         
 if __name__ == '__main__':
     app.run(debug = True)
