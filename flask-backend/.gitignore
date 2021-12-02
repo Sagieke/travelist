@@ -1,6 +1,9 @@
 #database
 database.db
 
+#session
+/flask_session/
+
 #cache files
 /__pycache__
 *.py[cod]

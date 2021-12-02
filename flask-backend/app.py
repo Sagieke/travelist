@@ -2,18 +2,16 @@ from flask import Flask, request, redirect, session, jsonify
 from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
-from datetime import timedelta
 from api.weather import weather_data
 
 #flask app initialization
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "changeme"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config["SESSION_TYPE"] = "filesystem"
 db = SQLAlchemy(app)
-app.config["SESSION_TYPE"] = "sqlalchemy"
-app.config['SESSION_SQLALCHEMY'] = db
 Session(app)
-CORS(app)
+CORS(app,supports_credentials=True)
 
 app.register_blueprint(weather_data)
 
@@ -65,7 +63,7 @@ def getlists():
     if request.method == 'GET':
         user_id = session.get('user_id')
         print("USER ID: {}".format(user_id))
-        lists = ListOfLists.query.filter_by(user_id=1).all()
+        lists = ListOfLists.query.filter_by(user_id=user_id).all()
         return jsonify(lists)
         
 if __name__ == '__main__':
