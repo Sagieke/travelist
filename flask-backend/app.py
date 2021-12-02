@@ -1,18 +1,19 @@
 from flask import Flask, request, redirect, session, jsonify
 from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
-from flask_marshmallow import Marshmallow
+from flask_cors import CORS
+from datetime import timedelta
 from api.weather import weather_data
 
 #flask app initialization
 app = Flask(__name__)
-app.config["SESSION_PERMANENT"] = False
-app.config["SESSION_TYPE"] = "filesystem"
-app.config['SECRET_KEY'] = 'R4gP2Bq2Oc#`*@d'
-Session(app)
+app.config["SECRET_KEY"] = "changeme"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 db = SQLAlchemy(app)
-ma = Marshmallow(app)
+app.config["SESSION_TYPE"] = "sqlalchemy"
+app.config['SESSION_SQLALCHEMY'] = db
+Session(app)
+CORS(app)
 
 app.register_blueprint(weather_data)
 
@@ -20,17 +21,17 @@ app.register_blueprint(weather_data)
 def server():
     return "<h1>Hello, this is the server, nothing of interest here :)</h1>"
 
-from models import User,ListOfLists,ListOfLists_Schema
+from models import User,ListOfLists
 
 @app.route('/register', methods = ['GET', 'POST'])
 def Register():
     if request.method == 'POST':
         username = request.form['email']
         password = request.form['password']
-        new_user = User(username=username, password=password)
+        new_user = User(username=username, password=password) #user table constructor
         db.session.add(new_user)
         db.session.commit()
-        return redirect('http://localhost:3000/mainpage') #redirecting to login page  
+        return redirect('http://localhost:3000/mainpage')
 
 @app.route('/login', methods=['GET', 'POST'])
 def Login():
@@ -39,14 +40,13 @@ def Login():
         password = request.form['password']
         user = User.query.filter_by(username = username).first()
         if user and user.password == password:
+            #save user to session
             session['user_id'] = user.id
-            session['username'] = username
             return redirect('http://localhost:3000/userPage')
 
 @app.route('/logout')
 def logout():
-    # remove the username from the session if it's there
-    session.pop('username', None)
+    session.pop('user_id', None)
     return redirect('http://localhost:3000/mainpage')
 
 @app.route('/addlist', methods=['GET','POST'])
@@ -60,14 +60,13 @@ def addlist():
         db.session.commit()
         return redirect('http://localhost:3000/userPage')
 
-@app.route('/getlists', methods=['GET','POST'])
+@app.route('/getlists', methods=['GET', 'POST'])
 def getlists():
     if request.method == 'GET':
-        user_id = session.get("user_id")
-        lists = ListOfLists.query.filter_by(user_id = user_id).first()
-        response = jsonify(ListOfLists_Schema.dump(lists))
-        response.headers.add('Access-Control-Allow-Origin', '*')
-        return response
-
+        user_id = session.get('user_id')
+        print("USER ID: {}".format(user_id))
+        lists = ListOfLists.query.filter_by(user_id=1).all()
+        return jsonify(lists)
+        
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run()

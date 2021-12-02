@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
 export default function GetRequestHooks() {
-    const [totalReactPackages, setTotalReactPackages] = useState(null);
-    const city = 'ashkelon'
+    const [totalReactPackages, setTotalReactPackages] = useState('');
     useEffect(() => {
-        // GET request using fetch inside useEffect React hook
         fetch('http://localhost:5000/getlists')
             .then(response => response.json())
-            .then(data => console.log(data));
-
+            .then(object => console.log(object))
+        },[]);
+      
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
-    }, []);
 
     return (
         <div className="card text-center m-3">
@@ -21,5 +19,3 @@ export default function GetRequestHooks() {
         </div>
     );
 }
-
-export { GetRequestHooks };

@@ -1,47 +1,24 @@
 import AddList from "./addlist";
-import React, {useState, useEffect}from "react";
+import React from "react";
 import {Row,ListGroup} from "react-bootstrap";
 
+import  GetRequestHooks from "./react-hook-get";
+import PostRequestHooks from "./react-hook-post";
 
 export default function  UserPage()  {
-  const [allValues, setAllValues] = useState({
-    color: '',
-    name: '',
- });
-
-  useEffect(() => {
-    fetch('http://localhost:5000/getlists')
-    .then(response => response.json())  
-    .then(data => setAllValues(data.color))
-    .then(data => setAllValues(data.name))
-  },[])
-  const ListGroupItem = (lgi, index) => {
-    return (
-
-<ListGroup.Item  variant="default"    key={index} style={{ textAlign: 'right', color: "white", background: lgi.color }} as="li" action href="#link1" >
- {lgi.title}            
-</ListGroup.Item>
-
-
-    )
-
-     
-  };
-
-
-
 
     return (
-    
-       
-      <div className="auth-wrapper">  
+
+
+      <div className="auth-wrapper">
           <Row>
         <div className="auth-inner-left">
           <h1>my lists</h1>
           <hr class="my-4"></hr>
           <Row>
+
           <ListGroup defaultActiveKey="#link1" as="ol" numbered>
-            {ListGroupItem.map(allValues)}
+
         </ListGroup>
           </Row>
           <br />
@@ -53,13 +30,11 @@ export default function  UserPage()  {
           <div className="auth-inner-right">
           <h1>most search places</h1>
           <hr class="my-4"></hr>
-          
+          <GetRequestHooks/>
           </div>
           </Row>
         </div>
-        
+
     );
-    
+
 }
-
-

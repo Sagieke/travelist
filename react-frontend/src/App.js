@@ -34,9 +34,6 @@ function App() {
             </Switch>
       </div>
       <footer>
-      
-        <GetRequestHooks/>
-        <PostRequestHooks/>
         <AddPlace/>
       </footer>
     </Router>
