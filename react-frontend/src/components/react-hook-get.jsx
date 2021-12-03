@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
 export default function GetRequestHooks() {
-    const [totalReactPackages, setTotalReactPackages] = useState('');
+    const [listgiInfo, setlistgiInfo] = useState([]);
     useEffect(() => {
         fetch('http://localhost:5000/getlists',{
             credentials: "include"
           })
             .then(response => response.json())
-            .then(object => console.log(object))
+            .then(object => setlistgiInfo(object))
         },[]);
       
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
