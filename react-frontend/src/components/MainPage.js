@@ -1,7 +1,7 @@
 import React from "react";
 import  Login from "./login.component";
 import  SignUp from "./signup.component";
-
+import GetRequestHooks from "./react-hook-get";
 
 
 
@@ -14,5 +14,6 @@ export default function  MainPage()  {
           <SignUp/>
          </div>
       </div> 
+
     )
 }

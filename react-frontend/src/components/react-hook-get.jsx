@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
 export default function GetRequestHooks() {
-    const [totalReactPackages, setTotalReactPackages] = useState();
+    const [totalReactPackages, setTotalReactPackages] = useState('');
     useEffect(() => {
-        // GET request using fetch inside useEffect React hook
-        fetch('http://localhost:5000/getlists')
+        fetch('http://localhost:5000/getlists',{
+            credentials: "include"
+          })
             .then(response => response.json())
             .then(object => console.log(object))
         },[]);
