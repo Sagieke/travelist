@@ -16,7 +16,7 @@ export default function GetRequestHooks() {
         <div className="card text-center m-3">
             <h5 className="card-header">GET Request with React Hooks</h5>
             <div className="card-body">
-                Total react packages: {totalReactPackages}
+                Total react packages: {listgiInfo}
             </div>
         </div>
     );
