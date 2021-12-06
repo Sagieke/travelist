@@ -1,11 +1,9 @@
-import React, { useState } from "react";
-import {Container,Row, Col,Button,ListGroup} from "react-bootstrap";
+import React from "react";
 import  Login from "./login.component";
 import  SignUp from "./signup.component";
+import GetRequestHooks from "./react-hook-get";
 
 
-
-import AddList from "./addlist";
 
 export default function  MainPage()  {
    
@@ -16,5 +14,6 @@ export default function  MainPage()  {
           <SignUp/>
          </div>
       </div> 
+
     )
 }
