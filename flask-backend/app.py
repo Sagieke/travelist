@@ -68,5 +68,15 @@ def getlists():
         lists = ListOfLists.query.filter_by(user_id=user_id).all()
         return jsonify(lists)
         
+@app.route('/removelist', methods=['GET','POST'])
+def removelist():
+    if request.method == 'POST':
+        user_id = session.get("user_id")
+        id = request.form['id2']
+        lists = ListOfLists.query.filter_by(user_id = user_id,id=id).first()
+        db.session.delete(lists)
+        db.session.commit()
+        return redirect('http://localhost:3000/userPage')
+       
 if __name__ == '__main__':
     app.run()

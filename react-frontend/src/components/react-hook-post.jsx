@@ -12,7 +12,7 @@ export default function PostRequestHooks() {
         };
         fetch('http://localhost:5000/getliststest', requestOptions)
             .then(response => response.json())
-            .then(data => console.log(data));
+            .then(data => setPostId(data));
 
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
     },);
