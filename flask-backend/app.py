@@ -72,7 +72,7 @@ def getlists():
 def removelist():
     if request.method == 'POST':
         user_id = session.get("user_id")
-        id = request.form['id2']
+        id = request.form['id']
         lists = ListOfLists.query.filter_by(user_id = user_id,id=id).first()
         db.session.delete(lists)
         db.session.commit()
