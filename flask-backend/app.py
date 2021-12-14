@@ -31,7 +31,7 @@ def Register():
         new_user = User(username=username, password=password) #user table constructor
         db.session.add(new_user)
         db.session.commit()
-        return redirect('http://localhost:3000/mainpage')
+        return redirect('http://localhost:3000/')
 
 @app.route('/login', methods=['GET', 'POST'])
 def Login():
@@ -44,10 +44,11 @@ def Login():
             session['user_id'] = user.id
             return redirect('http://localhost:3000/userPage')
 
-@app.route('/logout')
+@app.route('/logout', methods=['GET', 'POST'])
 def logout():
-    session.pop('user_id', None)
-    return redirect('http://localhost:3000/mainpage')
+    if request.method == 'POST':
+        session.pop('user_id', None)
+        return redirect('http://localhost:3000/')
 
 @app.route('/addlist', methods=['GET','POST'])
 def addlist():
