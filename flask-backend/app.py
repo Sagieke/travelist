@@ -1,21 +1,19 @@
 from flask import Flask, request, redirect, session, jsonify
 from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
-from flask_marshmallow import Marshmallow
+from flask_cors import CORS
 from api.weather import weather_data
 import json
 from flask_cors import CORS
 
 #flask app initialization
 app = Flask(__name__)
-app.config["SESSION_PERMANENT"] = False
-app.config["SESSION_TYPE"] = "filesystem"
-app.config['SECRET_KEY'] = 'R4gP2Bq2Oc#`*@d'
-Session(app)
+app.config["SECRET_KEY"] = "changeme"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config["SESSION_TYPE"] = "filesystem"
 db = SQLAlchemy(app)
-ma = Marshmallow(app)
-CORS(app)
+Session(app)
+CORS(app,supports_credentials=True)
 
 app.register_blueprint(weather_data)
 
@@ -23,7 +21,7 @@ app.register_blueprint(weather_data)
 def server():
     return "<h1>Hello, this is the server, nothing of interest here :)</h1>"
 
-from models import User,ListOfLists,ListOfLists_Schema
+from models import User,ListOfLists
 
 @app.route('/register', methods = ['GET', 'POST'])
 def Register():
@@ -44,13 +42,11 @@ def Login():
         if user and user.password == password:
             #save user to session
             session['user_id'] = user.id
-            session['username'] = username
             return redirect('http://localhost:3000/userPage')
 
 @app.route('/logout')
 def logout():
-    # remove the username from the session if it's there
-    session.pop('username', None)
+    session.pop('user_id', None)
     return redirect('http://localhost:3000/mainpage')
 
 @app.route('/addlist', methods=['GET','POST'])
@@ -64,13 +60,23 @@ def addlist():
         db.session.commit()
         return redirect('http://localhost:3000/userPage')
 
-@app.route('/getlists', methods=['GET','POST'])
+@app.route('/getlists', methods=['GET', 'POST'])
 def getlists():
     if request.method == 'GET':
-        user_id = session.get("user_id")
-        lists = ListOfLists.query.filter_by(user_id = user_id).all()
-        response = ListOfLists_Schema.dump(lists,many=True)
-        return jsonify(response)
+        user_id = session.get('user_id')
+        print("USER ID: {}".format(user_id))
+        lists = ListOfLists.query.filter_by(user_id=user_id).all()
+        return jsonify(lists)
         
+@app.route('/removelist', methods=['GET','POST'])
+def removelist():
+    if request.method == 'POST':
+        user_id = session.get("user_id")
+        id = request.form['id']
+        lists = ListOfLists.query.filter_by(user_id = user_id,id=id).first()
+        db.session.delete(lists)
+        db.session.commit()
+        return redirect('http://localhost:3000/userPage')
+       
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run()

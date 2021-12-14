@@ -8,14 +8,14 @@ export default function PostRequestHooks() {
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ result:'test'})
+            body: JSON.stringify({ ListName:'test2',color:'#fffff3f'})
         };
-        fetch('https://jsonplaceholder.typicode.com/posts', requestOptions)
+        fetch('http://localhost:5000/getliststest', requestOptions)
             .then(response => response.json())
-            .then(data => setPostId(data.result));
+            .then(data => setPostId(data));
 
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
-    }, []);
+    },);
 
     return (
         <div className="card text-center m-3">

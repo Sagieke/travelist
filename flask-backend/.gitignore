@@ -1,8 +1,8 @@
 #database
 database.db
 
-#flask sessions
-/flask_session
+#session
+/flask_session/
 
 #cache files
 /__pycache__

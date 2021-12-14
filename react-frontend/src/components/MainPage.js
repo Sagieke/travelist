@@ -4,7 +4,6 @@ import  SignUp from "./signup.component";
 
 
 
-
 export default function  MainPage()  {
    
     return (
@@ -14,5 +13,6 @@ export default function  MainPage()  {
           <SignUp/>
          </div>
       </div> 
+
     )
 }
