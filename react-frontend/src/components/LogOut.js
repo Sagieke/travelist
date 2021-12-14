@@ -5,14 +5,9 @@ import {  Link } from "react-router-dom";
 export default function LogOut(){
 return(
  <div className="App-LogOut">
- <Link to="/MainPage">
- <Button renderAs="button">
-    <span>LogOut</span>
-  </Button>
- </Link>
-    </div>
-   
-    )
-
-
+ <form action="http://localhost:5000/logout" method="post">
+   <Button className="float-end" type="submit">LogOut</Button>
+ </form>
+ </div>
+)
 }
