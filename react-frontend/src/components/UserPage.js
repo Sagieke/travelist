@@ -17,11 +17,11 @@ export default function  UserPage()  {
   const ListGroupItem = (lgi, index) => {
       return (
 
-              <ListGroup.Item  variant="default" key={index} style={{ textAlign: 'right', color: "white", background: lgi.color }} as="li" >
+              <ListGroup.Item  variant="default" key={index} style={{ textAlign: 'left', color: "white", background: lgi.color }} as="li" >
 
                       {lgi.name}
                       <form action="http://localhost:5000/removelist" method="post">
-                      <Button className="float-start" type="submit" name="id" value={lgi.id}>remove list</Button>
+                      <Button className="float-end" type="submit" name="id" value={lgi.id}>remove list</Button>
                       </form>
               </ListGroup.Item>
              )   
