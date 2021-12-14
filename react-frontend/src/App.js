@@ -19,7 +19,7 @@ function App() {
         <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
         <Link className="navbar-brand" to={"/"}> <img src={logo} className="App-logo" alt="logo" /></Link>
         <Switch>
-        <Route exact path="/MainPage" component ={MainPage}/>
+        <Route component ={MainPage}/>
         <Route exact path="/UserPage" component ={LogOut}/>
         </Switch>
           </div>
