@@ -7,8 +7,6 @@ import MainPage from "./components/MainPage";
 import UserPage from "./components/UserPage";
 import LogOut from "./components/LogOut";
 import "./App.css";
-import Logo from "./components/Logo";
-import Admin from "./components/Admin";
 
 
 function App() {
@@ -19,14 +17,12 @@ function App() {
         <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
         <Link className="navbar-brand" to={"/"}> <img src={logo} className="App-logo" alt="logo" /></Link>
         <Switch>
-        <Route component ={MainPage}/>
+        <Route exact path ="/" component ={MainPage}/>
         <Route exact path="/UserPage" component ={LogOut}/>
         </Switch>
           </div>
         </nav>
         <Switch>
-              <Route exact path="/Admin" component ={Admin}/> 
-              <Route exact path="/MainPage" component ={Logo}/>
               <Route exact path="/userPage" component={UserPage}/>
             </Switch>
       </div>
