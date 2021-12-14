@@ -21,7 +21,7 @@ export default function  UserPage()  {
 
                       {lgi.name}
                       <form action="http://localhost:5000/removelist" method="post">
-                      <Button className="float-start" type="submit" name="id" value={lgi.id}>remomve list</Button>
+                      <Button className="float-start" type="submit" name="id" value={lgi.id}>remove list</Button>
                       </form>
               </ListGroup.Item>
              )   
