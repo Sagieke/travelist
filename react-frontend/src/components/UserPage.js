@@ -1,26 +1,28 @@
 import AddList from "./addlist";
 import React , { useState, useEffect }from "react";
 import {Container,Row, Col,Button,Modal,ListGroup,} from "react-bootstrap";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 export default function  UserPage()  {
   const history = useHistory();
   const [listgiInfo, setlistgiInfo] = useState([]);
-  const routeChange = () =>{ let path = `/userpage/place`; history.push(path);}
   useEffect(() => {
-      fetch('http://localhost:5000/getlists',{
-          credentials: "include"
-        })
-          .then(response => response.json())
-          .then(object => setlistgiInfo(object))
-      },[]);
+    fetch('http://localhost:5000/getlists',{
+      credentials: "include"
+    })
+    .then(response => response.json())
+    .then(object => setlistgiInfo(object))
+  },[]);
+  
 
 
   const ListGroupItem = (lgi, index) => {
       return (
 
-              <ListGroup.Item  variant="default" key={index} style={{ textAlign: 'left', color: "white", background: lgi.color }} as="li"  onClick={routeChange}>
-                      
+              <ListGroup.Item  variant="default" key={index} style={{ textAlign: 'left', color: "white", background: lgi.color }} as="li">
+                      <form action="http://localhost:5000/viewlist" method="post">
+                      <Button className="float-end" type="submit" name="list_id" value={lgi.id}>view list</Button>
+                      </form>
                       {lgi.name}
                       <form action="http://localhost:5000/removelist" method="post">
                       <Button className="float-end" type="submit" name="id" value={lgi.id}>remove list</Button>
