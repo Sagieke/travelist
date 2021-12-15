@@ -19,14 +19,14 @@ function App() {
         <Switch>
         <Route exact path ="/" component ={MainPage}/>
         <Route exact path="/UserPage" component ={LogOut}/>
-        <Route exact path="/UserPage/place" component ={LogOut}/>
+        <Route exact path="/UserPage/" component ={LogOut}/>
 
         </Switch>
           </div>
         </nav>
         <Switch>
               <Route exact path="/userPage" component={UserPage}/>
-              <Route exact path="/UserPage/place" component ={ListPage}/>
+              <Route path="/UserPage/places" component ={ListPage}/>
             </Switch>
       </div>
     </Router>
