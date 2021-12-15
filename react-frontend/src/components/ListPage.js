@@ -1,10 +1,10 @@
 import AddPlace from "./AddPlace";
 import React , { useState, useEffect }from "react";
 import {Container,Row, Col,Button,Modal,ListGroup} from "react-bootstrap";
-
+import {useParams} from "react-router-dom";
 export default function  ListPage()  {
   const [listInfo, setlistInfo] = useState([]);
-
+  
   useEffect(() => {
       fetch('http://localhost:5000/getplaces',{
           credentials: "include"
@@ -25,13 +25,13 @@ export default function  ListPage()  {
               </ListGroup.Item>
              )   
   };
-
+  let{ id } = useParams();
     return (
 
       <div className="auth-wrapper">
           <Row>
         <div className="auth-inner-left">
-          <h1>{listInfo.list_name}</h1>
+          <h1>{id}</h1>
           <hr class="my-4"></hr>
           <Row>
 
