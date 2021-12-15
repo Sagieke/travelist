@@ -39,7 +39,6 @@ export default function  UserPage()  {
           <h1>my lists</h1>
           <hr class="my-4"></hr>
           <Row>
-
           <ListGroup defaultActiveKey="#link1" as="ol" numbered>
             
           {listgiInfo.map(ListGroupItem)}
