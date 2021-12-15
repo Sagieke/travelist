@@ -3,7 +3,6 @@ from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from api.weather import weather_data
-import json
 from flask_cors import CORS
 
 #flask app initialization
@@ -21,7 +20,7 @@ app.register_blueprint(weather_data)
 def server():
     return "<h1>Hello, this is the server, nothing of interest here :)</h1>"
 
-from models import User,ListOfLists
+from models import User,ListOfLists,ListOfPlaces
 
 @app.route('/register', methods = ['GET', 'POST'])
 def Register():
@@ -65,7 +64,6 @@ def addlist():
 def getlists():
     if request.method == 'GET':
         user_id = session.get('user_id')
-        print("USER ID: {}".format(user_id))
         lists = ListOfLists.query.filter_by(user_id=user_id).all()
         return jsonify(lists)
         
@@ -78,6 +76,15 @@ def removelist():
         db.session.delete(lists)
         db.session.commit()
         return redirect('http://localhost:3000/userPage')
-       
+
+@app.route('/getplaces', methods=['GET', 'POST'])
+def getplaces():
+    if request.method == 'GET':
+        user_id = session.get('user_id')
+        list_id = request.form['list_id']
+        print("USER ID: {}".format(user_id))
+        places = ListOfPlaces.query.filter_by(user_id=user_id,list_id=list_id).all()
+        return jsonify(places)
+
 if __name__ == '__main__':
     app.run()
