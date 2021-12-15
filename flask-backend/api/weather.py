@@ -4,9 +4,9 @@ from flask import Blueprint, request
 
 weather_data = Blueprint('weather_data', __name__)
 
-@weather_data.route('/weather_data', methods=['GET'])
+@weather_data.route('/weather_data', methods=['GET','POST'])
 def get_weather_data():
-    city_name = 'ashkelon' #request.form['city_name']
+    city_name = request.form['city_name']
     api_key = get_api_key()
     data = json_weather_data(city_name,api_key)
     return data

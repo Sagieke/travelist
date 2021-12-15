@@ -1,9 +1,10 @@
 import AddList from "./addlist";
 import React , { useState, useEffect }from "react";
-import {Row,ListGroup} from "react-bootstrap";
+import {Container,Row, Col,Button,Modal,ListGroup} from "react-bootstrap";
 
 export default function  UserPage()  {
   const [listgiInfo, setlistgiInfo] = useState([]);
+
   useEffect(() => {
       fetch('http://localhost:5000/getlists',{
           credentials: "include"
@@ -11,27 +12,22 @@ export default function  UserPage()  {
           .then(response => response.json())
           .then(object => setlistgiInfo(object))
       },[]);
-const ListGroupItem = (lgi, index) => {
-  return (
-
-<ListGroup.Item  variant="default"    key={index} style={{ textAlign: 'right', color: "white", background: lgi.color }} as="li" action href="#link1" >
-{lgi.name}            
-</ListGroup.Item>
 
 
-  )
+  const ListGroupItem = (lgi, index) => {
+      return (
 
-   
-};
+              <ListGroup.Item  variant="default" key={index} style={{ textAlign: 'left', color: "white", background: lgi.color }} as="li" >
 
-
-
+                      {lgi.name}
+                      <form action="http://localhost:5000/removelist" method="post">
+                      <Button className="float-end" type="submit" name="id" value={lgi.id}>remove list</Button>
+                      </form>
+              </ListGroup.Item>
+             )   
+  };
 
     return (
-    
-       
-    
-
 
       <div className="auth-wrapper">
           <Row>
@@ -42,6 +38,7 @@ const ListGroupItem = (lgi, index) => {
           <ListGroup defaultActiveKey="#link1" as="ol" numbered>
             
           {listgiInfo.map(ListGroupItem)}
+
         </ListGroup>
           </Row>
           <br />
