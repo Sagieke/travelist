@@ -1,18 +1,21 @@
-from flask import Flask, request, redirect, session, jsonify
+from flask import Flask, request, redirect, session, jsonify,render_template, request, make_response,url_for
+from flask_socketio import SocketIO, join_room, leave_room
 from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from api.weather import weather_data
-import json
-from flask_cors import CORS
+
 
 #flask app initialization
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 app.config["SECRET_KEY"] = "changeme"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config["SESSION_TYPE"] = "filesystem"
 db = SQLAlchemy(app)
 Session(app)
+socketio = SocketIO(app)
 CORS(app,supports_credentials=True)
 
 app.register_blueprint(weather_data)
@@ -28,7 +31,8 @@ def Register():
     if request.method == 'POST':
         username = request.form['email']
         password = request.form['password']
-        new_user = User(username=username, password=password) #user table constructor
+        usertype = 'traveler'
+        new_user = User(username=username, password=password, usertype = usertype) #user table constructor
         db.session.add(new_user)
         db.session.commit()
         return redirect('http://localhost:3000/')
@@ -78,6 +82,31 @@ def removelist():
         db.session.delete(lists)
         db.session.commit()
         return redirect('http://localhost:3000/userPage')
-       
+
+
+
+
+@app.route('/test')
+def home():
+    return render_template("index.html")
+
+@app.route('/chat')
+def chat():
+    room = request.args.get('room')
+    if room:
+        return render_template('chat.html', room=room)
+    else:
+        return redirect(url_for('test'))
+
+@socketio.on('join_room')
+def handle_join_room_event(data):
+    join_room(data['room'])
+    socketio.emit('join_room_announcement', data)
+
+@socketio.on('send_message')
+def handle_send_message_event(data):
+    socketio.emit('receive_message', data, room=data['room'])
+
 if __name__ == '__main__':
     app.run()
+
