@@ -1,5 +1,5 @@
 from flask import Flask, request, redirect, session, jsonify,render_template, request, make_response,url_for
-from flask_socketio import SocketIO, join_room, leave_room
+from flask_socketio import SocketIO, join_room
 from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
