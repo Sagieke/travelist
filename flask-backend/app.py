@@ -4,7 +4,7 @@ from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from api.weather import weather_data
-
+from werkzeug.security import generate_password_hash, check_password_hash
 
 #flask app initialization
 app = Flask(__name__)
@@ -31,8 +31,9 @@ def Register():
     if request.method == 'POST':
         username = request.form['email']
         password = request.form['password']
+        hashed_password = generate_password_hash(password)
         usertype = 'traveler'
-        new_user = User(username=username, password=password, usertype = usertype) #user table constructor
+        new_user = User(username=username, password=hashed_password, usertype = usertype) #user table constructor
         db.session.add(new_user)
         db.session.commit()
         return redirect('http://localhost:3000/')
@@ -43,10 +44,16 @@ def Login():
         username = request.form['email']
         password = request.form['password']
         user = User.query.filter_by(username = username).first()
-        if user and user.password == password:
+        if user and check_password_hash(user.password,password):
             #save user to session
             session['user_id'] = user.id
-            return redirect('http://localhost:3000/userPage')
+            if user.usertype == 'admin':
+                return redirect('http://localhost:3000/adminPage')
+            elif user.usertype == 'techSupport':
+                return redirect('http://localhost:3000/techSupportPage')
+            else: 
+                return redirect('http://localhost:3000/userPage')
+            
 
 @app.route('/logout', methods=['GET', 'POST'])
 def logout():
