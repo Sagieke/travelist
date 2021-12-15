@@ -1,19 +1,13 @@
-import React, { useState } from "react";
-import {Container,Row, Col,Button,ListGroup} from "react-bootstrap";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import MainPage from "./MainPage";
+import React from "react";
+import {Button} from "react-bootstrap";
+import {  Link } from "react-router-dom";
 
 export default function LogOut(){
 return(
  <div className="App-LogOut">
- <Link to="/MainPage">
- <Button renderAs="button">
-    <span>LogOut</span>
-  </Button>
- </Link>
-    </div>
-   
-    )
-
-
+ <form action="http://localhost:5000/logout" method="post">
+   <Button className="float-end" type="submit">LogOut</Button>
+ </form>
+ </div>
+)
 }

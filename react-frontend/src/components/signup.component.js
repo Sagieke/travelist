@@ -1,9 +1,11 @@
 import React,{ useState } from "react";
-import {Container,Row, Col,Button,Modal} from "react-bootstrap";
+import {Button,Modal} from "react-bootstrap";
+
+
 
 export default function  SignUp()  {
-  const [show, setShow] = useState(false);
-
+  
+const [show, setShow] = useState(false);
 const handleClose = () => setShow(false);
 const handleShow = () => setShow(true);  
 const [userName, setUserName] = useState('');
@@ -15,9 +17,6 @@ return (
   <Button variant="primary" onClick={handleShow}>
     Sign up
       </Button>
-
-
-
   <Modal show={show} onHide={handleClose}>
   <form action='http://localhost:5000/register' method='post'>
   <Modal.Header closeButton>

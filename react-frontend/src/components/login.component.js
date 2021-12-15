@@ -1,13 +1,18 @@
 import React,{ useState } from "react";
-import {Container,Row, Col,Button,Modal} from "react-bootstrap";
+import {Button,Modal} from "react-bootstrap";
+
+
+
 
 export default function  Login()  {
   const [show, setShow] = useState(false);
-
 const handleClose = () => setShow(false);
 const handleShow = () => setShow(true);  
 const [userName, setUserName] = useState('');
 const [password, setPassword] = useState('');
+
+
+
 
 return (
   <>
@@ -62,7 +67,6 @@ return (
   </Modal.Footer>
   </form>
 </Modal>
-</> 
-    );
-  
+  </> 
+ ); 
 }

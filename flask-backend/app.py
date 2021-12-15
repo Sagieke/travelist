@@ -1,18 +1,21 @@
-from flask import Flask, request, redirect, session, jsonify, g
+from flask import Flask, request, redirect, session, jsonify
 from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
-
+from flask_cors import CORS
 from api.weather import weather_data
+import json
+from flask_cors import CORS
+
+#flask app initialization
 app = Flask(__name__)
+app.config["SECRET_KEY"] = "changeme"
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config["SESSION_TYPE"] = "filesystem"
+db = SQLAlchemy(app)
+Session(app)
+CORS(app,supports_credentials=True)
 
 app.register_blueprint(weather_data)
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-app.config["SESSION_PERMANENT"] = False
-app.config["SESSION_TYPE"] = "filesystem"
-app.config['SECRET_KEY'] = 'R4gP2Bq2Oc#`*@d'
-Session(app)
-db = SQLAlchemy(app)
 
 @app.route('/')
 def server():
@@ -25,10 +28,10 @@ def Register():
     if request.method == 'POST':
         username = request.form['email']
         password = request.form['password']
-        new_user = User(username=username, password=password)
+        new_user = User(username=username, password=password) #user table constructor
         db.session.add(new_user)
         db.session.commit()
-        return redirect('http://localhost:3000/mainpage') #redirecting to login page  
+        return redirect('http://localhost:3000/')
 
 @app.route('/login', methods=['GET', 'POST'])
 def Login():
@@ -37,15 +40,15 @@ def Login():
         password = request.form['password']
         user = User.query.filter_by(username = username).first()
         if user and user.password == password:
+            #save user to session
             session['user_id'] = user.id
-            session['username'] = username
             return redirect('http://localhost:3000/userPage')
 
-@app.route('/logout')
+@app.route('/logout', methods=['GET', 'POST'])
 def logout():
-    # remove the username from the session if it's there
-    session.pop('username', None)
-    return redirect('http://localhost:3000/mainpage')
+    if request.method == 'POST':
+        session.pop('user_id', None)
+        return redirect('http://localhost:3000/')
 
 @app.route('/addlist', methods=['GET','POST'])
 def addlist():
@@ -58,23 +61,23 @@ def addlist():
         db.session.commit()
         return redirect('http://localhost:3000/userPage')
 
-@app.route('/getlists', methods=['GET','POST'])
+@app.route('/getlists', methods=['GET', 'POST'])
 def getlists():
     if request.method == 'GET':
-        user_id = session.get("user_id")
-        lists = ListOfLists.query.filter_by(user_id = user_id).all()
-        #able to return json file because we serialized the data 
+        user_id = session.get('user_id')
+        print("USER ID: {}".format(user_id))
+        lists = ListOfLists.query.filter_by(user_id=user_id).all()
         return jsonify(lists)
-
+        
 @app.route('/removelist', methods=['GET','POST'])
 def removelist():
-    if request.method == 'GET':
+    if request.method == 'POST':
         user_id = session.get("user_id")
-        lists = ListOfLists.query.filter_by(user_id = user_id).all()
         id = request.form['id']
-        list = lists.query.filter_by(id = id).first()
-        db.session.remove(list)
-
-
+        lists = ListOfLists.query.filter_by(user_id = user_id,id=id).first()
+        db.session.delete(lists)
+        db.session.commit()
+        return redirect('http://localhost:3000/userPage')
+       
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run()

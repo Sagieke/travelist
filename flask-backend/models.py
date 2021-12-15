@@ -1,6 +1,7 @@
 from app import db
 from dataclasses import dataclass
 
+
 class User(db.Model): #user data base
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(100),unique = True, nullable = False)
@@ -8,7 +9,8 @@ class User(db.Model): #user data base
 
 @dataclass
 class ListOfLists(db.Model):
-    #serialize using dataclass from dataclasses
+    user_id: int
+    id: int
     name: str
     color: str
 
