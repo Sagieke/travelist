@@ -1,8 +1,8 @@
-import AddList from "./addlist";
+import AddPlace from "./AddPlace";
 import React , { useState, useEffect }from "react";
 import {Container,Row, Col,Button,Modal,ListGroup} from "react-bootstrap";
 
-export default function  UserPage()  {
+export default function  ListPage()  {
   const [listInfo, setlistInfo] = useState([]);
 
   useEffect(() => {
@@ -43,15 +43,10 @@ export default function  UserPage()  {
           </Row>
           <br />
           <Row>
-         <AddList/>
+         <AddPlace/>
           </Row>
           </div>
           <br />
-          <div className="auth-inner-right">
-          <h1>most search places</h1>
-          <hr class="my-4"></hr>
-        
-          </div>
           </Row>
         </div>
 
