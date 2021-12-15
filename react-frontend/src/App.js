@@ -7,8 +7,10 @@ import MainPage from "./components/MainPage";
 import UserPage from "./components/UserPage";
 import LogOut from "./components/LogOut";
 import "./App.css";
-
-
+import Header from "./components/Header";
+import SideBar from './components/SideBar';
+import AdminPage from './components/adminPage';
+import Content from './components/Content';
 function App() {
   return (
     <Router>
@@ -24,6 +26,7 @@ function App() {
         </nav>
         <Switch>
               <Route exact path="/userPage" component={UserPage}/>
+              <Route exact path="/adminPage" component={AdminPage}/>
             </Switch>
       </div>
     </Router>
