@@ -13,7 +13,7 @@ export default function  AddPlace()  {
     return (
       <>
       <Button variant="primary" onClick={handleShow}>
-      date picker
+      add place
       </Button>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
