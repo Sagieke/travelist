@@ -24,7 +24,6 @@ class ListOfLists(db.Model):
 class ListOfPlaces(db.Model):
     user_id: int
     list_id: int
-    list_name: str
     id: int
     name: str
     start_date: str
@@ -32,7 +31,6 @@ class ListOfPlaces(db.Model):
 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     list_id = db.Column(db.Integer, db.ForeignKey('listoflists.id'))
-    list_name = db.Column(db.String(100), db.ForeignKey('listoflists.name'))
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(100), nullable = False)
     start_date = db.Column(db.String(8), nullable = False)
