@@ -6,7 +6,6 @@ import { useHistory } from "react-router-dom";
 export default function  UserPage()  {
   const history = useHistory();
   const [listgiInfo, setlistgiInfo] = useState([]);
-  const routeChange = () =>{ let path = `/userpage/place`; history.push(path);}
   useEffect(() => {
       fetch('http://localhost:5000/getlists',{
           credentials: "include"
@@ -17,10 +16,14 @@ export default function  UserPage()  {
 
 
   const ListGroupItem = (lgi, index) => {
+    const routeChange = () =>{ let path = '/userpage/'+lgi.name; history.push(path);}
+
       return (
 
-              <ListGroup.Item  variant="default" key={index} style={{ textAlign: 'left', color: "white", background: lgi.color }} as="li"  onClick={routeChange}>
-                      
+              <ListGroup.Item  variant="default" key={index} style={{ textAlign: 'left', color: "white", background: lgi.color }} as="li" onClick={routeChange}>
+                      <form action="http://localhost:5000/getplaces" method="post">
+                      <Button className="float-end" type="submit" name="id" value={lgi.id} >no remove list</Button>
+                      </form>
                       {lgi.name}
                       <form action="http://localhost:5000/removelist" method="post">
                       <Button className="float-end" type="submit" name="id" value={lgi.id}>remove list</Button>
