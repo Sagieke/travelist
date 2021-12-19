@@ -131,10 +131,15 @@ def viewlist():
 
 @app.route('/getMostSearchedPlaces', methods=['GET','POST'])
 def getMostSearchedPlaces():
+    place_names = {}
     if request.method == 'GET':
-        places = ListOfPlaces.query.column('name').all()
-        print(places)
-        return jsonify(places)
+        places = ListOfPlaces.query.all()
+        for row in places:
+            if row.name in place_names:
+                place_names[row.name] = place_names[row.name] + 1
+            else:
+                place_names[row.name] = 1
+        return jsonify(place_names)
         
 
 @app.route('/test')
