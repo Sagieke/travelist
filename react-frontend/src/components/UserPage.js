@@ -6,6 +6,7 @@ import { Link, useHistory } from "react-router-dom";
 export default function  UserPage()  {
   const history = useHistory();
   const [listgiInfo, setlistgiInfo] = useState([]);
+  const [mostSearchedPlaces, setMostSearchedPlaces] = useState([]);
   useEffect(() => {
     fetch('http://localhost:5000/getlists',{
       credentials: "include"
@@ -13,8 +14,11 @@ export default function  UserPage()  {
     .then(response => response.json())
     .then(object => setlistgiInfo(object))
   },[]);
-  
-
+  useEffect(() => {
+    fetch('http://localhost:5000/getMostSearchedPlaces')
+    .then(response => response.json())
+    .then(object => console.log(object))
+  },[]);
 
   const ListGroupItem = (lgi, index) => {
       return (
@@ -52,9 +56,8 @@ export default function  UserPage()  {
           </div>
           <br />
           <div className="auth-inner-right">
-          <h1>most search places</h1>
+          <h1>most searched places</h1>
           <hr class="my-4"></hr>
-        
           </div>
           </Row>
         </div>
