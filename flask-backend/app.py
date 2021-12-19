@@ -1,10 +1,10 @@
+from os import name
 from flask import Flask, request, redirect, session, jsonify,render_template, request, make_response,url_for
 from flask_socketio import SocketIO, join_room
 from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from api.weather import weather_data
-from flask_cors import CORS
 from werkzeug.security import generate_password_hash, check_password_hash
 
 #flask app initialization
@@ -129,7 +129,13 @@ def viewlist():
         session['list_id'] = list_id
     return redirect('http://localhost:3000/UserPage/places')
 
-
+@app.route('/getMostSearchedPlaces', methods=['GET','POST'])
+def getMostSearchedPlaces():
+    if request.method == 'GET':
+        places = ListOfPlaces.query.column('name').all()
+        print(places)
+        return jsonify(places)
+        
 
 @app.route('/test')
 def home():
@@ -151,6 +157,7 @@ def handle_join_room_event(data):
 @socketio.on('send_message')
 def handle_send_message_event(data):
     socketio.emit('receive_message', data, room=data['room'])
+
 
 if __name__ == '__main__':
     app.run()
