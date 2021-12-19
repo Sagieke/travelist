@@ -1,4 +1,3 @@
-from enum import unique
 from app import db
 from dataclasses import dataclass
 
@@ -38,7 +37,7 @@ class ListOfPlaces(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     list_id = db.Column(db.Integer, db.ForeignKey('ListOfLists.id'))
     id = db.Column(db.Integer, primary_key = True)
-    name = db.Column(db.String(100), nullable = False)
+    name = db.Column(db.String(100), unique = False,nullable = False)
     start_date = db.Column(db.String(8), nullable = False)
     end_date = db.Column(db.String(8), nullable = False)
 
