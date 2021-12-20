@@ -1,4 +1,3 @@
-from os import name
 from flask import Flask, request, redirect, session, jsonify,render_template, request, make_response,url_for
 from flask_socketio import SocketIO, join_room
 from flask_session import Session
@@ -132,6 +131,7 @@ def viewlist():
 @app.route('/getMostSearchedPlaces', methods=['GET','POST'])
 def getMostSearchedPlaces():
     place_names = {}
+    lst = []
     if request.method == 'GET':
         places = ListOfPlaces.query.all()
         for row in places:
@@ -139,7 +139,10 @@ def getMostSearchedPlaces():
                 place_names[row.name] = place_names[row.name] + 1
             else:
                 place_names[row.name] = 1
-        return jsonify(place_names)
+        sorted_place_names = sorted(place_names,key=place_names.get,reverse=True)
+        for x in range(5):
+            lst.append(sorted_place_names[x])
+        return jsonify(lst)
         
 
 @app.route('/test')
