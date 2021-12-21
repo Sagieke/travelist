@@ -1,7 +1,7 @@
 from flask import Flask, request, redirect, session, jsonify,render_template, request, make_response,url_for
 from flask_socketio import SocketIO, join_room
 from flask_session import Session
-from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy, model
 from flask_cors import CORS
 from api.weather import weather_data
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -24,7 +24,7 @@ app.register_blueprint(weather_data)
 def server():
     return "<h1>Hello, this is the server, nothing of interest here :)</h1>"
 
-from models import User,ListOfLists,ListOfPlaces
+from models import User,ListOfLists,ListOfPlaces,ListofBugs
 
 @app.route('/register', methods = ['GET', 'POST'])
 def Register():
@@ -233,18 +233,6 @@ def deleteUser():
         db.session.commit()
         return redirect('http://127.0.0.1:5000/test')
 
-@app.route('/test')
-def home():
-    return render_template("testing.html")
-
-@app.route('/test2')
-def test():
-    return render_template("testing-2.html")
-
-@app.route('/test3')
-def test2():
-    return render_template("testing-3.html")
-
 @app.route('/chat')
 def chat():
     room = request.args.get('room')
@@ -262,6 +250,33 @@ def handle_join_room_event(data):
 def handle_send_message_event(data):
     socketio.emit('receive_message', data, room=data['room'])
 
+@app.route('/submitBug',methods=['GET','POST'])
+def submitBug():
+    if request.method == 'POST':
+        #user_name = session.get("username")
+        title = request.form['title']
+        description = request.form['description']
+        new_report = ListofBugs(InTreatment = False, title=title, description=description)
+        db.session.add(new_report)
+        db.session.commit()
+        return redirect('http://127.0.0.1:5000/')
+
+@app.route('/test')
+def home():
+    return render_template("testing.html")
+
+@app.route('/test2')
+def test():
+    return render_template("testing-2.html")
+
+@app.route('/test3')
+def test2():
+    return render_template("testing-3.html")
+
+@app.route('/test4')
+def bugtest():
+    return render_template("testing-4.html")
+
+
 if __name__ == '__main__':
     app.run()
-
