@@ -90,9 +90,6 @@ def removelist():
         db.session.commit()
         return redirect('http://localhost:3000/userPage')
 
-
-
-
 @app.route('/test')
 def home():
     return render_template("index.html")
