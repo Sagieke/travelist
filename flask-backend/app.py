@@ -168,7 +168,27 @@ def changePermissionTech():
             return redirect('http://127.0.0.1:5000/test')
     else : return redirect('http://127.0.0.1:5000/')
     
-
+@app.route('/changePermissionAdmin',methods=['GET','POST']) 
+def changePermissionAdmin():
+    if request.method == 'POST':
+        role = request.form['role']
+        user_id = request.form['id']
+        if role == 'TECH' :
+            user = User.query.filter_by(id = user_id).first()
+            user.usertype = 'TechSupport'
+            db.session.commit()
+            return redirect('http://127.0.0.1:5000/test')
+        if role == 'ADMIN':
+            user = User.query.filter_by(id = user_id).first()
+            user.usertype = 'Admin'
+            db.session.commit()
+            return redirect('http://127.0.0.1:5000/test')
+        if role == 'TRAVELER':
+            user = User.query.filter_by(id = user_id).first()
+            user.usertype = 'Traveler'
+            db.session.commit()
+            return redirect('http://127.0.0.1:5000/test')
+    else : return redirect('http://127.0.0.1:5000/')
 
 @app.route('/test')
 def home():
