@@ -145,9 +145,34 @@ def getMostSearchedPlaces():
         return jsonify(lst)
         
 
+@app.route('/getUserlist',methods=['GET','POST'])
+def getUserlist():
+    if request.method == 'GET':
+        users = User.query.all()
+        return jsonify(users)
+
+@app.route('/changePermissionTech',methods=['GET','POST']) 
+def changePermissionTech():
+    if request.method == 'POST':
+        role = request.form['role']
+        user_id = request.form['id']
+        if role == 'TECH' :
+            user = User.query.filter_by(id = user_id).first()
+            user.usertype = 'TechSupport'
+            db.session.commit()
+            return redirect('http://127.0.0.1:5000/test')
+        if role == 'TRAVELER':
+            user = User.query.filter_by(id = user_id).first()
+            user.usertype = 'Traveler'
+            db.session.commit()
+            return redirect('http://127.0.0.1:5000/test')
+    else : return redirect('http://127.0.0.1:5000/')
+    
+
+
 @app.route('/test')
 def home():
-    return render_template("index.html")
+    return render_template("testing.html")
 
 @app.route('/chat')
 def chat():
@@ -165,7 +190,6 @@ def handle_join_room_event(data):
 @socketio.on('send_message')
 def handle_send_message_event(data):
     socketio.emit('receive_message', data, room=data['room'])
-
 
 if __name__ == '__main__':
     app.run()
