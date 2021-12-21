@@ -261,6 +261,7 @@ def submitBug():
         db.session.commit()
         return redirect('http://127.0.0.1:5000/')
 
+#testing routes for backend
 @app.route('/test')
 def home():
     return render_template("testing.html")
