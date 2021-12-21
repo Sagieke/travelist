@@ -16,12 +16,14 @@ export default function  AddPlace()  {
       add place
       </Button>
       <Modal show={show} onHide={handleClose}>
+        <form action="http://localhost:5000/addplace" method='post'>
         <Modal.Header closeButton>
           <Modal.Title><h3> add place</h3></Modal.Title>
         </Modal.Header>
         <Modal.Body>   <div className="form-group">
           <label>select place</label>
           <input
+            name='PlaceName'
             className="form-control"
             placeholder="Enter place"
             onChange={event => setPlace(event.target.value)}
@@ -36,16 +38,24 @@ export default function  AddPlace()  {
       
             <Col><Datetime dateFormat="DD-MM-YYYY" timeFormat={false} closeOnSelect={true} placeholder="start date"  onChange={(event) => {setStartDate(event.format("DD-MM-YYYY"))}}/></Col>
               <Col><Datetime dateFormat="DD-MM-YYYY" timeFormat={false} closeOnSelect={true}  placeholder="end date" onChange={(event) => {setEndDate(event.format("DD-MM-YYYY"))}}/></Col>
-    
+            <input hidden="true"
+              name="start_date"
+              value={StartDate}
+            />
+            <input hidden="true"
+              name="end_date"
+              value={EndDate}
+            />
             </Row>
         </Container>
       
        </Modal.Body>
         <Modal.Footer>
-        <Button variant="primary" onClick={() => { handleClose(); console.log(Place);console.log(StartDate);console.log(EndDate)}}>
+        <Button type="submit" variant="primary" onClick={() => { handleClose(); console.log(Place);console.log(StartDate);console.log(EndDate)}}>
           add place
          </Button>
         </Modal.Footer>
+        </form>
       </Modal>
     </>   
     );

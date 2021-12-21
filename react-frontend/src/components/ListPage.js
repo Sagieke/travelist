@@ -16,9 +16,8 @@ export default function  ListPage()  {
 
   const ListGroupItem = (lgi, index) => {
       return (
-              <ListGroup.Item  variant="default" key={index} style={{ textAlign: 'left', color: "white", background: lgi.color }} as="li" >
-                      {lgi.name}
-                      {lgi.start_date}
+              <ListGroup.Item  variant="default" key={index} style={{ textAlign: 'left', color: "black", background: "#1ca0f9" }} as="li" >
+                      {lgi.name} {lgi.start_date} - {lgi.end_date}
                       <form action="http://localhost:5000/removeplace" method="post">
                       <Button className="float-end" type="submit" name="id" value={lgi.id}>remove</Button>
                       </form>
@@ -31,11 +30,6 @@ export default function  ListPage()  {
       <div className="auth-wrapper">
           <Row>
         <div className="auth-inner-left">
-          <h1>{id}</h1>
-          <hr class="my-4"></hr>
-          <Row>
-
-          <ListGroup defaultActiveKey="#link1" as="ol" numbered>
             
           {listInfo.map(ListGroupItem)}
 
