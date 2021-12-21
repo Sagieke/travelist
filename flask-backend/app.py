@@ -31,9 +31,10 @@ def Register():
     if request.method == 'POST':
         username = request.form['email']
         password = request.form['password']
+        answer = request.form['answer']
         hashed_password = generate_password_hash(password)
         usertype = 'traveler'
-        new_user = User(username=username, password=hashed_password, usertype = usertype) #user table constructor
+        new_user = User(username=username, password=hashed_password, usertype = usertype, answer = answer) #user table constructor
         db.session.add(new_user)
         db.session.commit()
         return redirect('http://localhost:3000/')
