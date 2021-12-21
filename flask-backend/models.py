@@ -22,6 +22,14 @@ class ListofBugs(db.Model):
     InTreatment = db.Column(db.Boolean, default=False,unique = False, nullable = False)
 
 @dataclass
+class ListofSuggestions(db.Model):
+    __tablename__ = 'ListofSuggestions'
+    id = db.Column(db.Integer, primary_key = True)
+    #username = db.Column(db.String(100),unique = True, nullable = False)
+    title = db.Column(db.String(50),unique = False, nullable = False)
+    description = db.Column(db.String(300),unique = False, nullable = False)
+
+@dataclass
 class ListOfLists(db.Model):
     __tablename__ = 'ListOfLists'
     user_id: int

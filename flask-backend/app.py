@@ -24,7 +24,7 @@ app.register_blueprint(weather_data)
 def server():
     return "<h1>Hello, this is the server, nothing of interest here :)</h1>"
 
-from models import User,ListOfLists,ListOfPlaces,ListofBugs
+from models import User,ListOfLists,ListOfPlaces,ListofBugs,ListofSuggestions
 
 @app.route('/register', methods = ['GET', 'POST'])
 def Register():
@@ -261,7 +261,19 @@ def submitBug():
         db.session.commit()
         return redirect('http://127.0.0.1:5000/')
 
+@app.route('/submitSuggestion',methods=['GET','POST'])
+def submitSuggestion():
+    if request.method == 'POST':
+        #user_name = session.get("username")
+        title = request.form['title']
+        description = request.form['description']
+        new_suggestions = ListofSuggestions( title=title, description=description)
+        db.session.add(new_suggestions)
+        db.session.commit()
+        return redirect('http://127.0.0.1:5000/')
+
 #testing routes for backend
+
 @app.route('/test')
 def home():
     return render_template("testing.html")
@@ -274,10 +286,15 @@ def test():
 def test2():
     return render_template("testing-3.html")
 
-@app.route('/test4')
+@app.route('/Report-test')
 def bugtest():
-    return render_template("testing-4.html")
+    return render_template("Report-test.html")
 
+@app.route('/Suggestions-test')
+def Suggestiontest():
+    return render_template("Suggestions-test.html")
+
+#end of test funcs
 
 if __name__ == '__main__':
     app.run()
