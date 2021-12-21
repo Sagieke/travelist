@@ -1,4 +1,3 @@
-from enum import unique
 from app import db
 from dataclasses import dataclass
 
@@ -14,6 +13,7 @@ class Chat(db.Model):
 
 @dataclass
 class ListOfLists(db.Model):
+    __tablename__ = 'ListOfLists'
     user_id: int
     id: int
     name: str
@@ -23,5 +23,22 @@ class ListOfLists(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(100), nullable = False)
     color = db.Column(db.String(7), nullable = False)
+
+@dataclass
+class ListOfPlaces(db.Model):
+    __tablename__ = 'ListOfPlaces'
+    user_id: int
+    list_id: int
+    id: int
+    name: str
+    start_date: str
+    end_date: str
+
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    list_id = db.Column(db.Integer, db.ForeignKey('ListOfLists.id'))
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String(100), unique = False,nullable = False)
+    start_date = db.Column(db.String(8), nullable = False)
+    end_date = db.Column(db.String(8), nullable = False)
 
 db.create_all()

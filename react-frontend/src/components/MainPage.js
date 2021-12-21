@@ -2,8 +2,6 @@ import React from "react";
 import  Login from "./login.component";
 import  SignUp from "./signup.component";
 
-
-
 export default function  MainPage()  {
    
     return (
