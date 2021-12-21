@@ -89,8 +89,6 @@ def removelist():
         db.session.commit()
         return redirect('http://localhost:3000/userPage')
 
-<<<<<<< HEAD
-=======
 @app.route('/addplace', methods=['GET','POST'])
 def addplace():
     if request.method == 'POST':
@@ -147,7 +145,6 @@ def getMostSearchedPlaces():
         return jsonify(lst)
         
 
->>>>>>> main
 @app.route('/test')
 def home():
     return render_template("index.html")
