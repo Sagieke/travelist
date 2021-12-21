@@ -190,6 +190,15 @@ def changePermissionAdmin():
             return redirect('http://127.0.0.1:5000/test')
     else : return redirect('http://127.0.0.1:5000/')
 
+@app.route('/deleteUser',methods=['GET','POST'])
+def deleteUser():
+    if request.method == 'POST':
+        user_id = request.form['id']
+        user = User.query.filter_by(id = user_id).first()
+        db.session.delete(user)
+        db.session.commit()
+        return redirect('http://127.0.0.1:5000/test')
+
 @app.route('/test')
 def home():
     return render_template("testing.html")
