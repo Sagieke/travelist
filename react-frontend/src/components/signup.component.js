@@ -11,7 +11,41 @@ const handleShow = () => setShow(true);
 const [userName, setUserName] = useState('');
 const [password, setPassword] = useState('');
 const [answer, setAnswer] = useState('');
+const [passwordError, setpasswordError] = useState("");
+const [emailError, setemailError] = useState("");
 
+const handleValidation = (event) => {
+  let formIsValid = true;
+
+  if (!userName.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)) {
+    formIsValid = false;
+    setemailError("Email Not Valid");
+    return false;
+  } else {
+    setemailError("");
+    formIsValid = true;
+  }
+
+  if (!password.match(/^[a-zA-Z0-9]{8,22}$/)) {
+    formIsValid = false;
+    setpasswordError(
+      "length must best min 8 Chracters and Max 22 Chracters"
+    );
+    return false;
+  } else {
+    setpasswordError("");
+    formIsValid = true;
+  }
+  if(formIsValid===true){ handleClose()}
+
+  return formIsValid;
+};
+
+const signupSubmit = (e) => {
+  e.preventDefault();
+ handleValidation()
+
+}
 return (
   <>
   
@@ -19,7 +53,8 @@ return (
     Sign up
       </Button>
   <Modal show={show} onHide={handleClose}>
-  <form action='http://localhost:5000/register' method='post'>
+  <form id="loginform" onSubmit={signupSubmit}>
+  <form action='http://localhost:5000/register' method='post'  >
   <Modal.Header closeButton>
     <Modal.Title><h3> Sign up</h3></Modal.Title>
   </Modal.Header>
@@ -31,8 +66,11 @@ return (
             type="email"
             className="form-control"
             placeholder="Enter email"
-            onChange={event => setUserName(event.target.value)}
+            onChange={(event) => setUserName(event.target.value)}
           />
+           <small id="emailHelp" className="text-danger form-text">
+                  {emailError}
+                </small>
         </div>
         <div className="form-group">
           <label>Password</label>
@@ -41,8 +79,11 @@ return (
             type="password"
             className="form-control"
             placeholder="Enter password"
-            onChange={event => setPassword(event.target.value)}
+            onChange={(event) => setPassword(event.target.value)}
           />
+           <small id="passworderror" className="text-danger form-text">
+                  {passwordError}
+                </small>
         </div>
         <div className="form-group">
           <label>Answer</label>
@@ -57,10 +98,11 @@ return (
 
  </Modal.Body>
   <Modal.Footer>
-  <button type="submit" className="btn btn-primary btn-block" onClick={() => { handleClose();console.log(userName);console.log(password) }}>
+  <button type="submit" className="btn btn-primary btn-block"  onClick={() => { console.log(userName);console.log(password) }}>
           register
         </button>
   </Modal.Footer>
+  </form>
   </form>
 </Modal>
 </> 
