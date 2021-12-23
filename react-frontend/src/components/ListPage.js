@@ -1,7 +1,7 @@
 import AddPlace from "./AddPlace";
+import Weather from "./weather";
 import React , { useState, useEffect }from "react";
 import {Container,Row, Col,Button,Modal,ListGroup} from "react-bootstrap";
-import WeatherPage from "./weather"
 
 export default function  ListPage()  {
   const [listInfo, setlistInfo] = useState([]);
@@ -27,9 +27,8 @@ export default function  ListPage()  {
                       
                       </form>
                       <form action="http://localhost:5000/viewplace" method="post">
-                      <Button variant="success" className="float-end" type="submit" name="place" value={lgi.name}>view place</Button>
+                      <Button variant="success" className="float-end" type="submit" name="id" value={lgi.id}>view place</Button>
                      </form>
-                      
               </ListGroup.Item>
              )   
   };
