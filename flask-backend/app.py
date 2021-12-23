@@ -177,7 +177,13 @@ def getMostSearchedPlaces():
         for x in range(5):
             lst.append(sorted_place_names[x])
         return jsonify(lst)
-        
+
+@app.route('/viewplace', methods=['GET','POST'])
+def viewPlace():
+    if request.method == 'GET':
+        place_id = request.form['id']
+        session['place_id'] = place_id
+    return redirect('http://localhost:3000/UserPage/places/place')
 
 @app.route('/getUserlist',methods=['GET','POST'])
 def getUserlist():
