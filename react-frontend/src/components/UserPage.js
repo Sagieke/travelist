@@ -2,7 +2,6 @@ import AddList from "./addlist";
 import React , { useState, useEffect }from "react";
 import {Container,Row, Col,Button,Modal,ListGroup,} from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
-
 export default function  UserPage()  {
   const history = useHistory();
   const [listgiInfo, setlistgiInfo] = useState([]);
@@ -69,6 +68,7 @@ export default function  UserPage()  {
       </Row>
       </div>
     </Row>
+    
     </div>
   );
 }

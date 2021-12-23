@@ -1,6 +1,7 @@
 import AddPlace from "./AddPlace";
 import React , { useState, useEffect }from "react";
 import {Container,Row, Col,Button,Modal,ListGroup} from "react-bootstrap";
+import WeatherPage from "./weather"
 
 export default function  ListPage()  {
   const [listInfo, setlistInfo] = useState([]);
@@ -15,15 +16,22 @@ export default function  ListPage()  {
 
 
   const ListGroupItem = (lgi, index) => {
+
       return (
               <ListGroup.Item  variant="default" key={index} style={{ textAlign: 'left', color: "black", background: "#1ca0f9" }} as="li" >
                       {lgi.name} {lgi.start_date} - {lgi.end_date}
+                      
                       <form action="http://localhost:5000/removeplace" method="post">
-                      <Button className="float-end" type="submit" name="id" value={lgi.id}>remove</Button>
+                      
+                      <Button variant="danger" className="float-end" type="submit" name="id" value={lgi.id}>remove</Button>
+                      
                       </form>
+                      
+                      < WeatherPage name={lgi.name} />
               </ListGroup.Item>
              )   
   };
+  
 
     return (
 
@@ -37,7 +45,7 @@ export default function  ListPage()  {
           <ListGroup defaultActiveKey="#link1" as="ol" numbered>
             
           {listInfo.map(ListGroupItem)}
-
+          
         </ListGroup>
           </Row>
           <br />

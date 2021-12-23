@@ -16,8 +16,10 @@
     "react-datetime": "^3.1.1",
     "react-dom": "^17.0.2",
     "react-google-places-autocomplete": "^3.3.2",
+    "react-open-weather": "^1.1.6",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "styled-components": "^5.3.3",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
