@@ -10,6 +10,7 @@ const handleClose = () => setShow(false);
 const handleShow = () => setShow(true);  
 const [userName, setUserName] = useState('');
 const [password, setPassword] = useState('');
+const [answer, setAnswer] = useState('');
 
 return (
   <>
@@ -43,7 +44,16 @@ return (
             onChange={event => setPassword(event.target.value)}
           />
         </div>
-   
+        <div className="form-group">
+          <label>Answer</label>
+          <input
+            name='answer'
+            type="answer"
+            className="form-control"
+            placeholder="Enter your answer"
+            onChange={event => setAnswer(event.target.value)}
+          />
+        </div>
 
  </Modal.Body>
   <Modal.Footer>
