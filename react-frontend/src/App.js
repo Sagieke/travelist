@@ -6,12 +6,10 @@ import ListPage from "./components/ListPage";
 import MainPage from "./components/MainPage";
 import UserPage from "./components/UserPage";
 import LogOut from "./components/LogOut";
-import Sidebar from "./components/sidebar/Sidebar";
 import "./App.css";
-import Header from "./components/Header";
-import SideBar from './components/SideBar';
-import AdminPage from './components/adminPage';
-import Content from './components/Content';
+
+import Longlet from './components/geolet';
+
 function App() {
   return (
     <Router>
@@ -30,12 +28,12 @@ function App() {
         <Switch>
 
               <Route exact path="/userPage" component={UserPage}/>
-
+              <Route exact path="/test" component={Longlet}/>
               <Route  path="/UserPage/" component ={ListPage}/>
 
               <Route path="/UserPage/places" component ={ListPage}/>
               </Switch>
-
+      
       </div>
     </Router>
     
