@@ -26,7 +26,6 @@ function App() {
         <Switch>
 
               <Route exact path="/userPage" component={UserPage}/>
-              <Route exact path="/test" component={Longlet}/>
               <Route exact path="/UserPage/places/place" component ={PlacePage}/>
               <Route  path="/UserPage/" component ={ListPage}/>
               <Route path="/UserPage/places" component ={ListPage}/>
