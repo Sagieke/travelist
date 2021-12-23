@@ -6,6 +6,7 @@ import ListPage from "./components/ListPage";
 import MainPage from "./components/MainPage";
 import UserPage from "./components/UserPage";
 import LogOut from "./components/LogOut";
+import PlacePage from "./components/placepage";
 import "./App.css";
 
 import Longlet from './components/geolet';
@@ -29,9 +30,10 @@ function App() {
 
               <Route exact path="/userPage" component={UserPage}/>
               <Route exact path="/test" component={Longlet}/>
+              <Route exact path="/UserPage/places/place" component ={PlacePage}/>
               <Route  path="/UserPage/" component ={ListPage}/>
-
               <Route path="/UserPage/places" component ={ListPage}/>
+             
               </Switch>
       
       </div>

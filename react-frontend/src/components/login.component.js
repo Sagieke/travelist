@@ -25,7 +25,7 @@ const handleValidation = (event) => {
     formIsValid = true;
   }
 
-  if (!password.match(/^[a-zA-Z]{8,22}$/)) {
+  if (!password.match(/^[a-zA-Z0-9]{8,22}$/)) {
     formIsValid = false;
     setpasswordError(
       "Only Letters and length must best min 8 Chracters and Max 22 Chracters"
@@ -35,13 +35,14 @@ const handleValidation = (event) => {
     setpasswordError("");
     formIsValid = true;
   }
-
+  if(formIsValid==true){ handleClose()}
   return formIsValid;
 };
 
 const loginSubmit = (e) => {
   e.preventDefault();
   handleValidation();
+
 };
 
 
@@ -52,7 +53,7 @@ return (
 
   <Button variant="primary" onClick={handleShow}>login</Button>
   <Modal show={show} onHide={handleClose}>
-  <form action='http://localhost:5000/login' method='post'onSubmit={loginSubmit} >
+  <form action='http://localhost:5000/login' method='post' onSubmit={loginSubmit}>
   <Modal.Header closeButton>
     <Modal.Title><h3> Sign In</h3></Modal.Title>
   </Modal.Header>
@@ -100,7 +101,7 @@ return (
         <a href="http://127.0.0.1:5000/test" target="_blank">forgot pass</a>
  </Modal.Body>
   <Modal.Footer>
-  <button type="submit" className="btn btn-primary btn-block" onClick={() => { handleClose();console.log(userName);console.log(password) }}>
+  <button type="submit" className="btn btn-primary btn-block" onClick={() => { console.log(userName);console.log(password) }}>
           log in
         </button>
   </Modal.Footer>

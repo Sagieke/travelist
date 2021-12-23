@@ -26,8 +26,10 @@ export default function  ListPage()  {
                       <Button variant="danger" className="float-end" type="submit" name="id" value={lgi.id}>remove</Button>
                       
                       </form>
+                      <form action="http://localhost:5000/viewplace" method="post">
+                      <Button variant="success" className="float-end" type="submit" name="place" value={lgi.name}>view place</Button>
+                     </form>
                       
-                      < WeatherPage name={lgi.name} />
               </ListGroup.Item>
              )   
   };
