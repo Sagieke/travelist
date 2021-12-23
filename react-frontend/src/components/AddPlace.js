@@ -1,4 +1,4 @@
-import React ,{ useState }from "react";
+import React ,{ useState,useEffect }from "react";
 import Datetime from 'react-datetime';
 import GooglePlacesAutocomplete, {geocodeByPlaceId, getLatLng} from "react-google-places-autocomplete";
 import "react-datetime/css/react-datetime.css";
@@ -12,9 +12,11 @@ export default function  AddPlace()  {
   const [EndDate, setEndDate] = useState('');
   const [Lati, setLati] = useState(0);
   const [Long, setLong] = useState(0);
-  const handleLat = (placeid) => geocodeByPlaceId(placeid)
+
+  let getLatPromise = (pObj) => geocodeByPlaceId(pObj.value.place_id)
   .then(results => getLatLng(results[0]))
-  .then(({ lat, lng }) => console.log({lat,lng}.lat));
+  .then(({ lat, lng }) => { return {lat,lng}.lat })
+  .then(function(result){console.log(result)})
 
     return (
       <>
@@ -41,7 +43,6 @@ export default function  AddPlace()  {
             hidden='true'
             name='PlaceName'
             value={Place.label}
-            /*onChange={()=>{setLati(handleLat(Place.value.place_id))}}*/
           />
         </div>
         <Container>
@@ -68,9 +69,8 @@ export default function  AddPlace()  {
         <Modal.Footer>
         <Button type="submit" variant="primary" onClick={() => {
           handleClose();
-          console.log(Place);
-          /*handleLat();*/
-          handleLat(Place.value.place_id);
+          getLatPromise(Place);
+          console.log("lati",Lati);
           /*console.log(StartDate);
           console.log(EndDate);*/
           window.location.reload();
