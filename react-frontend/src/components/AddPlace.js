@@ -1,6 +1,6 @@
 import React ,{ useState }from "react";
 import Datetime from 'react-datetime';
-
+import GooglePlacesAutocomplete, {geocodeByPlaceId, getLatLng} from "react-google-places-autocomplete";
 import "react-datetime/css/react-datetime.css";
 import {Container,Row, Col,Button,Modal} from "react-bootstrap";
 export default function  AddPlace()  {
@@ -10,6 +10,7 @@ export default function  AddPlace()  {
   const [Place, setPlace] = useState('');
   const [StartDate, setStartDate] = useState('');
   const [EndDate, setEndDate] = useState('');
+
     return (
       <>
       <Button variant="primary" onClick={handleShow}>
@@ -20,13 +21,21 @@ export default function  AddPlace()  {
         <Modal.Header closeButton>
           <Modal.Title><h3> add place</h3></Modal.Title>
         </Modal.Header>
-        <Modal.Body>   <div className="form-group">
+        <Modal.Body>   
+          <div className="form-group">
           <label>select place</label>
+          <GooglePlacesAutocomplete
+            apiKey="AIzaSyChTcMUCY9Zw3j00st0uKkqTz0RGlOpea8"
+            selectProps={{
+              Place,
+              onChange: setPlace,
+            }}
+          />
           <input
-            name='PlaceName'
             className="form-control"
-            placeholder="Enter place"
-            onChange={event => setPlace(event.target.value)}
+            hidden='true'
+            name='PlaceName'
+            value={Place.label}
           />
         </div>
         <Container>
@@ -51,7 +60,12 @@ export default function  AddPlace()  {
       
        </Modal.Body>
         <Modal.Footer>
-        <Button type="submit" variant="primary" onClick={() => { handleClose(); console.log(Place);console.log(StartDate);console.log(EndDate)}}>
+        <Button type="submit" variant="primary" onClick={() => {
+          handleClose();
+          console.log(Place);
+          console.log(StartDate);
+          console.log(EndDate);}}
+        >
           add place
          </Button>
         </Modal.Footer>
