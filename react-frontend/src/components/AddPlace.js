@@ -7,9 +7,14 @@ export default function  AddPlace()  {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [Place, setPlace] = useState('');
+  const [Place, setPlace] = useState({});
   const [StartDate, setStartDate] = useState('');
   const [EndDate, setEndDate] = useState('');
+  const [Lati, setLati] = useState(0);
+  const [Long, setLong] = useState(0);
+  const handleLat = (placeid) => geocodeByPlaceId(placeid)
+  .then(results => getLatLng(results[0]))
+  .then(({ lat, lng }) => console.log({lat,lng}.lat));
 
     return (
       <>
@@ -28,7 +33,7 @@ export default function  AddPlace()  {
             apiKey="AIzaSyChTcMUCY9Zw3j00st0uKkqTz0RGlOpea8"
             selectProps={{
               Place,
-              onChange: setPlace,
+              onChange: setPlace
             }}
           />
           <input
@@ -36,6 +41,7 @@ export default function  AddPlace()  {
             hidden='true'
             name='PlaceName'
             value={Place.label}
+            /*onChange={()=>{setLati(handleLat(Place.value.place_id))}}*/
           />
         </div>
         <Container>
@@ -63,9 +69,12 @@ export default function  AddPlace()  {
         <Button type="submit" variant="primary" onClick={() => {
           handleClose();
           console.log(Place);
-          console.log(StartDate);
-          console.log(EndDate);}}
-        >
+          /*handleLat();*/
+          handleLat(Place.value.place_id);
+          /*console.log(StartDate);
+          console.log(EndDate);*/
+          window.location.reload();
+        }}>
           add place
          </Button>
         </Modal.Footer>
