@@ -2,26 +2,25 @@ import React,{useState} from "react";
 import ReactWeather, { useOpenWeather } from 'react-open-weather';
 import {Modal,Button} from "react-bootstrap";
 
-export default function  WeatherPage(props)  {
-    const { data, isLoading, errorMessage } = useOpenWeather({
-    key: 'e53647cd71abcf81c779b83f1a8807c1',
-    lat: '48.137154',
-    lon: '11.576124',
-    lang: 'he',
-    unit: 'metric', // values are (metric, standard, imperial)
+export default function  WeatherPage()  {
+  const { data, isLoading, errorMessage } = useOpenWeather({
+    key: "b3f6d1b828d70b152d06eed90c69d8c8",
+    lat: "27.4",
+    lon: "48.42",
+    lang: "en",
+    unit: "metric" // values are (metric, standard, imperial)
   });
+
   return (
-      <div>
-   
-              <ReactWeather
-                  isLoading={isLoading}
-                  errorMessage={errorMessage}
-                  data={data}
-                  lang="he"
-                  locationLabel={props.name}
-                  unitsLabels={{ temperature: 'C', windSpeed: 'Km/h' }}
-                  showForecast />
-          
-      </div>
+    <ReactWeather
+      //theme={customStyles}
+      isLoading={isLoading}
+      errorMessage={errorMessage}
+      data={data}
+      lang="en"
+      locationLabel="dani"
+      unitsLabels={{ temperature: "C", windSpeed: "Km/h" }}
+      showForecast
+    />
   );
 };
