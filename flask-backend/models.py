@@ -7,9 +7,27 @@ class User(db.Model): #user data base
     username = db.Column(db.String(100),unique = True, nullable = False)
     password = db.Column(db.String(100), nullable = False)
     usertype = db.Column(db.String(100),unique = False, nullable = False)
+    answer = db.Column(db.String(100),unique = False, nullable = False)
 
 class Chat(db.Model):
     chat_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key = True)
+
+@dataclass
+class ListofBugs(db.Model):
+    __tablename__ = 'ListofBugs'
+    id = db.Column(db.Integer, primary_key = True)
+    #username = db.Column(db.String(100),unique = True, nullable = False)
+    title = db.Column(db.String(50),unique = False, nullable = False)
+    description = db.Column(db.String(300),unique = False, nullable = False)
+    InTreatment = db.Column(db.Boolean, default=False,unique = False, nullable = False)
+
+@dataclass
+class ListofSuggestions(db.Model):
+    __tablename__ = 'ListofSuggestions'
+    id = db.Column(db.Integer, primary_key = True)
+    #username = db.Column(db.String(100),unique = True, nullable = False)
+    title = db.Column(db.String(50),unique = False, nullable = False)
+    description = db.Column(db.String(300),unique = False, nullable = False)
 
 @dataclass
 class ListOfLists(db.Model):
@@ -18,7 +36,6 @@ class ListOfLists(db.Model):
     id: int
     name: str
     color: str
-
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(100), nullable = False)

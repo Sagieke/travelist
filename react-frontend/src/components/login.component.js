@@ -58,7 +58,7 @@ return (
             </label>
           </div>
         </div>
-
+        <a href="http://127.0.0.1:5000/test" target="_blank">forgot pass</a>
  </Modal.Body>
   <Modal.Footer>
   <button type="submit" className="btn btn-primary btn-block" onClick={() => { handleClose();console.log(userName);console.log(password) }}>
