@@ -3,7 +3,7 @@ from app import db
 from models import FAQ
 faq = Blueprint('faq',__name__)
 
-@FAQ.route('/addFAQ', methods=['GET', 'POST'])
+@faq.route('/addFAQ', methods=['GET', 'POST'])
 def addFAQ():
     if request.method == 'POST':
         question = request.form('question')
@@ -13,7 +13,7 @@ def addFAQ():
         db.session.commit() 
         return redirect('http://localhost:3000/faqUpdate')
 
-@FAQ.route('/deleteFAQ', methods=['GET', 'POST'])
+@faq.route('/deleteFAQ', methods=['GET', 'POST'])
 def deleteFAQ():
     if request.method == 'POST':
         id = request.form('id')
@@ -22,7 +22,7 @@ def deleteFAQ():
         db.session.commit() 
         return redirect('http://localhost:3000/faqUpdate')
 
-@FAQ.route('/updateFAQ', methods=['GET', 'POST'])
+@faq.route('/updateFAQ', methods=['GET', 'POST'])
 def updateFAQ():
     if request.method == 'POST':
         id = request.form('id')
