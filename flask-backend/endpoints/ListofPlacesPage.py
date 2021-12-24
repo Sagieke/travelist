@@ -9,7 +9,7 @@ def addplace():
     if request.method == 'POST':
         user_id = session.get("user_id")
         list_id = session.get("list_id")
-        place_name = request.form['PlaceName']
+        place_name = request.form['place_name']
         start_date = request.form['start_date']
         end_date = request.form['end_date']
         new_place = ListOfPlaces(user_id = user_id, list_id = list_id, name = place_name,start_date=start_date,end_date=end_date)
