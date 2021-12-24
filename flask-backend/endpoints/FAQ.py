@@ -12,3 +12,12 @@ def addFAQ():
         db.session.add(faq)
         db.session.commit() 
         return redirect('http://localhost:3000/faqUpdate')
+
+@FAQ.route('\deleteFAQ', methods=['GET', 'POST'])
+def deleteFAQ():
+    if request.method == 'POST':
+        id = request.form('id')
+        faq = FAQ.query.filter_by(id = id).first()
+        db.session.delete(faq)
+        db.session.commit() 
+        return redirect('http://localhost:3000/faqUpdate')
