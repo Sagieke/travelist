@@ -36,22 +36,6 @@ def getplaces():
         places = ListOfPlaces.query.filter_by(user_id=user_id,list_id=list_id).all()
         return jsonify(places)
 
-@ListOfPlacesPage.route('/getMostSearchedPlaces', methods=['GET','POST'])
-def getMostSearchedPlaces():
-    place_names = {}
-    lst = []
-    if request.method == 'GET':
-        places = ListOfPlaces.query.all()
-        for row in places:
-            if row.name in place_names:
-                place_names[row.name] = place_names[row.name] + 1
-            else:
-                place_names[row.name] = 1
-        sorted_place_names = sorted(place_names,key=place_names.get,reverse=True)
-        for x in range(5):
-            lst.append(sorted_place_names[x])
-        return jsonify(lst)
-
 @ListOfPlacesPage.route('/viewplace', methods=['GET','POST'])
 def viewPlace():
     if request.method == 'GET':

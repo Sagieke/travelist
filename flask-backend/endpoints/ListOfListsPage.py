@@ -43,3 +43,25 @@ def viewlist():
         list_id = request.form['list_id']
         session['list_id'] = list_id
     return redirect('http://localhost:3000/UserPage/places')
+
+@ListOfListsPage.route('/getMostSearchedPlaces', methods=['GET','POST'])
+def getMostSearchedPlaces():
+    place_names = {}
+    lst = []
+    top_places_count = 5 #amount of places to display
+    if request.method == 'GET':
+        places = ListOfPlaces.query.all()
+        for row in places:
+            if row.name in place_names:
+                place_names[row.name] = place_names[row.name] + 1
+            else:
+                place_names[row.name] = 1
+        sorted_place_names = sorted(place_names,key=place_names.get,reverse=True)
+        row_count = ListOfPlaces.query.count()
+        if row_count < 5 :
+            for x in range(0,row_count):
+                lst.append(sorted_place_names[x])
+        else:
+            for x in range(0,top_places_count):
+                lst.append(sorted_place_names[x])
+        return jsonify(lst)
