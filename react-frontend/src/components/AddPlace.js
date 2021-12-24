@@ -41,7 +41,7 @@ export default function  AddPlace()  {
           <input
             className="form-control"
             hidden='true'
-            name='PlaceName'
+            name='place_name'
             value={Place.label}
           />
         </div>
