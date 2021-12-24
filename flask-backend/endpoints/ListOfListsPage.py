@@ -8,7 +8,7 @@ ListOfListsPage = Blueprint('ListOfListsPage',__name__)
 def addlist():
     if request.method == 'POST':
         user_id = session.get("user_id")
-        list_name = request.form['ListName']
+        list_name = request.form['list_name']
         color = request.form['color']
         new_list = ListOfLists(user_id = user_id,name = list_name,color=color)
         db.session.add(new_list)
@@ -26,14 +26,12 @@ def getlists():
 def removelist():
     if request.method == 'POST':
         user_id = session.get("user_id")
-        id = request.form['id']
-        list_id = session.get('list_id')
-        list = ListOfLists.query.filter_by(user_id = user_id,id=id).first()
-        rows = ListOfPlaces.query.count()
-        if list :
-            for i in range(1,rows + 1):
-                place = ListOfPlaces.query.filter_by(user_id=user_id,list_id=list_id).first()
-                db.session.delete(place)
+        list_id = request.form['list_id']
+        list = ListOfLists.query.filter_by(user_id = user_id,id=list_id).first()
+        places = ListOfPlaces.query.filter_by(list_id=list_id)
+        if places:
+            for row in places:
+                db.session.delete(row)
                 db.session.commit()
         db.session.delete(list)
         db.session.commit()
