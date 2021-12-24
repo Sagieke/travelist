@@ -57,7 +57,7 @@ def getMostSearchedPlaces():
             else:
                 place_names[row.name] = 1
         sorted_place_names = sorted(place_names,key=place_names.get,reverse=True)
-        row_count = ListOfPlaces.query.count()
+        row_count = len(sorted_place_names)
         if row_count < 5 :
             for x in range(0,row_count):
                 lst.append(sorted_place_names[x])
