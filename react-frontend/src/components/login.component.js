@@ -53,7 +53,11 @@ return (
 
   <Button variant="primary" onClick={handleShow}>login</Button>
   <Modal show={show} onHide={handleClose}>
+<<<<<<< HEAD
   <form action='http://localhost:5000/login' method='post' onSubmit={loginSubmit}>
+=======
+  <form action='http://localhost:5000/login' method='post' >
+>>>>>>> MARK
   <Modal.Header closeButton>
     <Modal.Title><h3> Sign In</h3></Modal.Title>
   </Modal.Header>
