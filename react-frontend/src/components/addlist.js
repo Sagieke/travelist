@@ -25,7 +25,7 @@ export default function  AddList()  {
         <Modal.Body>   <div className="form-group">
           <label>name of new list</label>
           <input
-            name="ListName"
+            name="list_name"
             className="form-control"
             placeholder="Enter name to your new list"
             onChange={event => setListName(event.target.value)}
@@ -37,7 +37,7 @@ export default function  AddList()  {
             type="color"
             size="lg"
             id="exampleColorInput"
-            defaultValue="#563d7c"
+            defaultValue="#0066aa"
             title="Choose your color"
             onChange={event => setcolor(event.target.value)}
         />
