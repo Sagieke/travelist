@@ -1,35 +1,34 @@
-from flask import Flask, session, request, redirect, jsonify,render_template, request
-from flask_session import Session
+from flask import Flask, request, redirect,render_template, request
 from flask_sqlalchemy import SQLAlchemy
+from flask_session import Session
 from flask_cors import CORS
 from flask_socketio import SocketIO
 
 #flask app initialization
 app = Flask(__name__)
-cors = CORS(app)
 
 #flask app configuration
 app.config['CORS_HEADERS'] = 'Content-Type'
 app.config["SECRET_KEY"] = "changeme"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config["SESSION_TYPE"] = "filesystem"
+app.config['SESSION_PERMANENT'] = True
 
 #additional functionality initialization
 db = SQLAlchemy(app) #database
 Session(app) #cookies
-CORS(app,supports_credentials=True) #Cross-Origin Resource Sharing
 socketio = SocketIO(app) #sockets
-
+CORS(app,supports_credentials=True)
 #blueprints initialization
 #blueprints are used for modularity and will always be imported after app init
-from endpoints.Chat import chat_blueprint
 from endpoints.Homepage import Homepage
 from endpoints.ListOfListsPage import ListOfListsPage
 from endpoints.ListofPlacesPage import ListOfPlacesPage
-app.register_blueprint(chat_blueprint)
+from endpoints.Chat import chat_blueprint
 app.register_blueprint(Homepage)
 app.register_blueprint(ListOfListsPage)
 app.register_blueprint(ListOfPlacesPage)
+app.register_blueprint(chat_blueprint)
 
 @app.route('/')
 def server():
@@ -84,4 +83,4 @@ def Suggestiontest():
 #end of test funcs
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
