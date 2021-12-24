@@ -71,5 +71,19 @@ class ListofSuggestions(db.Model):
     #username = db.Column(db.String(100),unique = True, nullable = False)
     title = db.Column(db.String(50),unique = False, nullable = False)
     description = db.Column(db.String(300),unique = False, nullable = False)
-    
+
+@dataclass
+class ListofMessages(db.Model):
+    __tablename__ = 'ListofMessages'
+    id = db.Column(db.Integer, primary_key = True)
+    title = db.Column(db.String(50),unique = False, nullable = False)
+    description = db.Column(db.String(300),unique = False, nullable = False)
+
+@dataclass
+class FAQ(db.Model):
+    __tablename__ = 'FAQ'
+    id = db.Column(db.Integer, primary_key = True)
+    question = db.Column(db.String(150),unique = False, nullable = False)
+    answer = db.Column(db.String(300),unique = False, nullable = False)
+
 db.create_all()

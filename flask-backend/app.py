@@ -21,14 +21,16 @@ socketio = SocketIO(app) #sockets
 CORS(app,supports_credentials=True)
 #blueprints initialization
 #blueprints are used for modularity and will always be imported after app init
+from endpoints.Chat import chat_blueprint
 from endpoints.Homepage import Homepage
 from endpoints.ListOfListsPage import ListOfListsPage
 from endpoints.ListofPlacesPage import ListOfPlacesPage
-from endpoints.Chat import chat_blueprint
+from endpoints.Message import Message
+app.register_blueprint(chat_blueprint)
 app.register_blueprint(Homepage)
 app.register_blueprint(ListOfListsPage)
 app.register_blueprint(ListOfPlacesPage)
-app.register_blueprint(chat_blueprint)
+app.register_blueprint(Message)
 
 @app.route('/')
 def server():
