@@ -118,7 +118,14 @@ def removelist():
     if request.method == 'POST':
         user_id = session.get("user_id")
         id = request.form['id']
+        list_id = session.get('list_id')
         list = ListOfLists.query.filter_by(user_id = user_id,id=id).first()
+        rows = ListOfPlaces.query.count()
+        if list :
+            for i in range(1,rows + 1):
+                place = ListOfPlaces.query.filter_by(user_id=user_id,list_id=list_id).first()
+                db.session.delete(place)
+                db.session.commit()
         db.session.delete(list)
         db.session.commit()
         return redirect('http://localhost:3000/userPage')
