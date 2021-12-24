@@ -1,7 +1,7 @@
 from flask import Blueprint, request, redirect
 from app import db
 from models import FAQ
-FAQ = Blueprint('FAQ',__name__)
+faq = Blueprint('faq',__name__)
 
 @FAQ.route('/addFAQ', methods=['GET', 'POST'])
 def addFAQ():
