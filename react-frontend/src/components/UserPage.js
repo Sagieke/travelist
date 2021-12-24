@@ -24,7 +24,7 @@ export default function  UserPage()  {
       <ListGroup.Item  variant="default" key={index} style={{ textAlign: 'left', color: "white", background: lgi.color }} as="li">
         {lgi.name}
         <form action="http://localhost:5000/removelist" method="post">
-        <Button className="float-end" type="submit" name="id" variant="danger" value={lgi.id}>remove list</Button>
+        <Button className="float-end" type="submit" name="list_id" variant="danger" value={lgi.id}>remove list</Button>
         </form>
         <form action="http://localhost:5000/viewlist" method="post">
         <Button className="float-end" type="submit" name="list_id" value={lgi.id}>view list</Button>
