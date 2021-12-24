@@ -1,4 +1,4 @@
-from flask import Blueprint, session, request, redirect, jsonify
+from flask import Blueprint, request, redirect
 from app import db
 from models import FAQ
 FAQ = Blueprint('FAQ',__name__)
@@ -25,6 +25,7 @@ def deleteFAQ():
 @FAQ.route('/updateFAQ', methods=['GET', 'POST'])
 def updateFAQ():
     if request.method == 'POST':
+        id = request.form('id')
         faq = FAQ.query.filter_by(id = id).first()
         question = request.form('question')
         answer = request.form('answer')
