@@ -1,5 +1,6 @@
 import WeatherPage from "./weather";
 import React from "react";
+import Countdown from "./countdown";
 import {Container,Row, Col,Button,Modal,ListGroup,} from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 export default function  PlacePage(props)  {
@@ -24,9 +25,7 @@ export default function  PlacePage(props)  {
       <div className="auth-inner-center">
       <h1>list of attractions</h1>
       <hr class="my-4"></hr>
-      <Row>
-       
-      </Row>
+      <Countdown date="2-1-22"/>
       </div>
       <div className="auth-inner-right">
       <h1>recommended attractions</h1>
