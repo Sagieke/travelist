@@ -93,7 +93,7 @@ class FAQ(db.Model):
 
 @dataclass
 class EquipmentCheckList(db.Model):
-    _tablename__ = 'EquipmentCheckList'
+    __tablename__ = 'EquipmentCheckList'
     user_id: int
     list_id: int
     place_id: int
