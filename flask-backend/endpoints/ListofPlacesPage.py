@@ -1,6 +1,6 @@
 from flask import Blueprint, session, request, redirect, jsonify
 from app import db
-from models import ListOfPlaces
+from models import ListOfPlaces, ListOfLists
 
 ListOfPlacesPage = Blueprint('ListOfPlacesPage',__name__)
 
@@ -42,3 +42,11 @@ def viewPlace():
         place_id = request.form['id']
         session['place_id'] = place_id
     return redirect('http://localhost:3000/UserPage/places/place')
+
+@ListOfPlacesPage.route('/getListInfo', methods=['GET','POST'])
+def getListInfo():
+    if request.method == 'GET':
+        user_id = session.get('user_id')
+        list_id = session.get('list_id')
+        list_info = ListOfLists.query.filter_by(user_id=user_id,list_id=list_id).first()
+    return jsonify(list_info)
