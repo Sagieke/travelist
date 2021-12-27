@@ -29,12 +29,8 @@ function App() {
               <Route exact path="/UserPage/places/place" component ={PlacePage}/>
               <Route  path="/UserPage/" component ={ListPage}/>
               <Route path="/UserPage/places" component ={ListPage}/>
-<<<<<<< Updated upstream
-              <Route path="/AdminPage" component={AdminPage}/>
-=======
-              <Route path="/AdminPage" component ={AdminPage}/>
->>>>>>> Stashed changes
-             
+              <Route path="/adminpage" component={AdminPage}/>
+              
               </Switch>
       
       </div>

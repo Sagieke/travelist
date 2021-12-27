@@ -1,36 +1,53 @@
-import React from "react";
-import { Button } from "react-bootstrap";
-import { ListGroupItem } from "react-bootstrap";
-import { useState,useEffect } from "react";
-export default function UserList(){
-    
- const [listInfo, setlistInfo] = useState([]);
+import React , { useState, useEffect, }from "react";
+import {Container,Row, Col,Button,Modal,ListGroup,Table} from "react-bootstrap";
+
+
+export default function UserList()  {
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);  
+    const [ShowUserList, setUserList] = useState([]);
 
     useEffect(() => {
         fetch('http://localhost:5000/getUserlist',{
             credentials: "include"
           })
             .then(response => response.json())
-            .then(object => setlistInfo(object))
+            .then(object => console.log(object))
         },[]);
   
+return (
+    <>
   
-    const ListGroupItem = (lgi, index) => {
-  
-        return (
-                <ListGroup.Item  variant="default" key={index} style={{ textAlign: 'left', color: "black", background: "#1ca0f9" }} as="li" >
-                        {lgi.name} {lgi.start_date} - {lgi.end_date}
-                        
-                        <form action="http://localhost:5000/removeplace" method="post">
-                        
-                        <Button variant="danger" className="float-end" type="submit" name="id" value={lgi.id}>remove</Button>
-                        
-                        </form>
-                        <form action="http://localhost:5000/viewplace" method="post">
-                        <Button variant="success" className="float-end" type="submit" name="id" value={lgi.id}>view place</Button>
-                       </form>
-                </ListGroup.Item>
-               )   
-    };
- };
+    <Button variant="primary" onClick={handleShow}>User List</Button>
+    <Modal size="lg" show={show} onHide={handleClose}>
+    <form action='http://localhost:5000/login' method='post' >
+    <Modal.Header closeButton>
+      <Modal.Title><h3> User list :</h3></Modal.Title>
+    </Modal.Header>
+    <Modal.Body>
+    <Table striped bordered hover size="sm"> 
+    <tbody style={{'height': '300px', 'overflow':'scroll', 'display': 'block'}}> 
 
+    <thead>
+<th>ID</th>
+<th>Emal adress</th>
+<th>Type</th>
+
+    </thead>
+    
+    
+    
+    
+    
+    </tbody>
+   </Table>
+   </Modal.Body>
+    <Modal.Footer>
+           User list:
+    </Modal.Footer>
+    </form>
+  </Modal>
+    </> 
+   ); 
+  }
