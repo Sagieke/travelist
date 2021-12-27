@@ -18,7 +18,7 @@ export default function  WeatherPage()  {
       errorMessage={errorMessage}
       data={data}
       lang="en"
-      locationLabel="dani"
+      locationLabel="munich"
       unitsLabels={{ temperature: "C", windSpeed: "Km/h" }}
       showForecast
     />
