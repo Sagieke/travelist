@@ -5,6 +5,7 @@ import {Container,Row, Col,Button,Modal,ListGroup} from "react-bootstrap";
 
 export default function  ListPage()  {
   const [listInfo, setlistInfo] = useState([]);
+  const [listdata, setlistdata] = useState([]);
 
   useEffect(() => {
       fetch('http://localhost:5000/getplaces',{
@@ -12,6 +13,14 @@ export default function  ListPage()  {
         })
           .then(response => response.json())
           .then(object => setlistInfo(object))
+      },[]);
+     
+  useEffect(() => {
+      fetch('http://localhost:5000/getplaces',{
+         credentials: "include"
+        })
+         .then(response => response.json())
+         .then(object => setlistdata(object))
       },[]);
 
 
@@ -39,7 +48,7 @@ export default function  ListPage()  {
       <div className="auth-wrapper">
           <Row>
         <div className="auth-inner-left">
-          <h1>Places</h1>
+          <h1>{listdata[0].name}</h1>
           <hr class="my-4"></hr>
           <Row>
 
