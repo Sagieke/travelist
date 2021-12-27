@@ -1,5 +1,5 @@
 from flask import Blueprint, session, jsonify, request, redirect
-from models import EquipmentCheckList
+from models import EquipmentCheckList, ListOfPlaces
 from app import db
 
 placepage = Blueprint('placepage',__name__)
@@ -54,3 +54,12 @@ def checkEquipment():
         equipment.checked = True if equipment.checked == False else False
         db.session.commit()
         return redirect('http://localhost:3000/userpage/places/place')
+
+@placepage.route('/getPlaceInfo', methods=['GET','POST'])
+def getPlaceInfo():
+    if request.method == 'GET':
+        user_id = session.get('user_id')
+        list_id = session.get('list_id')
+        place_id = session.get('place_id')
+        place_info = ListOfPlaces.query.filter_by(user_id=user_id,list_id=list_id,id=place_id).first()
+    return jsonify(place_info)
