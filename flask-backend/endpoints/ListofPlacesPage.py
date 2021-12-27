@@ -22,7 +22,7 @@ def removeplace():
     if request.method == 'POST':
         user_id = session.get('user_id')
         list_id = session.get('list_id')
-        id = request.form['id']
+        id = request.form['place_id']
         place = ListOfPlaces.query.filter_by(user_id=user_id,list_id=list_id,id=id).first()
         db.session.delete(place)
         db.session.commit()
@@ -38,8 +38,8 @@ def getplaces():
 
 @ListOfPlacesPage.route('/viewplace', methods=['GET','POST'])
 def viewPlace():
-    if request.method == 'GET':
-        place_id = request.form['id']
+    if request.method == 'POST':
+        place_id = request.form['place_id']
         session['place_id'] = place_id
     return redirect('http://localhost:3000/UserPage/places/place')
 
@@ -48,5 +48,5 @@ def getListInfo():
     if request.method == 'GET':
         user_id = session.get('user_id')
         list_id = session.get('list_id')
-        list_info = ListOfLists.query.filter_by(user_id=user_id,list_id=list_id).first()
+        list_info = ListOfLists.query.filter_by(user_id=user_id,id=list_id).first()
     return jsonify(list_info)
