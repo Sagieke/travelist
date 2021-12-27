@@ -52,7 +52,7 @@ return (
   <>
 
   <Button variant="primary" onClick={handleShow}>login</Button>
-  <Modal size="lg"show={show} onHide={handleClose}>
+  <Modal show={show} onHide={handleClose}>
   <form action='http://localhost:5000/login' method='post' >
   <Modal.Header closeButton>
     <Modal.Title><h3> Sign In</h3></Modal.Title>
