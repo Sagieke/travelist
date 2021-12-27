@@ -2,6 +2,11 @@ from app import db
 from dataclasses import dataclass
 
 class User(db.Model): #user data base
+    __tablename__ = 'user'
+    user_id: int
+    username: str
+    usertype: str
+    
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(100),unique = True, nullable = False)
     password = db.Column(db.String(100), nullable = False)

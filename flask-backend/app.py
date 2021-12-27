@@ -11,6 +11,7 @@ app = Flask(__name__)
 app.config['CORS_HEADERS'] = 'Content-Type'
 app.config["SECRET_KEY"] = "changeme"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config["SESSION_TYPE"] = "filesystem"
 app.config['SESSION_PERMANENT'] = True
 
@@ -21,7 +22,6 @@ socketio = SocketIO(app) #sockets
 CORS(app,supports_credentials=True) #Cross-Origin Resource Sharing
 
 #blueprints initialization
-#blueprints are used for modularity and will always be imported after app init
 from endpoints.Chat import chat_blueprint
 from endpoints.Homepage import Homepage
 from endpoints.ListOfListsPage import ListOfListsPage
@@ -37,6 +37,8 @@ app.register_blueprint(Message)
 def server():
     return "<h1>Hello, this is the server, nothing of interest here :)</h1>"
 
+
+#new blueprints testings
 from models import ListofBugs,ListofSuggestions
 
 @app.route('/submitBug',methods=['GET','POST'])
@@ -62,10 +64,9 @@ def submitSuggestion():
         return redirect('http://127.0.0.1:5000/')
 
 #testing routes for backend
-
 @app.route('/test')
 def home():
-    return render_template("testing.html")
+    return render_template("testing.html")        
 
 @app.route('/test2')
 def test():
@@ -82,8 +83,8 @@ def bugtest():
 @app.route('/Suggestions-test')
 def Suggestiontest():
     return render_template("Suggestions-test.html")
-
 #end of test funcs
+
 
 if __name__ == '__main__':
     app.run()
