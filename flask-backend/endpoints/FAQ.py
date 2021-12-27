@@ -4,7 +4,7 @@ from models import FAQ
 faq = Blueprint('faq',__name__)
 
 @faq.route('/addFAQ', methods=['GET', 'POST'])
-def addFAQ():
+def addFAQ(): #adds new FAQ to the site
     if request.method == 'POST':
         question = request.form('question')
         answer = request.form('answer')
@@ -14,7 +14,7 @@ def addFAQ():
         return redirect('http://localhost:3000/faqUpdate')
 
 @faq.route('/deleteFAQ', methods=['GET', 'POST'])
-def deleteFAQ():
+def deleteFAQ(): #deletes an FAQ from the site
     if request.method == 'POST':
         id = request.form('id')
         faq = FAQ.query.filter_by(id = id).first()
@@ -23,7 +23,7 @@ def deleteFAQ():
         return redirect('http://localhost:3000/faqUpdate')
 
 @faq.route('/updateFAQ', methods=['GET', 'POST'])
-def updateFAQ():
+def updateFAQ(): #updates existing FAQ
     if request.method == 'POST':
         id = request.form('id')
         faq = FAQ.query.filter_by(id = id).first()
