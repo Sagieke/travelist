@@ -45,6 +45,12 @@ def checkEquipment():
         place_id = session.get('place_id')
         equipment_id = request.form['id']
         equipment = EquipmentCheckList.query.filter_by(user_id=user_id,list_id=list_id,place_id=place_id,id=equipment_id).first()
+        if equipment.checked == False:
+            equipment.checked = True
+            equipment.color = "#97e189"
+        else:
+            equipment.checked = False
+            equipment.color = "#808080"
         equipment.checked = True if equipment.checked == False else False
         db.session.commit()
         return redirect('http://localhost:3000/userpage/places/place')
