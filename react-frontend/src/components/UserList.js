@@ -35,7 +35,7 @@ return (
       <Modal.Title><h3> User list :</h3></Modal.Title>
     </Modal.Header>
     <Modal.Body>
-    <div style="overflow: scroll;"> 
+    <div style={{'height': '300px', 'overflow':'scroll', 'display': 'block'}}>
     <Table striped bordered hover size="sm">
   <thead>
     <tr>

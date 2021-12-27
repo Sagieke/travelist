@@ -7,6 +7,7 @@ import MainPage from "./components/MainPage";
 import UserPage from "./components/UserPage";
 import LogOut from "./components/LogOut";
 import PlacePage from "./components/placepage";
+import AdminPage from "./components/AdminPage";
 import "./App.css";
 function App() {
   return (
@@ -19,7 +20,6 @@ function App() {
         <Route exact path ="/" component ={MainPage}/>
         <Route exact path="/UserPage" component ={LogOut}/>
         <Route exact path="/UserPage/" component ={LogOut}/>
-
         </Switch>
           </div>
         </nav>
@@ -29,7 +29,8 @@ function App() {
               <Route exact path="/UserPage/places/place" component ={PlacePage}/>
               <Route  path="/UserPage/" component ={ListPage}/>
               <Route path="/UserPage/places" component ={ListPage}/>
-             
+              <Route path="/adminpage" component={AdminPage}/>
+              
               </Switch>
       
       </div>

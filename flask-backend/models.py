@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 class User(db.Model): #user data base
     __tablename__ = 'user'
-    user_id: int
+    id: int
     username: str
     usertype: str
     
