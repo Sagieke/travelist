@@ -58,8 +58,8 @@ export default function  AddPlace()  {
             </Row>
             <Row>
       
-            <Col><Datetime dateFormat="DD-MM-YYYY" timeFormat={false} closeOnSelect={true} placeholder="start date"  onChange={(event) => {setStartDate(event.format("DD-MM-YYYY"))}}/></Col>
-              <Col><Datetime dateFormat="DD-MM-YYYY" timeFormat={false} closeOnSelect={true}  placeholder="end date" onChange={(event) => {setEndDate(event.format("DD-MM-YYYY"))}}/></Col>
+            <Col><Datetime dateFormat="MM-DD-YY" timeFormat={false} closeOnSelect={true} placeholder="start date"  onChange={(event) => {setStartDate(event.format("MM-DD-YY"))}}/></Col>
+              <Col><Datetime dateFormat="MM-DD-YY" timeFormat={false} closeOnSelect={true}  placeholder="end date" onChange={(event) => {setEndDate(event.format("MM-DD-YY"))}}/></Col>
             <input hidden="true"
               name="start_date"
               value={StartDate}
