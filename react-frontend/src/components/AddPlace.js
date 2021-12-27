@@ -69,7 +69,6 @@ export default function  AddPlace()  {
         <Button type="submit" variant="primary" onClick={() => {
           handleClose();
           console.log(Place.value.structured_formatting.main_text)
-          console.log(GeolocObj)
           /*console.log(StartDate);
           console.log(EndDate);*/
           window.location.reload();
