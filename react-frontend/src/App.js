@@ -19,7 +19,7 @@ function App() {
         <Switch>
         <Route exact path ="/" component ={MainPage}/>
         <Route exact path="/UserPage" component ={LogOut}/>
-        <Route exact path="/UserPage/" component ={LogOut}/>
+    
         </Switch>
           </div>
         </nav>
