@@ -1,6 +1,5 @@
-import AddList from "./addlist";
 import WeatherPage from "./weather";
-import React , { useState, useEffect }from "react";
+import React from "react";
 import {Container,Row, Col,Button,Modal,ListGroup,} from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 export default function  PlacePage(props)  {
@@ -11,7 +10,10 @@ export default function  PlacePage(props)  {
           <h1>place weather</h1>
           <hr class="my-4"></hr>
       <Row>
-        <WeatherPage/>
+        <div>
+          <WeatherPage/>
+        </div>
+        
       </Row>
       <br/>
       <Row>
