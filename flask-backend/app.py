@@ -29,6 +29,7 @@ from endpoints.ListofPlacesPage import ListOfPlacesPage
 from endpoints.Chat import chat_blueprint
 from endpoints.Message import Message
 from endpoints.Userlist import Userlist
+from endpoints.Placepage import placepage
 app.register_blueprint(Homepage)
 app.register_blueprint(Userpage)
 app.register_blueprint(ListOfListsPage)
@@ -36,6 +37,7 @@ app.register_blueprint(ListOfPlacesPage)
 app.register_blueprint(chat_blueprint)
 app.register_blueprint(Message)
 app.register_blueprint(Userlist)
+app.register_blueprint(placepage)
 
 @app.route('/')
 def server():
