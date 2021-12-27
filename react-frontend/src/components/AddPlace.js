@@ -4,19 +4,18 @@ import GooglePlacesAutocomplete, {geocodeByPlaceId, getLatLng} from "react-googl
 import "react-datetime/css/react-datetime.css";
 import {Container,Row, Col,Button,Modal} from "react-bootstrap";
 export default function  AddPlace()  {
+  const OpenWeatherAPIKey = "b3f6d1b828d70b152d06eed90c69d8c8"
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [Place, setPlace] = useState({});
   const [StartDate, setStartDate] = useState('');
   const [EndDate, setEndDate] = useState('');
-  const [Lati, setLati] = useState(0);
-  const [Long, setLong] = useState(0);
 
-  let getLatPromise = (pObj) => geocodeByPlaceId(pObj.value.place_id)
+  /*let getLatPromise = (pObj) => geocodeByPlaceId(pObj.value.place_id)
   .then(results => getLatLng(results[0]))
   .then(({ lat, lng }) => { return {lat,lng}.lat })
-  .then(function(result){console.log(result)})
+  .then(function(result){console.log(result)})*/
 
     return (
       <>
@@ -69,8 +68,8 @@ export default function  AddPlace()  {
         <Modal.Footer>
         <Button type="submit" variant="primary" onClick={() => {
           handleClose();
-          getLatPromise(Place);
-          console.log("lati",Lati);
+          console.log(Place.value.structured_formatting.main_text)
+          console.log(GeolocObj)
           /*console.log(StartDate);
           console.log(EndDate);*/
           window.location.reload();
