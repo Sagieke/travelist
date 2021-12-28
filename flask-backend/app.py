@@ -8,14 +8,16 @@ db = SQLAlchemy() #database
 socketio = SocketIO() #sockets
 
 #flask app initialization
-def create_app():
+def create_app(test_mode,db_uri):
     app = Flask(__name__)
     #flask app configuration
     app.config['CORS_HEADERS'] = 'Content-Type'
     app.config["SECRET_KEY"] = "changeme"
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
     app.config["SESSION_TYPE"] = "filesystem"
+    app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
     app.config['SESSION_PERMANENT'] = True
+    app.config['TESTING'] = test_mode
     #additional functionality initialization
     db.init_app(app)
     socketio.init_app(app)
@@ -37,15 +39,9 @@ def create_app():
         db.create_all()  # Create sql tables for our data models
         return app
 
-        #app.register_blueprint(chat_blueprint)
-        #app.register_blueprint(Homepage)
-        #app.register_blueprint(ListOfListsPage)
-        #app.register_blueprint(ListOfPlacesPage)
-        #app.register_blueprint(Message)
+app = create_app(False,'sqlite:///database.db')
 
-app = create_app()
-
-@app.route('/')
+@app.route('/',methods=['GET','POST'])
 def server():
     return "<h1>Hello, this is the server, nothing of interest here :)</h1>"
 
