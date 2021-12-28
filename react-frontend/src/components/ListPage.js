@@ -20,7 +20,7 @@ export default function  ListPage()  {
          credentials: "include"
         })
          .then(response => response.json())
-         .then(object => setlistdata(object))
+         .then(object => setlistdata(object[0]))
       },[]);
 
 
@@ -48,7 +48,7 @@ export default function  ListPage()  {
       <div className="auth-wrapper">
           <Row>
         <div className="auth-inner-left">
-          <h1>{listdata[0].name}</h1>
+          <h1>{listdata.name}</h1>
           <hr class="my-4"></hr>
           <Row>
 
