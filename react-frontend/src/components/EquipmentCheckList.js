@@ -4,7 +4,6 @@ import {Container,Row, Col,Button,Modal,ListGroup} from "react-bootstrap";
 
 export default function EquipmentChecklist()  {
   const [checklistInfo, setchecklistInfo] = useState([]);
-  const [check,setCheck] = useState(null);
 
   useEffect(() => {
       fetch('http://localhost:5000/getEquipmentChecklist',{
@@ -14,9 +13,6 @@ export default function EquipmentChecklist()  {
           .then(object => setchecklistInfo(object))
       },[]);
 
-  useEffect(()=>{
-    fetch()
-  })
 
   const ListGroupItem = (lgi, index) => {
       return (
