@@ -1,7 +1,7 @@
 from flask_testing import TestCase
 from app import create_app, db
 from models import User
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash
 
 class MyTest(TestCase):
     def create_app(self):
