@@ -4,13 +4,20 @@ import GooglePlacesAutocomplete, {geocodeByPlaceId, getLatLng} from "react-googl
 import "react-datetime/css/react-datetime.css";
 import {Container,Row, Col,Button,Modal} from "react-bootstrap";
 export default function  AddPlace()  {
-  const OpenWeatherAPIKey = "b3f6d1b828d70b152d06eed90c69d8c8"
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [Place, setPlace] = useState({});
   const [StartDate, setStartDate] = useState('');
   const [EndDate, setEndDate] = useState('');
+
+  /*
+  useEffect(() => {
+    fetch("http://api.openweathermap.org/geo/1.0/direct?q="+Place.value.structured_formatting.main_text+"&limit=1"+"&appid="+OpenWeatherAPIKey)
+    .then(response => response.json())
+    .then(object => setGeolocObj(object))
+  });
+  */
 
   /*let getLatPromise = (pObj) => geocodeByPlaceId(pObj.value.place_id)
   .then(results => getLatLng(results[0]))
@@ -51,8 +58,8 @@ export default function  AddPlace()  {
             </Row>
             <Row>
       
-            <Col><Datetime dateFormat="DD-MM-YYYY" timeFormat={false} closeOnSelect={true} placeholder="start date"  onChange={(event) => {setStartDate(event.format("DD-MM-YYYY"))}}/></Col>
-              <Col><Datetime dateFormat="DD-MM-YYYY" timeFormat={false} closeOnSelect={true}  placeholder="end date" onChange={(event) => {setEndDate(event.format("DD-MM-YYYY"))}}/></Col>
+            <Col><Datetime dateFormat="MM-DD-YY" timeFormat={false} closeOnSelect={true} placeholder="start date"  onChange={(event) => {setStartDate(event.format("MM-DD-YY"))}}/></Col>
+              <Col><Datetime dateFormat="MM-DD-YY" timeFormat={false} closeOnSelect={true}  placeholder="end date" onChange={(event) => {setEndDate(event.format("MM-DD-YY"))}}/></Col>
             <input hidden="true"
               name="start_date"
               value={StartDate}
@@ -68,7 +75,6 @@ export default function  AddPlace()  {
         <Modal.Footer>
         <Button type="submit" variant="primary" onClick={() => {
           handleClose();
-          console.log(Place.value.structured_formatting.main_text)
           /*console.log(StartDate);
           console.log(EndDate);*/
           window.location.reload();

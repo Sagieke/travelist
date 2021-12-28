@@ -22,16 +22,22 @@ socketio = SocketIO(app) #sockets
 CORS(app,supports_credentials=True) #Cross-Origin Resource Sharing
 
 #blueprints initialization
-from endpoints.Chat import chat_blueprint
 from endpoints.Homepage import Homepage
+from endpoints.Userpage import Userpage
 from endpoints.ListOfListsPage import ListOfListsPage
 from endpoints.ListofPlacesPage import ListOfPlacesPage
+from endpoints.Chat import chat_blueprint
 from endpoints.Message import Message
-app.register_blueprint(chat_blueprint)
+from endpoints.Userlist import Userlist
+from endpoints.Placepage import placepage
 app.register_blueprint(Homepage)
+app.register_blueprint(Userpage)
 app.register_blueprint(ListOfListsPage)
 app.register_blueprint(ListOfPlacesPage)
+app.register_blueprint(chat_blueprint)
 app.register_blueprint(Message)
+app.register_blueprint(Userlist)
+app.register_blueprint(placepage)
 
 @app.route('/')
 def server():

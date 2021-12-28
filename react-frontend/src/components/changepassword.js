@@ -27,7 +27,7 @@ return (
         <div className="form-group">
           <label>change password</label>
           <input
-            name="password"
+            name="new_password"
             type="password"
             className="form-control"
             placeholder="Enter password"

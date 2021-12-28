@@ -91,4 +91,23 @@ class FAQ(db.Model):
     question = db.Column(db.String(150),unique = False, nullable = False)
     answer = db.Column(db.String(300),unique = False, nullable = False)
 
+@dataclass
+class EquipmentCheckList(db.Model):
+    __tablename__ = 'EquipmentCheckList'
+    user_id: int
+    list_id: int
+    place_id: int
+    id: int
+    name: str
+    color: str
+    checked: bool
+
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    list_id = db.Column(db.Integer, db.ForeignKey('ListOfLists.id'))
+    place_id = db.Column(db.Integer, db.ForeignKey('ListOfPlaces.id'))
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String(100), unique = False, nullable = False)
+    color = db.Column(db.String(7), nullable = False)
+    checked = db.Column(db.Boolean, nullable = False)
+
 db.create_all()
