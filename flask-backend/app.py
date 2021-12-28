@@ -45,6 +45,8 @@ app = create_app(False,'sqlite:///database.db')
 def server():
     return "<h1>Hello, this is the server, nothing of interest here :)</h1>"
 
+
+#new blueprints testings
 from models import ListofBugs,ListofSuggestions
 
 @app.route('/submitBug',methods=['GET','POST'])
@@ -85,7 +87,6 @@ def bugtest():
 def Suggestiontest():
     return render_template("Suggestions-test.html")
 #end of test funcs
-
 
 
 if __name__ == '__main__':

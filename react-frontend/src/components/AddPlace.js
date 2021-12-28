@@ -10,13 +10,19 @@ export default function  AddPlace()  {
   const [Place, setPlace] = useState({});
   const [StartDate, setStartDate] = useState('');
   const [EndDate, setEndDate] = useState('');
-  const [Lati, setLati] = useState(0);
-  const [Long, setLong] = useState(0);
 
-  let getLatPromise = (pObj) => geocodeByPlaceId(pObj.value.place_id)
+  /*
+  useEffect(() => {
+    fetch("http://api.openweathermap.org/geo/1.0/direct?q="+Place.value.structured_formatting.main_text+"&limit=1"+"&appid="+OpenWeatherAPIKey)
+    .then(response => response.json())
+    .then(object => setGeolocObj(object))
+  });
+  */
+
+  /*let getLatPromise = (pObj) => geocodeByPlaceId(pObj.value.place_id)
   .then(results => getLatLng(results[0]))
   .then(({ lat, lng }) => { return {lat,lng}.lat })
-  .then(function(result){console.log(result)})
+  .then(function(result){console.log(result)})*/
 
     return (
       <>
@@ -52,8 +58,8 @@ export default function  AddPlace()  {
             </Row>
             <Row>
       
-            <Col><Datetime dateFormat="DD-MM-YYYY" timeFormat={false} closeOnSelect={true} placeholder="start date"  onChange={(event) => {setStartDate(event.format("DD-MM-YYYY"))}}/></Col>
-              <Col><Datetime dateFormat="DD-MM-YYYY" timeFormat={false} closeOnSelect={true}  placeholder="end date" onChange={(event) => {setEndDate(event.format("DD-MM-YYYY"))}}/></Col>
+            <Col><Datetime dateFormat="MM-DD-YY" timeFormat={false} closeOnSelect={true} placeholder="start date"  onChange={(event) => {setStartDate(event.format("MM-DD-YY"))}}/></Col>
+              <Col><Datetime dateFormat="MM-DD-YY" timeFormat={false} closeOnSelect={true}  placeholder="end date" onChange={(event) => {setEndDate(event.format("MM-DD-YY"))}}/></Col>
             <input hidden="true"
               name="start_date"
               value={StartDate}
@@ -69,8 +75,6 @@ export default function  AddPlace()  {
         <Modal.Footer>
         <Button type="submit" variant="primary" onClick={() => {
           handleClose();
-          getLatPromise(Place);
-          console.log("lati",Lati);
           /*console.log(StartDate);
           console.log(EndDate);*/
           window.location.reload();
