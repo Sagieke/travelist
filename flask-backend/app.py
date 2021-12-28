@@ -10,33 +10,43 @@ socketio = SocketIO() #sockets
 #flask app initialization
 def create_app(test_mode,db_uri):
     app = Flask(__name__)
+
     #flask app configuration
     app.config['CORS_HEADERS'] = 'Content-Type'
     app.config["SECRET_KEY"] = "changeme"
     app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
     app.config["SESSION_TYPE"] = "filesystem"
-    app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
     app.config['SESSION_PERMANENT'] = True
     app.config['TESTING'] = test_mode
+
     #additional functionality initialization
-    db.init_app(app)
-    socketio.init_app(app)
     Session(app) #cookies
+    db.init_app(app) #database
     CORS(app,supports_credentials=True) #Cross-Origin Resource Sharing
-    #blueprints initialization
-    #blueprints are used for modularity and will always be imported after app init
+    socketio.init_app(app) #web sockets
+
     with app.app_context():
-        from endpoints.Chat import chat_blueprint
+        #blueprints initialization
         from endpoints.Homepage import Homepage
+        from endpoints.Userpage import Userpage
         from endpoints.ListOfListsPage import ListOfListsPage
         from endpoints.ListofPlacesPage import ListOfPlacesPage
+        from endpoints.Chat import chat_blueprint
         from endpoints.Message import Message
-        app.register_blueprint(chat_blueprint)
+        from endpoints.Userlist import Userlist
+        from endpoints.Placepage import placepage
         app.register_blueprint(Homepage)
+        app.register_blueprint(Userpage)
         app.register_blueprint(ListOfListsPage)
         app.register_blueprint(ListOfPlacesPage)
+        app.register_blueprint(chat_blueprint)
         app.register_blueprint(Message)
-        db.create_all()  # Create sql tables for our data models
+        app.register_blueprint(Userlist)
+        app.register_blueprint(placepage)
+        #database creation using models
+        db.create_all()
+
         return app
 
 app = create_app(False,'sqlite:///database.db')
