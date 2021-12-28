@@ -24,6 +24,8 @@ class ListOfLists(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(100), nullable = False)
     color = db.Column(db.String(7), nullable = False)
+    __dict__ = {'user_id': user_id, 'id': id, 'name': name, 'color': color}
+
 
 @dataclass
 class ListOfPlaces(db.Model):
