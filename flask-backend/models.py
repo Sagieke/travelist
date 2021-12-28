@@ -85,5 +85,3 @@ class FAQ(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     question = db.Column(db.String(150),unique = False, nullable = False)
     answer = db.Column(db.String(300),unique = False, nullable = False)
-
-db.create_all()

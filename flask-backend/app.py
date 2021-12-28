@@ -1,37 +1,49 @@
-from flask import Flask, request, redirect,render_template, request
+from flask import Flask, request, redirect,render_template, request,current_app
 from flask_sqlalchemy import SQLAlchemy
 from flask_session import Session
 from flask_cors import CORS
 from flask_socketio import SocketIO
 
+db = SQLAlchemy() #database
+socketio = SocketIO() #sockets
+
 #flask app initialization
-app = Flask(__name__)
+def create_app():
+    app = Flask(__name__)
+    #flask app configuration
+    app.config['CORS_HEADERS'] = 'Content-Type'
+    app.config["SECRET_KEY"] = "changeme"
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+    app.config["SESSION_TYPE"] = "filesystem"
+    app.config['SESSION_PERMANENT'] = True
+    #additional functionality initialization
+    db.init_app(app)
+    socketio.init_app(app)
+    Session(app) #cookies
+    CORS(app,supports_credentials=True) #Cross-Origin Resource Sharing
+    #blueprints initialization
+    #blueprints are used for modularity and will always be imported after app init
+    with app.app_context():
+        from endpoints.Chat import chat_blueprint
+        from endpoints.Homepage import Homepage
+        from endpoints.ListOfListsPage import ListOfListsPage
+        from endpoints.ListofPlacesPage import ListOfPlacesPage
+        from endpoints.Message import Message
+        app.register_blueprint(chat_blueprint)
+        app.register_blueprint(Homepage)
+        app.register_blueprint(ListOfListsPage)
+        app.register_blueprint(ListOfPlacesPage)
+        app.register_blueprint(Message)
+        db.create_all()  # Create sql tables for our data models
+        return app
 
-#flask app configuration
-app.config['CORS_HEADERS'] = 'Content-Type'
-app.config["SECRET_KEY"] = "changeme"
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-app.config["SESSION_TYPE"] = "filesystem"
-app.config['SESSION_PERMANENT'] = True
+        #app.register_blueprint(chat_blueprint)
+        #app.register_blueprint(Homepage)
+        #app.register_blueprint(ListOfListsPage)
+        #app.register_blueprint(ListOfPlacesPage)
+        #app.register_blueprint(Message)
 
-#additional functionality initialization
-db = SQLAlchemy(app) #database
-Session(app) #cookies
-socketio = SocketIO(app) #sockets
-CORS(app,supports_credentials=True) #Cross-Origin Resource Sharing
-
-#blueprints initialization
-#blueprints are used for modularity and will always be imported after app init
-from endpoints.Chat import chat_blueprint
-from endpoints.Homepage import Homepage
-from endpoints.ListOfListsPage import ListOfListsPage
-from endpoints.ListofPlacesPage import ListOfPlacesPage
-from endpoints.Message import Message
-app.register_blueprint(chat_blueprint)
-app.register_blueprint(Homepage)
-app.register_blueprint(ListOfListsPage)
-app.register_blueprint(ListOfPlacesPage)
-app.register_blueprint(Message)
+app = create_app()
 
 @app.route('/')
 def server():
@@ -60,30 +72,25 @@ def submitSuggestion():
         db.session.add(new_suggestions)
         db.session.commit()
         return redirect('http://127.0.0.1:5000/')
-
 #testing routes for backend
-
 @app.route('/test')
 def home():
     return render_template("testing.html")
-
 @app.route('/test2')
 def test():
     return render_template("testing-2.html")
-
 @app.route('/test3')
 def test2():
     return render_template("testing-3.html")
-
 @app.route('/Report-test')
 def bugtest():
     return render_template("Report-test.html")
-
 @app.route('/Suggestions-test')
 def Suggestiontest():
     return render_template("Suggestions-test.html")
-
 #end of test funcs
 
+
+
 if __name__ == '__main__':
-    app.run()
+   app.run()
