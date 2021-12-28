@@ -1,6 +1,8 @@
 from app import db
 from dataclasses import dataclass
 
+#the dataclass decorator allows us to seralize database tables 
+@dataclass
 class User(db.Model): #user data base
     __tablename__ = 'user'
     id: int
@@ -14,7 +16,7 @@ class User(db.Model): #user data base
     answer = db.Column(db.String(100),unique = False, nullable = False)
 
 @dataclass
-class ListOfLists(db.Model):
+class ListOfLists(db.Model): #List of lists of places
     __tablename__ = 'ListOfLists'
     user_id: int
     id: int
