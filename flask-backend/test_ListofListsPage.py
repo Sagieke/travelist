@@ -44,6 +44,7 @@ class LsitofListTest(MyTest):
         list = ListOfLists(user_id = '1', id = '1', name="testlist", color = '#ffffff')
         db.session.add(list)
         db.session.commit()
+        test = [{'color' : '#ffffff','id' : 1,'name' : 'testlist','user_id' : 1}]
         response = tester.get('/getlists', data={'user_id': '1'})
-        self.assertEquals(response.json,dict(list))
+        self.assertEquals(response.json,test)
 
