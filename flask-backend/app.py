@@ -1,11 +1,11 @@
-from flask import Flask, request, redirect,render_template, request
+from flask import Flask, request, redirect,render_template, request,current_app
 from flask_sqlalchemy import SQLAlchemy
 from flask_session import Session
 from flask_cors import CORS
 from flask_socketio import SocketIO
 
-db = SQLAlchemy()
-socketio = SocketIO()
+db = SQLAlchemy() #database
+socketio = SocketIO() #sockets
 
 #flask app initialization
 def create_app(test_mode,db_uri):
@@ -51,7 +51,7 @@ def create_app(test_mode,db_uri):
 
 app = create_app(False,'sqlite:///database.db')
 
-@app.route('/')
+@app.route('/',methods=['GET','POST'])
 def server():
     return "<h1>Hello, this is the server, nothing of interest here :)</h1>"
 
@@ -80,24 +80,19 @@ def submitSuggestion():
         db.session.add(new_suggestions)
         db.session.commit()
         return redirect('http://127.0.0.1:5000/')
-
 #testing routes for backend
 @app.route('/test')
 def home():
-    return render_template("testing.html")        
-
+    return render_template("testing.html")
 @app.route('/test2')
 def test():
     return render_template("testing-2.html")
-
 @app.route('/test3')
 def test2():
     return render_template("testing-3.html")
-
 @app.route('/Report-test')
 def bugtest():
     return render_template("Report-test.html")
-
 @app.route('/Suggestions-test')
 def Suggestiontest():
     return render_template("Suggestions-test.html")
@@ -105,4 +100,4 @@ def Suggestiontest():
 
 
 if __name__ == '__main__':
-    app.run()
+   app.run()

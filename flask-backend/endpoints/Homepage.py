@@ -45,8 +45,8 @@ def forgotPasswordButton():
     if request.method == 'POST':
         email = request.form['email']
         user = User.query.filter_by(username = email).first()
-        session['user_id'] = user.id
         if user :
+            session['user_id'] = user.id
             return redirect('http://127.0.0.1:5000/test2')
         else : return redirect('http://localhost:3000/')
 
