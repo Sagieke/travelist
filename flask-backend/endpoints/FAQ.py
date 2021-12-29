@@ -1,4 +1,4 @@
-from flask import Blueprint, request, redirect
+from flask import Blueprint, request, redirect, jsonify
 from app import db
 from models import FAQ
 faq = Blueprint('faq',__name__)
@@ -33,3 +33,10 @@ def updateFAQ(): #updates existing FAQ
         faq.answer = answer
         db.session.commit() 
         return redirect('http://localhost:3000/faqUpdate')
+
+
+@faq.route('/getFAQ',methods=['GET','POST'])
+def getFAQ():
+    if request.method == 'GET':
+        FAQs = FAQ.query.all()
+        return jsonify(FAQs)
