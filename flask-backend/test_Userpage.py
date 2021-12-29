@@ -3,7 +3,7 @@ from models import User
 from werkzeug.security import generate_password_hash
 from test_Homepage import MyTest
 
-class UserListTest(MyTest):
+class UserPageTest(MyTest):
     def test_change_password(self):
         password = generate_password_hash("password")
         user = User(username="username", password=password, usertype = "admin", answer = "answer")
