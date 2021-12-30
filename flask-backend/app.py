@@ -36,6 +36,7 @@ def create_app(test_mode,db_uri):
         from endpoints.Message import Message
         from endpoints.Userlist import Userlist
         from endpoints.Placepage import placepage
+        from endpoints.FAQ import faq
         app.register_blueprint(Homepage)
         app.register_blueprint(Userpage)
         app.register_blueprint(ListOfListsPage)
@@ -44,6 +45,7 @@ def create_app(test_mode,db_uri):
         app.register_blueprint(Message)
         app.register_blueprint(Userlist)
         app.register_blueprint(placepage)
+        app.register_blueprint(faq)
         #database creation using models
         db.create_all()
 
@@ -96,6 +98,9 @@ def bugtest():
 @app.route('/Suggestions-test')
 def Suggestiontest():
     return render_template("Suggestions-test.html")
+@app.route('/FAQ-test')
+def FAQtest():
+    return render_template("FAQ-test.html")
 #end of test funcs
 
 
