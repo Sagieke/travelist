@@ -3,7 +3,7 @@ from app import db
 from models import FAQ
 faq = Blueprint('faq',__name__)
 
-@faq.route('/addfaq', methods=['GET', 'POST'])
+@faq.route('/addFAQ', methods=['GET', 'POST'])
 def addFAQ(): #adds new FAQ to the site
     if request.method == 'POST':
         question = request.form['question']
