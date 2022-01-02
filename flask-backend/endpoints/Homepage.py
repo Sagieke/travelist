@@ -1,4 +1,4 @@
-from flask import Blueprint, session, request, redirect
+from flask import Blueprint, session, request, redirect, json
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import db
 from models import User
@@ -8,15 +8,20 @@ Homepage = Blueprint('Homepage',__name__)
 @Homepage.route('/register', methods = ['GET', 'POST'])
 def Register():
     if request.method == 'POST':
-        username = request.form['email']
+        users = User.query.all()
+        email = request.form['email']
         password = request.form['password']
         answer = request.form['answer']
         hashed_password = generate_password_hash(password)
-        usertype = 'traveler'
-        new_user = User(username=username, password=hashed_password, usertype = usertype, answer = answer) #user table constructor
+        usertype = 'Traveler'
+        new_user = User(username=email, password=hashed_password, usertype = usertype, answer = answer) #user table constructor
+        for user in users:
+            if new_user.username == user.username:
+                return redirect('http://localhost:3000/signuperror')
         db.session.add(new_user)
         db.session.commit()
         return redirect('http://localhost:3000/')
+        
 
 @Homepage.route('/login', methods=['GET', 'POST'])
 def Login():
@@ -33,6 +38,8 @@ def Login():
                 return redirect('http://localhost:3000/techSupport')
             else: 
                 return redirect('http://localhost:3000/userPage')
+        return redirect('http://localhost:3000/loginerror')
+        
             
 @Homepage.route('/logout', methods=['GET', 'POST'])
 def logout():

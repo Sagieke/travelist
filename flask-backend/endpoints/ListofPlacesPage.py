@@ -58,11 +58,21 @@ def getListInfo():
 
 def get_lat_lon(name):
     lat_lon_dict = {}
-    name = name.split(", ")[0]
+    name = name.split(",")[0]
+    name = name.split("-")[0]
     api_key = '5d50cb77a4d850371ce5a430e31c9b24'
     api_url = "http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid={}".format(name, api_key)
     data = requests.get(api_url)
     data = data.json()
+    if data["cod"] == "404":
+        name = name.split()[0]
+        api_url = "http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid={}".format(name, api_key)
+        data = requests.get(api_url)
+        data = data.json()
+        if data["cod"] == "404":
+            lat_lon_dict.update({"lat": 0})
+            lat_lon_dict.update({"lon": 0})
+            return lat_lon_dict
     lat_lon_dict.update({"lat": data["coord"]["lat"]})
     lat_lon_dict.update({"lon": data["coord"]["lon"]})
     return lat_lon_dict
