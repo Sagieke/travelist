@@ -11,7 +11,8 @@ import AdminPage from "./components/AdminComponants/AdminPage";
 import techSupport from "./components/TechSupportComponant/TechSupport";
 import ImageSliderAvtivate from "./components/Testing/ImageSliderActivate";
 import UserFaq from "./components/UserComponants/UserFAQ";
-
+import LoginErrorPage from "./components/Pages/LoginErrorPage";
+import SignUpErrorPage from "./components/Pages/SignUpErrorPage";
 
 import "./App.css";
 function App() {
@@ -37,7 +38,8 @@ function App() {
               <Route path="/adminpage" component={AdminPage}/>
               <Route path="/techsupport" component={techSupport}/>
               <Route path="/FAQ" component={UserFaq}/>
-              
+              <Route exact path="/loginerror" component={LoginErrorPage}/>
+              <Route exact path="/signuperror" component={SignUpErrorPage}/>
               </Switch>
       
       </div>
