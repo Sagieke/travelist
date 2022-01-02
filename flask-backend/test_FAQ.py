@@ -22,3 +22,11 @@ class UserListTest(MyTest):
         tester = self.app.test_client(self)  
         response = tester.post('/deleteFAQ', data={'id': '1'})
         self.assertRedirects(response,'http://localhost:5000/FAQ-delete')
+
+    def test_update_faq(self):
+        faq = FAQ(question = 'question', answer = 'answer')
+        db.session.add(faq)
+        db.session.commit()
+        tester = self.app.test_client(self)  
+        response = tester.post('/updateFAQ', data={'id':'1','question': 'test', 'answer': 'test'})
+        self.assertRedirects(response,'http://localhost:5000/FAQ-update')
