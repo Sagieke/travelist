@@ -36,16 +36,16 @@ class HomepageTest(MyTest):
     
     def test_Login_techsupport(self):
         password = generate_password_hash("password")
-        user = User(username="username", password=password, usertype = "techsupport", answer = "answer")
+        user = User(username="username", password=password, usertype = "TechSupport", answer = "answer")
         db.session.add(user)
         db.session.commit()
         tester = self.app.test_client(self)  
         response = tester.post('/login', data={'email': 'username', 'password': 'password'})
-        self.assertRedirects(response, 'http://localhost:3000/techSupportPage')
+        self.assertRedirects(response, 'http://localhost:3000/techSupport')
 
     def test_Login_admin(self):
         password = generate_password_hash("password")
-        user = User(username="username", password=password, usertype = "admin", answer = "answer")
+        user = User(username="username", password=password, usertype = "Admin", answer = "answer")
         db.session.add(user)
         db.session.commit()
         tester = self.app.test_client(self)  
