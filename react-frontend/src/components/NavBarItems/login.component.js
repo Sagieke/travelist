@@ -59,7 +59,7 @@ export default function Login() {
         <>
       
         <Button style={ButtonStyle1}variant="primary" onClick={handleShow}>login</Button>
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={show}  onHide={handleClose}>
         <form action='http://localhost:5000/login' method='post' >
         <Modal.Header closeButton>
           <Modal.Title><h3> Sign In</h3></Modal.Title>
@@ -74,10 +74,9 @@ export default function Login() {
                   className="form-control"
                   placeholder="Enter email"
                   onChange={event => setUserName(event.target.value)} 
+                  required
                 />
-                <small id="emailHelp" className="text-danger form-text">
-                        {emailError}
-                      </small>
+              
               </div>
               <div className="form-group">
                 <label>Password</label>
@@ -88,9 +87,7 @@ export default function Login() {
                   placeholder="Enter password"
                   onChange={event => setPassword(event.target.value)}
                 />
-                <small id="passworderror" className="text-danger form-text">
-                        {passwordError}
-                      </small>
+             
               </div>
       
               <div className="form-group">
