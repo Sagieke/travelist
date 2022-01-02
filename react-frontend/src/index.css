@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 body {
-  background: #1ca0f9 !important;
+  background: #227994 !important;
   min-height: 100vh;
   display: flex;
   font-weight: 400;
@@ -28,12 +28,13 @@ html,
 .App,
 #root,
 .auth-wrapper {
+  
   width: 100%;
   height: 100%;
 }
 
 .navbar-light {
-  background-color: #15171c;
+  background-color: #7dbff5;
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
 }
 
@@ -47,7 +48,7 @@ html,
 
 
 .auth-wrapper .form-control:focus {
-  border-color: #1d3f9c;
+  border-color: #5673c4;
   box-shadow: none;
 }
 
@@ -72,7 +73,7 @@ html,
 }
 
 .forgot-password a {
-  color: #167bff;
+  color: #5e82b1;
 }
 .App-logo {
   width:150px;
