@@ -63,16 +63,19 @@ class Chat(db.Model):
     chat_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key = True)
 
 @dataclass
-class ListofBugs(db.Model):
+class BugReport(db.Model):
     __tablename__ = 'ListofBugs'
     id: int
     title: str
     description: str
-    InTreatment: bool
+    status: str
+    statuscolor: str
+
     id = db.Column(db.Integer, primary_key = True)
-    title = db.Column(db.String(50),unique = False, nullable = False)
+    title = db.Column(db.String(100),unique = False, nullable = False)
     description = db.Column(db.String(300),unique = False, nullable = False)
-    InTreatment = db.Column(db.Boolean, default=False,unique = False, nullable = False)
+    status = db.Column(db.String(50), default=False,unique = False, nullable = False)
+    statuscolor = db.Column(db.String(7), default=False,unique = False, nullable = False)
 
 @dataclass
 class ListofSuggestions(db.Model):
@@ -122,5 +125,3 @@ class EquipmentCheckList(db.Model):
     name = db.Column(db.String(100), unique = False, nullable = False)
     color = db.Column(db.String(7), nullable = False)
     checked = db.Column(db.Boolean, nullable = False)
-
-db.create_all()
