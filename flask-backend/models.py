@@ -36,6 +36,8 @@ class ListOfPlaces(db.Model):
     name: str
     start_date: str
     end_date: str
+    lat: float
+    lon: float
 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     list_id = db.Column(db.Integer, db.ForeignKey('ListOfLists.id'))
@@ -43,6 +45,8 @@ class ListOfPlaces(db.Model):
     name = db.Column(db.String(100), unique = False,nullable = False)
     start_date = db.Column(db.String(8), nullable = False)
     end_date = db.Column(db.String(8), nullable = False)
+    lat = db.Column(db.Float, nullable = False)
+    lon = db.Column(db.Float, nullable = False)
 
 @dataclass
 class ListOfAttractions(db.Model):
