@@ -12,7 +12,7 @@ export default function  WeatherPage(props)  {
     lang: "en",
     unit: "metric" // values are (metric, standard, imperial)
   });
-
+  
   return (
     <div>
     <ReactWeather

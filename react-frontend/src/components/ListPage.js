@@ -26,25 +26,22 @@ export default function  ListPage()  {
 
 
     
-    
-    
-    async function Setlat(da) {
+        
+    async function Setlat(vvv) {
+      var da=vvv.name
+
       da=da.split(",")[0]
       da=da.split(" ")[0]
-      
-      console.log(da);
-      const key= "247932334207d909622a772dcc40e64c"
+      const key= "5d50cb77a4d850371ce5a430e31c9b24"
       const response = await fetch("http://api.openweathermap.org/geo/1.0/direct?q="+da+"&limit=1"+"&appid="+key);
       const data = await response.json();
-      var  lat=data[0].lat;
-      var lon=data[0].lon;
-      console.log("lat",lat);
-      console.log("lon",lon);
-      
-    }
+      setlatlon({"lat":data[0].lat,"lon":data[0].lon})
+      if(latlon===''){ console.log("wait")}
+     else{console.log(latlon)} }
+
 
   const ListGroupItem = (lgi, index) => {
-
+ 
       return ( 
               <ListGroup.Item  variant="default" key={index} style={{ textAlign: 'left', color: "black", background: "#1ca0f9" }} as="li">
                 <Row><Col><h5>place name</h5></Col><Col><h5>start date</h5></Col><Col><h5>end date</h5></Col></Row>
@@ -53,11 +50,12 @@ export default function  ListPage()  {
                       <form action="http://localhost:5000/removeplace" method="post">
                       
                       <Button variant="danger" className="float-end" type="submit" name="place_id" value={lgi.id}>remove</Button>
-                      
+                      {console.log("gggg")}
                       </form>
+                     
                       <form action="http://localhost:5000/viewplace" method="post">
                       
-                      <Button variant="success" className="float-end" type="submit" name="place_id" value={lgi.id}onClick={Setlat(lgi.name)}>view place</Button>
+                      <Button variant="success" className="float-end" type="submit" name="place_id" value={lgi.id}>view place</Button>
                      </form>
 
                    
