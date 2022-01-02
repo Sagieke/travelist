@@ -23,7 +23,7 @@ function App() {
         <Link className="navbar-brand" to={"/"}> <img src={logo} className="App-logo" alt="logo" /></Link>
         <Switch>
         <Route exact path ="/" component ={MainPage}/>
-        <Route  exact path="/UserPage" component ={LogOut}/>
+        <Route  path="/UserPage" component ={LogOut}/>
         </Switch>
           </div>
         </nav>
