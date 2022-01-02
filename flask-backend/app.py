@@ -101,6 +101,14 @@ def Suggestiontest():
 @app.route('/FAQ-test')
 def FAQtest():
     return render_template("FAQ-test.html")
+
+@app.route('/FAQ-delete')
+def FAQdeletetest():
+    return render_template("FAQ-delete.html")
+
+@app.route('/FAQ-update')
+def FAQupdatetest():
+    return render_template("FAQ-update.html")
 #end of test funcs
 
 

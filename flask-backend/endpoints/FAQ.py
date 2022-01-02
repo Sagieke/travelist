@@ -20,7 +20,7 @@ def deleteFAQ(): #deletes an FAQ from the site
         faq = FAQ.query.filter_by(id = id).first()
         db.session.delete(faq)
         db.session.commit() 
-        return redirect('http://localhost:3000/faqUpdate')
+        return redirect('http://localhost:5000/FAQ-delete')
 
 @faq.route('/updateFAQ', methods=['GET', 'POST'])
 def updateFAQ(): #updates existing FAQ
@@ -32,8 +32,7 @@ def updateFAQ(): #updates existing FAQ
         faq.question = question
         faq.answer = answer
         db.session.commit() 
-        return redirect('http://localhost:3000/faqUpdate')
-
+        return redirect('http://localhost:5000/FAQ-update')
 
 @faq.route('/getFAQ',methods=['GET','POST'])
 def getFAQ():
