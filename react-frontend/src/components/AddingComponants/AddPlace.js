@@ -1,5 +1,6 @@
 import React ,{ useState,useEffect }from "react";
 import Datetime from 'react-datetime';
+import moment from 'moment';
 import GooglePlacesAutocomplete, {geocodeByPlaceId, getLatLng} from "react-google-places-autocomplete";
 import "react-datetime/css/react-datetime.css";
 import {Container,Row, Col,Button,Modal} from "react-bootstrap";
@@ -10,6 +11,10 @@ export default function  AddPlace()  {
   const [Place, setPlace] = useState({});
   const [StartDate, setStartDate] = useState('');
   const [EndDate, setEndDate] = useState('');
+  var yesterday = moment().subtract(1, "day");
+  function valid(current) {
+    return current.isAfter(yesterday);
+}
 
   /*
   useEffect(() => {
@@ -29,7 +34,7 @@ export default function  AddPlace()  {
       <Button variant="primary" onClick={handleShow}>
       add place
       </Button>
-      <Modal show={show} onHide={handleClose}>
+      <Modal size="lg" show={show} onHide={handleClose}>
         <form action="http://localhost:5000/addplace" method='post'>
         <Modal.Header closeButton>
           <Modal.Title><h3> add place</h3></Modal.Title>
@@ -49,17 +54,19 @@ export default function  AddPlace()  {
             hidden='true'
             name='place_name'
             value={Place.label}
+            required
           />
         </div>
+        <br/>
         <Container>
-            <Row>
-             <Col>start date</Col>
-             <Col>end date</Col>
+            <Row md={2}>
+             <Col style={{ textAlign:"center"}} > <label>start date</label></Col>
+             <Col style={{ textAlign:"center"}}> <label>end date</label></Col>
             </Row>
             <Row>
       
-            <Col><Datetime dateFormat="MM-DD-YY" timeFormat={false} closeOnSelect={true} placeholder="start date"  onChange={(event) => {setStartDate(event.format("MM-DD-YY"))}}/></Col>
-              <Col><Datetime dateFormat="MM-DD-YY" timeFormat={false} closeOnSelect={true}  placeholder="end date" onChange={(event) => {setEndDate(event.format("MM-DD-YY"))}}/></Col>
+            <Col><Datetime dateFormat="MM-DD-YY" timeFormat={false} closeOnSelect={true} input={false} placeholder="start date"  onChange={(event) => {setStartDate(event.format("MM-DD-YY"))}} isValidDate={valid}/></Col>
+              <Col><Datetime dateFormat="MM-DD-YY" timeFormat={false} input={false} closeOnSelect={true}  placeholder="end date" onChange={(event) => {setEndDate(event.format("MM-DD-YY"))}} isValidDate={valid} /></Col>
             <input hidden="true"
               name="start_date"
               value={StartDate}
