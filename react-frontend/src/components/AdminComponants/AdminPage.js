@@ -1,6 +1,7 @@
 import React , { useState, useEffect }from "react";
 import {Container,Row,ListGroup} from "react-bootstrap";
 import UserListAdmin from "./UserListAdmin";
+import BugReportAdmin from "./BugReportsAdmin";
 export default function  AdminPage()  {
  
 
@@ -24,6 +25,7 @@ export default function  AdminPage()  {
           <br />
           <Row>
             <UserListAdmin/>
+            <BugReportAdmin/>
             
           </Row>
           </div>
