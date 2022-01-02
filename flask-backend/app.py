@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect,render_template, request,current_app
+from flask import Flask, request, redirect,render_template,jsonify, request,current_app
 from flask_sqlalchemy import SQLAlchemy
 from flask_session import Session
 from flask_cors import CORS
@@ -37,6 +37,7 @@ def create_app(test_mode,db_uri):
         from endpoints.Userlist import Userlist
         from endpoints.Placepage import placepage
         from endpoints.FAQ import faq
+        from endpoints.BugReports import bug
         app.register_blueprint(Homepage)
         app.register_blueprint(Userpage)
         app.register_blueprint(ListOfListsPage)
@@ -46,6 +47,7 @@ def create_app(test_mode,db_uri):
         app.register_blueprint(Userlist)
         app.register_blueprint(placepage)
         app.register_blueprint(faq)
+        app.register_blueprint(bug)
         #database creation using models
         db.create_all()
 
@@ -57,20 +59,8 @@ app = create_app(False,'sqlite:///database.db')
 def server():
     return "<h1>Hello, this is the server, nothing of interest here :)</h1>"
 
-
 #new blueprints testings
-from models import ListofBugs,ListofSuggestions
-
-@app.route('/submitBug',methods=['GET','POST'])
-def submitBug():
-    if request.method == 'POST':
-        #user_name = session.get("username")
-        title = request.form['title']
-        description = request.form['description']
-        new_report = ListofBugs(InTreatment = False, title=title, description=description)
-        db.session.add(new_report)
-        db.session.commit()
-        return redirect('http://127.0.0.1:5000/')
+from models import ListofSuggestions
 
 @app.route('/submitSuggestion',methods=['GET','POST'])
 def submitSuggestion():
@@ -82,6 +72,7 @@ def submitSuggestion():
         db.session.add(new_suggestions)
         db.session.commit()
         return redirect('http://127.0.0.1:5000/')
+
 #testing routes for backend
 @app.route('/test')
 def home():

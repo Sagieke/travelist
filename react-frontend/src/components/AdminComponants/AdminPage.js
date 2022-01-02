@@ -1,12 +1,8 @@
-import AddPlace from "./AddPlace";
-import Weather from "./weather";
 import React , { useState, useEffect }from "react";
-import {Container,Row, Col,Button,Modal,ListGroup} from "react-bootstrap";
-import UserList from "./UserList";
+import {Container,Row,ListGroup} from "react-bootstrap";
+import UserListAdmin from "./UserListAdmin";
+import BugReportAdmin from "./BugReportsAdmin";
 export default function  AdminPage()  {
- 
-
-
 
     return (
 
@@ -17,15 +13,14 @@ export default function  AdminPage()  {
           <hr class="my-4"></hr>
           <Row>
 
-          <ListGroup defaultActiveKey="#link1" as="ol" numbered>
-            
-          
-          
+          <ListGroup defaultActiveKey="#link1" as="ol" numbered>  
         </ListGroup>
           </Row>
           <br />
           <Row>
-            <UserList/>
+            <UserListAdmin/>
+            <BugReportAdmin/>
+            
           </Row>
           </div>
           <br />

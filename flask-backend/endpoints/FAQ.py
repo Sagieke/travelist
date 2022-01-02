@@ -11,7 +11,8 @@ def addFAQ(): #adds new FAQ to the site
         faq = FAQ(question = question, answer = answer)
         db.session.add(faq)
         db.session.commit() 
-        return redirect('http://127.0.0.1:5000/FAQ-test')
+        return redirect('http://localhost:3000/techSupport')
+    
 
 @faq.route('/deleteFAQ', methods=['GET', 'POST'])
 def deleteFAQ(): #deletes an FAQ from the site
@@ -20,19 +21,24 @@ def deleteFAQ(): #deletes an FAQ from the site
         faq = FAQ.query.filter_by(id = id).first()
         db.session.delete(faq)
         db.session.commit() 
-        return redirect('http://localhost:5000/FAQ-delete')
+        return redirect('http://localhost:3000/techSupport')
+    return print("guy")
 
 @faq.route('/updateFAQ', methods=['GET', 'POST'])
 def updateFAQ(): #updates existing FAQ
     if request.method == 'POST':
         id = request.form['id']
+        print(id)
         faq = FAQ.query.filter_by(id = id).first()
         question = request.form['question']
+        print(question)
         answer = request.form['answer']
+        print(answer)
         faq.question = question
         faq.answer = answer
         db.session.commit() 
-        return redirect('http://localhost:5000/FAQ-update')
+        return redirect('http://localhost:3000/adminpage')
+    return "h1"
 
 @faq.route('/getFAQ',methods=['GET','POST'])
 def getFAQ():

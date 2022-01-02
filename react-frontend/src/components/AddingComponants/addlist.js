@@ -1,7 +1,15 @@
 import React ,{ useState }from "react";
 import {Button,Modal,Form} from "react-bootstrap";
 
-
+const ButtonStyle1={
+  width:"700px",
+  borderColor:"black",
+  color:"black",
+  height:"35px",
+ borderColor:"black",
+  backgroundColor:"lightblue",
+  margin:"1px",
+}
 
 export default function  AddList()  {
     const [show, setShow] = useState(false);
@@ -14,7 +22,7 @@ export default function  AddList()  {
     return (
       
         <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button style={ButtonStyle1} variant="primary" onClick={handleShow}>
       add list
       </Button>
       <Modal show={show} onHide={handleClose}>
