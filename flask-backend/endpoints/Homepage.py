@@ -27,10 +27,10 @@ def Login():
         if user and check_password_hash(user.password,password):
             #save user to session
             session['user_id'] = user.id
-            if user.usertype == 'admin':
+            if user.usertype == 'Admin':
                 return redirect('http://localhost:3000/adminPage')
-            elif user.usertype == 'techSupport':
-                return redirect('http://localhost:3000/techSupportPage')
+            elif user.usertype == 'TechSupport':
+                return redirect('http://localhost:3000/techSupport')
             else: 
                 return redirect('http://localhost:3000/userPage')
             
