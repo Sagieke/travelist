@@ -1,4 +1,4 @@
-from flask import Blueprint, session, request, redirect
+from flask import Blueprint, request, redirect, jsonify
 from app import db
 from models import ListofMessages
 Message = Blueprint('Message',__name__)
@@ -21,3 +21,9 @@ def messageDeleter():
         db.session.delete(message)
         db.session.commit()
         return redirect('http://127.0.0.1:5000/')
+
+@Message.route('/getMessage',methods=['GET','POST'])
+def getMessage():
+    if request.method == 'GET':
+        Messages = ListofMessages.query.all()
+        return jsonify(Messages)
