@@ -40,12 +40,12 @@ def ChangeBugStatusAdmin():
     if request.method == 'POST':
         bug_id = request.form['id']
         bug = BugReport.query.filter_by(id = bug_id).first()
-        if bug.status == 'Pending':
+        if bug.status == 'In Treatment':
             bug.status = 'Treated'
             bug.statuscolor = '#80fa5b'
         else: 
-            bug.status = 'Pending'
-            bug.statuscolor = '#ff0000'
+            bug.status = 'In Treatment'
+            bug.statuscolor = '#ffee00'
         db.session.commit()
         return redirect('http://localhost:3000/adminpage')
 
