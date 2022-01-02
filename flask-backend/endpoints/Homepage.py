@@ -12,7 +12,7 @@ def Register():
         password = request.form['password']
         answer = request.form['answer']
         hashed_password = generate_password_hash(password)
-        usertype = 'traveler'
+        usertype = 'Traveler'
         new_user = User(username=username, password=hashed_password, usertype = usertype, answer = answer) #user table constructor
         db.session.add(new_user)
         db.session.commit()
@@ -33,6 +33,7 @@ def Login():
                 return redirect('http://localhost:3000/techSupport')
             else: 
                 return redirect('http://localhost:3000/userPage')
+        
             
 @Homepage.route('/logout', methods=['GET', 'POST'])
 def logout():
