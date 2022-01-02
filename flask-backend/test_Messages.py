@@ -10,6 +10,15 @@ class UserListTest(MyTest):
         db.session.commit() 
         assert message in db.session
 
+    def test_delete_Message_db(self):
+        message = ListofMessages(title = 'testitle', description = 'testdescription')
+        db.session.add(message)
+        db.session.commit() 
+        message = ListofMessages.query.filter_by(id=1).first()
+        db.session.delete(message)
+        db.session.commit()
+        assert message not in db.session
+
     def test_add_Message(self):
         tester = self.app.test_client(self)  
         response = tester.post('/messageSender', data={'title': 'test', 'description': 'test'})
