@@ -34,17 +34,18 @@ def ChangeBugStatusTech():
             bug.statuscolor = '#ff0000'
         db.session.commit()
         return redirect('http://localhost:3000/techsupport')
-    else: return "h1"
 
 @bug.route('/ChangeBugStatusAdmin',methods=['GET','POST'])
 def ChangeBugStatusAdmin():
     if request.method == 'POST':
         bug_id = request.form['id']
-        status = request.form['status']
         bug = BugReport.query.filter_by(id = bug_id).first()
-        if status == 'Treated':
+        if bug.status == 'Pending':
             bug.status = 'Treated'
             bug.statuscolor = '#80fa5b'
+        else: 
+            bug.status = 'Pending'
+            bug.statuscolor = '#ff0000'
         db.session.commit()
         return redirect('http://localhost:3000/adminpage')
 
