@@ -27,18 +27,7 @@ export default function  ListPage()  {
 
     
         
-    async function Setlat(vvv) {
-      var da=vvv.name
-
-      da=da.split(",")[0]
-      da=da.split(" ")[0]
-      const key= "5d50cb77a4d850371ce5a430e31c9b24"
-      const response = await fetch("http://api.openweathermap.org/geo/1.0/direct?q="+da+"&limit=1"+"&appid="+key);
-      const data = await response.json();
-      setlatlon({"lat":data[0].lat,"lon":data[0].lon})
-      if(latlon===''){ console.log("wait")}
-     else{console.log(latlon)} }
-
+  
 
   const ListGroupItem = (lgi, index) => {
  
