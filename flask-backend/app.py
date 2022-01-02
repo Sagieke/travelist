@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect,render_template, request,current_app
+from flask import Flask, request, redirect,render_template,jsonify, request,current_app
 from flask_sqlalchemy import SQLAlchemy
 from flask_session import Session
 from flask_cors import CORS
@@ -82,6 +82,16 @@ def submitSuggestion():
         db.session.add(new_suggestions)
         db.session.commit()
         return redirect('http://127.0.0.1:5000/')
+
+
+@app.route('/getBug',methods=['GET','POST'])
+def getFAQ():
+    if request.method == 'GET':
+        BUGs = ListofBugs.query.all()
+        return jsonify(BUGs)
+
+
+
 #testing routes for backend
 @app.route('/test')
 def home():
