@@ -10,6 +10,15 @@ class UserListTest(MyTest):
         db.session.commit() 
         assert bug in db.session
 
+    def test_delete_bug_db(self):
+        bug = BugReport(title = 'testitle', description = 'testdescription',status= 'testing',statuscolor = '#ffffff')
+        db.session.add(bug)
+        db.session.commit() 
+        bug = BugReport.query.filter_by(id=1).first()
+        db.session.delete(bug)
+        db.session.commit() 
+        assert bug not in db.session
+
     def test_add_bug(self):
         tester = self.app.test_client(self)  
         response = tester.post('/submitBug', data={'title': 'test', 'description': 'test'})
