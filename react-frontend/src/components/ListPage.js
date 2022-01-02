@@ -20,7 +20,7 @@ export default function  ListPage()  {
          credentials: "include"
         })
          .then(response => response.json())
-         .then(object => setlistdata(object))
+         .then(object => setlistdata(object[0]))
       },[]);
 
 
