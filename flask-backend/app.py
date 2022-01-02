@@ -59,20 +59,6 @@ app = create_app(False,'sqlite:///database.db')
 def server():
     return "<h1>Hello, this is the server, nothing of interest here :)</h1>"
 
-#new blueprints testings
-from models import ListofSuggestions
-
-@app.route('/submitSuggestion',methods=['GET','POST'])
-def submitSuggestion():
-    if request.method == 'POST':
-        #user_name = session.get("username")
-        title = request.form['title']
-        description = request.form['description']
-        new_suggestions = ListofSuggestions( title=title, description=description)
-        db.session.add(new_suggestions)
-        db.session.commit()
-        return redirect('http://127.0.0.1:5000/')
-
 #testing routes for backend
 @app.route('/test')
 def home():
