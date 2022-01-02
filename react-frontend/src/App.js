@@ -1,6 +1,6 @@
 import React from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import logo from './logo.svg';
 import ListPage from "./components/Pages/ListPage";
 import MainPage from "./components/Pages/MainPage";
@@ -11,6 +11,8 @@ import AdminPage from "./components/AdminComponants/AdminPage";
 import techSupport from "./components/TechSupportComponant/TechSupport";
 import ImageSliderAvtivate from "./components/Testing/ImageSliderActivate";
 import UserFaq from "./components/UserComponants/UserFAQ";
+
+
 import "./App.css";
 function App() {
   return (
@@ -21,7 +23,7 @@ function App() {
         <Link className="navbar-brand" to={"/"}> <img src={logo} className="App-logo" alt="logo" /></Link>
         <Switch>
         <Route exact path ="/" component ={MainPage}/>
-        <Route exact path="/UserPage" component ={LogOut}/>
+        <Route  exact path="/UserPage" component ={LogOut}/>
         </Switch>
           </div>
         </nav>

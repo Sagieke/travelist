@@ -4,27 +4,56 @@ import React ,{ useState, useEffect }from "react";
 import Countdown from "./countdown";
 import {Container,Row, Col,Button,Modal,ListGroup,} from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
-export default function  PlacePage(props)  {
+export default function  PlacePage()  {
+  var [place, setplace] = useState('');
+  const [placedate, setplacedata] = useState('');
 
-  const [placedata, setplacedata] = useState({});
-  
+function Setdate(){
   useEffect(() => {
     fetch('http://localhost:5000/getPlaceInfo',{
       credentials: "include"
     })
     .then(response => response.json())
-    .then(object => setplacedata(object))
+    .then(object => setplacedata(object.start_date))
   },[]);
+if (placedate===''){return<h1>loading</h1>}
+else{
+  return<Countdown  date={placedate}/>
+}
+}
+
+function Setplace(){
+ 
+useEffect(() => {
+  fetch('http://localhost:5000/getPlaceInfo',{
+    credentials: "include"
+  })
+  .then(response => response.json())
+  .then(object => setplace(object.name))
+},[]);
+ 
+
+if (place===''){return<h1>loading</h1>}
+else{
+  return  <WeatherPage name={place}/>
+}
+}
+
+
 
   return (
+    
     <div className="auth-wrapper">
+     
     <Row>
         <div className="auth-inner-left">
           <h1>place weather</h1>
           <hr class="my-4"></hr>
       <Row>
         <div>
-          <WeatherPage/>
+        
+        {Setplace()}
+       
         </div>
       </Row>
       <br/>
@@ -33,13 +62,11 @@ export default function  PlacePage(props)  {
       <div className="auth-inner-center">
       <h1>list of attractions</h1>
       <hr class="my-4"></hr>
-      <Countdown date='12-30-21'/>
+      {Setdate()}
       </div>
       
       <div className="auth-inner-right">
-      <Row>
       <EquipmentChecklist/>
-      </Row>
       </div>
     </Row>
     </div>

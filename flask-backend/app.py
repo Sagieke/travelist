@@ -37,6 +37,7 @@ def create_app(test_mode,db_uri):
         from endpoints.Userlist import Userlist
         from endpoints.Placepage import placepage
         from endpoints.FAQ import faq
+        from endpoints.BugReports import bug
         app.register_blueprint(Homepage)
         app.register_blueprint(Userpage)
         app.register_blueprint(ListOfListsPage)
@@ -46,6 +47,7 @@ def create_app(test_mode,db_uri):
         app.register_blueprint(Userlist)
         app.register_blueprint(placepage)
         app.register_blueprint(faq)
+        app.register_blueprint(bug)
         #database creation using models
         db.create_all()
 

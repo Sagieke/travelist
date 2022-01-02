@@ -2,7 +2,7 @@ import React , { useState, useEffect, }from "react";
 import {Container,Row, Col,Button,Modal,ListGroup,Table,Dropdown,DropdownButton} from "react-bootstrap";
 import ChangeRole from "./ChangeRoleAdmin";
 import DropdownItem from "react-bootstrap/esm/DropdownItem";
-
+import { BsFillTrashFill } from 'react-icons/bs';
 
 
 const MakeAdminButtonStyle={
@@ -69,7 +69,7 @@ export default function UserListAdmin()  {
         <td>{lui.username}</td>
         <td>{lui.usertype}</td>
         <td><form action="http://localhost:5000/deleteUser" method="post" >
-        <Button style={ButtonStyle2} name= "id" class="float-end" type="submit" value={lui.id} >Delete</Button>
+        <Button style={ButtonStyle2} name= "id" class="float-end" type="submit" value={lui.id} >Delete <BsFillTrashFill/></Button>
  </form></td>
        <td> <ChangeRole id={lui.id}/></td>
       </tr>

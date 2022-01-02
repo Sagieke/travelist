@@ -2,8 +2,8 @@ import React , { useState, useEffect, }from "react";
 import {Container,Row, Col,Button,Modal,ListGroup,Table,Dropdown,DropdownButton} from "react-bootstrap";
 import UserFaq from "./UserFAQ";
 import ContactUs from "./ContactUs";
-
-
+import SubmitBugReportUser from "./SubmitBugReportUser";
+import { BsQuestionOctagonFill } from 'react-icons/bs';
 
 const ButtonStyle2={
     color:"black",
@@ -76,10 +76,9 @@ return (
       
     </Modal.Header>
     <Modal.Body>
-    <Button href="/FAQ">FAQ</Button>
+    <Button style={ButtonStyle2} href="/FAQ"><BsQuestionOctagonFill/>FAQ </Button>
+    <SubmitBugReportUser/>
     <ContactUs/>
-    <Button style={ButtonStyle4}>Chat ( that will never work)</Button>
-
    </Modal.Body>
     <Modal.Footer>
     </Modal.Footer>

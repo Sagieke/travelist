@@ -2,7 +2,7 @@ import React from "react";
 import  Login from "../NavBarItems/login.component";
 import SignUp from "../NavBarItems/signup.component";
 import UserHelp from "../UserComponants/UserHelp";
-
+import BackButton from "../NavBarItems/BackButton";
 
 export default function  MainPage()  {
    
@@ -12,6 +12,7 @@ export default function  MainPage()  {
       
     <div className="container">
     <div className="App-login">
+      <BackButton/>
           <Login/>  
           <SignUp/>
           <UserHelp/>

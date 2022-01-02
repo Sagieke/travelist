@@ -94,7 +94,7 @@ export default function UserFaq()  {
         <div className="auth-inner-FAQ">
           <h1>FAQ'S:</h1>
           <hr class="my-4"></hr>
-          <Row style={{'height': '298px', 'overflow':'auto'}}>
+          <Row style={{height: '298px', overflow:'auto'}}>
 
           
           {ShowFaqlist.map(ListFAQ)}

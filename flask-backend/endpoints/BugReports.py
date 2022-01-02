@@ -13,16 +13,16 @@ def submitBug():
         new_report = BugReport(title=title, description=description, status = 'Pending', statuscolor = '#ff0000')
         db.session.add(new_report)
         db.session.commit()
-        return redirect('http://127.0.0.1:5000/')
+        return redirect('http://localhost:3000/')
 
 @bug.route('/getBugs',methods=['GET','POST'])
 def getFAQ():
     if request.method == 'GET':
-        bugs = BugReport.query.filter_by(status='Pending')
+        bugs = BugReport.query.all()
         return jsonify(bugs)
 
 @bug.route('/ChangeBugStatusTech',methods=['GET','POST'])
-def ChangeBugStatus():
+def ChangeBugStatusTech():
     if request.method == 'POST':
         bug_id = request.form['id']
         bug = BugReport.query.filter_by(id = bug_id).first()
@@ -34,9 +34,10 @@ def ChangeBugStatus():
             bug.statuscolor = '#ff0000'
         db.session.commit()
         return redirect('http://localhost:3000/techsupport')
+    else: return "h1"
 
 @bug.route('/ChangeBugStatusAdmin',methods=['GET','POST'])
-def ChangeBugStatus():
+def ChangeBugStatusAdmin():
     if request.method == 'POST':
         bug_id = request.form['id']
         status = request.form['status']
@@ -54,4 +55,4 @@ def deleteBug():
         bug = BugReport.query.filter_by(id = bug_id).first()
         db.session.delete(bug)
         db.session.commit()
-        return redirect('http://localhost:3000/adminpage')
+        return redirect('http://localhost:3000/techsupport')

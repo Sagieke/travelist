@@ -62,9 +62,11 @@ class ListOfAttractions(db.Model):
 class Chat(db.Model):
     chat_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key = True)
 
+
+
 @dataclass
 class BugReport(db.Model):
-    __tablename__ = 'ListofBugs'
+    __tablename__ = 'BugReport'
     id: int
     title: str
     description: str
