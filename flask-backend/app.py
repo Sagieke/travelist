@@ -57,20 +57,8 @@ app = create_app(False,'sqlite:///database.db')
 def server():
     return "<h1>Hello, this is the server, nothing of interest here :)</h1>"
 
-
 #new blueprints testings
-from models import ListofBugs,ListofSuggestions
-
-@app.route('/submitBug',methods=['GET','POST'])
-def submitBug():
-    if request.method == 'POST':
-        #user_name = session.get("username")
-        title = request.form['title']
-        description = request.form['description']
-        new_report = ListofBugs(InTreatment = False, title=title, description=description)
-        db.session.add(new_report)
-        db.session.commit()
-        return redirect('http://127.0.0.1:5000/')
+from models import ListofSuggestions
 
 @app.route('/submitSuggestion',methods=['GET','POST'])
 def submitSuggestion():
@@ -82,15 +70,6 @@ def submitSuggestion():
         db.session.add(new_suggestions)
         db.session.commit()
         return redirect('http://127.0.0.1:5000/')
-
-
-@app.route('/getBug',methods=['GET','POST'])
-def getFAQ():
-    if request.method == 'GET':
-        BUGs = ListofBugs.query.all()
-        return jsonify(BUGs)
-
-
 
 #testing routes for backend
 @app.route('/test')
