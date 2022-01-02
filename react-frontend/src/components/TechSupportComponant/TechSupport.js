@@ -4,7 +4,7 @@ import React , { useState, useEffect }from "react";
 import {Container,Row, Col,Button,Modal,ListGroup} from "react-bootstrap";
 import Faq from "../NavBarItems/FAQ";
 import UserListTech from "./UserListTech";
-
+import BugReportTech from "./BugReportsTech"
 
 
 
@@ -55,6 +55,7 @@ export default function techSupport()  {
           <Row>
            <UserListTech/> 
         <Faq/>
+        <BugReportTech/>
           </Row>
           </div>
           <br />

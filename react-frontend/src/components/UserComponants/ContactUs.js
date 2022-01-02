@@ -3,7 +3,7 @@ import {Container,Row, Col,Button,Modal,ListGroup,Table,Dropdown,DropdownButton,
 import { FaQuestionCircle } from 'react-icons/fa';
 import AddFAQ from "../AddingComponants/AddFaq";
 import EditFAQ from "../Pages/EditFAQ";
-
+import { FaFrownOpen } from 'react-icons/fa';
 const DeleteButtonStyle={
   flexDirection:'row',
   alignItems:'center',
@@ -66,7 +66,7 @@ export default function ContactUs()  {
     <>
 
 
-<Button style={ButtonStyle2}variant="primary" onClick={handleShow}>Contact us</Button>
+<Button style={ButtonStyle2}variant="primary" onClick={handleShow}><FaFrownOpen/>Contact us</Button>
   <Modal size="lg" show={show} onHide={handleClose}>
   <form action='http://localhost:5000/addFAQ' method='post' >
   <Modal.Header closeButton>

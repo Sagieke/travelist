@@ -2,6 +2,7 @@ import React , { useState, useEffect, Componant}from "react";
 import {Container,Row, Col,Button,Modal,ListGroup,Table,Dropdown,DropdownButton,} from "react-bootstrap";
 import AddFAQ from "../AddingComponants/AddFaq";
 
+
 const ButtonStyle1={
     mergin:"10px",
     borderColor:"black",
@@ -12,7 +13,17 @@ const ButtonStyle1={
     margin:"10px",
   }
 
+  const ButtonStyle2={
+    mergin:"Auto",
+    borderColor:"black",
+    color:"white",
+    width:"80px",
+   borderColor:"black",
+    backgroundColor:"Lightblue",
+    
+  }
 
+  
 
 export default function BugReport()  {
     const [show, setShow] = useState(false);
@@ -22,7 +33,7 @@ export default function BugReport()  {
 
 
      useEffect(() => {
-        fetch('http://localhost:5000/getBug',{
+        fetch('http://localhost:5000/getBugs',{
             credentials: "include"
          })
           .then(response => response.json())
@@ -35,11 +46,9 @@ export default function BugReport()  {
         <td>{bug.id}</td>
         <td>{bug.title}</td>
         <td>{bug.description}</td>
-        <td>{bug.InTreatment}</td>
-        <td>
-       <form action="http://localhost:5000/submitBug" method="post" >  <Button  name= "id" className="float-end" type="submit"  >Add bugRerport </Button></form>
-        </td>
-
+        <td >{bug.status} <form action="http://localhost:5000/ChangeBugStatusTech" method="post"><Button name="id" value={bug.id} type="submit"  style={{backgroundColor:bug.statuscolor,color:"black"}}> Change Status</Button></form></td>
+        <td><form action="http://localhost:5000/deleteBug" method="post"  ><button name="id" value={bug.id} type="submit" >Delete bug report</button></form></td>
+        
      </tr>
              )   
   };
@@ -49,9 +58,9 @@ export default function BugReport()  {
 
 <Button style={ButtonStyle1} variant="primary" onClick={handleShow}>Bug reports</Button>
   <Modal size="lg" show={show} onHide={handleClose}>
-  <form action='http://localhost:5000//submitBug' method='post' >
+  <form action='http://localhost:5000/ChangeBugStatusTech' method='post' >
   <Modal.Header closeButton>
-    <Modal.Title><h3> Question list</h3></Modal.Title>
+    <Modal.Title><h3> Bug reports:</h3></Modal.Title>
   </Modal.Header>
   <Modal.Body>
     <div style={{'height': '300px', 'overflow':'scroll', 'display': 'block',}}>
@@ -61,7 +70,8 @@ export default function BugReport()  {
       <th> id</th>
        <th>title</th>
        <th>description</th>
-       <th>InTreatment</th>
+       <th>Status</th>
+       <th>discard</th>
     </tr>
   </thead>
   <tbody>
@@ -70,8 +80,7 @@ export default function BugReport()  {
 </Table>
 </div>
    </Modal.Body>
-    <Modal.Footer>
-    <AddFAQ/>         
+    <Modal.Footer>       
     </Modal.Footer>
     </form>
   </Modal>
