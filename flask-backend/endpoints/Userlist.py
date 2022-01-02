@@ -19,13 +19,13 @@ def changePermissionTech():
             user = User.query.filter_by(id = user_id).first()
             user.usertype = 'TechSupport'
             db.session.commit()
-            return redirect('http://127.0.0.1:5000/test')
+            return redirect('http://localhost:3000/techsupport')
         if role == 'TRAVELER':
             user = User.query.filter_by(id = user_id).first()
             user.usertype = 'Traveler'
             db.session.commit()
-            return redirect('http://127.0.0.1:5000/test')
-    else : return redirect('http://127.0.0.1:5000/')
+            return redirect('http://localhost:3000/techsupport')
+    else : return redirect('http://localhost:3000/techsupport')
     
 @Userlist.route('/changePermissionAdmin',methods=['GET','POST']) 
 def changePermissionAdmin():
@@ -36,18 +36,18 @@ def changePermissionAdmin():
             user = User.query.filter_by(id = user_id).first()
             user.usertype = 'TechSupport'
             db.session.commit()
-            return redirect('http://127.0.0.1:5000/test')
+            return redirect('http://localhost:3000/adminpage')
         if role == 'ADMIN':
             user = User.query.filter_by(id = user_id).first()
             user.usertype = 'Admin'
             db.session.commit()
-            return redirect('http://127.0.0.1:5000/test')
+            return redirect('http://localhost:3000/adminpage')
         if role == 'TRAVELER':
             user = User.query.filter_by(id = user_id).first()
             user.usertype = 'Traveler'
             db.session.commit()
-            return redirect('http://127.0.0.1:5000/test')
-    else : return redirect('http://127.0.0.1:5000/')
+            return redirect('http://localhost:3000/adminpage')
+    else : return redirect('http://localhost:3000/blabla')
 
 @Userlist.route('/deleteUser',methods=['GET','POST'])
 def deleteUser():
@@ -56,5 +56,5 @@ def deleteUser():
         user = User.query.filter_by(id = user_id).first()
         db.session.delete(user)
         db.session.commit()
-        return redirect('http://127.0.0.1:5000/test')
+        return redirect('http://localhost:3000/adminpage')
 
