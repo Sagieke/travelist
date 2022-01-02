@@ -16,7 +16,7 @@ def submitBug():
         return redirect('http://localhost:3000/')
 
 @bug.route('/getBugs',methods=['GET','POST'])
-def getFAQ():
+def getBugs():
     if request.method == 'GET':
         bugs = BugReport.query.all()
         return jsonify(bugs)
