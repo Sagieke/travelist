@@ -1,32 +1,32 @@
-
 .auth-inner-right {
   width: 770px;
   margin: auto;
-  background: #1d77cc;
+  background: #214ca8;
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
   padding: 40px 55px 45px 55px;
-  border-radius: 10px;
-  transition: all 0s;
+  border-radius: 15px;
+  transition: all 0.3s;
 }
 
 .auth-inner-left {
   width: 770px;
-  margin: Auto;
-  background: #3876af;
+  margin: auto;
+  
+  background: #8f96a7;
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
   padding: 40px 55px 45px 55px;
-  border-radius: 10px;
-  transition: all 0s;
+  border-radius: 15px;
+  transition: all 0.3s;
 }
 .auth-inner-center {
   width: 770px;
   margin: auto;
-  display:flex;
-  background: #2668b3;
+  
+  background: #b90dab;
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
   padding: 40px 55px 45px 55px;
   border-radius: 15px;
-  transition: all 1s;
+  transition: all 0.3s;
 }
 /*more shit guy added*/
 .slider {
