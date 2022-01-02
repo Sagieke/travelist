@@ -1,6 +1,5 @@
 from app import  db
 from models import BugReport
-from werkzeug.security import generate_password_hash
 from test_Homepage import MyTest
 
 class UserListTest(MyTest):
