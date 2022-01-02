@@ -17,7 +17,7 @@ def messageSender():
 def messageDeleter():
     if request.method == 'POST':
         id = request.form['id']
-        message = ListofMessages(id=id)
+        message = ListofMessages.query.filter_by(id=id).first()
         db.session.delete(message)
         db.session.commit()
         return redirect('http://127.0.0.1:5000/')

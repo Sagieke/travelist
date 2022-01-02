@@ -14,3 +14,11 @@ class UserListTest(MyTest):
         tester = self.app.test_client(self)  
         response = tester.post('/messageSender', data={'title': 'test', 'description': 'test'})
         self.assertRedirects(response, 'http://127.0.0.1:5000/')
+
+    def test_delete_Message(self):
+        new_message = ListofMessages(title='title', description='description')
+        db.session.add(new_message)
+        db.session.commit()
+        tester = self.app.test_client(self)  
+        response = tester.post('/messageDeleter', data={'id': '1'})
+        self.assertRedirects(response, 'http://127.0.0.1:5000/')
