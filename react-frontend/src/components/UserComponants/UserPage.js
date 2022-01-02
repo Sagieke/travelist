@@ -1,11 +1,13 @@
-import AddList from "./addlist";
+import AddList from "../AddingComponants/addlist";
 import React , { useState, useEffect }from "react";
 import {Container,Row, Col,Button,Modal,ListGroup,} from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
+import UserHelp from "./UserHelp";
 export default function  UserPage()  {
   const history = useHistory();
   const [listgiInfo, setlistgiInfo] = useState([]);
   const [listMSP, setListMSP] = useState([]);
+  
   useEffect(() => {
     fetch('http://localhost:5000/getlists',{
       credentials: "include"
@@ -59,16 +61,18 @@ export default function  UserPage()  {
       </div>
       <br />
       <div className="auth-inner-right">
-      <h1>most searched places</h1>
+      <h1>most searched places:</h1>
       <hr class="my-4"></hr>
       <Row>
         <ListGroup defaultActiveKey="#link1" as="ol" numbered>
           {listMSP.map(ListMostSearchedPlaces)}
+          
         </ListGroup>
       </Row>
       </div>
     </Row>
     
     </div>
+    
   );
 }

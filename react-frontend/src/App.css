@@ -1,4 +1,3 @@
-
 .auth-inner-right {
   width: 770px;
   margin: auto;
@@ -23,9 +22,77 @@
   width: 770px;
   margin: auto;
   
-  background: #b90dab;
-  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  background: #1c9ed1;
+  box-shadow: 0px 14px 80px rgba(44, 52, 199, 0.2);
   padding: 40px 55px 45px 55px;
   border-radius: 15px;
   transition: all 0.3s;
+}
+/*more shit guy added*/
+.slider {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  width: 1000px;
+  height: 600px;
+  border-radius: 10px;
+}
+
+.right-arrow {
+  position: absolute;
+  top: 50%;
+  right: 600px;
+  font-size: 3rem;
+  color: #000;
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+}
+
+.left-arrow {
+  position: absolute;
+  top: 50%;
+  left: 600px;
+  font-size: 3rem;
+  color: #000;
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+}
+
+.slide {
+  opacity: 0;
+  transition-duration: 1s ease;
+}
+
+.slide.active {
+  opacity: 1;
+  transition-duration: 1s;
+  transform: scale(1.08);
+}
+
+.auth-inner-FAQ {
+  width: 900px;
+  height: 600x;
+  margin: 900px;
+  background: #3876af;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  padding: 40px 55px 45px 55px;
+  border-radius: 10px;
+  transition: all 0s;
+}
+
+.auth-inner-FAQ2 {
+ 
+  margin: 100x;
+  background: #3876af;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  padding: 10px 10px 10px 10px;
+  border-radius: 10px;
+  transition: all 0s;
 }

@@ -1,7 +1,15 @@
 import React,{ useState } from "react";
 import {Button,Modal} from "react-bootstrap";
 
-
+const ButtonStyle1={
+  width:"150px",
+  borderColor:"black",
+  color:"black",
+  height:"35px",
+ borderColor:"black",
+  backgroundColor:"lightgrey",
+  margin:"1px",
+}
 
 export default function  ChangePassword()  {
   
@@ -15,7 +23,7 @@ const [password, setPassword] = useState('');
 return (
   <>
   
-  <Button variant="primary" onClick={handleShow}>
+  <Button style={ButtonStyle1} variant="primary" onClick={handleShow}>
    change password
       </Button>{' '}
   <Modal show={show} onHide={handleClose}>

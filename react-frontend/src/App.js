@@ -1,13 +1,18 @@
 import React from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import logo from './logo.svg';
-import ListPage from "./components/ListPage";
-import MainPage from "./components/MainPage";
-import UserPage from "./components/UserPage";
-import LogOut from "./components/LogOut";
-import PlacePage from "./components/placepage";
-import AdminPage from "./components/AdminPage";
+import ListPage from "./components/Pages/ListPage";
+import MainPage from "./components/Pages/MainPage";
+import UserPage from "./components/UserComponants/UserPage";
+import LogOut from "./components/NavBarItems/LogOut";
+import PlacePage from "./components/Pages/placepage";
+import AdminPage from "./components/AdminComponants/AdminPage";
+import techSupport from "./components/TechSupportComponant/TechSupport";
+import ImageSliderAvtivate from "./components/Testing/ImageSliderActivate";
+import UserFaq from "./components/UserComponants/UserFAQ";
+
+
 import "./App.css";
 function App() {
   return (
@@ -18,18 +23,20 @@ function App() {
         <Link className="navbar-brand" to={"/"}> <img src={logo} className="App-logo" alt="logo" /></Link>
         <Switch>
         <Route exact path ="/" component ={MainPage}/>
-        <Route exact path="/UserPage" component ={LogOut}/>
-    
+        <Route  exact path="/UserPage" component ={LogOut}/>
         </Switch>
           </div>
         </nav>
+       
         <Switch>
-
+              <Route exact path="/" component={ImageSliderAvtivate}/>
               <Route exact path="/userPage" component={UserPage}/>
               <Route exact path="/UserPage/places/place" component ={PlacePage}/>
               <Route  path="/UserPage/" component ={ListPage}/>
               <Route path="/UserPage/places" component ={ListPage}/>
               <Route path="/adminpage" component={AdminPage}/>
+              <Route path="/techsupport" component={techSupport}/>
+              <Route path="/FAQ" component={UserFaq}/>
               
               </Switch>
       

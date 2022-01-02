@@ -1,4 +1,4 @@
-import AddPlace from "./AddPlace";
+import AddPlace from "../AddingComponants/AddPlace";
 import Weather from "./weather";
 import React , { useState, useEffect }from "react";
 import {Container,Row, Col,Button,Modal,ListGroup} from "react-bootstrap";

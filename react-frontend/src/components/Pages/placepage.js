@@ -1,4 +1,4 @@
-import EquipmentChecklist from "./EquipmentCheckList";
+import EquipmentChecklist from "../AddingComponants/EquipmentCheckList";
 import WeatherPage from "./weather";
 import React ,{ useState, useEffect }from "react";
 import Countdown from "./countdown";
@@ -8,36 +8,36 @@ export default function  PlacePage()  {
   var [place, setplace] = useState('');
   const [placedate, setplacedata] = useState('');
 
-function Setdate(){
-  useEffect(() => {
-    fetch('http://localhost:5000/getPlaceInfo',{
-      credentials: "include"
-    })
-    .then(response => response.json())
-    .then(object => setplacedata(object.start_date))
-  },[]);
-if (placedate===''){return<h1>loading</h1>}
-else{
-  return<Countdown  date={placedate}/>
-}
-}
+  function Setdate(){
+    useEffect(() => {
+      fetch('http://localhost:5000/getPlaceInfo',{
+        credentials: "include"
+      })
+      .then(response => response.json())
+      .then(object => setplacedata(object.start_date))
+    },[]);
+    if (placedate===''){return<h1>loading</h1>}
+    else{
+      return<Countdown date={placedate}/>
+    }
+  }
 
-function Setplace(){
+  function Setplace(){
  
-useEffect(() => {
-  fetch('http://localhost:5000/getPlaceInfo',{
-    credentials: "include"
-  })
-  .then(response => response.json())
-  .then(object => setplace(object.name))
-},[]);
+    useEffect(() => {
+      fetch('http://localhost:5000/getPlaceInfo',{
+        credentials: "include"
+      })
+      .then(response => response.json())
+      .then(object => setplace(object))
+    },[]);
  
 
-if (place===''){return<h1>loading</h1>}
-else{
-  return  <WeatherPage name={place}/>
-}
-}
+    if (place===''){return<h1>loading</h1>}
+    else{
+      return  <WeatherPage name={place.name} lat={place.lat} lon={place.lon}/>
+    }
+  }
 
 
 
@@ -60,7 +60,7 @@ else{
     </div>
       <br />
       <div className="auth-inner-center">
-      <h1>list of attractions</h1>
+      <h1>Time left:</h1>
       <hr class="my-4"></hr>
       {Setdate()}
       </div>

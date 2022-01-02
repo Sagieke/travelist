@@ -7,8 +7,8 @@ export default function  WeatherPage(props)  {
   
   let { data, isLoading, errorMessage } = useOpenWeather({
     key: "5d50cb77a4d850371ce5a430e31c9b24",
-    lat:"0",
-    lon: "0",
+    lat: props.lat,
+    lon: props.lon,
     lang: "en",
     unit: "metric" // values are (metric, standard, imperial)
   });
