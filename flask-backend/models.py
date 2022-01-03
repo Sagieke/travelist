@@ -134,3 +134,15 @@ class EquipmentCheckList(db.Model):
     name = db.Column(db.String(100), unique = False, nullable = False)
     color = db.Column(db.String(7), nullable = False)
     checked = db.Column(db.Boolean, nullable = False)
+
+@dataclass
+class ListofJobs(db.Model):
+    __tablename__ = 'ListofJobs'
+    id: int
+    job_name: str
+    description: str
+    requirements: str
+    id = db.Column(db.Integer, primary_key = True)
+    job_name = db.Column(db.String(150),unique = False, nullable = False)
+    description = db.Column(db.String(300),unique = False, nullable = False)
+    requirements = db.Column(db.String(300),unique = False, nullable = False)
