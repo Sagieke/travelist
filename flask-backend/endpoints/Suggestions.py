@@ -10,10 +10,10 @@ def submitSuggestion():
         title = request.form['title']
         description = request.form['description']
         status = 'Pending'
-        new_suggestions = ListofSuggestions( title=title, description=description, status = status)
+        new_suggestions = ListofSuggestions(title=title, description=description, status = status)
         db.session.add(new_suggestions)
         db.session.commit()
-        return redirect('http://127.0.0.1:5000/')
+        return redirect('http://localhost:3000/techsupport')
 
 @suggestion.route('/deleteSuggestion',methods=['GET','POST'])
 def deleteSuggestion():
@@ -22,7 +22,7 @@ def deleteSuggestion():
         suggestion = ListofSuggestions.query.filter_by(id=id).first()
         db.session.delete(suggestion)
         db.session.commit()
-        return redirect('http://127.0.0.1:5000/')
+        return redirect('http://localhost:3000/techsupport')
 
 @suggestion.route('/ChangeSuggestionStatusTech',methods=['GET','POST'])
 def ChangeSuggestionStatusTech():
