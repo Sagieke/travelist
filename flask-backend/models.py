@@ -98,14 +98,30 @@ class ListofSuggestions(db.Model):
     description = db.Column(db.String(300),unique = False, nullable = False)
 
 @dataclass
-class ListofMessages(db.Model):
-    __tablename__ = 'ListofMessages'
+class ListofMessagesAdmin(db.Model):
+    __tablename__ = 'ListofMessagesAdmin'
     id: int
     title: str
     description: str
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(50),unique = False, nullable = False)
     description = db.Column(db.String(300),unique = False, nullable = False)
+
+@dataclass
+class ListofMessagesTech(db.Model):
+    __tablename__ = 'ListofMessagesTech'
+    user_id: str
+    id: int
+    title: str
+    description: str
+    answer: str
+
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    id = db.Column(db.Integer, primary_key = True)
+    title = db.Column(db.String(50),unique = False, nullable = False)
+    description = db.Column(db.String(300),unique = False, nullable = False)
+    answer = db.Column(db.String(300),unique = False, nullable = False)
+
 
 @dataclass
 class FAQ(db.Model):

@@ -33,7 +33,8 @@ def create_app(test_mode,db_uri):
         from endpoints.ListOfListsPage import ListOfListsPage
         from endpoints.ListofPlacesPage import ListOfPlacesPage
         from endpoints.Chat import chat_blueprint
-        from endpoints.Message import Message
+        from endpoints.MessagesAdmin import MessageAdmin
+        from endpoints.MessagesTech import MessageTech
         from endpoints.Userlist import Userlist
         from endpoints.Placepage import placepage
         from endpoints.FAQ import faq
@@ -45,7 +46,8 @@ def create_app(test_mode,db_uri):
         app.register_blueprint(ListOfListsPage)
         app.register_blueprint(ListOfPlacesPage)
         app.register_blueprint(chat_blueprint)
-        app.register_blueprint(Message)
+        app.register_blueprint(MessageAdmin)
+        app.register_blueprint(MessageTech)
         app.register_blueprint(Userlist)
         app.register_blueprint(placepage)
         app.register_blueprint(faq)
