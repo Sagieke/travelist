@@ -11,10 +11,11 @@ def Register():
         users = User.query.all()
         email = request.form['email']
         password = request.form['password']
+        question = request.form['question']
         answer = request.form['answer']
         hashed_password = generate_password_hash(password)
         usertype = 'Traveler'
-        new_user = User(username=email, password=hashed_password, usertype = usertype, answer = answer) #user table constructor
+        new_user = User(username=email, password=hashed_password, usertype = usertype, answer = answer,question = question) #user table constructor
         for user in users:
             if new_user.username == user.username:
                 return redirect('http://localhost:3000/signuperror')

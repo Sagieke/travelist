@@ -8,12 +8,15 @@ class User(db.Model): #user data base
     id: int
     username: str
     usertype: str
+    answer: str
+    question: str
     
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(100),unique = True, nullable = False)
     password = db.Column(db.String(100), nullable = False)
     usertype = db.Column(db.String(100),unique = False, nullable = False)
     answer = db.Column(db.String(100),unique = False, nullable = False)
+    question = db.Column(db.String(100),unique = False, nullable = False)
 
 @dataclass
 class ListOfLists(db.Model): #List of lists of places
