@@ -53,26 +53,6 @@ class ListOfPlaces(db.Model):
     lon = db.Column(db.Float, nullable = False)
 
 @dataclass
-class ListOfAttractions(db.Model):
-    __tablename__ = 'ListOfAttractions'
-    user_id: int
-    list_id: int
-    place_id: int
-    id: int
-    name: str
-
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    list_id = db.Column(db.Integer, db.ForeignKey('ListOfLists.id'))
-    place_id = db.Column(db.Integer, db.ForeignKey('ListOfPlaces.id'))
-    id = db.Column(db.Integer, primary_key = True)
-    name = db.Column(db.String(100), unique = False,nullable = False)
-
-class Chat(db.Model):
-    chat_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key = True)
-
-
-
-@dataclass
 class BugReport(db.Model):
     __tablename__ = 'BugReport'
     id: int
