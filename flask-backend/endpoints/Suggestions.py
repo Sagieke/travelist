@@ -30,10 +30,8 @@ def ChangeSuggestionStatusTech():
         suggestion = ListofSuggestions.query.filter_by(id = suggestion_id).first()
         if suggestion.status == 'Pending':
             suggestion.status = 'In Treatment'
-            suggestion.statuscolor = '#ffee00'
         else: 
             suggestion.status = 'Pending'
-            suggestion.statuscolor = '#ff0000'
         db.session.commit()
         return redirect('http://localhost:3000/techsupport')
 
@@ -44,10 +42,8 @@ def ChangeSuggestionStatusAdmin():
         suggestion = ListofSuggestions.query.filter_by(id = suggestion_id).first()
         if suggestion.status == 'In Treatment':
             suggestion.status = 'Treated'
-            suggestion.statuscolor = '#80fa5b'
         else: 
             suggestion.status = 'In Treatment'
-            suggestion.statuscolor = '#ffee00'
         db.session.commit()
         return redirect('http://localhost:3000/adminpage')
 
