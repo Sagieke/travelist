@@ -15,10 +15,16 @@ def submitBug():
         db.session.commit()
         return redirect('http://localhost:3000/')
 
-@bug.route('/getBugs',methods=['GET','POST'])
-def getBugs():
+@bug.route('/getBugsTech',methods=['GET','POST'])
+def getBugsTech():
     if request.method == 'GET':
-        bugs = BugReport.query.all()
+        bugs = BugReport.query.filter_by(status = 'Pending').all()
+        return jsonify(bugs)
+
+@bug.route('/getBugsAdmin',methods=['GET','POST'])
+def getBugsAdmin():
+    if request.method == 'GET':
+        bugs = BugReport.query.filter_by(status = 'In Treatment').all()
         return jsonify(bugs)
 
 @bug.route('/ChangeBugStatusTech',methods=['GET','POST'])
