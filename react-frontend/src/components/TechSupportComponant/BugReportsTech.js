@@ -33,7 +33,7 @@ export default function BugReport()  {
 
 
      useEffect(() => {
-        fetch('http://localhost:5000/getBugs',{
+        fetch('http://localhost:5000/getBugsTech',{
             credentials: "include"
          })
           .then(response => response.json())
@@ -46,7 +46,7 @@ export default function BugReport()  {
         <td>{bug.id}</td>
         <td>{bug.title}</td>
         <td>{bug.description}</td>
-        <td >{bug.status} <form action="http://localhost:5000/ChangeBugStatusTech" method="post"><Button name="id" value={bug.id} type="submit"  style={{backgroundColor:bug.statuscolor,color:"black"}}> Change Status</Button></form></td>
+        <td > <form action="http://localhost:5000/ChangeBugStatusTech" method="post"><Button name="id" value={bug.id} type="submit"  style={{backgroundColor:bug.statuscolor,color:"black"}}>[{bug.status}]-Change Status</Button></form></td>
         <td><form action="http://localhost:5000/deleteBug" method="post"  ><button name="id" value={bug.id} type="submit" >Delete bug report</button></form></td>
         
      </tr>
