@@ -9,7 +9,8 @@ def submitSuggestion():
     if request.method == 'POST':
         title = request.form['title']
         description = request.form['description']
-        new_suggestions = ListofSuggestions( title=title, description=description, status = 'Pending')
+        status = 'Pending'
+        new_suggestions = ListofSuggestions(title=title, description=description, status = status)
         db.session.add(new_suggestions)
         db.session.commit()
         return redirect('http://localhost:3000/')
@@ -21,7 +22,7 @@ def deleteSuggestion():
         suggestion = ListofSuggestions.query.filter_by(id=id).first()
         db.session.delete(suggestion)
         db.session.commit()
-        return redirect('http://127.0.0.1:5000/')
+        return redirect('http://localhost:3000/techsupport')
 
 @suggestion.route('/ChangeSuggestionStatusTech',methods=['GET','POST'])
 def ChangeSugStatusTech():
@@ -35,6 +36,17 @@ def ChangeSugStatusTech():
         db.session.commit()
         return redirect('http://localhost:3000/techsupport')
 
+@suggestion.route('/ChangeSuggestionStatusAdmin',methods=['GET','POST'])
+def ChangeSuggestionStatusAdmin():
+    if request.method == 'POST':
+        suggestion_id = request.form['id']
+        suggestion = ListofSuggestions.query.filter_by(id = suggestion_id).first()
+        if suggestion.status == 'In Treatment':
+            suggestion.status = 'Treated'
+        else: 
+            suggestion.status = 'In Treatment'
+        db.session.commit()
+        return redirect('http://localhost:3000/adminpage')
 
 @suggestion.route('/getSuggestionsTech',methods=['GET','POST'])
 def getSuggestionsTech():
