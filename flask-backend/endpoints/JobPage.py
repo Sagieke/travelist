@@ -1,5 +1,4 @@
-from flask import Blueprint, session, request, redirect, json
-from werkzeug.security import generate_password_hash, check_password_hash
+from flask import Blueprint, session, request, redirect,jsonify
 from app import db
 from models import ListofJobs
 
@@ -36,3 +35,16 @@ def updateJob():
         job.requirements = requirements
         db.session.commit()
         return redirect('https://www.youtube.com/watch?v=U06jlgpMtQs')
+
+@jobPage.route('/viewJobs', methods=['GET','POST'])
+def viewJobs():
+    if request.method == 'POST':
+        job_id = request.form['id']
+        session['id'] = job_id
+    return redirect('https://www.youtube.com/watch?v=i9AT3jjAP0Y')
+
+@jobPage.route('/getJobs', methods=['GET','POST'])
+def getJobs():
+    if request.method == 'GET':
+        Jobs = ListofJobs.query.all()
+        return jsonify(Jobs)
