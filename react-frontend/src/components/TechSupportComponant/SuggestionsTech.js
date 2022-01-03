@@ -9,7 +9,7 @@ const ButtonStyle1={
     color:"black",
     height:"50px",
    borderColor:"black",
-    backgroundColor:"Lightblue",
+    backgroundColor:"Lightyellow",
     margin:"10px",
   }
 
@@ -25,29 +25,29 @@ const ButtonStyle1={
 
   
 
-export default function BugReportAdmin()  {
+export default function SuggestionsTech()  {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);  
-    const [ShowBuglist, setBugList] = useState([]);
+    const [ShowSuglist, setSugList] = useState([]);
 
 
      useEffect(() => {
-        fetch('http://localhost:5000/getBugsAdmin',{
+        fetch('http://localhost:5000/getSuggestionsTech',{
             credentials: "include"
          })
           .then(response => response.json())
-           .then(object => setBugList(object))
+           .then(object => setSugList(object))
         },[]);
-    const BugList = (bug) => {
+    const SugList = (sgs) => {
 
       return (
         <tr>
-        <td>{bug.id}</td>
-        <td>{bug.title}</td>
-        <td>{bug.description}</td>
-        <td > <form action="http://localhost:5000//ChangeBugStatusAdmin" method="post"><Button name="id" value={bug.id}  type="submit"  style={{backgroundColor:bug.statuscolor,color:"black"}}>[{bug.status}]-Change Status</Button></form></td>
-        <td><form action="http://localhost:5000/deleteBug" method="post"  ><button name="id" value={bug.id} type="submit" >Delete bug report</button></form></td>
+        <td>{sgs.id}</td>
+        <td>{sgs.title}</td>
+        <td>{sgs.description}</td>
+        <td >{sgs.status} <form action="http://localhost:5000/ChangeSuggestionStatusTech" method="post"><Button name="id" value={sgs.id} type="submit" method="post" style={{color:"black"}}> Change Status</Button></form></td>
+        <td><form action="http://localhost:5000/deleteSuggestion" method="post"  ><button name="id" value={sgs.id} type="submit" >Delete Suggestions</button></form></td>
         
      </tr>
              )   
@@ -56,11 +56,11 @@ export default function BugReportAdmin()  {
     <>
 
 
-<Button style={ButtonStyle1} variant="primary" onClick={handleShow}>Bug reports</Button>
+<Button style={ButtonStyle1} variant="primary" onClick={handleShow}>Suggestion list</Button>
   <Modal size="lg" show={show} onHide={handleClose}>
   <form action='http://localhost:5000/ChangeBugStatusTech' method='post' >
   <Modal.Header closeButton>
-    <Modal.Title><h3> Bug reports:</h3></Modal.Title>
+    <Modal.Title><h3> Suggestion list:</h3></Modal.Title>
   </Modal.Header>
   <Modal.Body>
     <div style={{'height': '300px', 'overflow':'scroll', 'display': 'block',}}>
@@ -70,12 +70,11 @@ export default function BugReportAdmin()  {
       <th> id</th>
        <th>title</th>
        <th>description</th>
-       <th>Status</th>
-       <th>discard</th>
+       <th>ststus</th>
     </tr>
   </thead>
   <tbody>
- {ShowBuglist.map(BugList)} 
+ {ShowSuglist.map(SugList)} 
   </tbody>
 </Table>
 </div>

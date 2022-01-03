@@ -4,6 +4,7 @@ import UserFaq from "./UserFAQ";
 import ContactUs from "./ContactUs";
 import SubmitBugReportUser from "./SubmitBugReportUser";
 import { BsQuestionOctagonFill } from 'react-icons/bs';
+import Suggestions from "./Suggestions";
 
 const ButtonStyle2={
     color:"black",
@@ -79,6 +80,7 @@ return (
     <Button style={ButtonStyle2} href="/FAQ"><BsQuestionOctagonFill/>FAQ </Button>
     <SubmitBugReportUser/>
     <ContactUs/>
+    <Suggestions/>
    </Modal.Body>
     <Modal.Footer>
     </Modal.Footer>

@@ -46,18 +46,19 @@
 .right-arrow {
   position: absolute;
   top: 50%;
-  right: 600px;
+  right: 300px;
   font-size: 3rem;
   color: #000;
   z-index: 10;
   cursor: pointer;
   user-select: none;
+  
 }
 
 .left-arrow {
   position: absolute;
   top: 50%;
-  left: 600px;
+  left: 300px;
   font-size: 3rem;
   color: #000;
   z-index: 10;
