@@ -73,6 +73,7 @@ class ListofSuggestions(db.Model):
     id: int
     title: str
     description: str
+
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(50),unique = False, nullable = False)
     description = db.Column(db.String(300),unique = False, nullable = False)
@@ -83,6 +84,7 @@ class ListofMessagesAdmin(db.Model):
     id: int
     title: str
     description: str
+
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(50),unique = False, nullable = False)
     description = db.Column(db.String(300),unique = False, nullable = False)
@@ -109,6 +111,7 @@ class FAQ(db.Model):
     id: int
     question: str
     answer: str
+    
     id = db.Column(db.Integer, primary_key = True)
     question = db.Column(db.String(150),unique = False, nullable = False)
     answer = db.Column(db.String(300),unique = False, nullable = False)
@@ -133,13 +136,14 @@ class EquipmentCheckList(db.Model):
     checked = db.Column(db.Boolean, nullable = False)
 
 @dataclass
-class ListofJobs(db.Model):
-    __tablename__ = 'ListofJobs'
+class Job(db.Model):
+    __tablename__ = 'Job'
     id: int
-    job_name: str
+    title: str
     description: str
     requirements: str
+
     id = db.Column(db.Integer, primary_key = True)
-    job_name = db.Column(db.String(150),unique = False, nullable = False)
+    title = db.Column(db.String(150),unique = False, nullable = False)
     description = db.Column(db.Text,unique = False, nullable = False)
     requirements = db.Column(db.Text,unique = False, nullable = False)
