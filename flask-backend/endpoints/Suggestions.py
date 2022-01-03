@@ -24,16 +24,14 @@ def deleteSuggestion():
         return redirect('http://127.0.0.1:5000/')
 
 @suggestion.route('/ChangeSuggestionStatusTech',methods=['GET','POST'])
-def ChangeBugStatusTech():
+def ChangeSugStatusTech():
     if request.method == 'POST':
         suggestion_id = request.form['id']
         suggestion = ListofSuggestions.query.filter_by(id = suggestion_id).first()
         if suggestion.status == 'Pending':
             suggestion.status = 'In Treatment'
-            suggestion.statuscolor = '#ffee00'
         else: 
             suggestion.status = 'Pending'
-            suggestion.statuscolor = '#ff0000'
         db.session.commit()
         return redirect('http://localhost:3000/techsupport')
 
