@@ -12,7 +12,7 @@ def submitSuggestion():
         new_suggestions = ListofSuggestions( title=title, description=description)
         db.session.add(new_suggestions)
         db.session.commit()
-        return redirect('http://127.0.0.1:5000/')
+        return redirect('http://localhost:3000/')
 
 @suggestion.route('/deleteSuggestion',methods=['GET','POST'])
 def deleteSuggestion():
