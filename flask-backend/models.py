@@ -93,6 +93,7 @@ class ListofSuggestions(db.Model):
     id: int
     title: str
     description: str
+    status: str
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(50),unique = False, nullable = False)
     status = db.Column(db.String(50), default=False,unique = False, nullable = False)

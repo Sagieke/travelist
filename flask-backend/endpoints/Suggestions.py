@@ -25,7 +25,7 @@ def deleteSuggestion():
         return redirect('http://localhost:3000/techsupport')
 
 @suggestion.route('/ChangeSuggestionStatusTech',methods=['GET','POST'])
-def ChangeSugStatusTech():
+def ChangeSuggestionStatusTech():
     if request.method == 'POST':
         suggestion_id = request.form['id']
         suggestion = ListofSuggestions.query.filter_by(id = suggestion_id).first()
