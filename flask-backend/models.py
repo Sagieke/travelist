@@ -1,3 +1,4 @@
+from typing import Text
 from app import db
 from dataclasses import dataclass
 
@@ -8,12 +9,15 @@ class User(db.Model): #user data base
     id: int
     username: str
     usertype: str
+    answer: str
+    question: str
     
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(100),unique = True, nullable = False)
     password = db.Column(db.String(100), nullable = False)
     usertype = db.Column(db.String(100),unique = False, nullable = False)
     answer = db.Column(db.String(100),unique = False, nullable = False)
+    question = db.Column(db.String(100),unique = False, nullable = False)
 
 @dataclass
 class ListOfLists(db.Model): #List of lists of places
@@ -91,17 +95,34 @@ class ListofSuggestions(db.Model):
     description: str
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(50),unique = False, nullable = False)
+    status = db.Column(db.String(50), default=False,unique = False, nullable = False)
     description = db.Column(db.String(300),unique = False, nullable = False)
 
 @dataclass
-class ListofMessages(db.Model):
-    __tablename__ = 'ListofMessages'
+class ListofMessagesAdmin(db.Model):
+    __tablename__ = 'ListofMessagesAdmin'
     id: int
     title: str
     description: str
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(50),unique = False, nullable = False)
     description = db.Column(db.String(300),unique = False, nullable = False)
+
+@dataclass
+class ListofMessagesTech(db.Model):
+    __tablename__ = 'ListofMessagesTech'
+    user_id: str
+    id: int
+    title: str
+    description: str
+    answer: str
+
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    id = db.Column(db.Integer, primary_key = True)
+    title = db.Column(db.String(50),unique = False, nullable = False)
+    description = db.Column(db.String(300),unique = False, nullable = False)
+    answer = db.Column(db.String(300),unique = False, nullable = False)
+
 
 @dataclass
 class FAQ(db.Model):
@@ -131,3 +152,15 @@ class EquipmentCheckList(db.Model):
     name = db.Column(db.String(100), unique = False, nullable = False)
     color = db.Column(db.String(7), nullable = False)
     checked = db.Column(db.Boolean, nullable = False)
+
+@dataclass
+class ListofJobs(db.Model):
+    __tablename__ = 'ListofJobs'
+    id: int
+    job_name: str
+    description: str
+    requirements: str
+    id = db.Column(db.Integer, primary_key = True)
+    job_name = db.Column(db.String(150),unique = False, nullable = False)
+    description = db.Column(db.Text,unique = False, nullable = False)
+    requirements = db.Column(db.Text,unique = False, nullable = False)
