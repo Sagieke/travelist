@@ -15,14 +15,14 @@ class MyTest(TestCase):
 class HomepageTest(MyTest):
 
     def test_db_add_user(self):
-        user = User(username="username", password="password", usertype = "usertype", answer = "answer")
+        user = User(username="username", password="password", usertype = "usertype", answer = "answer",question = 'question')
         db.session.add(user)
         db.session.commit()
         assert user in db.session
 
     def test_Register(self):
         tester = self.app.test_client(self)  
-        response = tester.post('/register', data={'email': 'username', 'password': 'password', 'answer':'answer'})
+        response = tester.post('/register', data={'email': 'username', 'password': 'password', 'question' : 'question','answer':'answer'})
         self.assertRedirects(response, 'http://localhost:3000/')
     
     def test_Login_traveler(self):
@@ -63,7 +63,7 @@ class HomepageTest(MyTest):
 
     def test_forgotPasswordButton_fail(self):
         password = generate_password_hash("password")
-        user = User(username="username", password=password, usertype = "usertype", answer = "answer")
+        user = User(username="username", password=password, usertype = "usertype", answer = "answer",question = 'question')
         db.session.add(user)
         db.session.commit()
         tester = self.app.test_client(self)  
@@ -72,27 +72,17 @@ class HomepageTest(MyTest):
 
     def test_forgotPasswordValidation(self):
         password = generate_password_hash("password")
-        user = User(username="username", password=password, usertype = "usertype", answer = "answer")
+        user = User(username="username", password=password, usertype = "usertype", answer = "answer",question = 'question')
         db.session.add(user)
         db.session.commit()
         tester = self.app.test_client(self)  
         start = tester.post('/forgotPasswordButton', data={'email': 'username'})
-        response = tester.post('/forgotPasswordValidation', data={'answer': 'answer'})
+        response = tester.post('/forgotPasswordValidation', data={ 'question' : 'question','answer': 'answer'})
         self.assertRedirects(response, 'http://127.0.0.1:5000/test3')
-    
-    def test_forgotPasswordValidation_fail(self):
-        password = generate_password_hash("password")
-        user = User(username="username", password=password, usertype = "usertype", answer = "answer")
-        db.session.add(user)
-        db.session.commit()
-        tester = self.app.test_client(self)  
-        start = tester.post('/forgotPasswordButton', data={'email': 'username'})
-        response = tester.post('/forgotPasswordValidation', data={'answer': 'wrong'})
-        self.assertRedirects(response, 'http://localhost:3000/')
     
     def test_forgotPasswordChange(self):
         password = generate_password_hash("password")
-        user = User(username="username", password=password, usertype = "usertype", answer = "answer")
+        user = User(username="username", password=password, usertype = "usertype", answer = "answer",question = 'question')
         db.session.add(user)
         db.session.commit()
         tester = self.app.test_client(self)  
