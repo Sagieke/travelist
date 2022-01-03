@@ -9,7 +9,8 @@ def submitSuggestion():
     if request.method == 'POST':
         title = request.form['title']
         description = request.form['description']
-        new_suggestions = ListofSuggestions( title=title, description=description, status = 'Pending')
+        status = 'Pending'
+        new_suggestions = ListofSuggestions( title=title, description=description, status = status)
         db.session.add(new_suggestions)
         db.session.commit()
         return redirect('http://127.0.0.1:5000/')
