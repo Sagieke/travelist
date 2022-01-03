@@ -1,3 +1,4 @@
+from typing import Text
 from app import db
 from dataclasses import dataclass
 
@@ -144,5 +145,5 @@ class ListofJobs(db.Model):
     requirements: str
     id = db.Column(db.Integer, primary_key = True)
     job_name = db.Column(db.String(150),unique = False, nullable = False)
-    description = db.Column(db.String(300),unique = False, nullable = False)
-    requirements = db.Column(db.String(300),unique = False, nullable = False)
+    description = db.Column(db.Text,unique = False, nullable = False)
+    requirements = db.Column(db.Text,unique = False, nullable = False)

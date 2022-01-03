@@ -15,7 +15,7 @@ class MyTest(TestCase):
 class UserListTest(MyTest):
     def test_change_permission_tech_TECH(self):
         password = generate_password_hash("password")
-        user = User(username="username", password=password, usertype = "usertype", answer = "answer")
+        user = User(username="username", password=password, usertype = "usertype", answer = "answer",question = 'question')
         db.session.add(user)
         db.session.commit()
         tester = self.app.test_client(self)  
@@ -24,7 +24,7 @@ class UserListTest(MyTest):
 
     def test_change_permission_tech_TRAVELER(self):
         password = generate_password_hash("password")
-        user = User(username="username", password=password, usertype = "usertype", answer = "answer")
+        user = User(username="username", password=password, usertype = "usertype", answer = "answer",question = 'question')
         db.session.add(user)
         db.session.commit()
         tester = self.app.test_client(self)  
@@ -33,7 +33,7 @@ class UserListTest(MyTest):
 
     def test_change_permission_admin_ADMIN(self):
         password = generate_password_hash("password")
-        user = User(username="username", password=password, usertype = "usertype", answer = "answer")
+        user = User(username="username", password=password, usertype = "usertype", answer = "answer",question = 'question')
         db.session.add(user)
         db.session.commit()
         tester = self.app.test_client(self)  
@@ -42,7 +42,7 @@ class UserListTest(MyTest):
 
     def test_change_permission_admin_TECH(self):
         password = generate_password_hash("password")
-        user = User(username="username", password=password, usertype = "usertype", answer = "answer")
+        user = User(username="username", password=password, usertype = "usertype", answer = "answer",question = 'question')
         db.session.add(user)
         db.session.commit()
         tester = self.app.test_client(self)  
@@ -51,7 +51,7 @@ class UserListTest(MyTest):
 
     def test_change_permission_admin_TRAVELER(self):
         password = generate_password_hash("password")
-        user = User(username="username", password=password, usertype = "usertype", answer = "answer")
+        user = User(username="username", password=password, usertype = "usertype", answer = "answer",question = 'question')
         db.session.add(user)
         db.session.commit()
         tester = self.app.test_client(self)  
@@ -60,7 +60,7 @@ class UserListTest(MyTest):
 
     def test_delete_user(self):
         password = generate_password_hash("password")
-        user = User(username="username", password=password, usertype = "usertype", answer = "answer")
+        user = User(username="username", password=password, usertype = "usertype", answer = "answer",question = 'question')
         db.session.add(user)
         db.session.commit()
         tester = self.app.test_client(self)  
@@ -69,7 +69,7 @@ class UserListTest(MyTest):
 
     def test_delete_user_db(self):
         password = generate_password_hash("password")
-        user = User(username="username", password=password, usertype = "usertype", answer = "answer")
+        user = User(username="username", password=password, usertype = "usertype", answer = "answer",question = 'question')
         db.session.add(user)
         db.session.commit()
         user = User.query.filter_by(id = 1).first()
