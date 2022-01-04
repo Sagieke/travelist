@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Modal,Dropdown,DropdownButton } from "react-bootstrap";
+import DropdownItem from "react-bootstrap/esm/DropdownItem";
 import { BsFillBugFill } from 'react-icons/bs';
 
 const ButtonStyle1 = {
@@ -18,6 +19,7 @@ export default function SubmitBugReportUser() {
     const handleShow = () => setShow(true);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
+    const [Priority, setPriority] = useState('');
 
 
     return (
@@ -52,9 +54,11 @@ export default function SubmitBugReportUser() {
               </div>
        </Modal.Body>
         <Modal.Footer>
+         
         <button type="submit" className="btn btn-primary btn-block" >
                 Sumbit 
               </button>
+              
         </Modal.Footer>
         </form>
       </Modal>
