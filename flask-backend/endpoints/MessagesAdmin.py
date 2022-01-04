@@ -1,4 +1,5 @@
 from flask import Blueprint, request, redirect, jsonify
+from sqlalchemy.orm import session
 from app import db
 from models import ListofMessagesAdmin
 MessageAdmin = Blueprint('MessageAdmin',__name__)
@@ -38,4 +39,11 @@ def messageDeleterAdmin():
 def getMessageAdmin(): #returns all messages in the db as a json 
     if request.method == 'GET':
         Messages = ListofMessagesAdmin.query.all()
+        return jsonify(Messages)
+
+@MessageAdmin.route('/getPrivateMessageAdmin',methods=['GET','POST'])
+def getPrivateMessageAdmin(): #returns private message from the db as a json 
+    if request.method == 'GET':
+        username =session.get("user_id")
+        Messages = ListofMessagesAdmin.query.filter_by(username=username).all()
         return jsonify(Messages)
