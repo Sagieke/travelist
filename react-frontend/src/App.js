@@ -13,6 +13,7 @@ import ImageSliderAvtivate from "./components/Testing/ImageSliderActivate";
 import UserFaq from "./components/UserComponants/UserFAQ";
 import LoginErrorPage from "./components/Pages/LoginErrorPage";
 import SignUpErrorPage from "./components/Pages/SignUpErrorPage";
+import ForgotPasswordPage from "./components/UserComponants/ForgotPassword";
 
 import "./App.css";
 function App() {
@@ -40,6 +41,7 @@ function App() {
               <Route path="/FAQ" component={UserFaq}/>
               <Route exact path="/loginerror" component={LoginErrorPage}/>
               <Route exact path="/signuperror" component={SignUpErrorPage}/>
+              <Route exact path="/ForgotPassword" component={ForgotPasswordPage}/>
               </Switch>
       
       </div>
