@@ -1,3 +1,6 @@
+import React,{ useState } from "react";
+import {Button,Modal,Accordion,ListGroup, ListGroupItem} from "react-bootstrap";
+import ForgotPasswordPage from "../UserComponants/ForgotPassword";
 import SignUp from "../NavBarItems/signup.component";
 export default function LoginErrorPage()  {
 
@@ -37,7 +40,7 @@ export default function LoginErrorPage()  {
                   </label>
                 </div>
               </div>
-              <a href="http://127.0.0.1:5000/test" target="_blank">forgot pass</a>
+              <a href="http://localhost:3000/forgotPassword" target="_blank">forgot pass</a>
         <button type="submit" className="btn btn-primary btn-block" >
                 log in
               </button>
