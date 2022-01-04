@@ -111,6 +111,7 @@ class AdminMessage(db.Model): #list of messages sent by the admin
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(50),unique = False, nullable = False)
     description = db.Column(db.String(300),unique = False, nullable = False)
+    
 @dataclass
 class TechSupportMessage(db.Model): #list of messages sent to tech support
     __tablename__ = 'TechSupportMessage'
