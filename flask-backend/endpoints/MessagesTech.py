@@ -9,20 +9,21 @@ def messageSenderToTechFromUser(): #send a message to tech support
         title = request.form['title']
         description = request.form['description']
         user_id = session.get("user_id")
-        new_message = ListofMessagesTech(user_id=user_id,title=title, description=description,answer = '')
+        new_message = ListofMessagesTech(user_id=user_id,title=title, description=description,answer = '',status = 'Pending')
         db.session.add(new_message)
         db.session.commit()
-        return redirect('http://127.0.0.1:5000/')
+        return redirect('http://localhost:3000/userPage')
 
 @MessageTech.route('/messageSenderFromTechToUser',methods=['GET','POST'])
 def messageSenderFromTechToUser(): #send answer to users question
     if request.method == 'POST':
-        user_id = request.form['user_id'] 
+        id = request.form['id'] 
         answer = request.form['answer']
-        message = ListofMessagesTech.query.filter_by(user_id=user_id).first()
+        message = ListofMessagesTech.query.filter_by(id=id).first()
         message.answer = answer
+        message.status = 'Treated'
         db.session.commit()
-        return redirect('http://127.0.0.1:5000/')
+        return redirect('http://localhost:3000/techsupport/')
 
 @MessageTech.route('/messageDeleterTech',methods=['GET','POST'])
 def messageDeleterTech():
@@ -41,7 +42,7 @@ def getAllMessageTech(): #returns all the messages in the db as json file
 
 @MessageTech.route('/getMessageTech',methods=['GET','POST'])
 def getMessageUserToTech():
-    if request.method == 'POST': #returns a message of choosing as a json file
-        id = request.form['id']
-        Message = ListofMessagesTech.query.filter_by(id=id).first()
+    if request.method == 'GET': #returns a message of choosing as a json file
+        user_id = session.get("user_id")
+        Message = ListofMessagesTech.query.filter_by(user_id=user_id).all()
         return jsonify(Message)
