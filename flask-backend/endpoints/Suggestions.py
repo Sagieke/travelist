@@ -51,11 +51,11 @@ def ChangeSuggestionStatusAdmin():
 @suggestion.route('/getSuggestionsTech',methods=['GET','POST'])
 def getSuggestionsTech():
     if request.method == 'GET':
-        bugs = ListofSuggestions.query.filter_by(status = 'Pending').all()
-        return jsonify(bugs)
+        Suggestions = ListofSuggestions.query.filter_by(status = 'Pending').all()
+        return jsonify(Suggestions)
 
 @suggestion.route('/getSuggestionsAdmin',methods=['GET','POST'])
 def getSuggestionsAdmin():
     if request.method == 'GET':
-        bugs = ListofSuggestions.query.filter_by(status = 'In Treatment').all()
-        return jsonify(bugs)
+        Suggestions = ListofSuggestions.query.filter_by(status = 'In Treatment').all()
+        return jsonify(Suggestions)
