@@ -1,5 +1,6 @@
 import React , { useState, useEffect, Componant}from "react";
-import {Container,Row, Col,Button,Modal,ListGroup,Table,Dropdown,DropdownButton,} from "react-bootstrap";
+import {Container,Row, Col,Button,Modal,ListGroup,Table,DropdownButton} from "react-bootstrap";
+import DropdownItem from "react-bootstrap/esm/DropdownItem";
 import AddFAQ from "../AddingComponants/AddFaq";
 
 
@@ -29,6 +30,7 @@ export default function BugReport()  {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);  
+    const [Priority, setPriority] = useState([]);
     const [ShowBuglist, setBugList] = useState([]);
 
 
@@ -46,6 +48,14 @@ export default function BugReport()  {
         <td>{bug.id}</td>
         <td>{bug.title}</td>
         <td>{bug.description}</td>
+        <td>
+        <p1>Choose bug priority:</p1>
+         <DropdownButton>
+         <DropdownItem> <form onChange={event=>setPriority(event.target.value)} name="low priority"><Button style={{backgroundColor:"green",color:"black"}}>Low priotity</Button></form></DropdownItem>
+         <DropdownItem> <form onChange={event=>setPriority(event.target.value)} name="Medium priority"><Button style={{backgroundColor:"yellow",color:"black"}}>Medium priotity</Button></form></DropdownItem>
+         <DropdownItem> <form onChange={event=>setPriority(event.target.value)} name="High priority"><Button style={{backgroundColor:"red",color:"black"}}>High priotity</Button></form></DropdownItem>
+         </DropdownButton>
+        </td>
         <td > <form action="http://localhost:5000/ChangeBugStatusTech" method="post"><Button name="id" value={bug.id} type="submit"  style={{backgroundColor:bug.statuscolor,color:"black"}}>[{bug.status}]-Change Status</Button></form></td>
         <td><form action="http://localhost:5000/deleteBug" method="post"  ><button name="id" value={bug.id} type="submit" >Delete bug report</button></form></td>
         
@@ -71,6 +81,7 @@ export default function BugReport()  {
        <th>title</th>
        <th>description</th>
        <th>Status</th>
+       <td>priority</td>
        <th>discard</th>
     </tr>
   </thead>

@@ -1,61 +1,61 @@
 from flask import Blueprint, request, redirect, jsonify
 from app import db
-from models import ListofSuggestions
+from models import Suggestion
 
-suggestion = Blueprint('suggestion',__name__)
+Suggestion = Blueprint('Suggestion',__name__)
 
-@suggestion.route('/submitSuggestion',methods=['GET','POST'])
+@Suggestion.route('/submitSuggestion',methods=['GET','POST'])
 def submitSuggestion():
     if request.method == 'POST':
         title = request.form['title']
         description = request.form['description']
         status = 'Pending'
-        new_suggestions = ListofSuggestions(title=title, description=description, status = status)
+        new_suggestions = Suggestion(title=title, description=description, status = status)
         db.session.add(new_suggestions)
         db.session.commit()
         return redirect('http://localhost:3000/')
 
-@suggestion.route('/deleteSuggestion',methods=['GET','POST'])
+@Suggestion.route('/deleteSuggestion',methods=['GET','POST'])
 def deleteSuggestion():
     if request.method == 'POST':
         id = request.form['id']
-        suggestion = ListofSuggestions.query.filter_by(id=id).first()
-        db.session.delete(suggestion)
+        Suggestion = Suggestion.query.filter_by(id=id).first()
+        db.session.delete(Suggestion)
         db.session.commit()
         return redirect('http://localhost:3000/techsupport')
 
-@suggestion.route('/ChangeSuggestionStatusTech',methods=['GET','POST'])
+@Suggestion.route('/ChangeSuggestionStatusTech',methods=['GET','POST'])
 def ChangeSuggestionStatusTech():
     if request.method == 'POST':
         suggestion_id = request.form['id']
-        suggestion = ListofSuggestions.query.filter_by(id = suggestion_id).first()
-        if suggestion.status == 'Pending':
-            suggestion.status = 'In Treatment'
+        Suggestion = Suggestion.query.filter_by(id = suggestion_id).first()
+        if Suggestion.status == 'Pending':
+            Suggestion.status = 'In Treatment'
         else: 
-            suggestion.status = 'Pending'
+            Suggestion.status = 'Pending'
         db.session.commit()
         return redirect('http://localhost:3000/techsupport')
 
-@suggestion.route('/ChangeSuggestionStatusAdmin',methods=['GET','POST'])
+@Suggestion.route('/ChangeSuggestionStatusAdmin',methods=['GET','POST'])
 def ChangeSuggestionStatusAdmin():
     if request.method == 'POST':
         suggestion_id = request.form['id']
-        suggestion = ListofSuggestions.query.filter_by(id = suggestion_id).first()
-        if suggestion.status == 'In Treatment':
-            suggestion.status = 'Treated'
+        Suggestion = Suggestion.query.filter_by(id = suggestion_id).first()
+        if Suggestion.status == 'In Treatment':
+            Suggestion.status = 'Treated'
         else: 
-            suggestion.status = 'In Treatment'
+            Suggestion.status = 'In Treatment'
         db.session.commit()
         return redirect('http://localhost:3000/adminpage')
 
-@suggestion.route('/getSuggestionsTech',methods=['GET','POST'])
+@Suggestion.route('/getSuggestionsTech',methods=['GET','POST'])
 def getSuggestionsTech():
     if request.method == 'GET':
-        Suggestions = ListofSuggestions.query.filter_by(status = 'Pending').all()
-        return jsonify(Suggestions)
+        bugs = Suggestion.query.filter_by(status = 'Pending').all()
+        return jsonify(bugs)
 
-@suggestion.route('/getSuggestionsAdmin',methods=['GET','POST'])
+@Suggestion.route('/getSuggestionsAdmin',methods=['GET','POST'])
 def getSuggestionsAdmin():
     if request.method == 'GET':
-        Suggestions = ListofSuggestions.query.filter_by(status = 'In Treatment').all()
-        return jsonify(Suggestions)
+        bugs = Suggestion.query.filter_by(status = 'In Treatment').all()
+        return jsonify(bugs)

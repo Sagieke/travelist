@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
-
-
+import { BiMessageAdd } from 'react-icons/bi';
 const ButtonStyle1 = {
-    width: "100px",
-    borderColor: "black",
-    color: "black",
-    height: "35px",
-    borderColor: "black",
-    backgroundColor: "lightgrey",
-    margin: "1px",
+  color:"black",
+  height:"50px",
+  borderColor:"black",
+  backgroundColor:"lightpink",
+  margin:"10px",
+  width:"190px",
+  height:"50px",
 }
 
 export default function Suggestions() {
@@ -22,7 +21,7 @@ export default function Suggestions() {
     return (
         <>
       
-        <Button style={ButtonStyle1}variant="primary" onClick={handleShow}>Add a suggestion : </Button>
+        <Button style={ButtonStyle1}variant="primary" onClick={handleShow}><BiMessageAdd/>Add a suggestion </Button>
         <Modal show={show}  onHide={handleClose}>
         <form action='http://localhost:5000/submitSuggestion' method='post' >
         <Modal.Header closeButton>

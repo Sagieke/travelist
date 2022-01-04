@@ -3,7 +3,7 @@ from models import ListOfPlaces,ListOfLists
 from werkzeug.security import generate_password_hash
 from test_Homepage import MyTest
 
-class ListofPlacesTest(MyTest):
+class ListPageTest(MyTest):
 
     def test_add_place(self):
         list = ListOfLists(user_id = '1', id = '1', name="testlist", color = '#ffffff')

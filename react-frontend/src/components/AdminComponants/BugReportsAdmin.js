@@ -1,7 +1,7 @@
 import React , { useState, useEffect, Componant}from "react";
 import {Container,Row, Col,Button,Modal,ListGroup,Table,Dropdown,DropdownButton,} from "react-bootstrap";
 import AddFAQ from "../AddingComponants/AddFaq";
-
+import { BsBugFill } from 'react-icons/bs';
 
 const ButtonStyle1={
     mergin:"10px",
@@ -9,7 +9,7 @@ const ButtonStyle1={
     color:"black",
     height:"50px",
    borderColor:"black",
-    backgroundColor:"Lightblue",
+    backgroundColor:"Lightgreen",
     margin:"10px",
   }
 
@@ -56,7 +56,7 @@ export default function BugReportAdmin()  {
     <>
 
 
-<Button style={ButtonStyle1} variant="primary" onClick={handleShow}>Bug reports</Button>
+<Button style={ButtonStyle1} variant="primary" onClick={handleShow}>Bug reports    <BsBugFill/></Button>
   <Modal size="lg" show={show} onHide={handleClose}>
   <form action='http://localhost:5000/ChangeBugStatusTech' method='post' >
   <Modal.Header closeButton>

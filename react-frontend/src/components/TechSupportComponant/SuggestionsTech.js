@@ -46,7 +46,7 @@ export default function SuggestionsTech()  {
         <td>{sgs.id}</td>
         <td>{sgs.title}</td>
         <td>{sgs.description}</td>
-        <td >{sgs.status} <form action="http://localhost:5000/ChangeSuggestionStatusTech" method="post"><Button name="id" value={sgs.id} type="submit" method="post" style={{color:"black"}}> Change Status</Button></form></td>
+        <td >{sgs.status} <form action="http://localhost:5000/ChangeSuggestionStatusTech" method="post"><Button name="id" value={sgs.id} type="submit" method="post" style={{color:"black"}}> move seggestion to admin</Button></form></td>
         <td><form action="http://localhost:5000/deleteSuggestion" method="post"  ><button name="id" value={sgs.id} type="submit" >Delete Suggestions</button></form></td>
         
      </tr>

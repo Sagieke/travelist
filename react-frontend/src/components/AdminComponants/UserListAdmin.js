@@ -3,7 +3,7 @@ import {Container,Row, Col,Button,Modal,ListGroup,Table,Dropdown,DropdownButton}
 import ChangeRole from "./ChangeRoleAdmin";
 import DropdownItem from "react-bootstrap/esm/DropdownItem";
 import { BsFillTrashFill } from 'react-icons/bs';
-
+import { FiUsers } from 'react-icons/fi';
 
 const MakeAdminButtonStyle={
   mergin:"10px",
@@ -72,13 +72,14 @@ export default function UserListAdmin()  {
         <Button style={ButtonStyle2} name= "id" class="float-end" type="submit" value={lui.id} >Delete <BsFillTrashFill/></Button>
  </form></td>
        <td> <ChangeRole id={lui.id}/></td>
+       <td>Reported</td>
       </tr>
              )   
   };
 return (
     <>
 
-    <Button style={ButtonStyle1} variant="primary" onClick={handleShow}>User List</Button>
+    <Button style={ButtonStyle1} variant="primary" onClick={handleShow}>User List  <FiUsers/></Button>
     <Modal size="lg" show={show} onHide={handleClose}>
     <form action='http://localhost:5000/login' method='post' >
     <Modal.Header closeButton>
@@ -94,6 +95,7 @@ return (
       <th>type</th>
       <th>Delete user</th>
       <th>Change role</th>
+      <th>reported</th>
      
     </tr>
   </thead>

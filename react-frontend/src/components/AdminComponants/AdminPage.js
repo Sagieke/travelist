@@ -3,6 +3,7 @@ import {Container,Row,ListGroup} from "react-bootstrap";
 import UserListAdmin from "./UserListAdmin";
 import BugReportAdmin from "./BugReportsAdmin";
 import SuggestionsAdmin from "./SuggestionsAdmin";
+import AdminMessage from "./AdminMasseges";
 export default function  AdminPage()  {
 
     return (
@@ -22,7 +23,7 @@ export default function  AdminPage()  {
             <UserListAdmin/>
             <BugReportAdmin/>
             <SuggestionsAdmin/>
-            
+            <AdminMessage/>
           </Row>
           </div>
           <br />
