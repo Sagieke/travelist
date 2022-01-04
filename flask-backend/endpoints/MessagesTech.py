@@ -1,6 +1,6 @@
 from flask import Blueprint, request, redirect, jsonify,session
 from app import db
-from models import ListofMessagesTech
+from models import TechSupportMessage
 MessageTech = Blueprint('MessageTech',__name__)
 
 @MessageTech.route('/messageSenderToTechFromUser',methods=['GET','POST'])
@@ -9,7 +9,7 @@ def messageSenderToTechFromUser(): #send a message to tech support
         title = request.form['title']
         description = request.form['description']
         user_id = session.get("user_id")
-        new_message = ListofMessagesTech(user_id=user_id,title=title, description=description,answer = '',status = 'Pending')
+        new_message = TechSupportMessage(user_id=user_id,title=title, description=description,answer = '',status = 'Pending')
         db.session.add(new_message)
         db.session.commit()
         return redirect('http://localhost:3000/userPage')
@@ -19,7 +19,7 @@ def messageSenderFromTechToUser(): #send answer to users question
     if request.method == 'POST':
         id = request.form['id'] 
         answer = request.form['answer']
-        message = ListofMessagesTech.query.filter_by(id=id).first()
+        message = TechSupportMessage.query.filter_by(id=id).first()
         message.answer = answer
         message.status = 'Treated'
         db.session.commit()
@@ -29,7 +29,7 @@ def messageSenderFromTechToUser(): #send answer to users question
 def messageDeleterTech():
     if request.method == 'POST': #delete a message
         id = request.form['id']
-        message = ListofMessagesTech.query.filter_by(id=id).first()
+        message = TechSupportMessage.query.filter_by(id=id).first()
         db.session.delete(message)
         db.session.commit()
         return redirect('http://127.0.0.1:5000/')
@@ -37,12 +37,12 @@ def messageDeleterTech():
 @MessageTech.route('/getAllMessageTech',methods=['GET','POST'])
 def getAllMessageTech(): #returns all the messages in the db as json file
     if request.method == 'GET':
-        Messages = ListofMessagesTech.query.all()
+        Messages = TechSupportMessage.query.all()
         return jsonify(Messages)
 
 @MessageTech.route('/getMessageTech',methods=['GET','POST'])
 def getMessageUserToTech():
     if request.method == 'GET': #returns a message of choosing as a json file
         user_id = session.get("user_id")
-        Message = ListofMessagesTech.query.filter_by(user_id=user_id).all()
+        Message = TechSupportMessage.query.filter_by(user_id=user_id).all()
         return jsonify(Message)

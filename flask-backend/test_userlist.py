@@ -1,16 +1,7 @@
-from flask_testing import TestCase
-from app import create_app, db
+from test_Homepage import MyTest
+from app import db
 from models import User
 from werkzeug.security import generate_password_hash
-
-class MyTest(TestCase):
-    def create_app(self):
-        app = create_app(True,'sqlite://')
-        return app
-
-    def tearDown(self):
-        db.session.remove()
-        db.drop_all()
 
 class UserListTest(MyTest):
     def test_change_permission_tech_TECH(self):
