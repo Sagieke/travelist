@@ -10,7 +10,7 @@ def submitBug():
         #user_name = session.get("username")
         title = request.form['title']
         description = request.form['description']
-        new_report = BugReport(title=title, description=description, status = 'Pending', statuscolor = '#ff0000')
+        new_report = BugReport(title=title, description=description, status = 'Pending', statuscolor = '#ff0000',priority = '')
         db.session.add(new_report)
         db.session.commit()
         return redirect('http://localhost:3000/')
@@ -31,13 +31,16 @@ def getBugsAdmin():
 def ChangeBugStatusTech():
     if request.method == 'POST':
         bug_id = request.form['id']
+        priority = request.form['priority']
         bug = BugReport.query.filter_by(id = bug_id).first()
         if bug.status == 'Pending':
             bug.status = 'In Treatment'
             bug.statuscolor = '#ffee00'
+            bug.priority = priority
         else: 
             bug.status = 'Pending'
             bug.statuscolor = '#ff0000'
+            bug.priority = 'Low'
         db.session.commit()
         return redirect('http://localhost:3000/techsupport')
 

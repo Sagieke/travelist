@@ -60,12 +60,14 @@ class BugReport(db.Model):
     description: str
     status: str
     statuscolor: str
-
+    priority: str
+    
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(100),unique = False, nullable = False)
     description = db.Column(db.String(300),unique = False, nullable = False)
     status = db.Column(db.String(50), default=False,unique = False, nullable = False)
     statuscolor = db.Column(db.String(7), default=False,unique = False, nullable = False)
+    priority = db.Column(db.String(50), default=False,unique = False, nullable = False)
 
 @dataclass
 class ListofSuggestions(db.Model): #list of suggestions sent to the admin by the user
