@@ -86,6 +86,7 @@ class ListofMessagesAdmin(db.Model): #list of messages sent by the admin
     id: int
     title: str
     description: str
+
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(50),unique = False, nullable = False)
     description = db.Column(db.String(300),unique = False, nullable = False)
@@ -99,12 +100,14 @@ class ListofMessagesTech(db.Model): #list of messages sent to tech support
     title: str
     description: str
     answer: str
+    status: str
 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(50),unique = False, nullable = False)
     description = db.Column(db.String(300),unique = False, nullable = False)
     answer = db.Column(db.String(300),unique = False, nullable = False)
+    status = db.Column(db.String(50), default=False,unique = False, nullable = False)
 
 
 @dataclass

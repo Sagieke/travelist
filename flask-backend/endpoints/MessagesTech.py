@@ -9,7 +9,7 @@ def messageSenderToTechFromUser(): #send a message to tech support
         title = request.form['title']
         description = request.form['description']
         user_id = session.get("user_id")
-        new_message = ListofMessagesTech(user_id=user_id,title=title, description=description,answer = '')
+        new_message = ListofMessagesTech(user_id=user_id,title=title, description=description,answer = '',status = 'Pending')
         db.session.add(new_message)
         db.session.commit()
         return redirect('http://127.0.0.1:5000/')
@@ -21,6 +21,7 @@ def messageSenderFromTechToUser(): #send answer to users question
         answer = request.form['answer']
         message = ListofMessagesTech.query.filter_by(user_id=user_id).first()
         message.answer = answer
+        message.status = 'Treated'
         db.session.commit()
         return redirect('http://127.0.0.1:5000/')
 
