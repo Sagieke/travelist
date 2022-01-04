@@ -1,38 +1,17 @@
 import React,{ useState } from "react";
 import {Button,Modal,Dropdown,DropdownButton} from "react-bootstrap";
 import DropdownItem from "react-bootstrap/esm/DropdownItem";
+import { AiFillEdit } from 'react-icons/ai';
 
 const ButtonStyle1={
   mergin:"10px",
   borderColor:"black",
+  width: '150px',
+  height: '30px',
+  backgroundColor:"grey",
   color:"black",
-  height:"30px",
- borderColor:"black",
-  backgroundColor:"Lightblue",
-  margin:"10px",
 }
 
-const ButtonStyle2={
-  width:"65px",
-  mergin:"10px",
-  borderColor:"black",
-  color:"black",
-  height:"50px",
- borderColor:"black",
-  backgroundColor:"Lightgreen",
-  margin:"10px",
-}
-
-const ButtonStyle3={
-  width:"80px",
-  mergin:"10px",
-  borderColor:"black",
-  color:"black",
-  height:"50px",
- borderColor:"black",
-  backgroundColor:"orange",
-  margin:"10px",
-}
 
 
 export default function  EditFAQ(props)  {
@@ -46,7 +25,7 @@ const [id, setid] = useState('');
 return (
   <>
 
-  <Button style={ButtonStyle1} variant="primary" onClick={handleShow}>Edit FAQ</Button>
+  <Button style={ButtonStyle1} variant="primary" onClick={handleShow}><AiFillEdit/>Edit FAQ</Button>
   <Modal show={show} onHide={handleClose}>
   <form action='http://localhost:5000/updateFAQ' method='post' >
   <Modal.Header closeButton>
