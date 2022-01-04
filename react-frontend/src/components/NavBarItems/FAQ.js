@@ -1,18 +1,10 @@
 import React , { useState, useEffect, Componant}from "react";
 import {Container,Row, Col,Button,Modal,ListGroup,Table,Dropdown,DropdownButton,} from "react-bootstrap";
-import { FaQuestionCircle } from 'react-icons/fa';
+import { FiTrash } from 'react-icons/fi';
 import AddFAQ from "../AddingComponants/AddFaq";
 import EditFAQ from "../Pages/EditFAQ";
 
-const DeleteButtonStyle={
-  flexDirection:'row',
-  alignItems:'center',
-  borderColor:"black",
-  backgroundColor:"red",
-  color:"black",
-  width:"100px",
-  height: '30px'
-}
+
 
 
 const ButtonStyle2={
@@ -24,33 +16,15 @@ const ButtonStyle2={
   
 }
  
-const DropDownButtonStyle={
-  mergin:"10px",
-  borderColor:"black",
-  width: '150px',
-  height: '30px',
-  backgroundColor:"black",
-  color:"white",
-}
-const EditFaqStyleButton={
-  mergin:"10px",
-  borderColor:"black",
-  width: '150px',
-  height: '30px',
-  backgroundColor:"grey",
-  color:"black",
-}
+
 
 const DeleteFaqStyleButton={
-  mergin:"10px",
   borderColor:"black",
   width: '150px',
   height: '30px',
   backgroundColor:"red",
   color:"black",
 }
-
-
 
 
 export default function Faq()  {
@@ -75,9 +49,9 @@ export default function Faq()  {
         <td>{lfq.question}</td>
         <td>{lfq.answer}</td>
         <td>
-       <form action="http://localhost:5000/deleteFAQ" method="post" >  <Button style={DeleteFaqStyleButton} name= "id" className="float-end" type="submit" value={lfq.id} >Delete </Button></form>
+       <form action="http://localhost:5000/deleteFAQ" method="post" >  <Button style={DeleteFaqStyleButton} name= "id" type="submit" value={lfq.id}><FiTrash/>Delete </Button></form>
         </td>
-        <EditFAQ id={lfq.id} question={lfq.question} answer={lfq.answer}/>
+        <td><EditFAQ id={lfq.id} question={lfq.question} answer={lfq.answer}/></td>
 
      </tr>
              )   
@@ -100,7 +74,8 @@ export default function Faq()  {
       <th> #</th>
        <th>Question</th>
        <th>Answer</th>
-       <th>Actions</th>
+       <th>Delete FAQ</th>
+       <th>Edit FAQ</th>
     </tr>
   </thead>
   <tbody>
