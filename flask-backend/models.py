@@ -91,7 +91,6 @@ class ListofMessagesAdmin(db.Model): #list of messages sent by the admin
     title = db.Column(db.String(50),unique = False, nullable = False)
     description = db.Column(db.String(300),unique = False, nullable = False)
     
-
 @dataclass
 class ListofMessagesTech(db.Model): #list of messages sent to tech support
     __tablename__ = 'ListofMessagesTech'

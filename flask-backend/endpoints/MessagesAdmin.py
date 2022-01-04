@@ -9,19 +9,7 @@ def messageSenderFromAdminToAll(): #sends message from admin to all users
     if request.method == 'POST':
         title = request.form['title']
         description = request.form['description']
-        username = 'all'
-        new_message = ListofMessagesAdmin(username = username,title = title, description = description)
-        db.session.add(new_message)
-        db.session.commit()
-        return redirect('http://127.0.0.1:5000/')
-
-@MessageAdmin.route('/messageSenderFromAdminToUser',methods=['GET','POST'])
-def messageSenderFromAdminToUser(): #sends message from admin to a user
-    if request.method == 'POST':
-        title = request.form['title']
-        description = request.form['description']
-        username = request.form['username']
-        new_message = ListofMessagesAdmin(username = username,title = title, description = description)
+        new_message = ListofMessagesAdmin(title = title, description = description)
         db.session.add(new_message)
         db.session.commit()
         return redirect('http://127.0.0.1:5000/')
@@ -41,9 +29,3 @@ def getMessageAdmin(): #returns all messages in the db as a json
         Messages = ListofMessagesAdmin.query.all()
         return jsonify(Messages)
 
-@MessageAdmin.route('/getPrivateMessageAdmin',methods=['GET','POST'])
-def getPrivateMessageAdmin(): #returns private message from the db as a json 
-    if request.method == 'GET':
-        username =session.get("user_id")
-        Messages = ListofMessagesAdmin.query.filter_by(username=username).all()
-        return jsonify(Messages)
