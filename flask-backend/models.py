@@ -73,7 +73,7 @@ class Chat(db.Model):
 
 
 @dataclass
-class BugReport(db.Model):
+class BugReport(db.Model): #db for bugs reported by the users
     __tablename__ = 'BugReport'
     id: int
     title: str
@@ -88,7 +88,7 @@ class BugReport(db.Model):
     statuscolor = db.Column(db.String(7), default=False,unique = False, nullable = False)
 
 @dataclass
-class ListofSuggestions(db.Model):
+class ListofSuggestions(db.Model): #list of suggestions sent to the admin by the user
     __tablename__ = 'ListofSuggestions'
     id: int
     title: str
@@ -100,17 +100,21 @@ class ListofSuggestions(db.Model):
     description = db.Column(db.String(300),unique = False, nullable = False)
 
 @dataclass
-class ListofMessagesAdmin(db.Model):
+class ListofMessagesAdmin(db.Model): #list of messages sent by the admin
     __tablename__ = 'ListofMessagesAdmin'
     id: int
     title: str
     description: str
+    username: str
+
+    username = db.Column(db.String(100),unique = True, nullable = False)
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(50),unique = False, nullable = False)
     description = db.Column(db.String(300),unique = False, nullable = False)
+    
 
 @dataclass
-class ListofMessagesTech(db.Model):
+class ListofMessagesTech(db.Model): #list of messages sent to tech support
     __tablename__ = 'ListofMessagesTech'
     user_id: str
     id: int
@@ -126,7 +130,7 @@ class ListofMessagesTech(db.Model):
 
 
 @dataclass
-class FAQ(db.Model):
+class FAQ(db.Model): 
     __tablename__ = 'FAQ'
     id: int
     question: str
