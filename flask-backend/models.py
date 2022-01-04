@@ -53,27 +53,7 @@ class ListOfPlaces(db.Model):
     lon = db.Column(db.Float, nullable = False)
 
 @dataclass
-class ListOfAttractions(db.Model):
-    __tablename__ = 'ListOfAttractions'
-    user_id: int
-    list_id: int
-    place_id: int
-    id: int
-    name: str
-
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    list_id = db.Column(db.Integer, db.ForeignKey('ListOfLists.id'))
-    place_id = db.Column(db.Integer, db.ForeignKey('ListOfPlaces.id'))
-    id = db.Column(db.Integer, primary_key = True)
-    name = db.Column(db.String(100), unique = False,nullable = False)
-
-class Chat(db.Model):
-    chat_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key = True)
-
-
-
-@dataclass
-class BugReport(db.Model): #db for bugs reported by the users
+class BugReport(db.Model):
     __tablename__ = 'BugReport'
     id: int
     title: str
@@ -94,6 +74,7 @@ class ListofSuggestions(db.Model): #list of suggestions sent to the admin by the
     title: str
     description: str
     status: str
+    
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(50),unique = False, nullable = False)
     status = db.Column(db.String(50), default=False,unique = False, nullable = False)
@@ -105,9 +86,6 @@ class ListofMessagesAdmin(db.Model): #list of messages sent by the admin
     id: int
     title: str
     description: str
-    username: str
-
-    username = db.Column(db.String(100),unique = True, nullable = False)
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(50),unique = False, nullable = False)
     description = db.Column(db.String(300),unique = False, nullable = False)
@@ -135,6 +113,7 @@ class FAQ(db.Model):
     id: int
     question: str
     answer: str
+    
     id = db.Column(db.Integer, primary_key = True)
     question = db.Column(db.String(150),unique = False, nullable = False)
     answer = db.Column(db.String(300),unique = False, nullable = False)
@@ -159,13 +138,14 @@ class EquipmentCheckList(db.Model):
     checked = db.Column(db.Boolean, nullable = False)
 
 @dataclass
-class ListofJobs(db.Model):
-    __tablename__ = 'ListofJobs'
+class Job(db.Model):
+    __tablename__ = 'Job'
     id: int
-    job_name: str
+    title: str
     description: str
     requirements: str
+
     id = db.Column(db.Integer, primary_key = True)
-    job_name = db.Column(db.String(150),unique = False, nullable = False)
+    title = db.Column(db.String(150),unique = False, nullable = False)
     description = db.Column(db.Text,unique = False, nullable = False)
     requirements = db.Column(db.Text,unique = False, nullable = False)

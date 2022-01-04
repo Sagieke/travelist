@@ -13,6 +13,8 @@ import ImageSliderAvtivate from "./components/Testing/ImageSliderActivate";
 import UserFaq from "./components/UserComponants/UserFAQ";
 import LoginErrorPage from "./components/Pages/LoginErrorPage";
 import SignUpErrorPage from "./components/Pages/SignUpErrorPage";
+import JobListingsPage from "./components/Pages/JobListingsPage";
+import JobPage from "./components/Pages/JobPage";
 
 import "./App.css";
 function App() {
@@ -40,6 +42,8 @@ function App() {
               <Route path="/FAQ" component={UserFaq}/>
               <Route exact path="/loginerror" component={LoginErrorPage}/>
               <Route exact path="/signuperror" component={SignUpErrorPage}/>
+              <Route exact path="/jobs" component={JobListingsPage}/>
+              <Route exact path="/jobs/job" component={JobPage}/>
               </Switch>
       
       </div>

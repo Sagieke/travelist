@@ -23,6 +23,7 @@ def removeEquipment():
         equipment = EquipmentCheckList.query.filter_by(user_id=user_id,list_id=list_id,place_id=place_id,id=id).first()
         db.session.delete(equipment)
         db.session.commit()
+        return redirect('http://localhost:3000/userpage/places/place')
 
 @placepage.route('/addEquipment', methods=['GET','POST'])
 def addplace():
@@ -39,7 +40,7 @@ def addplace():
 
 @placepage.route('/checkEquipment', methods=['GET','POST'])
 def checkEquipment():
-    if request.method == 'GET':
+    if request.method == 'POST':
         user_id = session.get("user_id")
         list_id = session.get("list_id")
         place_id = session.get('place_id')
@@ -53,7 +54,7 @@ def checkEquipment():
             equipment.color = "#808080"
         equipment.checked = True if equipment.checked == False else False
         db.session.commit()
-        return redirect('http://localhost:3000/userpage/places/place')
+        return redirect('http://localhost:3000/UserPage/places/place')
 
 @placepage.route('/getPlaceInfo', methods=['GET','POST'])
 def getPlaceInfo():
