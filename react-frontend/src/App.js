@@ -41,7 +41,8 @@ function App() {
               <Route path="/FAQ" component={UserFaq}/>
               <Route exact path="/loginerror" component={LoginErrorPage}/>
               <Route exact path="/signuperror" component={SignUpErrorPage}/>
-              <Route exact path="/ForgotPassword" component={ForgotPasswordPage}/>
+              <Route exact path="/jobs" component={JobListingsPage}/>
+              <Route exact path="/jobs/job" component={JobPage}/>
               </Switch>
       
       </div>
