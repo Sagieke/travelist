@@ -63,3 +63,12 @@ def deleteUser():
         db.session.delete(user)
         db.session.commit()
         return redirect('http://localhost:3000/adminpage')
+
+@Userlist.route('/reportUser',methods=['GET','POST'])
+def reportUser():
+    if request.method == 'POST':
+        user_id = request.form['id']
+        user = User.query.filter_by(id = user_id).first()
+        user.reported = True
+        db.session.commit()
+        return redirect('https://www.youtube.com/watch?v=W9lXi4WrNRk')
