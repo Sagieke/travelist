@@ -1,5 +1,5 @@
 import React,{ useState } from "react";
-import {Button,Modal} from "react-bootstrap";
+import {Button,Modal,Accordion,ListGroup, ListGroupItem} from "react-bootstrap";
 
 const ButtonStyle1={
   width:"80px",
@@ -19,7 +19,7 @@ const handleShow = () => setShow(true);
 const [userName, setUserName] = useState('');
 const [password, setPassword] = useState('');
 const [answer, setAnswer] = useState('');
-
+const [question, setQuestion] = useState(' Please choose your security question: :');
 
             
 return (
@@ -57,7 +57,23 @@ return (
             onChange={(event) => setPassword(event.target.value)}
             required
           />
-          
+          <lable> security question : </lable>
+          <Accordion defaultActiveKey="0">
+        <Accordion.Item eventKey="0">
+          <Accordion.Header>
+           {question}
+          </Accordion.Header>
+          <Accordion.Body>
+          <ListGroup defaultActiveKey="#link1" as="ol" numbered>   
+          <ListGroup.Item action onClick={() => setQuestion("What was the name of your dog growing up?")}  as="li">What was the name of your dog growing up?</ListGroup.Item>
+          <ListGroup.Item action onClick={()=>setQuestion("Where did you grow up ?")}  as="li">Where did you grow up ? </ListGroup.Item>
+          <ListGroup.Item action onClick={() => setQuestion("What was the name of your school?")}  as="li">What was the name of your school? </ListGroup.Item>
+          </ListGroup> 
+          <input hidden="hidden" name="question" value={question}>
+          </input>
+          </Accordion.Body>
+        </Accordion.Item>
+         </Accordion>
         </div>
         <div className="form-group">
           <label>Answer</label>
@@ -69,7 +85,7 @@ return (
             onChange={event => setAnswer(event.target.value)}
           />
         </div>
-
+        
  </Modal.Body>
   <Modal.Footer>
   <button type="submit" className="btn btn-primary btn-block"  onClick={() => { console.log(userName);console.log(password) }}>
