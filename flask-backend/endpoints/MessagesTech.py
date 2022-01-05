@@ -60,3 +60,11 @@ def RateTechSupport():
         user.rating += rating / user.answers
         db.session.commit()
         return redirect('http://localhost:3000/userpage')
+
+@MessageTech.route('/GetTechSupportRating',methods=['GET','POST'])
+def GetTechSupportRating():
+    if request.method == 'GET':
+        tech_id = session.get("user_id")
+        tech = User.query.filter_by(id = tech_id).first()
+        rating = tech.rating
+        return jsonify(rating)
