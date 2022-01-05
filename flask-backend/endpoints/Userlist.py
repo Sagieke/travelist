@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify, redirect
 from app import db
-from models import User
+from models import User,NumberofUsers
 
 Userlist = Blueprint('Userlist',__name__)
 
@@ -54,6 +54,8 @@ def deleteUser():
     if request.method == 'POST':
         user_id = request.form['id']
         user = User.query.filter_by(id = user_id).first()
+        num = NumberofUsers.query.filter_by(id = 1).first()
+        num.number_of_users -= 1
         db.session.delete(user)
         db.session.commit()
         return redirect('http://localhost:3000/adminpage')

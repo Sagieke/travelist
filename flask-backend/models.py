@@ -152,3 +152,12 @@ class Job(db.Model):
     title = db.Column(db.String(150),unique = False, nullable = False)
     description = db.Column(db.Text,unique = False, nullable = False)
     requirements = db.Column(db.Text,unique = False, nullable = False)
+
+@dataclass
+class NumberofUsers(db.Model):
+    __tablename__ = 'NumberofUsers'
+    id: int
+    number_of_users: int
+
+    id = db.Column(db.Integer, primary_key = True)
+    number_of_users = db.Column(db.Integer, unique = False, nullable = False)
