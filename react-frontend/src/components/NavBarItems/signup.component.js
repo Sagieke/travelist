@@ -83,6 +83,7 @@ return (
             className="form-control"
             placeholder="Enter your answer"
             onChange={event => setAnswer(event.target.value)}
+            required
           />
         </div>
         
