@@ -18,6 +18,8 @@ def changePermissionTech():
         if role == 'TECH' :
             user = User.query.filter_by(id = user_id).first()
             user.usertype = 'TechSupport'
+            user.answers = 0
+            user.rating = 0
             db.session.commit()
             return redirect('http://localhost:3000/techsupport')
         if role == 'TRAVELER':
@@ -35,6 +37,8 @@ def changePermissionAdmin():
         if role == 'TECH' :
             user = User.query.filter_by(id = user_id).first()
             user.usertype = 'TechSupport'
+            user.answers = 0
+            user.rating = 0
             db.session.commit()
             return redirect('http://localhost:3000/adminpage')
         if role == 'ADMIN':
