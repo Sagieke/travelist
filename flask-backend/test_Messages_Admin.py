@@ -21,7 +21,7 @@ class UserListTest(MyTest):
     def test_add_Message_All_Admin(self):
         tester = self.app.test_client(self)  
         response = tester.post('/messageSenderFromAdminToAll', data={'title': 'test', 'description': 'test'})
-        self.assertRedirects(response, 'http://127.0.0.1:5000/')
+        self.assertRedirects(response, 'http://localhost:3000/adminpage')
 
     def test_delete_Message_Admin(self):
         new_message = AdminMessage(title='title', description='description')
