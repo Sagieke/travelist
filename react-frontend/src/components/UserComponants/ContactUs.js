@@ -74,17 +74,11 @@ export default function ContactUs()  {
   </Modal.Header>
   <Modal.Body>
     
-  <thead>
-    <tr>
-      <th> You can reach us at : WeDontFuckingCare@gmail.com</th>
-       <th> Or :you can open a ticket and chat with our IT team</th>
-    </tr>
-  </thead>
-  <tbody>
-  
-  </tbody>
 
-
+   
+      <h5> You can reach us at : TravelistSCE@gmail.com </h5>
+       <h5> Or :you can open a ticket and chat with our IT team</h5>
+    
    </Modal.Body>
     <Modal.Footer>
     </Modal.Footer>

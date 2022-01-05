@@ -5,7 +5,6 @@ from flask_cors import CORS
 from flask_socketio import SocketIO
 
 db = SQLAlchemy() #database
-socketio = SocketIO() #sockets
 
 #flask app initialization
 def create_app(test_mode,db_uri):
@@ -24,36 +23,31 @@ def create_app(test_mode,db_uri):
     Session(app) #cookies
     db.init_app(app) #database
     CORS(app,supports_credentials=True) #Cross-Origin Resource Sharing
-    socketio.init_app(app) #web sockets
 
     with app.app_context():
         #blueprints initialization
         from endpoints.Homepage import Homepage
-        from endpoints.Userpage import Userpage
-        from endpoints.ListOfListsPage import ListOfListsPage
-        from endpoints.ListofPlacesPage import ListOfPlacesPage
-        from endpoints.Chat import chat_blueprint
+        from endpoints.UserPage import UserPage
+        from endpoints.ListPage import ListPage
+        from endpoints.PlacePage import PlacePage
         from endpoints.MessagesAdmin import MessageAdmin
         from endpoints.MessagesTech import MessageTech
         from endpoints.Userlist import Userlist
-        from endpoints.Placepage import placepage
         from endpoints.FAQ import faq
         from endpoints.BugReports import bug
-        from endpoints.Suggestions import suggestion
-        from endpoints.JobPage import jobPage
+        from endpoints.UserSuggestions import UserSuggestions
+        from endpoints.JobPage import JobPage
         app.register_blueprint(Homepage)
-        app.register_blueprint(Userpage)
-        app.register_blueprint(ListOfListsPage)
-        app.register_blueprint(ListOfPlacesPage)
-        app.register_blueprint(chat_blueprint)
+        app.register_blueprint(UserPage)
+        app.register_blueprint(ListPage)
+        app.register_blueprint(PlacePage)
         app.register_blueprint(MessageAdmin)
         app.register_blueprint(MessageTech)
         app.register_blueprint(Userlist)
-        app.register_blueprint(placepage)
         app.register_blueprint(faq)
         app.register_blueprint(bug)
-        app.register_blueprint(suggestion)
-        app.register_blueprint(jobPage)
+        app.register_blueprint(UserSuggestions)
+        app.register_blueprint(JobPage)
         #database creation using models
         db.create_all()
 
@@ -64,36 +58,6 @@ app = create_app(False,'sqlite:///database.db')
 @app.route('/',methods=['GET','POST'])
 def server():
     return "<h1>Hello, this is the server, nothing of interest here :)</h1>"
-
-#testing routes for backend
-@app.route('/test')
-def home():
-    return render_template("testing.html")
-@app.route('/test2')
-def test():
-    return render_template("testing-2.html")
-@app.route('/test3')
-def test2():
-    return render_template("testing-3.html")
-@app.route('/Report-test')
-def bugtest():
-    return render_template("Report-test.html")
-@app.route('/Suggestions-test')
-def Suggestiontest():
-    return render_template("Suggestions-test.html")
-@app.route('/FAQ-test')
-def FAQtest():
-    return render_template("FAQ-test.html")
-
-@app.route('/FAQ-delete')
-def FAQdeletetest():
-    return render_template("FAQ-delete.html")
-
-@app.route('/FAQ-update')
-def FAQupdatetest():
-    return render_template("FAQ-update.html")
-#end of test funcs
-
 
 if __name__ == '__main__':
    app.run()

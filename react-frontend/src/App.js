@@ -13,6 +13,7 @@ import ImageSliderAvtivate from "./components/Testing/ImageSliderActivate";
 import UserFaq from "./components/UserComponants/UserFAQ";
 import LoginErrorPage from "./components/Pages/LoginErrorPage";
 import SignUpErrorPage from "./components/Pages/SignUpErrorPage";
+import ForgotPasswordPage from "./components/UserComponants/ForgotPassword";
 import JobListingsPage from "./components/Pages/JobListingsPage";
 import JobPage from "./components/Pages/JobPage";
 

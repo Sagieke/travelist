@@ -2,7 +2,7 @@ import React , { useState, useEffect, }from "react";
 import {Container,Row, Col,Button,Modal,ListGroup,Table,Dropdown,DropdownButton} from "react-bootstrap";
 import ChangeRoleTech from "./ChangeRoleTech";
 import DropdownItem from "react-bootstrap/esm/DropdownItem";
-
+import { AiOutlineStop } from 'react-icons/ai';
 
 
 const MakeAdminButtonStyle={
@@ -68,6 +68,7 @@ export default function UserListTech()  {
         <td>{lui.username}</td>
         <td>{lui.usertype}</td>
  <td><ChangeRoleTech id={lui.id}/></td>
+ <td><button style={{backgroundColor:"red", color:"black"}}><AiOutlineStop/>Rerport user</button></td>
       </tr>
              )   
   };
@@ -90,6 +91,7 @@ return (
       <th>email</th>
       <th>type</th>
       <th>change role</th>
+      <th>Report user</th>
      
     </tr>
   </thead>

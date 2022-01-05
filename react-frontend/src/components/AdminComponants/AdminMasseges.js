@@ -1,9 +1,7 @@
 import React , { useState, useEffect, Componant}from "react";
 import {Container,Row, Col,Button,Modal,ListGroup,Table,Dropdown,DropdownButton,} from "react-bootstrap";
-import { FiTrash } from 'react-icons/fi';
-import AddFAQ from "../AddingComponants/AddFaq";
-import EditFAQ from "../Pages/EditFAQ";
-
+import { BiEnvelope } from 'react-icons/bi';
+import AddMessageAdmin from "./AddmassegeAdmin";
 
 
 
@@ -27,32 +25,28 @@ const DeleteFaqStyleButton={
 }
 
 
-export default function Faq()  {
+export default function AdminMessage()  {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);  
-    const [ShowFaqlist, setFaqList] = useState([]);
+    const [ShowMsglist, setMsgList] = useState([]);
+    const[UserId,setUserId]=useState('');
 
 
      useEffect(() => {
-        fetch('http://localhost:5000/getFAQ',{
+        fetch('http://localhost:5000/getMessageAdmin',{
             credentials: "include"
          })
           .then(response => response.json())
-           .then(object => setFaqList(object))
+           .then(object => setMsgList(object))
         },[]);
-    const ListFAQ = (lfq) => {
+    const ListMsg = (msg) => {
 
       return (
         <tr>
-        <td>{lfq.id}</td>
-        <td>{lfq.question}</td>
-        <td>{lfq.answer}</td>
-        <td>
-       <form action="http://localhost:5000/deleteFAQ" method="post" >  <Button style={DeleteFaqStyleButton} name= "id" type="submit" value={lfq.id}><FiTrash/>Delete </Button></form>
-        </td>
-        <td><EditFAQ id={lfq.id} question={lfq.question} answer={lfq.answer}/></td>
-
+        <td>{msg.id}</td>
+        <td>{msg.title}</td>
+        <td>{msg.description}</td>        
      </tr>
              )   
   };
@@ -60,32 +54,32 @@ export default function Faq()  {
     <>
 
 
-<Button style={ButtonStyle2}variant="primary" onClick={handleShow}>FAQ</Button>
+<form ><Button style={ButtonStyle2}variant="primary" onClick={handleShow}><BiEnvelope/>View masseges</Button></form>
   <Modal size="lg" show={show} onHide={handleClose}>
-  <form action='http://localhost:5000/addFAQ' method='post' >
+  <form action='http://localhost:5000//getAllMessageTech' method='post' name="id" >
   <Modal.Header closeButton>
-    <Modal.Title><h3> Question list</h3></Modal.Title>
+    <Modal.Title><h3> Messege list:</h3></Modal.Title>
   </Modal.Header>
   <Modal.Body>
     <div style={{'height': '300px', 'overflow':'scroll', 'display': 'block',}}>
     <Table striped bordered hover size="sm">
   <thead>
     <tr>
-      <th> #</th>
-       <th>Question</th>
-       <th>Answer</th>
-       <th>Delete FAQ</th>
-       <th>Edit FAQ</th>
+      
+      <th> id</th>
+       <th>title</th>
+       <th>description</th>
+    
     </tr>
   </thead>
   <tbody>
- {ShowFaqlist.map(ListFAQ)} 
+ {ShowMsglist.map(ListMsg)} 
   </tbody>
 </Table>
 </div>
    </Modal.Body>
-    <Modal.Footer>
-    <AddFAQ/>         
+    <Modal.Footer> 
+            <AddMessageAdmin/>
     </Modal.Footer>
     </form>
   </Modal>

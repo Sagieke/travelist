@@ -6,6 +6,7 @@ import Faq from "../NavBarItems/FAQ";
 import UserListTech from "./UserListTech";
 import BugReportTech from "./BugReportsTech";
 import SuggestionsTech from "./SuggestionsTech";
+import TechMesseges from "./MassegesTech";
 
 
 
@@ -58,6 +59,7 @@ export default function techSupport()  {
         <Faq/>
         <BugReportTech/>
         <SuggestionsTech/>
+        <TechMesseges/>
           </Row>
           </div>
           <br />

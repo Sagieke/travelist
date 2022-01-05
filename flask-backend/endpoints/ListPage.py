@@ -1,12 +1,12 @@
 from re import split
-from flask import Blueprint, json, session, request, redirect, jsonify
+from flask import Blueprint, session, request, redirect, jsonify
 from app import db
-from models import ListOfPlaces, ListOfLists
+from models import Place, List
 import requests
 
-ListOfPlacesPage = Blueprint('ListOfPlacesPage',__name__)
+ListPage = Blueprint('ListPage',__name__)
 
-@ListOfPlacesPage.route('/addplace', methods=['GET','POST'])
+@ListPage.route('/addplace', methods=['GET','POST'])
 def addplace():
     if request.method == 'POST':
         user_id = session.get("user_id")
@@ -17,43 +17,43 @@ def addplace():
         lat_lon_dict = get_lat_lon(place_name)
         lat = lat_lon_dict["lat"]
         lon = lat_lon_dict["lon"]
-        new_place = ListOfPlaces(user_id = user_id, list_id = list_id, name = place_name,start_date=start_date,end_date=end_date, lat = lat, lon = lon)
+        new_place = Place(user_id = user_id, list_id = list_id, name = place_name,start_date=start_date,end_date=end_date, lat = lat, lon = lon)
         db.session.add(new_place)
         db.session.commit()
         return redirect('http://localhost:3000/userpage/places')
 
-@ListOfPlacesPage.route('/removeplace', methods=['GET','POST'])
+@ListPage.route('/removeplace', methods=['GET','POST'])
 def removeplace():
     if request.method == 'POST':
         user_id = session.get('user_id')
         list_id = session.get('list_id')
         id = request.form['place_id']
-        place = ListOfPlaces.query.filter_by(user_id=user_id,list_id=list_id,id=id).first()
+        place = Place.query.filter_by(user_id=user_id,list_id=list_id,id=id).first()
         db.session.delete(place)
         db.session.commit()
         return redirect('http://localhost:3000/userPage/places')
 
-@ListOfPlacesPage.route('/getplaces', methods=['GET', 'POST'])
+@ListPage.route('/getplaces', methods=['GET', 'POST'])
 def getplaces():
     if request.method == 'GET':
         user_id = session.get('user_id')
         list_id = session.get('list_id')
-        places = ListOfPlaces.query.filter_by(user_id=user_id,list_id=list_id).all()
+        places = Place.query.filter_by(user_id=user_id,list_id=list_id).all()
         return jsonify(places)
 
-@ListOfPlacesPage.route('/viewplace', methods=['GET','POST'])
+@ListPage.route('/viewplace', methods=['GET','POST'])
 def viewPlace():
     if request.method == 'POST':
         place_id = request.form['place_id']
         session['place_id'] = place_id
     return redirect('http://localhost:3000/UserPage/places/place')
 
-@ListOfPlacesPage.route('/getListInfo', methods=['GET','POST'])
+@ListPage.route('/getListInfo', methods=['GET','POST'])
 def getListInfo():
     if request.method == 'GET':
         user_id = session.get('user_id')
         list_id = session.get('list_id')
-        list_info = ListOfLists.query.filter_by(user_id=user_id,id=list_id).first()
+        list_info = List.query.filter_by(user_id=user_id,id=list_id).first()
     return jsonify(list_info)
 
 def get_lat_lon(name):

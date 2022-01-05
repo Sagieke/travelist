@@ -3,6 +3,8 @@ import {Button} from "react-bootstrap";
 import ChangePassword from "../UserComponants/changepassword";
 import UserHelp from "../UserComponants/UserHelp";
 import BackButton from "./BackButton";
+import UserMesseges from "../UserComponants/UserMessege";
+import UserAdminMesseges from "../UserComponants/UserAdminMassege";
 const ButtonStyle1={
     width:"80px",
     borderColor:"black",
@@ -21,6 +23,10 @@ return(
  </form>
  <BackButton/>
  <ChangePassword/>
+ <UserHelp/>
+ <UserMesseges/>
+ <UserAdminMesseges/>
+ 
  </div>
  </div>
  )

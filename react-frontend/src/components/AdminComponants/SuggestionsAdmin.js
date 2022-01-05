@@ -1,7 +1,7 @@
 import React , { useState, useEffect, Componant}from "react";
 import {Container,Row, Col,Button,Modal,ListGroup,Table,Dropdown,DropdownButton,} from "react-bootstrap";
 import AddFAQ from "../AddingComponants/AddFaq";
-
+import { MdOutlineSettingsSuggest} from 'react-icons/md';
 
 const ButtonStyle1={
     mergin:"10px",
@@ -23,6 +23,13 @@ const ButtonStyle1={
     
   }
 
+  const DeleteSegStyleButton={
+    borderColor:"black",
+    width: '150px',
+    height: '60px',
+    backgroundColor:"red",
+    color:"black",
+  }
   
 
 export default function SuggestionsAdmin()  {
@@ -46,8 +53,8 @@ export default function SuggestionsAdmin()  {
         <td>{sgs.id}</td>
         <td>{sgs.title}</td>
         <td>{sgs.description}</td>
-        <td>{sgs.status}<form action="http://localhost:5000/ChangeSuggestionStatusAdmin" method="post"><Button name="id" value={sgs.id} type="submit" > {sgs.status}</Button></form></td>
-        <td><form action="http://localhost:5000/deleteSuggestion" method="post"  ><button name="id" value={sgs.id} type="submit" >Delete Suggestions</button></form></td>
+        <td>{sgs.status}<form action="http://localhost:5000/ChangeSuggestionStatusAdmin" method="post"><Button name="id" value={sgs.id} type="submit" > change to "processed"</Button></form></td>
+        <td><form action="http://localhost:5000/deleteSuggestion" method="post"  ><button style={DeleteSegStyleButton}name="id" value={sgs.id} type="submit" >Delete Suggestions</button></form></td>
         
      </tr>
              )   
@@ -56,7 +63,7 @@ export default function SuggestionsAdmin()  {
     <>
 
 
-<Button style={ButtonStyle1} variant="primary" onClick={handleShow}>Suggestion list</Button>
+<Button style={ButtonStyle1} variant="primary" onClick={handleShow}>Suggestion list  < MdOutlineSettingsSuggest/></Button>
   <Modal size="lg" show={show} onHide={handleClose}>
   <form action='http://localhost:5000/ChangeBugStatusTech' method='post' >
   <Modal.Header closeButton>
