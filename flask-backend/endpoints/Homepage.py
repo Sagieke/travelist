@@ -54,7 +54,7 @@ def forgotPasswordValidation():
         question = request.form['question']
         answer = request.form['answer']
         email = request.form['email']
-        user = User.query.filter_by(username = email,answer = answer).first()
+        user = User.query.filter_by(username = email, question= question, answer = answer).first()
         if user :
             session['user_id'] = user.id
             return redirect('http://127.0.0.1:5000/test3')
