@@ -13,7 +13,7 @@ def ChangePassword():
         user = User.query.filter_by(id = user_id).first()
         user.password = new_password
         db.session.commit()
-        return redirect('http://localhost:3000/userPage')
+        return redirect('http://localhost:3000/userpage')
 
 @UserPage.route('/addlist', methods=['GET','POST'])
 def addlist():
@@ -24,7 +24,7 @@ def addlist():
         new_list = List(user_id = user_id,name = list_name,color=color)
         db.session.add(new_list)
         db.session.commit()
-        return redirect('http://localhost:3000/userPage')
+        return redirect('http://localhost:3000/userpage')
 
 @UserPage.route('/getlists', methods=['GET', 'POST'])
 def getlists():
@@ -46,14 +46,14 @@ def removelist():
                 db.session.commit()
         db.session.delete(list)
         db.session.commit()
-        return redirect('http://localhost:3000/userPage')
+        return redirect('http://localhost:3000/userpage')
 
 @UserPage.route('/viewlist', methods=['GET', 'POST'])
 def viewlist():
     if request.method == 'POST':
         list_id = request.form['list_id']
         session['list_id'] = list_id
-    return redirect('http://localhost:3000/userPage/places')
+    return redirect('http://localhost:3000/userpage/places')
 
 @UserPage.route('/getMostSearchedPlaces', methods=['GET','POST'])
 def getMostSearchedPlaces():

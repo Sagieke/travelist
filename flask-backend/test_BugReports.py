@@ -36,7 +36,7 @@ class UserListTest(MyTest):
         db.session.add(bug)
         db.session.commit()
         tester = self.app.test_client(self)  
-        response = tester.post('/ChangeBugStatusTech', data={'id':'1','priority':'priority'})
+        response = tester.post('/ChangeBugStatusTech', data={'id':'1'})
         self.assertRedirects(response,'http://localhost:3000/techsupport')
     
     def test_update_bug_status_admin(self):
