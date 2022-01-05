@@ -1,6 +1,6 @@
 from flask import Blueprint, request, redirect, jsonify,session
 from app import db
-from models import TechSupportMessage
+from models import TechSupportMessage,User
 MessageTech = Blueprint('MessageTech',__name__)
 
 @MessageTech.route('/messageSenderToTechFromUser',methods=['GET','POST'])
@@ -22,6 +22,9 @@ def messageSenderFromTechToUser(): #send answer to users question
         message = TechSupportMessage.query.filter_by(id=id).first()
         message.answer = answer
         message.status = 'Treated'
+        user_id = session.get("user_id")
+        tech = User.query.filter_by(id=user_id).first()
+        tech.answers += 1
         db.session.commit()
         return redirect('http://localhost:3000/techsupport/')
 

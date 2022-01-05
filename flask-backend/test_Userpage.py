@@ -6,7 +6,7 @@ from test_Homepage import MyTest
 class UserPageTest(MyTest):
     def test_change_password(self):
         password = generate_password_hash("password")
-        user = User(username="username", password=password, usertype = "admin", answer = "answer",question = 'question')
+        user = User(username="username", password=password, usertype = "admin", answer = "answer",question = 'question', rating = 0)
         db.session.add(user)
         db.session.commit()
         tester = self.app.test_client(self)  
@@ -16,7 +16,7 @@ class UserPageTest(MyTest):
 
     def test_addlist(self):
         password = generate_password_hash("password")
-        user = User(username="username", password=password, usertype = "admin", answer = "answer",question = 'question')
+        user = User(username="username", password=password, usertype = "admin", answer = "answer",question = 'question', rating = 0)
         db.session.add(user)
         db.session.commit()
         tester = self.app.test_client(self)
@@ -25,7 +25,7 @@ class UserPageTest(MyTest):
 
     def test_removelist(self):
         password = generate_password_hash("password")
-        user = User(username="username", password=password, usertype = "admin", answer = "answer",question = 'question')
+        user = User(username="username", password=password, usertype = "admin", answer = "answer",question = 'question', rating = 0)
         db.session.add(user)
         db.session.commit()
         tester = self.app.test_client(self)
@@ -35,7 +35,7 @@ class UserPageTest(MyTest):
 
     def test_viewlist(self):
         password = generate_password_hash("password")
-        user = User(username="username", password=password, usertype = "admin", answer = "answer",question = 'question')
+        user = User(username="username", password=password, usertype = "admin", answer = "answer",question = 'question', rating = 0)
         db.session.add(user)
         db.session.commit()
         tester = self.app.test_client(self)
@@ -45,7 +45,7 @@ class UserPageTest(MyTest):
 
     def test_getlists(self):
         password = generate_password_hash("password")
-        user = User(username="username", password=password, usertype = "traveler", answer = "answer",question = 'question')
+        user = User(username="username", password=password, usertype = "traveler", answer = "answer",question = 'question', rating = 0)
         db.session.add(user)
         db.session.commit()
         tester = self.app.test_client(self)
