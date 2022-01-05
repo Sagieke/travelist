@@ -1,20 +1,20 @@
 from app import  db
-from models import ListofMessagesTech,User
+from models import TechSupportMessage,User
 from test_Homepage import MyTest
 from werkzeug.security import generate_password_hash
 
 class UserListTest(MyTest):
     def test_add_Message_Tech_db(self):
-        message = ListofMessagesTech(title = 'testitleTech', description = 'testdescription',answer = 'answer')
+        message = TechSupportMessage(title = 'testitleTech', description = 'testdescription',answer = 'answer')
         db.session.add(message)
         db.session.commit() 
         assert message in db.session
 
     def test_delete_Message_Tech_db(self):
-        message = ListofMessagesTech(title = 'testitleATech', description = 'testdescription',answer = 'answer')
+        message = TechSupportMessage(title = 'testitleATech', description = 'testdescription',answer = 'answer')
         db.session.add(message)
         db.session.commit() 
-        message = ListofMessagesTech.query.filter_by(id=1).first()
+        message = TechSupportMessage.query.filter_by(id=1).first()
         db.session.delete(message)
         db.session.commit()
         assert message not in db.session
@@ -30,7 +30,7 @@ class UserListTest(MyTest):
         self.assertRedirects(response, 'http://127.0.0.1:5000/')
 
     def test_message_Deleter_Tech(self):
-        new_message = ListofMessagesTech(title = 'testitleATech', description = 'testdescription',answer = 'answer')
+        new_message = TechSupportMessage(title = 'testitleATech', description = 'testdescription',answer = 'answer')
         db.session.add(new_message)
         db.session.commit()
         tester = self.app.test_client(self)  
