@@ -4,6 +4,7 @@ import UserListAdmin from "./UserListAdmin";
 import BugReportAdmin from "./BugReportsAdmin";
 import SuggestionsAdmin from "./SuggestionsAdmin";
 import AdminMessage from "./AdminMasseges";
+import AddJobsAdmin from "./AddJobsAdmin";
 export default function  AdminPage()  {
 
     return (
@@ -24,6 +25,7 @@ export default function  AdminPage()  {
             <BugReportAdmin/>
             <SuggestionsAdmin/>
             <AdminMessage/>
+            <AddJobsAdmin/>
           </Row>
           </div>
           <br />
