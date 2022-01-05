@@ -34,17 +34,22 @@ export default function UserMesseges()  {
     const handleShow = () => setShow(true);  
     const [ShowMsglist, setMsgList] = useState([]);
     const[UserId,setUserId]=useState('');
+    const[rating,setUserrating]=useState('');
 
    function notEmpty(props){
      if(props==="Treated"){
      return(
       <td>
       <p1>Rate this answer:</p1>
-       <DropdownButton>
-       <DropdownItem> <form  name="bad"><Button style={{backgroundColor:"red",color:"black"}}>bad</Button></form></DropdownItem>
-       <DropdownItem> <form  name="good"><Button style={{backgroundColor:"yellow",color:"black"}}>good</Button></form></DropdownItem>
-       <DropdownItem> <form name="very good"><Button style={{backgroundColor:"green",color:"black"}}>very good</Button></form></DropdownItem>
+       <DropdownButton >
+       <DropdownItem onClick={()=>setUserrating(1)}>1 </DropdownItem>
+       <DropdownItem onClick={()=>setUserrating(2)}>2 </DropdownItem>
+       <DropdownItem onClick={()=>setUserrating(3)}>3 </DropdownItem>
+       <DropdownItem onClick={()=>setUserrating(4)}>4 </DropdownItem>
+       <DropdownItem onClick={()=>setUserrating(5)}>5 </DropdownItem>
+       <form action="/RateTechSupport"><button >submit</button></form>
        </DropdownButton>
+       
       </td>
 
 );
@@ -78,7 +83,7 @@ export default function UserMesseges()  {
 
 
 <form ><Button style={ButtonStyle2}variant="primary" onClick={handleShow}><BiEnvelope/></Button></form>
-  <Modal size="lg" show={show} onHide={handleClose}>
+  <Modal size="xl" show={show} onHide={handleClose}>
   <form action='http://localhost:5000/getMessageTech' method='post' name="id" >
   <Modal.Header closeButton>
     <Modal.Title><h3> Messege list:</h3></Modal.Title>
