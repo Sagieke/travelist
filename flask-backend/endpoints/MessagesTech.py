@@ -19,11 +19,12 @@ def messageSenderFromTechToUser(): #send answer to users question
     if request.method == 'POST':
         id = request.form['id'] 
         answer = request.form['answer']
+        tech_id = session.get("user_id")
         message = TechSupportMessage.query.filter_by(id=id).first()
         message.answer = answer
         message.status = 'Treated'
-        user_id = session.get("user_id")
-        tech = User.query.filter_by(id=user_id).first()
+        message.tech_id = tech_id
+        tech = User.query.filter_by(id=tech_id).first()
         tech.answers += 1
         db.session.commit()
         return redirect('http://localhost:3000/techsupport/')
@@ -49,3 +50,13 @@ def getMessageUserToTech():
         user_id = session.get("user_id")
         Message = TechSupportMessage.query.filter_by(user_id=user_id).all()
         return jsonify(Message)
+
+@MessageTech.route('/RateTechSupport',methods=['GET','POST'])
+def RateTechSupport():
+    if request.method == 'POST':
+        tech_id = request.form['id']
+        rating = request.form['rating']
+        user = User.query.filter_by(id = tech_id).first()
+        user.rating += rating / user.answers
+        db.session.commit()
+        return redirect('http://localhost:3000/userpage')
