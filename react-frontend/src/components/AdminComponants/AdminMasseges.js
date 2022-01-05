@@ -13,7 +13,16 @@ const ButtonStyle2={
   margin:"10px",
   
 }
- 
+const ButtonStyle1={
+  mergin:"10px",
+  borderColor:"black",
+  color:"black",
+  height:"50px",
+ borderColor:"black",
+  backgroundColor:"Lightgreen",
+  margin:"10px",
+  width:"675px"
+}
 
 
 const DeleteFaqStyleButton={
@@ -54,7 +63,7 @@ export default function AdminMessage()  {
     <>
 
 
-<form ><Button style={ButtonStyle2}variant="primary" onClick={handleShow}><BiEnvelope/>View masseges</Button></form>
+<form ><Button style={ButtonStyle1}variant="primary" onClick={handleShow}><BiEnvelope/>View masseges</Button></form>
   <Modal size="lg" show={show} onHide={handleClose}>
   <form action='http://localhost:5000//getAllMessageTech' method='post' name="id" >
   <Modal.Header closeButton>

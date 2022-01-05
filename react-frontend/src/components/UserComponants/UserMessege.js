@@ -1,5 +1,6 @@
 import React , { useState, useEffect, Componant}from "react";
 import {Container,Row, Col,Button,Modal,ListGroup,Table,Dropdown,DropdownButton,} from "react-bootstrap";
+import DropdownItem from "react-bootstrap/esm/DropdownItem";
 import { BiEnvelope } from 'react-icons/bi';
 import AddFAQ from "../AddingComponants/AddFaq";
 import UserAddMessege from "./UserAddMessege";
@@ -34,6 +35,21 @@ export default function UserMesseges()  {
     const [ShowMsglist, setMsgList] = useState([]);
     const[UserId,setUserId]=useState('');
 
+   function notEmpty(props){
+     if(props==="Treated"){
+     return(
+      <td>
+      <p1>Rate this answer:</p1>
+       <DropdownButton>
+       <DropdownItem> <form  name="bad"><Button style={{backgroundColor:"red",color:"black"}}>bad</Button></form></DropdownItem>
+       <DropdownItem> <form  name="good"><Button style={{backgroundColor:"yellow",color:"black"}}>good</Button></form></DropdownItem>
+       <DropdownItem> <form name="very good"><Button style={{backgroundColor:"green",color:"black"}}>very good</Button></form></DropdownItem>
+       </DropdownButton>
+      </td>
+
+);
+}
+   }
 
      useEffect(() => {
         fetch('http://localhost:5000/getMessageTech',{
@@ -51,6 +67,7 @@ export default function UserMesseges()  {
         <td>{msg.title}</td>
         <td>{msg.description}</td>
         <td>{msg.answer}</td>
+        <td>{notEmpty(msg.status)}</td>
         
 
      </tr>
@@ -77,6 +94,7 @@ export default function UserMesseges()  {
        <th>title</th>
        <th>Description</th>
        <th>answer</th>
+       <th>rating</th>
     </tr>
   </thead>
   <tbody>
