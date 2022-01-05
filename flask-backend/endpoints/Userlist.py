@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify, redirect
 from app import db
-from models import User
+from models import User,NumberofUsers
 
 Userlist = Blueprint('Userlist',__name__)
 
@@ -18,6 +18,8 @@ def changePermissionTech():
         if role == 'TECH' :
             user = User.query.filter_by(id = user_id).first()
             user.usertype = 'TechSupport'
+            user.answers = 0
+            user.rating = 0
             db.session.commit()
             return redirect('http://localhost:3000/techsupport')
         if role == 'TRAVELER':
@@ -35,6 +37,8 @@ def changePermissionAdmin():
         if role == 'TECH' :
             user = User.query.filter_by(id = user_id).first()
             user.usertype = 'TechSupport'
+            user.answers = 0
+            user.rating = 0
             db.session.commit()
             return redirect('http://localhost:3000/adminpage')
         if role == 'ADMIN':
@@ -54,7 +58,18 @@ def deleteUser():
     if request.method == 'POST':
         user_id = request.form['id']
         user = User.query.filter_by(id = user_id).first()
+        num = NumberofUsers.query.filter_by(id = 1).first()
+        num.number_of_users -= 1
         db.session.delete(user)
         db.session.commit()
         return redirect('http://localhost:3000/adminpage')
 
+@Userlist.route('/RateTechSupport',methods=['GET','POST'])
+def RateTechSupport():
+    if request.method == 'POST':
+        user_id = request.form['id']
+        rating = request.form['rating']
+        user = User.query.filter_by(id = user_id).first()
+        user.rating += rating / user.answers
+        db.session.commit()
+        return redirect('https://www.youtube.com/watch?v=grd-K33tOSM')
