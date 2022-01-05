@@ -2,7 +2,6 @@ from flask import Flask, request, redirect,render_template,jsonify, request,curr
 from flask_sqlalchemy import SQLAlchemy
 from flask_session import Session
 from flask_cors import CORS
-from flask_socketio import SocketIO
 
 db = SQLAlchemy() #database
 
