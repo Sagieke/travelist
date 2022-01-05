@@ -52,13 +52,12 @@ def logout():
 @Homepage.route('/forgotPasswordValidation', methods=['GET', 'POST']) #Security question page 
 def forgotPasswordValidation():
     if request.method == 'POST':
-        id =session.get("user_id")
-        session['user_id'] = id
         question = request.form['question']
         answer = request.form['answer']
         email = request.form['email']
         user = User.query.filter_by(username = email,answer = answer).first()
         if user :
+            session['user_id'] = user.id
             return redirect('http://127.0.0.1:5000/test3')
         else : return redirect('http://localhost:3000/')
 

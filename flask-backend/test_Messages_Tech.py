@@ -19,18 +19,18 @@ class UserListTest(MyTest):
         db.session.commit()
         assert message not in db.session
 
-    def test_add_Message_Tech(self):
+    def test_message_Sender_To_Tech_From_User(self):
         password = generate_password_hash("password")
         user = User(username="username", password=password, usertype = "usertype", answer = "answer",question = 'question')
         db.session.add(user)
         db.session.commit()
         tester = self.app.test_client(self)  
         start = tester.post('/login', data={'email': 'username', 'password': 'password'})
-        response = tester.post('/messageSenderTech', data={'title': 'test', 'description': 'test'})
+        response = tester.post('/messageSenderToTechFromUser', data={'title': 'test', 'description': 'test'})
         self.assertRedirects(response, 'http://127.0.0.1:5000/')
 
-    def test_delete_Message_Admin(self):
-        new_message = ListofMessagesTech(title='title', description='description')
+    def test_message_Deleter_Tech(self):
+        new_message = ListofMessagesTech(title = 'testitleATech', description = 'testdescription',answer = 'answer')
         db.session.add(new_message)
         db.session.commit()
         tester = self.app.test_client(self)  
