@@ -1,6 +1,6 @@
 from flask import Blueprint, request, redirect, jsonify,session
 from app import db
-from models import TechSupportMessage, User
+from models import TechSupportMessage,User
 MessageTech = Blueprint('MessageTech',__name__)
 
 @MessageTech.route('/messageSenderToTechFromUser',methods=['GET','POST'])
