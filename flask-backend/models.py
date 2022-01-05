@@ -121,14 +121,16 @@ class AdminMessage(db.Model): #list of messages sent by the admin
 @dataclass
 class TechSupportMessage(db.Model): #list of messages sent to tech support
     __tablename__ = 'TechSupportMessage'
-    user_id: str
+    traveler_id: int
+    tech_id: int
     id: int
     title: str
     description: str
     answer: str
     status: str
 
-    user_id = db.Column(db.Integer, db.ForeignKey('User.id'))
+    traveler_id = db.Column(db.Integer, db.ForeignKey('User.id'))
+    tech_id = db.Column(db.Integer, unique = True)
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(50),unique = False, nullable = False)
     description = db.Column(db.String(300),unique = False, nullable = False)
@@ -158,3 +160,12 @@ class Job(db.Model):
     title = db.Column(db.String(150),unique = False, nullable = False)
     description = db.Column(db.Text,unique = False, nullable = False)
     requirements = db.Column(db.Text,unique = False, nullable = False)
+
+@dataclass
+class NumberofUsers(db.Model):
+    __tablename__ = 'NumberofUsers'
+    id: int
+    number_of_users: int
+
+    id = db.Column(db.Integer, primary_key = True)
+    number_of_users = db.Column(db.Integer, unique = False, nullable = False)

@@ -32,7 +32,6 @@ def ChangeBugStatusTech():
     if request.method == 'POST':
         bug_id = request.form['id']
         priority = request.form['priority']
-        print("PRIORITY:{}".format(priority))
         bug = BugReport.query.filter_by(id = bug_id).first()
         if bug.status == 'Pending':
             bug.status = 'In Treatment'

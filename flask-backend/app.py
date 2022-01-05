@@ -1,8 +1,7 @@
-from flask import Flask, request, redirect,render_template,jsonify, request,current_app
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_session import Session
 from flask_cors import CORS
-from flask_socketio import SocketIO
 
 db = SQLAlchemy() #database
 
@@ -26,6 +25,7 @@ def create_app(test_mode,db_uri):
 
     with app.app_context():
         #blueprints initialization
+        from models import NumberofUsers
         from endpoints.Homepage import Homepage
         from endpoints.UserPage import UserPage
         from endpoints.ListPage import ListPage
@@ -50,7 +50,13 @@ def create_app(test_mode,db_uri):
         app.register_blueprint(JobPage)
         #database creation using models
         db.create_all()
-
+        num = NumberofUsers.query.filter_by(id = 1).first()
+        if num:
+            pass
+        else:
+            newapp = NumberofUsers(number_of_users = 0)
+            db.session.add(newapp)
+            db.session.commit()
         return app
 
 app = create_app(False,'sqlite:///database.db')

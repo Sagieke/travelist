@@ -1,36 +1,36 @@
 from app import  db
-from models import ListofMessagesTech,User
+from models import TechSupportMessage,User
 from test_Homepage import MyTest
 from werkzeug.security import generate_password_hash
 
 class UserListTest(MyTest):
     def test_add_Message_Tech_db(self):
-        message = ListofMessagesTech(title = 'testitleTech', description = 'testdescription',answer = 'answer')
+        message = TechSupportMessage(title = 'testitleTech', description = 'testdescription',answer = 'answer', status = 'status')
         db.session.add(message)
         db.session.commit() 
         assert message in db.session
 
     def test_delete_Message_Tech_db(self):
-        message = ListofMessagesTech(title = 'testitleATech', description = 'testdescription',answer = 'answer')
+        message = TechSupportMessage(title = 'testitleATech', description = 'testdescription',answer = 'answer', status = 'status')
         db.session.add(message)
         db.session.commit() 
-        message = ListofMessagesTech.query.filter_by(id=1).first()
+        message = TechSupportMessage.query.filter_by(id=1).first()
         db.session.delete(message)
         db.session.commit()
         assert message not in db.session
 
-    def test_add_Message_Tech(self):
+    def test_message_Sender_To_Tech_From_User(self):
         password = generate_password_hash("password")
         user = User(username="username", password=password, usertype = "usertype", answer = "answer",question = 'question')
         db.session.add(user)
         db.session.commit()
         tester = self.app.test_client(self)  
         start = tester.post('/login', data={'email': 'username', 'password': 'password'})
-        response = tester.post('/messageSenderTech', data={'title': 'test', 'description': 'test'})
-        self.assertRedirects(response, 'http://127.0.0.1:5000/')
+        response = tester.post('/messageSenderToTechFromUser', data={'title': 'test', 'description': 'test'})
+        self.assertRedirects(response, 'http://localhost:3000/userPage')
 
-    def test_delete_Message_Admin(self):
-        new_message = ListofMessagesTech(title='title', description='description')
+    def test_message_Deleter_Tech(self):
+        new_message = TechSupportMessage(title = 'testitleATech', description = 'testdescription',answer = 'answer', status = 'status')
         db.session.add(new_message)
         db.session.commit()
         tester = self.app.test_client(self)  
