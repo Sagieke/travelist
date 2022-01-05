@@ -62,7 +62,7 @@ export default function UserMesseges()  {
 
       return (
         <tr>
-        <td>{msg.user_id}</td>
+        <td>{msg.traveler_id}</td>
         <td>{msg.id}</td>
         <td>{msg.title}</td>
         <td>{msg.description}</td>

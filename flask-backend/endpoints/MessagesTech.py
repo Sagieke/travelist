@@ -9,7 +9,7 @@ def messageSenderToTechFromUser(): #send a message to tech support
         title = request.form['title']
         description = request.form['description']
         user_id = session.get("user_id")
-        new_message = TechSupportMessage(user_id=user_id,title=title, description=description,answer = '',status = 'Pending')
+        new_message = TechSupportMessage(traveler_id=user_id,title=title, description=description,answer = '',status = 'Pending')
         db.session.add(new_message)
         db.session.commit()
         return redirect('http://localhost:3000/userPage')
@@ -48,7 +48,7 @@ def getAllMessageTech(): #returns all the messages in the db as json file
 def getMessageUserToTech():
     if request.method == 'GET': #returns a message of choosing as a json file
         user_id = session.get("user_id")
-        Message = TechSupportMessage.query.filter_by(user_id=user_id).all()
+        Message = TechSupportMessage.query.filter_by(traveler_id=user_id).all()
         return jsonify(Message)
 
 @MessageTech.route('/RateTechSupport',methods=['GET','POST'])
