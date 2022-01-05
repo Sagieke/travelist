@@ -63,3 +63,9 @@ def deleteUser():
         db.session.delete(user)
         db.session.commit()
         return redirect('http://localhost:3000/adminpage')
+
+@Userlist.route('/getUserCount',methods=['GET','POST'])
+def deleteUser():
+    if request.method == 'POST':
+        row = NumberofUsers.query.all()
+        return jsonify(row.number_of_users)
