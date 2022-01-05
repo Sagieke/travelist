@@ -1,7 +1,7 @@
 from flask import Blueprint, session, request, redirect
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import db
-from models import User
+from models import User,NumberofUsers
 
 Homepage = Blueprint('Homepage',__name__)
 
@@ -19,6 +19,8 @@ def Register():
         for user in users:
             if new_user.username == user.username:
                 return redirect('http://localhost:3000/signuperror')
+        num = NumberofUsers.query.filter_by(id = 1).first()
+        num.number_of_users += 1
         db.session.add(new_user)
         db.session.commit()
         return redirect('http://localhost:3000/')
@@ -51,13 +53,12 @@ def logout():
 @Homepage.route('/forgotPasswordValidation', methods=['GET', 'POST']) #Security question page 
 def forgotPasswordValidation():
     if request.method == 'POST':
-        id =session.get("user_id")
-        session['user_id'] = id
         question = request.form['question']
         answer = request.form['answer']
         email = request.form['email']
-        user = User.query.filter_by(username = email,answer = answer).first()
+        user = User.query.filter_by(username = email, question= question, answer = answer).first()
         if user :
+            session['user_id'] = user.id
             return redirect('http://127.0.0.1:5000/test3')
         else : return redirect('http://localhost:3000/')
 
