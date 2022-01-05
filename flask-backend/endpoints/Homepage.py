@@ -51,15 +51,14 @@ def logout():
 @Homepage.route('/forgotPasswordValidation', methods=['GET', 'POST']) #Security question page 
 def forgotPasswordValidation():
     if request.method == 'POST':
-        id =session.get("user_id")
-        session['user_id'] = id
         question = request.form['question']
         answer = request.form['answer']
         email = request.form['email']
-        user = User.query.filter_by(username = email,answer = answer).first()
+        user = User.query.filter_by(username = email, question= question, answer = answer).first()
         if user :
-            return redirect('http://127.0.0.1:5000/test3')
-        else : return redirect('http://localhost:3000/')
+            session['user_id'] = user.id
+            return redirect('http://localhost:3000/userpage')
+       
 
 @Homepage.route('/forgotPasswordChange', methods=['GET', 'POST']) #Password change page
 def forgotPasswordChange():
@@ -72,4 +71,4 @@ def forgotPasswordChange():
             hashed_password = generate_password_hash(password)
             user.password = hashed_password
             db.session.commit()
-            return redirect('http://localhost:3000/')
+            return redirect('http://localhost:3000/%27')
