@@ -136,7 +136,7 @@ class TechSupportMessage(db.Model): #list of messages sent to tech support
     status = db.Column(db.String(50), unique = False, nullable = False)
 
 @dataclass
-class FAQ(db.Model): 
+class FAQ(db.Model): #Frequently Asked Questions
     __tablename__ = 'FAQ'
     id: int
     question: str
