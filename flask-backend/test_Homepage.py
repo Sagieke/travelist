@@ -59,7 +59,7 @@ class HomepageTest(MyTest):
         db.session.commit()
         tester = self.app.test_client(self)  
         response = tester.post('/forgotPasswordValidation', data={ 'email': 'username','question' : 'question','answer': 'answer'})
-        self.assertRedirects(response, 'http://127.0.0.1:5000/test3')
+        self.assertRedirects(response, 'http://localhost:3000/userpage')
     
     def test_forgotPasswordChange(self):
         password = generate_password_hash("password")
@@ -69,4 +69,4 @@ class HomepageTest(MyTest):
         tester = self.app.test_client(self)  
         start = tester.post('/forgotPasswordValidation', data={ 'email': 'username','question' : 'question','answer': 'answer'})
         response = tester.post('/forgotPasswordChange', data={'password': 'newpassword', 'confirm' : 'newpassword'})
-        self.assertRedirects(response, 'http://localhost:3000/')
+        self.assertRedirects(response, 'http://localhost:3000/%27')

@@ -35,7 +35,7 @@ def updateJob():
         job.description = description
         job.requirements = requirements
         db.session.commit()
-        return redirect('https://www.youtube.com/watch?v=U06jlgpMtQs')
+        return redirect('http://localhost:3000/adminpage')
 
 @JobPage.route('/viewJob', methods=['GET','POST'])
 def viewJobs():
