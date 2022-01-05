@@ -12,7 +12,8 @@ class User(db.Model): #user data base
     question: str
     rating: float
     answers: int 
-    
+    report: str
+
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(100),unique = True, nullable = False)
     password = db.Column(db.String(100), nullable = False)
@@ -21,6 +22,7 @@ class User(db.Model): #user data base
     question = db.Column(db.String(100),unique = False, nullable = False)
     rating = db.Column(db.Float, nullable = True)
     answers = db.Column(db.Integer, unique = False, nullable = False)
+    report = db.Column(db.String(100),unique = False, nullable = True)
 
 @dataclass
 class List(db.Model): #List of lists of places
