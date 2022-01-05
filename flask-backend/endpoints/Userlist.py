@@ -65,7 +65,7 @@ def deleteUser():
         return redirect('http://localhost:3000/adminpage')
 
 @Userlist.route('/getUserCount',methods=['GET','POST'])
-def deleteUser():
+def getUserCount():
     if request.method == 'POST':
         row = NumberofUsers.query.all()
         return jsonify(row.number_of_users)
