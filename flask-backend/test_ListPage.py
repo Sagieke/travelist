@@ -1,11 +1,12 @@
 from app import  db
-from models import List
+from models import ListOfPlaces,ListOfLists
+from werkzeug.security import generate_password_hash
 from test_Homepage import MyTest
 
 class ListPageTest(MyTest):
 
     def test_add_place(self):
-        list = List(user_id = '1', id = '1', name="testlist", color = '#ffffff')
+        list = ListOfLists(user_id = '1', id = '1', name="testlist", color = '#ffffff')
         db.session.add(list)
         db.session.commit()
         tester = self.app.test_client(self)  
@@ -16,7 +17,7 @@ class ListPageTest(MyTest):
 
     def test_remove_place(self):
         tester = self.app.test_client(self)  
-        list = List(user_id = '1', id = '1', name="testlist", color = '#ffffff')
+        list = ListOfLists(user_id = '1', id = '1', name="testlist", color = '#ffffff')
         db.session.add(list)
         db.session.commit()
         tester = self.app.test_client(self)  
@@ -27,7 +28,7 @@ class ListPageTest(MyTest):
         self.assertRedirects(response, 'http://localhost:3000/userPage/places')
 
     def test_view_place(self):
-        list = List(user_id = '1', id = '1', name="testlist", color = '#ffffff')
+        list = ListOfLists(user_id = '1', id = '1', name="testlist", color = '#ffffff')
         db.session.add(list)
         db.session.commit()
         tester = self.app.test_client(self)  

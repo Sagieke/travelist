@@ -1,7 +1,7 @@
 from flask import Blueprint, session, request, redirect
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import db
-from models import User,NumberofUsers
+from models import User
 
 Homepage = Blueprint('Homepage',__name__)
 
@@ -25,8 +25,6 @@ def Register():
         for user in users:
             if new_user.username == user.username:
                 return redirect('http://localhost:3000/signuperror')
-        num = NumberofUsers.query.filter_by(id = 1).first()
-        num.number_of_users += 1
         db.session.add(new_user)
         db.session.commit()
         return redirect('http://localhost:3000/')
