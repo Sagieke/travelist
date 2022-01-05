@@ -125,3 +125,20 @@ text-align: right;
   font-size: 20px;
   padding-left: 7px;
 }
+
+.wrapper_navbar {
+  display: flex;
+  background: #0b89d3;
+  padding: 20px 20px;
+}
+.auth-inner-navbar {
+  width: 800px;
+  height: 5px;
+  margin: auto;
+  
+  background: #4400ff;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  padding: 20px 20px 20px 20px;
+  border-radius: 15px;
+  transition: all 0.3s;
+}

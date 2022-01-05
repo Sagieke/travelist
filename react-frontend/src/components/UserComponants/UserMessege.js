@@ -34,26 +34,40 @@ export default function UserMesseges()  {
     const handleShow = () => setShow(true);  
     const [ShowMsglist, setMsgList] = useState([]);
     const[UserId,setUserId]=useState('');
-    const[rating,setUserrating]=useState('');
+    const[rating,setUserrating]=useState(0.0);
 
-   function notEmpty(props){
+
+
+
+
+
+   function notEmpty(props,props2){
      if(props==="Treated"){
+       if(rating===0.0){
      return(
       <td>
       <p1>Rate this answer:</p1>
-       <DropdownButton >
-       <DropdownItem onClick={()=>setUserrating(1)}>1 </DropdownItem>
-       <DropdownItem onClick={()=>setUserrating(2)}>2 </DropdownItem>
-       <DropdownItem onClick={()=>setUserrating(3)}>3 </DropdownItem>
-       <DropdownItem onClick={()=>setUserrating(4)}>4 </DropdownItem>
-       <DropdownItem onClick={()=>setUserrating(5)}>5 </DropdownItem>
-       <form action="/RateTechSupport"><button >submit</button></form>
-       </DropdownButton>
-       
-      </td>
+      <form action="http://localhost:5000/RateTechSupport" method="post" > 
+         <DropdownButton>
+         <DropdownItem> <Button type="submit" onClick={()=>setUserrating(1)} style={{backgroundColor:"green",color:"black"}}>1</Button></DropdownItem>
+         <DropdownItem> <Button type="submit" onClick={()=>setUserrating(2)} style={{backgroundColor:"lightgreen",color:"black"}}>2</Button></DropdownItem>
+         <DropdownItem> <Button type="submit" onClick={()=>setUserrating(3)} style={{backgroundColor:"lightyellow",color:"black"}}> 3</Button></DropdownItem>
+         <DropdownItem> <Button type="submit" onClick={()=>setUserrating(4)} style={{backgroundColor:"lightred",color:"black"}}> 4</Button></DropdownItem>
+         <DropdownItem> <Button type="submit" onClick={()=>setUserrating(5)} style={{backgroundColor:"red",color:"black"}}> 5</Button></DropdownItem>
+         </DropdownButton>
+         <input value={rating} name="rating" hidden="true"></input>
+         <input value={props2} name="id" hidden="true"></input>
+         <button type="submit">submit</button>
+         </form>
+        </td>
+     )
+     
 
-);
-}
+
+        }
+
+     }
+    
    }
 
      useEffect(() => {
@@ -67,12 +81,10 @@ export default function UserMesseges()  {
 
       return (
         <tr>
-        <td>{msg.traveler_id}</td>
-        <td>{msg.id}</td>
         <td>{msg.title}</td>
         <td>{msg.description}</td>
         <td>{msg.answer}</td>
-        <td>{notEmpty(msg.status)}</td>
+        <td>{notEmpty(msg.status,msg.tech_id)}</td>
         
 
      </tr>
@@ -94,8 +106,6 @@ export default function UserMesseges()  {
   <thead>
     <tr>
       
-      <th> user id</th>
-       <th>massege id</th>
        <th>title</th>
        <th>Description</th>
        <th>answer</th>
