@@ -70,6 +70,6 @@ def RateTechSupport():
         user_id = request.form['id']
         rating = request.form['rating']
         user = User.query.filter_by(id = user_id).first()
-        user.rating = rating / user.answers
+        user.rating += rating / user.answers
         db.session.commit()
         return redirect('https://www.youtube.com/watch?v=grd-K33tOSM')
