@@ -36,15 +36,16 @@ function App() {
               <Route exact path="/" component={ImageSliderAvtivate}/>
               <Route exact path="/userPage" component={UserPage}/>
               <Route exact path="/UserPage/places/place" component ={PlacePage}/>
-              <Route  path="/UserPage/" component ={ListPage}/>
-              <Route path="/UserPage/places" component ={ListPage}/>
-              <Route path="/adminpage" component={AdminPage}/>
-              <Route path="/techsupport" component={techSupport}/>
-              <Route path="/FAQ" component={UserFaq}/>
+              <Route exact path="/UserPage/" component ={ListPage}/>
+              <Route exact path="/UserPage/places" component ={ListPage}/>
+              <Route exact path="/adminpage" component={AdminPage}/>
+              <Route exact path="/techsupport" component={techSupport}/>
+              <Route exact path="/FAQ" component={UserFaq}/>
               <Route exact path="/loginerror" component={LoginErrorPage}/>
               <Route exact path="/signuperror" component={SignUpErrorPage}/>
               <Route exact path="/jobs" component={JobListingsPage}/>
               <Route exact path="/jobs/job" component={JobPage}/>
+              <Route exact path="/Forgotpassword" component={ForgotPasswordPage}/>
               </Switch>
       
       </div>

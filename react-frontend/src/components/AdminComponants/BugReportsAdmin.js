@@ -46,6 +46,7 @@ export default function BugReportAdmin()  {
         <td>{bug.id}</td>
         <td>{bug.title}</td>
         <td>{bug.description}</td>
+        <td>{bug.priority}</td>
         <td > <form action="http://localhost:5000//ChangeBugStatusAdmin" method="post"><Button name="id" value={bug.id}  type="submit"  style={{backgroundColor:bug.statuscolor,color:"black"}}>[{bug.status}]-Change Status</Button></form></td>
         <td><form action="http://localhost:5000/deleteBug" method="post"  ><button name="id" value={bug.id} type="submit" >Delete bug report</button></form></td>
         
@@ -70,6 +71,7 @@ export default function BugReportAdmin()  {
       <th> id</th>
        <th>title</th>
        <th>description</th>
+       <th>bug priority</th>
        <th>Status</th>
        <th>discard</th>
     </tr>

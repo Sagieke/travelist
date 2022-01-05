@@ -13,7 +13,7 @@ def submitBug():
         new_report = BugReport(title=title, description=description, status = 'Pending', statuscolor = '#ff0000',priority = '')
         db.session.add(new_report)
         db.session.commit()
-        return redirect('http://localhost:3000/')
+        return redirect('http://localhost:3000/userpage')
 
 @bug.route('/getBugsTech',methods=['GET','POST'])
 def getBugsTech():
@@ -32,6 +32,7 @@ def ChangeBugStatusTech():
     if request.method == 'POST':
         bug_id = request.form['id']
         priority = request.form['priority']
+        print("PRIORITY:{}".format(priority))
         bug = BugReport.query.filter_by(id = bug_id).first()
         if bug.status == 'Pending':
             bug.status = 'In Treatment'
@@ -52,6 +53,7 @@ def ChangeBugStatusAdmin():
         if bug.status == 'In Treatment':
             bug.status = 'Treated'
             bug.statuscolor = '#80fa5b'
+            
         else: 
             bug.status = 'In Treatment'
             bug.statuscolor = '#ffee00'

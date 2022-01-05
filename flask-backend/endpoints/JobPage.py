@@ -7,13 +7,14 @@ JobPage = Blueprint('JobPage',__name__)
 @JobPage.route('/addJob', methods = ['GET', 'POST'])
 def addJob():
     if request.method == 'POST':
-        job_name = request.form['job_name']
+        title = request.form['title']
         description = request.form['description']
         requirements = request.form['requirements']
-        new_job = Job(job_name=job_name, description=description,requirements=requirements)
+        new_job = Job(title=title, description=description,requirements=requirements)
         db.session.add(new_job)
         db.session.commit()
-        return redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
+        return redirect('http://localhost:3000/adminpage')
+    else:return redirect('http://localhost:3000/')
 
 @JobPage.route('/deleteJob', methods = ['GET', 'POST'])
 def deleteJob():
@@ -22,7 +23,7 @@ def deleteJob():
         job = Job.query.filter_by(id=id).first()
         db.session.delete(job)
         db.session.commit()
-        return redirect('https://www.youtube.com/watch?v=W3GrSMYbkBE')
+        return redirect('http://localhost:3000/adminpage')
 
 @JobPage.route('/updateJob', methods = ['GET', 'POST'])
 def updateJob():

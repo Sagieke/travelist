@@ -59,8 +59,8 @@ def forgotPasswordValidation():
         user = User.query.filter_by(username = email, question= question, answer = answer).first()
         if user :
             session['user_id'] = user.id
-            return redirect('http://127.0.0.1:5000/test3')
-        else : return redirect('http://localhost:3000/')
+            return redirect('http://localhost:3000/userpage')
+       
 
 @Homepage.route('/forgotPasswordChange', methods=['GET', 'POST']) #Password change page
 def forgotPasswordChange():
@@ -73,4 +73,4 @@ def forgotPasswordChange():
             hashed_password = generate_password_hash(password)
             user.password = hashed_password
             db.session.commit()
-            return redirect('http://localhost:3000/')
+            return redirect('http://localhost:3000/%27')

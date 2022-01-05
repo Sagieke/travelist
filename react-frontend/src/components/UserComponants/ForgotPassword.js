@@ -1,14 +1,17 @@
 import React,{ useState } from "react";
 import {Button,Modal,Accordion,ListGroup, ListGroupItem} from "react-bootstrap";
+
+
+
+
 export default function ForgotPasswordPage()  {
-
-
     const [question, setQuestion] = useState(' Please Select your question :');
     const [answer, setAnswer] = useState('');
     
     return(
         <div className="auth-wrapper">
             <div className="auth-inner-center">
+              <form action="http://localhost:5000/forgotPasswordValidation" method="post">
             <h3>Compleate this stages to reset password:</h3>
             <label>Security question: </label>
          <Accordion defaultActiveKey="0">
@@ -27,15 +30,14 @@ export default function ForgotPasswordPage()  {
           </Accordion.Body>
         </Accordion.Item>
          </Accordion>
-        
-           
             <div className="form-group">
                 <label>Answer</label>
                 <input
                   name="answer"
-                  type="email"
+                  type="text"
                   className="form-control"
-                  placeholder="Enter Answer: "
+                  placeholder="Enter Answer:"
+                  required
                 />
               </div>
               <div className="form-group">
@@ -51,7 +53,7 @@ export default function ForgotPasswordPage()  {
         <button type="submit" className="btn btn-primary btn-block" >
                 Reset Password
               </button>
-       
+              </form>
            
             </div>
       

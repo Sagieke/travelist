@@ -30,7 +30,7 @@ export default function BugReport()  {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);  
-    const [Priority, setPriority] = useState([]);
+    const [priority, setPriority] = useState('');
     const [ShowBuglist, setBugList] = useState([]);
 
 
@@ -51,12 +51,14 @@ export default function BugReport()  {
         <td>
         <p1>Choose bug priority:</p1>
          <DropdownButton>
-         <DropdownItem> <form onChange={event=>setPriority(event.target.value)} name="low priority"><Button style={{backgroundColor:"green",color:"black"}}>Low priotity</Button></form></DropdownItem>
-         <DropdownItem> <form onChange={event=>setPriority(event.target.value)} name="Medium priority"><Button style={{backgroundColor:"yellow",color:"black"}}>Medium priotity</Button></form></DropdownItem>
-         <DropdownItem> <form onChange={event=>setPriority(event.target.value)} name="High priority"><Button style={{backgroundColor:"red",color:"black"}}>High priotity</Button></form></DropdownItem>
+         <DropdownItem> <Button onClick={()=>setPriority('low priority')} style={{backgroundColor:"green",color:"black"}}>Low priotity</Button></DropdownItem>
+         <DropdownItem> <Button onClick={()=>setPriority('medium priority')} style={{backgroundColor:"yellow",color:"black"}}>medium priotity</Button></DropdownItem>
+         <DropdownItem> <Button onClick={()=>setPriority('high priority')} style={{backgroundColor:"red",color:"black"}}> high priotity</Button></DropdownItem>
          </DropdownButton>
         </td>
-        <td > <form action="http://localhost:5000/ChangeBugStatusTech" method="post"><Button name="id" value={bug.id} type="submit"  style={{backgroundColor:bug.statuscolor,color:"black"}}>[{bug.status}]-Change Status</Button></form></td>
+        <td ><form action="http://localhost:5000/ChangeBugStatusTech" method="post">
+          <Button name="id" value={bug.id} type="submit" style={{backgroundColor:bug.statuscolor,color:"black"}}>[{bug.status}]-Change Status</Button>
+          <input name="priority" value={priority} hidden="true"></input></form></td>
         <td><form action="http://localhost:5000/deleteBug" method="post"  ><button name="id" value={bug.id} type="submit" >Delete bug report</button></form></td>
         
      </tr>
@@ -69,6 +71,7 @@ export default function BugReport()  {
 <Button style={ButtonStyle1} variant="primary" onClick={handleShow}>Bug reports</Button>
   <Modal size="lg" show={show} onHide={handleClose}>
   <form action='http://localhost:5000/ChangeBugStatusTech' method='post' >
+   
   <Modal.Header closeButton>
     <Modal.Title><h3> Bug reports:</h3></Modal.Title>
   </Modal.Header>

@@ -30,12 +30,15 @@ export default function JobListingsPage()  {
         )   
   };
  return (
-        <div className="auth-wrapper">
+     <div className="auth-wrapper">
+            <div className="auth-inner">
             <Row>
                 <ListGroup defaultActiveKey="#link1" as="ol" numbered>
                     {ShowJoblist.map(JobsListItem)}
                 </ListGroup>
             </Row>
         </div>
+        </div>
+        
    ); 
  }
