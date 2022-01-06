@@ -10,6 +10,13 @@ def getUserlist():
         users = User.query.all()
         return jsonify(users)
 
+@Userlist.route('/getCertainUserlist',methods=['GET','POST'])
+def getUserlist():
+    if request.method == 'POST':
+        user_id = request.form['id']
+        user = User.query.filter_by(id = user_id).first()
+        return jsonify(user)
+
 @Userlist.route('/changePermissionTech',methods=['GET','POST']) 
 def changePermissionTech():
     if request.method == 'POST':
@@ -69,6 +76,11 @@ def reportUser():
     if request.method == 'POST':
         user_id = request.form['id']
         user = User.query.filter_by(id = user_id).first()
-        user.reported = True
+        if user.reported == False:
+            user.reported = True
+        elif user.reported == True:
+            user.reported = False
         db.session.commit()
         return redirect('https://www.youtube.com/watch?v=W9lXi4WrNRk')
+
+
