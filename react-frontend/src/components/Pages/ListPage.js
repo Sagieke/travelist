@@ -2,7 +2,7 @@ import AddPlace from "../AddingComponants/AddPlace";
 import Weather from "./weather";
 import React , { useState, useEffect }from "react";
 import {Container,Row, Col,Button,Modal,ListGroup} from "react-bootstrap";
-
+// Requirement number 6 
 export default function  ListPage()  {
   const [listInfo, setlistInfo] = useState([]);
   const [listdata, setlistdata] = useState([]);
@@ -35,7 +35,7 @@ export default function  ListPage()  {
               <ListGroup.Item  variant="default" key={index} style={{ textAlign: 'left', color: "black", background: "#1ca0f9" }} as="li">
                 <div className="auth-inner-place"><Row><Col><h6>place name</h6></Col><Col><h5>start date</h5></Col><Col><h5>end date</h5></Col></Row>
                 <Row><Col>{lgi.name}</Col><Col> {lgi.start_date}</Col><Col>{lgi.end_date}</Col></Row></div>
-                  
+                
                       <form action="http://localhost:5000/removeplace" method="post">
                       
                       <Button variant="danger" className="float-end" type="submit" name="place_id" value={lgi.id}>remove</Button>
