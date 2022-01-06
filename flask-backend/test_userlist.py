@@ -67,3 +67,5 @@ class UserListTest(MyTest):
         db.session.delete(user)
         db.session.commit()
         assert user not in db.session
+
+     

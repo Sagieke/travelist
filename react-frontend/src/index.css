@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 body {
-  background: #227994 !important;
+  background: #2c23a8 !important;
   min-height: 100vh;
   display: flex;
   font-weight: 400;
@@ -125,3 +125,76 @@ text-align: right;
   font-size: 20px;
   padding-left: 7px;
 }
+
+.wrapper_navbar {
+  display: flex;
+  background: #0b89d3;
+  padding: 20px 20px;
+}
+.auth-inner-navbar {
+  width: 800px;
+  height: 5px;
+  margin: auto;
+  
+  background: #4400ff;
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  padding: 20px 20px 20px 20px;
+  border-radius: 15px;
+  transition: all 0.3s;
+}
+
+.NavBar-Button
+{
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+
+}
+
+.my_lists_style_view
+{
+  background-color: black;
+  color: white;
+  font-size: 20px;
+  padding: 10px 60px;
+  border-radius: 5px;
+  margin: 10px 0px;
+  cursor: pointer;
+}
+
+
+.my_lists_style_delete
+{
+  background-color: black;
+  color: white;
+  font-size: 20px;
+  padding: 10px 60px;
+  border-radius: 5px;
+  margin: 10px 0px;
+  cursor: pointer;
+}
+
+
+.auth-wrapper-lists{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
+  
+}
+
+body,
+html,
+.App,
+#root,
+.auth-wrapper-lists{
+  
+  width: 100%;
+  height: 100%;
+}
+

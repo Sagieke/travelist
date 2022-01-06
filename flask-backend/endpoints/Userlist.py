@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, redirect
+from flask import Blueprint, request, jsonify, redirect,session
 from app import db
 from models import User,NumberofUsers
 
@@ -9,6 +9,14 @@ def getUserlist():
     if request.method == 'GET':
         users = User.query.all()
         return jsonify(users)
+    else : redirect('http://localhost:3000/pagenotfound')
+
+@Userlist.route('/getCertainUserlist',methods=['GET','POST'])
+def getCertainUserlist():
+    if request.method == 'GET':
+        user_id = session.get("user_id")
+        return jsonify(user_id)
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @Userlist.route('/changePermissionTech',methods=['GET','POST']) 
 def changePermissionTech():
@@ -63,6 +71,7 @@ def deleteUser():
         db.session.delete(user)
         db.session.commit()
         return redirect('http://localhost:3000/adminpage')
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @Userlist.route('/getUserCount',methods=['GET','POST'])
 def getUserCount():
@@ -75,6 +84,18 @@ def reportUser():
     if request.method == 'POST':
         user_id = request.form['id']
         user = User.query.filter_by(id = user_id).first()
-        user.reported = True
+        if user.reported == False:
+            user.reported = True
+        elif user.reported == True:
+            user.reported = False
         db.session.commit()
-        return redirect('https://www.youtube.com/watch?v=W9lXi4WrNRk')
+        return redirect('http://localhost:3000/techsupport')
+
+@Userlist.route('/getCertainUserlist',methods=['GET','POST'])
+def getCertainUserlist():
+    if request.method == 'GET':
+        user_type = session.get("user_type")
+        return jsonify(user_type)
+    else : redirect('http://localhost:3000/pagenotfound')
+
+

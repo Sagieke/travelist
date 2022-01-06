@@ -3,7 +3,7 @@ import {Container,Row, Col,Button,Modal,ListGroup,Table,Dropdown,DropdownButton,
 import { FiTrash } from 'react-icons/fi';
 import AddFAQ from "../AddingComponants/AddFaq";
 import EditFAQ from "../Pages/EditFAQ";
-
+import {VscQuestion} from 'react-icons/vsc';
 
 
 
@@ -60,7 +60,7 @@ export default function Faq()  {
     <>
 
 
-<Button style={ButtonStyle2}variant="primary" onClick={handleShow}>FAQ</Button>
+<Button style={ButtonStyle2}variant="primary" onClick={handleShow}><VscQuestion/>FAQ</Button>
   <Modal size="lg" show={show} onHide={handleClose}>
   <form action='http://localhost:5000/addFAQ' method='post' >
   <Modal.Header closeButton>

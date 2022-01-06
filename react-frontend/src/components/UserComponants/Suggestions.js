@@ -1,27 +1,18 @@
 import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import { BiMessageAdd } from 'react-icons/bi';
-const ButtonStyle1 = {
-  color:"black",
-  height:"50px",
-  borderColor:"black",
-  backgroundColor:"lightpink",
-  margin:"10px",
-  width:"190px",
-  height:"50px",
-}
+import { useHistory } from "react-router-dom";
+
 
 export default function Suggestions() {
-    const [show, setShow] = useState(false);
+    const [show, setShow] = useState(true);
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-    const [title, settitle] = useState('');
-    const [description, setSuggestion] = useState('');
+    let history = useHistory();
 
     return (
         <>
       
-        <Button style={ButtonStyle1}variant="primary" onClick={handleShow}><BiMessageAdd/>Add a suggestion </Button>
+        
         <Modal show={show}  onHide={handleClose}>
         <form action='http://localhost:5000/submitSuggestion' method='post' >
         <Modal.Header closeButton>
@@ -36,7 +27,6 @@ export default function Suggestions() {
                   type="title"
                   className="form-control"
                   placeholder="Enter title of suggestion"
-                  onChange={event => settitle(event.target.value)} 
                   required
                 />
               
@@ -48,13 +38,13 @@ export default function Suggestions() {
                   type="suggestion"
                   className="form-control"
                   placeholder="Enter description of suggestion: "
-                  onChange={event => setSuggestion(event.target.value)}
+                  required
                 />
              
               </div>
        </Modal.Body>
         <Modal.Footer>
-        <button type="submit" className="btn btn-primary btn-block" >
+        <button type="submit" className="btn btn-primary btn-block" onClick={() => history.goBack()} >
                 sumbit
               </button>
         </Modal.Footer>

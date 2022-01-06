@@ -12,6 +12,7 @@ def addFAQ(): #adds new FAQ to the site
         db.session.add(faq)
         db.session.commit() 
         return redirect('http://localhost:3000/techSupport')
+    else : redirect('http://localhost:3000/pagenotfound')
     
 
 @faq.route('/deleteFAQ', methods=['GET', 'POST'])
@@ -22,7 +23,7 @@ def deleteFAQ(): #deletes an FAQ from the site
         db.session.delete(faq)
         db.session.commit() 
         return redirect('http://localhost:3000/techSupport')
-    return print("guy")
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @faq.route('/updateFAQ', methods=['GET', 'POST'])
 def updateFAQ(): #updates existing FAQ
@@ -38,10 +39,11 @@ def updateFAQ(): #updates existing FAQ
         faq.answer = answer
         db.session.commit() 
         return redirect('http://localhost:3000/adminpage')
-    return "h1"
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @faq.route('/getFAQ',methods=['GET','POST'])
 def getFAQ():
     if request.method == 'GET':
         FAQs = FAQ.query.all()
         return jsonify(FAQs)
+    else : redirect('http://localhost:3000/pagenotfound')

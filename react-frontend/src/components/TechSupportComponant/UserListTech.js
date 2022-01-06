@@ -3,34 +3,9 @@ import {Container,Row, Col,Button,Modal,ListGroup,Table,Dropdown,DropdownButton}
 import ChangeRoleTech from "./ChangeRoleTech";
 import DropdownItem from "react-bootstrap/esm/DropdownItem";
 import { AiOutlineStop } from 'react-icons/ai';
+import { FiUsers } from 'react-icons/fi';
 
 
-const MakeAdminButtonStyle={
-  mergin:"10px",
-  borderColor:"black",
-  width: '150px',
-  height: '30px',
-  backgroundColor:"purple",
-  color:"white",
-}
-
-const MakeTechButtonStyle={
-  mergin:"10px",
-  borderColor:"black",
-  width: '150px',
-  height: '30px',
-  backgroundColor:"grey",
-  color:"white",
-}
-
-const DeleteButtonStyle={
-  mergin:"10px",
-  borderColor:"black",
-  backgroundColor:"red",
-  Color:"black",
-  width:"300px",
-  height: '30px'
-}
 
 const ButtonStyle1={
   mergin:"10px",
@@ -68,14 +43,14 @@ export default function UserListTech()  {
         <td>{lui.username}</td>
         <td>{lui.usertype}</td>
  <td><ChangeRoleTech id={lui.id}/></td>
- <td><button style={{backgroundColor:"red", color:"black"}}><AiOutlineStop/>Rerport user</button></td>
+ <td><form action="http://localhost:5000/reportUser" method="post" ><button value={lui.id} name="id"style={{backgroundColor:"red", color:"black"}}type="submit"><AiOutlineStop/>Rerport user</button></form></td>
       </tr>
              )   
   };
 return (
     <>
 
-    <Button style={ButtonStyle1} variant="primary" onClick={handleShow}>User List</Button>
+    <Button style={ButtonStyle1} variant="primary" onClick={handleShow}><FiUsers/>User List</Button>
     <Modal size="lg" show={show} onHide={handleClose}>
     <form action='http://localhost:5000/login' method='post' >
     <Modal.Header closeButton>

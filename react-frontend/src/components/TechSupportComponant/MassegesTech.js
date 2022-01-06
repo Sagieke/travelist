@@ -9,24 +9,20 @@ import AddAnswer from "./AddAnswer";
 
 
 
-const ButtonStyle2={
+
+const ButtonStyle1={
+  mergin:"10px",
+  borderColor:"black",
   color:"black",
   height:"50px",
-  borderColor:"black",
-  backgroundColor:"Lightgreen",
+ borderColor:"black",
+  backgroundColor:"Lightblue",
   margin:"10px",
-  
 }
- 
 
 
-const DeleteFaqStyleButton={
-  borderColor:"black",
-  width: '150px',
-  height: '30px',
-  backgroundColor:"red",
-  color:"black",
-}
+
+
 
 
 export default function TechMesseges()  {
@@ -35,8 +31,19 @@ export default function TechMesseges()  {
     const handleShow = () => setShow(true);  
     const [ShowMsglist, setMsgList] = useState([]);
     const[UserId,setUserId]=useState('');
+    const[rating,setRatingTech]=useState();
 
 
+
+    useEffect(() => {
+      fetch('http://localhost:5000/GetTechSupportRating',{
+          credentials: "include"
+       })
+        .then(response => response.json())
+         .then(object => setRatingTech(object))
+      },[]);
+      
+      
      useEffect(() => {
         fetch('http://localhost:5000//getAllMessageTech',{
             credentials: "include"
@@ -53,7 +60,9 @@ export default function TechMesseges()  {
         <td>{msg.title}</td>
         <td>{msg.description}</td>
         <td>{msg.answer}</td>
-        <td><AddAnswer id={msg.id} /></td>        
+        <td><AddAnswer id={msg.id} /></td>   
+        <td>{msg.rating}</td>
+             
         
 
      </tr>
@@ -63,11 +72,11 @@ export default function TechMesseges()  {
     <>
 
 
-<form ><Button style={ButtonStyle2}variant="primary" onClick={handleShow}><BiEnvelope/>View masseges</Button></form>
+<Button style={ButtonStyle1}  onClick={handleShow}><BiEnvelope/>View masseges</Button>
   <Modal size="lg" show={show} onHide={handleClose}>
   <form action='http://localhost:5000//getAllMessageTech' method='post' name="id" >
   <Modal.Header closeButton>
-    <Modal.Title><h3> Messege list:</h3></Modal.Title>
+    <Modal.Title><h3> Your rating is : {rating}</h3></Modal.Title>
   </Modal.Header>
   <Modal.Body>
     <div style={{'height': '300px', 'overflow':'scroll', 'display': 'block',}}>
@@ -80,6 +89,7 @@ export default function TechMesseges()  {
        <th>title</th>
        <th>Description</th>
        <th>answer</th>
+       
     </tr>
   </thead>
   <tbody>

@@ -40,10 +40,14 @@ const ButtonStyle2={
 
 
   const ButtonStyle1={
+    position: 'absolute',
+    bottom:0,
+    left:"100px",
+    top:"26px",
     mergin:"10px",
     borderColor:"black",
     color:"black",
-    height:"50px",
+    height:"35px",
    borderColor:"black",
     backgroundColor:"Lightblue",
     margin:"10px",

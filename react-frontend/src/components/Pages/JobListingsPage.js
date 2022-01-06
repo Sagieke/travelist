@@ -1,5 +1,5 @@
 import React , { useState, useEffect}from "react";
-import {ListGroup, Row} from "react-bootstrap";
+import {ListGroup, Row,Accordion,AccordionButton} from "react-bootstrap";
 
 const listStyle={
     textAlign: 'left',
@@ -18,8 +18,9 @@ export default function JobListingsPage()  {
            .then(object => setJobList(object))
         },[]);
 
-    const JobsListItem = (lji, index) => {
+        
 
+    const JobsListItem = (lji, index) => {
       return (
         <ListGroup.Item  variant="default" key={index} style={listStyle} as="li">
             {lji.title}
@@ -30,15 +31,18 @@ export default function JobListingsPage()  {
         )   
   };
  return (
-     <div className="auth-wrapper">
-            <div className="auth-inner">
+     
+<div className="auth-wrapper">
+        <div className="auth-inner-center">
+            <h1>We are hiring for:</h1>
             <Row>
                 <ListGroup defaultActiveKey="#link1" as="ol" numbered>
                     {ShowJoblist.map(JobsListItem)}
                 </ListGroup>
             </Row>
-        </div>
-        </div>
+            </div>
+            </div>
+       
         
    ); 
  }

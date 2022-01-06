@@ -130,7 +130,7 @@ class TechSupportMessage(db.Model): #list of messages sent to tech support
     status: str
 
     traveler_id = db.Column(db.Integer, db.ForeignKey('User.id'))
-    tech_id = db.Column(db.Integer, unique = True)
+    tech_id = db.Column(db.Integer, unique = False)
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(50),unique = False, nullable = False)
     description = db.Column(db.String(300),unique = False, nullable = False)

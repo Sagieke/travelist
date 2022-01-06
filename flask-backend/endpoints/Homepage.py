@@ -30,6 +30,7 @@ def Register():
         db.session.add(new_user)
         db.session.commit()
         return redirect('http://localhost:3000/')
+    else : redirect('http://localhost:3000/pagenotfound')
         
 
 @Homepage.route('/login', methods=['GET', 'POST'])
@@ -41,6 +42,7 @@ def Login():
         if user and check_password_hash(user.password,password):
             #save user to session
             session['user_id'] = user.id
+            session['user_type'] = user.usertype
             if user.usertype == 'Admin':
                 return redirect('http://localhost:3000/adminPage')
             elif user.usertype == 'TechSupport':
@@ -48,6 +50,7 @@ def Login():
             else: 
                 return redirect('http://localhost:3000/userPage')
         return redirect('http://localhost:3000/loginerror')
+    else : redirect('http://localhost:3000/pagenotfound')
         
             
 @Homepage.route('/logout', methods=['GET', 'POST'])
@@ -55,6 +58,7 @@ def logout():
     if request.method == 'POST':
         session.pop('user_id', None)
         return redirect('http://localhost:3000/')
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @Homepage.route('/forgotPasswordValidation', methods=['GET', 'POST']) #Security question page 
 def forgotPasswordValidation():
@@ -66,6 +70,7 @@ def forgotPasswordValidation():
         if user :
             session['user_id'] = user.id
             return redirect('http://localhost:3000/userpage')
+    else : redirect('http://localhost:3000/pagenotfound')
        
 
 @Homepage.route('/forgotPasswordChange', methods=['GET', 'POST']) #Password change page
@@ -80,3 +85,4 @@ def forgotPasswordChange():
             user.password = hashed_password
             db.session.commit()
             return redirect('http://localhost:3000/%27')
+    else : redirect('http://localhost:3000/pagenotfound')

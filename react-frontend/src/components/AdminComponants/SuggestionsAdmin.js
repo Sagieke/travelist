@@ -13,15 +13,8 @@ const ButtonStyle1={
     margin:"10px",
   }
 
-  const ButtonStyle2={
-    mergin:"Auto",
-    borderColor:"black",
-    color:"white",
-    width:"80px",
-   borderColor:"black",
-    backgroundColor:"Lightblue",
-    
-  }
+  
+ 
 
   const DeleteSegStyleButton={
     borderColor:"black",
@@ -63,7 +56,7 @@ export default function SuggestionsAdmin()  {
     <>
 
 
-<Button style={ButtonStyle1} variant="primary" onClick={handleShow}>Suggestion list  < MdOutlineSettingsSuggest/></Button>
+<Button style={ButtonStyle1} variant="primary" onClick={handleShow}>< MdOutlineSettingsSuggest/>Suggestion list </Button>
   <Modal size="lg" show={show} onHide={handleClose}>
   <form action='http://localhost:5000/ChangeBugStatusTech' method='post' >
   <Modal.Header closeButton>

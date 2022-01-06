@@ -57,7 +57,7 @@ export default function BugReportAdmin()  {
     <>
 
 
-<Button style={ButtonStyle1} variant="primary" onClick={handleShow}>Bug reports    <BsBugFill/></Button>
+<Button style={ButtonStyle1} variant="primary" onClick={handleShow}><BsBugFill/>Bug reports </Button>
   <Modal size="lg" show={show} onHide={handleClose}>
   <form action='http://localhost:5000/ChangeBugStatusTech' method='post' >
   <Modal.Header closeButton>

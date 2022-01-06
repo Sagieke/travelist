@@ -28,7 +28,7 @@ const DeleteFaqStyleButton={
 
 
 export default function UserAdminMesseges()  {
-    const [show, setShow] = useState(false);
+    const [show, setShow] = useState(true);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);  
     const [ShowMsglist, setMsgList] = useState([]);
@@ -59,7 +59,7 @@ export default function UserAdminMesseges()  {
     <>
 
 
-<form ><Button style={ButtonStyle2}variant="primary" onClick={handleShow}><GrUserAdmin/></Button></form>
+
   <Modal size="lg" show={show} onHide={handleClose}>
   <form action='http://localhost:5000/getMessageAdmin' method='post' name="id" >
   <Modal.Header closeButton>

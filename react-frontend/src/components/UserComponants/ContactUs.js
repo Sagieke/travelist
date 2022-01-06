@@ -66,7 +66,7 @@ export default function ContactUs()  {
     <>
 
 
-<Button style={ButtonStyle2}variant="primary" onClick={handleShow}><FaFrownOpen/>Contact us</Button>
+<Button variant="primary" onClick={handleShow}>Contact us</Button>
   <Modal size="lg" show={show} onHide={handleClose}>
   <form action='http://localhost:5000/addFAQ' method='post' >
   <Modal.Header closeButton>

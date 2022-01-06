@@ -27,9 +27,9 @@ def create_app(test_mode,db_uri):
         #blueprints initialization
         from models import NumberofUsers
         from endpoints.Homepage import Homepage
-        from endpoints.UserPage import UserPage
+        from endpoints.Userpage import UserPage
         from endpoints.ListPage import ListPage
-        from endpoints.PlacePage import PlacePage
+        from endpoints.Placepage import PlacePage
         from endpoints.MessagesAdmin import MessageAdmin
         from endpoints.MessagesTech import MessageTech
         from endpoints.Userlist import Userlist

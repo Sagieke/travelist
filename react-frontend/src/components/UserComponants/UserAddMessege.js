@@ -35,7 +35,8 @@ return (
             type="title"
             className="form-control"
             placeholder="Enter title"
-            onChange={(event) => setTitle(event.target.value)}
+            required
+           
           />
          
         </div>
@@ -46,7 +47,8 @@ return (
             type="description"
             className="form-control"
             placeholder="Enter description"
-            onChange={(event) => setDescription(event.target.value)}
+            required
+          
           />
            
         </div>

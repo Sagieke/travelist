@@ -1,11 +1,11 @@
 import React , { useState, useEffect, Componant}from "react";
-import {Container,Row, Col,Button,Modal,ListGroup,Table,Dropdown,DropdownButton,} from "react-bootstrap";
+import {Container,Row, Col,Button,Modal,ListGroup,Table,Dropdown,DropdownButton,AccordionButton,Accordion,ButtonToolbar,ButtonGroup} from "react-bootstrap";
 import DropdownItem from "react-bootstrap/esm/DropdownItem";
 import { BiEnvelope } from 'react-icons/bi';
 import AddFAQ from "../AddingComponants/AddFaq";
 import UserAddMessege from "./UserAddMessege";
-
-
+import { useHistory } from "react-router-dom";
+import HoverRating from "../Testing/starRating";
 
 
 const ButtonStyle2={
@@ -29,31 +29,39 @@ const DeleteFaqStyleButton={
 
 
 export default function UserMesseges()  {
-    const [show, setShow] = useState(false);
+    const [show, setShow] = useState(true);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);  
     const [ShowMsglist, setMsgList] = useState([]);
     const[UserId,setUserId]=useState('');
-    const[rating,setUserrating]=useState('');
+    const[rating,setUserrating]=useState(0.0);
+    let history = useHistory();
 
-   function notEmpty(props){
+
+
+
+
+   function notEmpty(props,props2){
      if(props==="Treated"){
+       if(rating===0.0){
      return(
       <td>
       <p1>Rate this answer:</p1>
-       <DropdownButton >
-       <DropdownItem onClick={()=>setUserrating(1)}>1 </DropdownItem>
-       <DropdownItem onClick={()=>setUserrating(2)}>2 </DropdownItem>
-       <DropdownItem onClick={()=>setUserrating(3)}>3 </DropdownItem>
-       <DropdownItem onClick={()=>setUserrating(4)}>4 </DropdownItem>
-       <DropdownItem onClick={()=>setUserrating(5)}>5 </DropdownItem>
-       <form action="/RateTechSupport"><button >submit</button></form>
-       </DropdownButton>
-       
-      </td>
+      
+  
+         <HoverRating/>
+        
+        
+        
+        </td>
+     )
+     
 
-);
-}
+
+        }
+
+     }
+    
    }
 
      useEffect(() => {
@@ -66,46 +74,39 @@ export default function UserMesseges()  {
     const ListMsg = (msg) => {
 
       return (
-        <tr>
-        <td>{msg.traveler_id}</td>
-        <td>{msg.id}</td>
-        <td>{msg.title}</td>
-        <td>{msg.description}</td>
-        <td>{msg.answer}</td>
-        <td>{notEmpty(msg.status)}</td>
-        
+     
 
-     </tr>
+<div className="auth-inner-FAQ2">
+<Accordion style={{overflow:"Auto"}} defaultActiveKey="0" flush>
+<Accordion.Item>
+<Accordion.Header><label>question title: </label> { msg.title}</Accordion.Header>
+<Accordion.Body><label>question description: </label>{msg.description}</Accordion.Body>
+<Accordion.Body><label>Support answer:</label>{msg.answer}</Accordion.Body>
+<Accordion.Body><label>question status:</label>{msg.status}</Accordion.Body>
+<Accordion.Body>{<HoverRating tech_id={msg.tech_id} status={msg.status} msg_id={msg.id}/>} </Accordion.Body>
+
+</Accordion.Item>
+</Accordion>
+</div>
              )   
   };
+  
+
  return (
     <>
 
 
-<form ><Button style={ButtonStyle2}variant="primary" onClick={handleShow}><BiEnvelope/></Button></form>
+
   <Modal size="xl" show={show} onHide={handleClose}>
   <form action='http://localhost:5000/getMessageTech' method='post' name="id" >
   <Modal.Header closeButton>
-    <Modal.Title><h3> Messege list:</h3></Modal.Title>
+    <Modal.Title><h3> My support tickets:</h3></Modal.Title>
   </Modal.Header>
   <Modal.Body>
-    <div style={{'height': '300px', 'overflow':'scroll', 'display': 'block',}}>
-    <Table striped bordered hover size="sm">
-  <thead>
-    <tr>
-      
-      <th> user id</th>
-       <th>massege id</th>
-       <th>title</th>
-       <th>Description</th>
-       <th>answer</th>
-       <th>rating</th>
-    </tr>
-  </thead>
-  <tbody>
+    <div style={{'height': '600px', 'overflow':'scroll', 'display': 'block',}}>
+   <Accordion>
  {ShowMsglist.map(ListMsg)} 
-  </tbody>
-</Table>
+ </Accordion>
 </div>
    </Modal.Body>
     <Modal.Footer>

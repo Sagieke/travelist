@@ -44,9 +44,9 @@ export default function  UserPage()  {
   }
 
   return (
-    <div className="auth-wrapper">
+    <div className="auth-wrapper-lists">
     <Row>
-        <div className="auth-inner-left">
+        <div className="auth-inner-lists">
           <h1>my lists</h1>
           <hr class="my-4"></hr>
       <Row>
@@ -60,7 +60,7 @@ export default function  UserPage()  {
       </Row>
       </div>
       <br />
-      <div className="auth-inner-right">
+      <div className="auth-inner-lists">
       <h1>most searched places:</h1>
       <hr class="my-4"></hr>
       <Row>
