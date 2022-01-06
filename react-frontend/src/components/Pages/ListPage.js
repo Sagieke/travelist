@@ -2,7 +2,7 @@ import AddPlace from "../AddingComponants/AddPlace";
 import Weather from "./weather";
 import React , { useState, useEffect }from "react";
 import {Container,Row, Col,Button,Modal,ListGroup} from "react-bootstrap";
-// Requirement number 6 
+// Requirement number 4
 export default function  ListPage()  {
   const [listInfo, setlistInfo] = useState([]);
   const [listdata, setlistdata] = useState([]);
