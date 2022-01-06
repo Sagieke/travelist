@@ -1,39 +1,11 @@
-import React , { useState, useEffect, Componant}from "react";
-import {Container,Row, Col,Button,Modal,ListGroup,Table,Dropdown,DropdownButton,} from "react-bootstrap";
-import { GrUserAdmin } from 'react-icons/gr';
-import AddFAQ from "../AddingComponants/AddFaq";
-import UserAddMessege from "./UserAddMessege";
-
-
-
-
-const ButtonStyle2={
-  color:"black",
-  height:"50px",
-  borderColor:"black",
-  backgroundColor:"Lightgreen",
-  margin:"10px",
-  
-}
- 
-
-
-const DeleteFaqStyleButton={
-  borderColor:"black",
-  width: '150px',
-  height: '30px',
-  backgroundColor:"red",
-  color:"black",
-}
+import React , { useState, useEffect}from "react";
+import {Modal,Table} from "react-bootstrap";
 
 //requirement number 10
 export default function UserAdminMesseges()  {
     const [show, setShow] = useState(true);
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);  
     const [ShowMsglist, setMsgList] = useState([]);
-    const[UserId,setUserId]=useState('');
-
 
      useEffect(() => {
         fetch('http://localhost:5000/getMessageAdmin',{

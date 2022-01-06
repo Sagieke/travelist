@@ -1,6 +1,5 @@
 import React , { useState, useEffect, }from "react";
-import {Container,Row, Col,Button,Modal,ListGroup,Table,Dropdown,DropdownButton} from "react-bootstrap";
-import UserFaq from "./UserFAQ";
+import {Button,Modal} from "react-bootstrap";
 import ContactUs from "./ContactUs";
 import SubmitBugReportUser from "./SubmitBugReportUser";
 import { BsQuestionOctagonFill } from 'react-icons/bs';
@@ -16,28 +15,6 @@ const ButtonStyle2={
     height:"50px",
     
   }
-
-  const ButtonStyle3={
-    color:"black",
-    height:"50px",
-    borderColor:"black",
-    backgroundColor:"Lightyellow",
-    margin:"10px",
-    width:"200px",
-    height:"50px",
-    
-  }
-  const ButtonStyle4={
-    color:"black",
-    height:"50px",
-    borderColor:"black",
-    backgroundColor:"orange",
-    margin:"10px",
-    width:"200px",
-    height:"50px",
-    
-  }
-
 
   const ButtonStyle1={
     position: 'absolute',
@@ -66,10 +43,7 @@ export default function UserHelp()  {
           .then(response => response.json())
            .then(object => setUserList(object))
         },[]);
-    const ListUsr = (lui) => {
 
-   
-  };
 return (
     <>
 

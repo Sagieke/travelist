@@ -1,12 +1,11 @@
 import React,{ useState } from "react";
-import {Button,Modal,Accordion,ListGroup, ListGroupItem} from "react-bootstrap";
+import {Accordion,ListGroup} from "react-bootstrap";
 
 
 
 //requirement number 9
 export default function ForgotPasswordPage()  {
     const [question, setQuestion] = useState(' Please Select your question :');
-    const [answer, setAnswer] = useState('');
     
     return(
         <div className="auth-wrapper">
@@ -47,6 +46,7 @@ export default function ForgotPasswordPage()  {
                   type="email"
                   className="form-control"
                   placeholder="Enter email"
+                  required
                 />
               </div>
               

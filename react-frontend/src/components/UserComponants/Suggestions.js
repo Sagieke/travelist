@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
-import { BiMessageAdd } from 'react-icons/bi';
+import { Modal } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
 //Requirement number 12

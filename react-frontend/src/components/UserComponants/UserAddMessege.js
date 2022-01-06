@@ -12,8 +12,6 @@ export default function  UserAddMessege()  {
 const [show, setShow] = useState(false);
 const handleClose = () => setShow(false);
 const handleShow = () => setShow(true);  
-const [Title, setTitle] = useState('');
-const [Description, setDescription] = useState('');
 
 return (
   <>
@@ -36,7 +34,6 @@ return (
             className="form-control"
             placeholder="Enter title"
             required
-           
           />
          
         </div>
@@ -49,13 +46,12 @@ return (
             placeholder="Enter description"
             required
           
-          />
-           
+          />  
         </div>
 
  </Modal.Body>
   <Modal.Footer>
-  <button type="submit" className="btn btn-primary btn-block"  onClick={() => { console.log(Title);console.log(Description) }}>
+  <button type="submit" className="btn btn-primary btn-block">
           Enter question
         </button>
   </Modal.Footer>

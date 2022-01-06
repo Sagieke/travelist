@@ -1,69 +1,13 @@
-import React , { useState, useEffect, Componant}from "react";
-import {Container,Row, Col,Button,Modal,ListGroup,Table,Dropdown,DropdownButton,AccordionButton,Accordion,ButtonToolbar,ButtonGroup} from "react-bootstrap";
-import DropdownItem from "react-bootstrap/esm/DropdownItem";
-import { BiEnvelope } from 'react-icons/bi';
-import AddFAQ from "../AddingComponants/AddFaq";
+import React , { useState, useEffect} from "react";
+import {Modal} from "react-bootstrap";
 import UserAddMessege from "./UserAddMessege";
-import { useHistory } from "react-router-dom";
 import HoverRating from "../Testing/starRating";
-
-
-const ButtonStyle2={
-  color:"black",
-  height:"50px",
-  borderColor:"black",
-  backgroundColor:"Lightgreen",
-  margin:"10px",
-  
-}
- 
-
-
-const DeleteFaqStyleButton={
-  borderColor:"black",
-  width: '150px',
-  height: '30px',
-  backgroundColor:"red",
-  color:"black",
-}
 
 //Requirement number 13
 export default function UserMesseges()  {
     const [show, setShow] = useState(true);
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);  
     const [ShowMsglist, setMsgList] = useState([]);
-    const[UserId,setUserId]=useState('');
-    const[rating,setUserrating]=useState(0.0);
-    let history = useHistory();
-
-
-
-
-
-   function notEmpty(props,props2){
-     if(props==="Treated"){
-       if(rating===0.0){
-     return(
-      <td>
-      <p1>Rate this answer:</p1>
-      
-  
-         <HoverRating/>
-        
-        
-        
-        </td>
-     )
-     
-
-
-        }
-
-     }
-    
-   }
-
      useEffect(() => {
         fetch('http://localhost:5000/getMessageTech',{
             credentials: "include"

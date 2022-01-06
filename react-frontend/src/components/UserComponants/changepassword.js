@@ -1,25 +1,9 @@
 import React,{ useState } from "react";
-import {Button,Modal} from "react-bootstrap";
-
-const ButtonStyle1={
-  width:"150px",
-  borderColor:"black",
-  color:"black",
-  height:"35px",
- borderColor:"black",
-  backgroundColor:"lightgrey",
-  margin:"1px",
-}
-
+import {Modal} from "react-bootstrap";
 //requirement number 9
 export default function  ChangePassword()  {
-  
 const [show, setShow] = useState(true);
 const handleClose = () => setShow(false);
-const handleShow = () => setShow(true);  
-const [password, setPassword] = useState('');
-
-
 return (
   <>
   <Modal show={show} onHide={handleClose}>
@@ -35,7 +19,7 @@ return (
             type="password"
             className="form-control"
             placeholder="Enter password"
-            onChange={(event) => setPassword(event.target.value)}
+            required
           />
         </div>
  </Modal.Body>
