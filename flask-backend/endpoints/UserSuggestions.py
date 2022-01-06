@@ -5,6 +5,7 @@ from models import Suggestion
 UserSuggestions = Blueprint('Suggestion',__name__)
 
 #Requirement 109
+#Requirement number 12
 @UserSuggestions.route('/submitSuggestion',methods=['GET','POST'])
 def submitSuggestion():
     if request.method == 'POST':

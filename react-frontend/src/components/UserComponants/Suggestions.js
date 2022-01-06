@@ -3,7 +3,7 @@ import { Button, Modal } from "react-bootstrap";
 import { BiMessageAdd } from 'react-icons/bi';
 import { useHistory } from "react-router-dom";
 
-
+//Requirement number 12
 export default function Suggestions() {
     const [show, setShow] = useState(true);
     const handleClose = () => setShow(false);
