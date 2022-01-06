@@ -26,7 +26,7 @@ const DeleteFaqStyleButton={
   color:"black",
 }
 
-
+//Requirement 104
 export default function Faq()  {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
