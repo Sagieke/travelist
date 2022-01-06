@@ -14,6 +14,7 @@ def ChangePassword():
         user.password = new_password
         db.session.commit()
         return redirect('http://localhost:3000/userPage')
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @UserPage.route('/addlist', methods=['GET','POST'])
 def addlist():
@@ -25,6 +26,7 @@ def addlist():
         db.session.add(new_list)
         db.session.commit()
         return redirect('http://localhost:3000/userPage')
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @UserPage.route('/getlists', methods=['GET', 'POST'])
 def getlists():
@@ -32,6 +34,7 @@ def getlists():
         user_id = session.get('user_id')
         lists = List.query.filter_by(user_id=user_id).all()
         return jsonify(lists)
+    else : redirect('http://localhost:3000/pagenotfound')
         
 @UserPage.route('/removelist', methods=['GET','POST'])
 def removelist():
@@ -47,13 +50,15 @@ def removelist():
         db.session.delete(list)
         db.session.commit()
         return redirect('http://localhost:3000/userPage')
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @UserPage.route('/viewlist', methods=['GET', 'POST'])
 def viewlist():
     if request.method == 'POST':
         list_id = request.form['list_id']
         session['list_id'] = list_id
-    return redirect('http://localhost:3000/userPage/places')
+        return redirect('http://localhost:3000/userPage/places')
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @UserPage.route('/getMostSearchedPlaces', methods=['GET','POST'])
 def getMostSearchedPlaces():
@@ -76,4 +81,5 @@ def getMostSearchedPlaces():
             for x in range(0,top_places_count):
                 lst.append(sorted_place_names[x])
         return jsonify(lst)
+    else : redirect('http://localhost:3000/pagenotfound')
         

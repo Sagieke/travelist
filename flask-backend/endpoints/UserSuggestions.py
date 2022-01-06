@@ -14,6 +14,7 @@ def submitSuggestion():
         db.session.add(new_suggestion)
         db.session.commit()
         return redirect('http://localhost:3000/')
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @UserSuggestions.route('/deleteSuggestion',methods=['GET','POST'])
 def deleteSuggestion():
@@ -23,6 +24,7 @@ def deleteSuggestion():
         db.session.delete(suggestion)
         db.session.commit()
         return redirect('http://localhost:3000/techsupport')
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @UserSuggestions.route('/ChangeSuggestionStatusTech',methods=['GET','POST'])
 def ChangeSuggestionStatusTech():
@@ -35,6 +37,7 @@ def ChangeSuggestionStatusTech():
             suggestion.status = 'Pending'
         db.session.commit()
         return redirect('http://localhost:3000/techsupport')
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @UserSuggestions.route('/ChangeSuggestionStatusAdmin',methods=['GET','POST'])
 def ChangeSuggestionStatusAdmin():
@@ -47,15 +50,18 @@ def ChangeSuggestionStatusAdmin():
             suggestion.status = 'In Treatment'
         db.session.commit()
         return redirect('http://localhost:3000/adminpage')
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @UserSuggestions.route('/getSuggestionsTech',methods=['GET','POST'])
 def getSuggestionsTech():
     if request.method == 'GET':
         suggestions = Suggestion.query.filter_by(status = 'Pending').all()
         return jsonify(suggestions)
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @UserSuggestions.route('/getSuggestionsAdmin',methods=['GET','POST'])
 def getSuggestionsAdmin():
     if request.method == 'GET':
         suggestions = Suggestion.query.filter_by(status = 'In Treatment').all()
         return jsonify(suggestions)
+    else : redirect('http://localhost:3000/pagenotfound')

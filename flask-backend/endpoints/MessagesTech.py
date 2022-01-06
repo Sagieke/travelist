@@ -13,6 +13,7 @@ def messageSenderToTechFromUser(): #send a message to tech support
         db.session.add(new_message)
         db.session.commit()
         return redirect('http://localhost:3000/userPage')
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @MessageTech.route('/messageSenderFromTechToUser',methods=['GET','POST'])
 def messageSenderFromTechToUser(): #send answer to users question
@@ -28,6 +29,7 @@ def messageSenderFromTechToUser(): #send answer to users question
         tech.answers += 1
         db.session.commit()
         return redirect('http://localhost:3000/techsupport/')
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @MessageTech.route('/messageDeleterTech',methods=['GET','POST'])
 def messageDeleterTech():
@@ -37,12 +39,14 @@ def messageDeleterTech():
         db.session.delete(message)
         db.session.commit()
         return redirect('http://127.0.0.1:5000/')
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @MessageTech.route('/getAllMessageTech',methods=['GET','POST'])
 def getAllMessageTech(): #returns all the messages in the db as json file
     if request.method == 'GET':
         Messages = TechSupportMessage.query.all()
         return jsonify(Messages)
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @MessageTech.route('/getMessageTech',methods=['GET','POST'])
 def getMessageUserToTech():
@@ -50,6 +54,7 @@ def getMessageUserToTech():
         user_id = session.get("user_id")
         Message = TechSupportMessage.query.filter_by(traveler_id=user_id).all()
         return jsonify(Message)
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @MessageTech.route('/RateTechSupport',methods=['GET','POST'])
 def RateTechSupport():
@@ -63,6 +68,7 @@ def RateTechSupport():
         user.rating += rating / user.answers
         db.session.commit()
         return redirect('http://localhost:3000/userpage')
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @MessageTech.route('/GetTechSupportRating',methods=['GET','POST'])
 def GetTechSupportRating():
@@ -71,3 +77,4 @@ def GetTechSupportRating():
         tech = User.query.filter_by(id = tech_id).first()
         rating = tech.rating
         return jsonify(rating)
+    else : redirect('http://localhost:3000/pagenotfound')

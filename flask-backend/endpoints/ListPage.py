@@ -21,6 +21,7 @@ def addplace():
         db.session.add(new_place)
         db.session.commit()
         return redirect('http://localhost:3000/userpage/places')
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @ListPage.route('/removeplace', methods=['GET','POST'])
 def removeplace():
@@ -32,6 +33,7 @@ def removeplace():
         db.session.delete(place)
         db.session.commit()
         return redirect('http://localhost:3000/userPage/places')
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @ListPage.route('/getplaces', methods=['GET', 'POST'])
 def getplaces():
@@ -40,13 +42,15 @@ def getplaces():
         list_id = session.get('list_id')
         places = Place.query.filter_by(user_id=user_id,list_id=list_id).all()
         return jsonify(places)
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @ListPage.route('/viewplace', methods=['GET','POST'])
 def viewPlace():
     if request.method == 'POST':
         place_id = request.form['place_id']
         session['place_id'] = place_id
-    return redirect('http://localhost:3000/UserPage/places/place')
+        return redirect('http://localhost:3000/UserPage/places/place')
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @ListPage.route('/getListInfo', methods=['GET','POST'])
 def getListInfo():
@@ -54,7 +58,8 @@ def getListInfo():
         user_id = session.get('user_id')
         list_id = session.get('list_id')
         list_info = List.query.filter_by(user_id=user_id,id=list_id).first()
-    return jsonify(list_info)
+        return jsonify(list_info)
+    else : redirect('http://localhost:3000/pagenotfound')
 
 def get_lat_lon(name):
     lat_lon_dict = {}

@@ -14,18 +14,21 @@ def submitBug():
         db.session.add(new_report)
         db.session.commit()
         return redirect('http://localhost:3000/userpage')
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @bug.route('/getBugsTech',methods=['GET','POST'])
 def getBugsTech():
     if request.method == 'GET':
         bugs = BugReport.query.filter_by(status = 'Pending').all()
         return jsonify(bugs)
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @bug.route('/getBugsAdmin',methods=['GET','POST'])
 def getBugsAdmin():
     if request.method == 'GET':
         bugs = BugReport.query.filter_by(status = 'In Treatment').all()
         return jsonify(bugs)
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @bug.route('/ChangeBugStatusTech',methods=['GET','POST'])
 def ChangeBugStatusTech():
@@ -43,6 +46,7 @@ def ChangeBugStatusTech():
             bug.priority = 'Low'
         db.session.commit()
         return redirect('http://localhost:3000/techsupport')
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @bug.route('/ChangeBugStatusAdmin',methods=['GET','POST'])
 def ChangeBugStatusAdmin():
@@ -52,12 +56,12 @@ def ChangeBugStatusAdmin():
         if bug.status == 'In Treatment':
             bug.status = 'Treated'
             bug.statuscolor = '#80fa5b'
-            
         else: 
             bug.status = 'In Treatment'
             bug.statuscolor = '#ffee00'
         db.session.commit()
         return redirect('http://localhost:3000/adminpage')
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @bug.route('/deleteBug',methods=['GET','POST'])
 def deleteBug():
@@ -67,3 +71,4 @@ def deleteBug():
         db.session.delete(bug)
         db.session.commit()
         return redirect('http://localhost:3000/techsupport')
+    else : redirect('http://localhost:3000/pagenotfound')
