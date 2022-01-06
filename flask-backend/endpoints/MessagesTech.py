@@ -48,7 +48,7 @@ def getAllMessageTech(): #returns all the messages in the db as json file
         Messages = TechSupportMessage.query.all()
         return jsonify(Messages)
     else : redirect('http://localhost:3000/pagenotfound')
-
+#Requirement number 13
 @MessageTech.route('/getMessageTech',methods=['GET','POST'])
 def getMessageUserToTech():
     if request.method == 'GET': #returns a message of choosing as a json file
