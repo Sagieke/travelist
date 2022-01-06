@@ -1,9 +1,7 @@
 import ImageSlider from './ImageSlider';
 import { SliderData } from '../Pages/SliderData';
-import Login from '../NavBarItems/login.component';
-import SignUp from '../NavBarItems/signup.component';
-import { Button, Navbar, Nav, NavItem, NavDropdown, MenuItem ,NavDropdownItem, onClick,onSelect,use,Container} from 'react-bootstrap';
-import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+
+import { Navbar, Nav,Container} from 'react-bootstrap';
 
 export default function LoginNavBar() {
   return (
