@@ -68,6 +68,7 @@ def deleteUser():
         return redirect('http://localhost:3000/adminpage')
     else : redirect('http://localhost:3000/pagenotfound')
 
+#Requirement 108
 @Userlist.route('/reportUser',methods=['GET','POST'])
 def reportUser():
     if request.method == 'POST':
