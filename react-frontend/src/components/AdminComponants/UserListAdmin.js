@@ -39,7 +39,7 @@ export default function UserListAdmin()  {
     const [id, setid] = useState('');
     const [role, setRole] = useState('');
     const [ShowUserList, setUserList] = useState([]);
-
+//Requirement number 205 
     function IfReported(name){
      if(name===true)
      {
@@ -68,7 +68,7 @@ export default function UserListAdmin()  {
         <td>{lui.username}</td>
         <td>{lui.usertype}</td>
         <td><form action="http://localhost:5000/deleteUser" method="post" >
-        <Button style={ButtonStyle2} name= "id" class="float-end" type="submit" value={lui.id} >Delete <BsFillTrashFill/></Button>
+        <Button style={ButtonStyle2} name= "id" class="float-end" type="submit" value={lui.id} >Delete <BsFillTrashFill/></Button> 
  </form></td>
        <td> <ChangeRole id={lui.id}/></td>
        <td>{IfReported(lui.reported)}</td>

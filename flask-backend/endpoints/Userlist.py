@@ -55,7 +55,7 @@ def changePermissionAdmin():
             db.session.commit()
             return redirect('http://localhost:3000/adminpage')
     else : return redirect('http://localhost:3000/blabla')
-
+#Requirement number 205
 @Userlist.route('/deleteUser',methods=['GET','POST'])
 def deleteUser():
     if request.method == 'POST':
