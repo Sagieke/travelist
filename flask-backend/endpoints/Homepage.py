@@ -5,6 +5,7 @@ from models import User,NumberofUsers
 
 Homepage = Blueprint('Homepage',__name__)
 
+#requirement number 1
 @Homepage.route('/register', methods = ['GET', 'POST'])
 def Register():
     if request.method == 'POST':

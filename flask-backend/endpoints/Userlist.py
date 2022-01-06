@@ -11,6 +11,7 @@ def getUserlist():
         return jsonify(users)
     else : redirect('http://localhost:3000/pagenotfound')
 
+#Requirement number 1
 @Userlist.route('/changePermissionTech',methods=['GET','POST']) 
 def changePermissionTech():
     if request.method == 'POST':
@@ -29,7 +30,8 @@ def changePermissionTech():
             db.session.commit()
             return redirect('http://localhost:3000/techsupport')
     else : return redirect('http://localhost:3000/techsupport')
-    
+
+#Requirement number 1
 @Userlist.route('/changePermissionAdmin',methods=['GET','POST']) 
 def changePermissionAdmin():
     if request.method == 'POST':
