@@ -57,6 +57,7 @@ def getMessageUserToTech():
         return jsonify(Message)
     else : redirect('http://localhost:3000/pagenotfound')
 
+#Requirement 110
 @MessageTech.route('/RateTechSupport',methods=['GET','POST'])
 def RateTechSupport():
     if request.method == 'POST':

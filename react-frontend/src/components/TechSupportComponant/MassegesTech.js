@@ -24,7 +24,7 @@ const ButtonStyle1={
 
 
 
-
+//Requirement 110
 export default function TechMesseges()  {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
