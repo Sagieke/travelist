@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from "react";
 import ReactWeather, { useOpenWeather } from 'react-open-weather';
 import {Modal,Button} from "react-bootstrap";
-
+  //Requirement number 6
 export default function  WeatherPage(props)  {
 
   
