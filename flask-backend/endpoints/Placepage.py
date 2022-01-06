@@ -3,7 +3,7 @@ from models import Place, Equipment
 from app import db
 
 PlacePage = Blueprint('PlacePage',__name__)
-
+#requirement number 7
 @PlacePage.route('/getEquipmentChecklist', methods=['GET', 'POST'])
 def getEquipmentChecklist():
     if request.method == 'GET':
