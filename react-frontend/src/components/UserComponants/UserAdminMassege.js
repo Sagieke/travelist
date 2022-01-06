@@ -26,7 +26,7 @@ const DeleteFaqStyleButton={
   color:"black",
 }
 
-
+//requirement number 10
 export default function UserAdminMesseges()  {
     const [show, setShow] = useState(true);
     const handleClose = () => setShow(false);

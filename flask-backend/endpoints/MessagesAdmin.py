@@ -27,6 +27,7 @@ def messageDeleterAdmin():
         return redirect('http://127.0.0.1:5000/')
     else : redirect('http://localhost:3000/pagenotfound')
 
+#requirement numer 10
 @MessageAdmin.route('/getMessageAdmin',methods=['GET','POST'])
 def getMessageAdmin(): #returns all messages in the db as a json 
     if request.method == 'GET':
