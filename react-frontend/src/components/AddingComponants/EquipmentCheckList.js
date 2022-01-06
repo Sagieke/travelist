@@ -22,7 +22,7 @@ import {Container,Row, Col,Button,Modal,ListGroup,Form} from "react-bootstrap";
 </Form>
 
 
-
+//Requirement number 7
 export default function EquipmentChecklist()  {
   const [checklistInfo, setchecklistInfo] = useState([]);
 
