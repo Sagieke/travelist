@@ -1,6 +1,5 @@
 import React,{ useState } from "react";
-import {Button,Modal,Dropdown,DropdownButton} from "react-bootstrap";
-import DropdownItem from "react-bootstrap/esm/DropdownItem";
+import {Button,Modal} from "react-bootstrap";
 import { AiFillEdit } from 'react-icons/ai';
 
 const ButtonStyle1={
@@ -18,9 +17,6 @@ export default function  EditFAQ(props)  {
   const [show, setShow] = useState(false);
 const handleClose = () => setShow(false);
 const handleShow = () => setShow(true);  
-const [answer, setNewAnswer] = useState('');
-const [question, setNewQuestion] = useState('');
-const [id, setid] = useState('');
 
 return (
   <>
@@ -64,7 +60,7 @@ return (
             type="text"
             className="form-control"
             placeholder={props.answer}
-            onChange={event => setNewAnswer(event.target.value)} 
+            required
             />
         </div>
  </Modal.Body>

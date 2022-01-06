@@ -1,12 +1,10 @@
 import AddPlace from "../AddingComponants/AddPlace";
-import Weather from "./weather";
 import React , { useState, useEffect }from "react";
-import {Container,Row, Col,Button,Modal,ListGroup} from "react-bootstrap";
+import {Row, Col,Button,ListGroup} from "react-bootstrap";
 // Requirement number 4
 export default function  ListPage()  {
   const [listInfo, setlistInfo] = useState([]);
   const [listdata, setlistdata] = useState([]);
-  var [latlon, setlatlon] = useState('');
 
   useEffect(() => {
       fetch('http://localhost:5000/getplaces',{

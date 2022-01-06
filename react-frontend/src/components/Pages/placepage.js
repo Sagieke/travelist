@@ -2,8 +2,7 @@ import EquipmentChecklist from "../AddingComponants/EquipmentCheckList";
 import WeatherPage from "./weather";
 import React ,{ useState, useEffect }from "react";
 import Countdown from "./countdown";
-import {Container,Row, Col,Button,Modal,ListGroup,} from "react-bootstrap";
-import { Link, useHistory } from "react-router-dom";
+import {Row} from "react-bootstrap";
 export default function  PlacePage()  {
   var [place, setplace] = useState('');
   const [placedate, setplacedata] = useState('');
