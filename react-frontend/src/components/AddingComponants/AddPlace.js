@@ -4,6 +4,8 @@ import moment from 'moment';
 import GooglePlacesAutocomplete, {geocodeByPlaceId, getLatLng} from "react-google-places-autocomplete";
 import "react-datetime/css/react-datetime.css";
 import {Container,Row, Col,Button,Modal} from "react-bootstrap";
+
+//Requirement number 5
 export default function  AddPlace()  {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
