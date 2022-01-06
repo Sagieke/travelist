@@ -5,6 +5,8 @@ import BugReportAdmin from "./BugReportsAdmin";
 import SuggestionsAdmin from "./SuggestionsAdmin";
 import AdminMessage from "./AdminMasseges";
 import AddJobsAdmin from "./AddJobsAdmin";
+//Requirement number 204
+
 export default function  AdminPage()  {
 
     return (
