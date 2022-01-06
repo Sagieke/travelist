@@ -16,6 +16,7 @@ def submitBug():
         return redirect('http://localhost:3000/userpage')
     else : redirect('http://localhost:3000/pagenotfound')
 
+#Requirement 106
 @bug.route('/getBugsTech',methods=['GET','POST'])
 def getBugsTech():
     if request.method == 'GET':
