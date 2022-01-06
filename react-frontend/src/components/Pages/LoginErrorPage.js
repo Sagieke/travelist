@@ -29,7 +29,7 @@ export default function LoginErrorPage()  {
                   required
                 />
               </div>
-        <a href="http://localhost:3000/forgotPassword" target="_blank">forgot pass</a>
+        <a href="http://localhost:3000/forgotPassword" >forgot pass</a>
         <button type="submit" className="btn btn-primary btn-block" >
                 log in
               </button>

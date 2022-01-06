@@ -8,7 +8,6 @@ import AddNewJobAdmin from "./AddNewJobAdmin";
 const ButtonStyle1={
   
   mergin:"10px",
-  borderColor:"black",
   color:"black",
   height:"50px",
  borderColor:"black",
@@ -23,8 +22,6 @@ export default function AddJobsAdmin()  {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);  
-    const [id, setid] = useState('');
-    const [role, setRole] = useState('');
     const [ShowUserList, setUserList] = useState([]);
 
      useEffect(() => {

@@ -17,9 +17,7 @@ export default function  AddMessageAdmin(props)  {
   const [show, setShow] = useState(false);
 const handleClose = () => setShow(false);
 const handleShow = () => setShow(true);  
-const [answer, setTitle] = useState('');
-const [question, setDescription] = useState('');
-const [id, setid] = useState('');
+
 
 return (
   <>
@@ -40,7 +38,6 @@ return (
                   type="title"
                   className="form-control"
                   placeholder="Enter title"
-                  onChange={event => setTitle(event.target.value)} 
                   required
                 />
               
@@ -52,7 +49,7 @@ return (
                   type="description"
                   className="form-control"
                   placeholder="Enter description"
-                  onChange={event => setDescription(event.target.value)}
+                  required
                 />
              
               </div>

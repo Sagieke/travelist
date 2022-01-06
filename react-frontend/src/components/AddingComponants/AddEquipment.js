@@ -1,5 +1,5 @@
 import React ,{ useState }from "react";
-import {Button,Modal,Form} from "react-bootstrap";
+import {Button,Modal} from "react-bootstrap";
 
 //Requirement number 7
 export default function  AddEquipment()  {

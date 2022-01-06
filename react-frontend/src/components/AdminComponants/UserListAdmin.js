@@ -8,9 +8,7 @@ import { FiUsers } from 'react-icons/fi';
 const ButtonStyle2={
   width: '150px',
   mergin:"10px",
-  borderColor:"black",
   color:"black",
- 
  borderColor:"black",
   backgroundColor:"red",
   
@@ -20,10 +18,9 @@ const ButtonStyle2={
 const ButtonStyle1={
   
   mergin:"10px",
-  borderColor:"black",
   color:"black",
   height:"50px",
- borderColor:"black",
+  borderColor:"black",
   backgroundColor:"Lightblue",
   margin:"10px",
 }

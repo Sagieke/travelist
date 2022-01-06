@@ -5,7 +5,6 @@ import { MdOutlineSettingsSuggest} from 'react-icons/md';
 
 const ButtonStyle1={
     mergin:"10px",
-    borderColor:"black",
     color:"black",
     height:"50px",
    borderColor:"black",

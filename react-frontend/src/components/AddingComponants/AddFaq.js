@@ -20,7 +20,6 @@ return (
     Add faq
       </Button>
   <Modal show={show} onHide={handleClose}>
-  <form id="loginform" onSubmit={signupSubmit}>
   <form action='http://localhost:5000/addFAQ' method='post'  >
   <Modal.Header closeButton>
     <Modal.Title><h3> Edit faq</h3></Modal.Title>
@@ -52,7 +51,6 @@ return (
           Enter question
         </button>
   </Modal.Footer>
-  </form>
   </form>
 </Modal>
 </> 

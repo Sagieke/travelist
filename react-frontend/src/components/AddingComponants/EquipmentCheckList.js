@@ -1,6 +1,6 @@
 import AddEquipment from "./AddEquipment";
 import React , { useState, useEffect }from "react";
-import {Row,Button,ListGroup,Form} from "react-bootstrap";
+import {Row,Button,ListGroup} from "react-bootstrap";
 
 //requirement number 7
 export default function EquipmentChecklist()  {

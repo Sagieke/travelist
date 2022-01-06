@@ -4,7 +4,6 @@ import {Button,Modal} from "react-bootstrap";
 const ButtonStyle1={
   
   width:"120px",
-  borderColor:"black",
   color:"black",
   height:"35px",
  borderColor:"black",
@@ -16,7 +15,6 @@ const ButtonStyle1={
 const ButtonStyle2={
   width:"120px",
   mergin:"10px",
-  borderColor:"black",
   color:"black",
   height:"35px",
  borderColor:"black",
@@ -27,7 +25,6 @@ const ButtonStyle2={
 const ButtonStyle3={
   width:"120px",
   mergin:"10px",
-  borderColor:"black",
   color:"black",
   height:"35px",
  borderColor:"black",

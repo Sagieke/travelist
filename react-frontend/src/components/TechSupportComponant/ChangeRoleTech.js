@@ -3,7 +3,6 @@ import {Button,Modal } from "react-bootstrap";
 
 const ButtonStyle1={
   mergin:"10px",
-  borderColor:"black",
   color:"black",
   height:"50px",
  borderColor:"black",

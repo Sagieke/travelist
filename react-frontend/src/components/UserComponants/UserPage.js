@@ -1,7 +1,6 @@
 import AddList from "../AddingComponants/addlist";
 import React , { useState, useEffect }from "react";
 import {Row,Button,ListGroup,} from "react-bootstrap";
-import {  useHistory } from "react-router-dom";
 export default function  UserPage()  {
   const [listgiInfo, setlistgiInfo] = useState([]);
   const [listMSP, setListMSP] = useState([]);

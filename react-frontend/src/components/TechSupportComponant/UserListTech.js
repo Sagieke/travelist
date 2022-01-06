@@ -11,7 +11,6 @@ const ButtonStyle1={
   borderColor:"black",
   color:"black",
   height:"50px",
- borderColor:"black",
   backgroundColor:"Lightblue",
   margin:"10px",
 }

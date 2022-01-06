@@ -1,5 +1,5 @@
 import React , { useState, useEffect} from "react";
-import {Modal} from "react-bootstrap";
+import {Modal,Accordion} from "react-bootstrap";
 import UserAddMessege from "./UserAddMessege";
 import HoverRating from "../Testing/starRating";
 

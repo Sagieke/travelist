@@ -4,7 +4,6 @@ import { BsBugFill } from 'react-icons/bs';
 
 const ButtonStyle1={
     mergin:"10px",
-    borderColor:"black",
     color:"black",
     height:"50px",
    borderColor:"black",

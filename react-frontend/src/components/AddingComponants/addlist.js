@@ -6,7 +6,6 @@ const ButtonStyle1={
   borderColor:"black",
   color:"black",
   height:"35px",
- borderColor:"black",
   backgroundColor:"lightblue",
   margin:"1px",
 }

@@ -41,7 +41,7 @@ export default function Login() {
                 />
              
               </div>
-              <a href="http://3000/forgotpassword" target="_blank">forgot pass</a>
+              <a href="http://3000/forgotpassword" >forgot pass</a>
        </Modal.Body>
         <Modal.Footer>
         <button type="submit" className="btn btn-primary btn-block" >

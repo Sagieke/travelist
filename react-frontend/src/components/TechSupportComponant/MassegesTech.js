@@ -4,7 +4,6 @@ import { BiEnvelope } from 'react-icons/bi';
 import AddAnswer from "./AddAnswer";
 const ButtonStyle1={
   mergin:"10px",
-  borderColor:"black",
   color:"black",
   height:"50px",
  borderColor:"black",
