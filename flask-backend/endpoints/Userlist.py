@@ -31,7 +31,7 @@ def changePermissionTech():
             return redirect('http://localhost:3000/techsupport')
     else : return redirect('http://localhost:3000/techsupport')
 
-#Requirement number 1
+#Requirement number 201
 @Userlist.route('/changePermissionAdmin',methods=['GET','POST']) 
 def changePermissionAdmin():
     if request.method == 'POST':
