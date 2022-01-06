@@ -23,7 +23,7 @@ def getBugsTech():
         bugs = BugReport.query.filter_by(status = 'Pending').all()
         return jsonify(bugs)
     else : redirect('http://localhost:3000/pagenotfound')
-
+ #Requirement number 206
 @bug.route('/getBugsAdmin',methods=['GET','POST'])
 def getBugsAdmin():
     if request.method == 'GET':
