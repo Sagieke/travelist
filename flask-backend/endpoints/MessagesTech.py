@@ -15,6 +15,7 @@ def messageSenderToTechFromUser(): #send a message to tech support
         return redirect('http://localhost:3000/userPage')
     else : redirect('http://localhost:3000/pagenotfound')
 
+#Requirement 103
 @MessageTech.route('/messageSenderFromTechToUser',methods=['GET','POST'])
 def messageSenderFromTechToUser(): #send answer to users question
     if request.method == 'POST':
