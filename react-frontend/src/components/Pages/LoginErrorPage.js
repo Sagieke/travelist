@@ -2,6 +2,8 @@ import React,{ useState } from "react";
 import {Button,Modal,Accordion,ListGroup, ListGroupItem} from "react-bootstrap";
 import ForgotPasswordPage from "../UserComponants/ForgotPassword";
 import SignUp from "../NavBarItems/signup.component";
+
+//requirement number 2 + 102 + 202
 export default function LoginErrorPage()  {
 
     return(

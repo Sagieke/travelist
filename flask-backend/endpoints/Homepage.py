@@ -33,7 +33,7 @@ def Register():
         return redirect('http://localhost:3000/')
     else : redirect('http://localhost:3000/pagenotfound')
         
-
+#requirement number 2 + 102 + 202
 @Homepage.route('/login', methods=['GET', 'POST'])
 def Login():
     if request.method == 'POST':
