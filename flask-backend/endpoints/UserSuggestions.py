@@ -13,7 +13,8 @@ def submitSuggestion():
         new_suggestion = Suggestion(title=title, description=description, status = status)
         db.session.add(new_suggestion)
         db.session.commit()
-        return redirect('http://localhost:3000/')
+        return redirect('http://localhost:3000/userpage')
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @UserSuggestions.route('/deleteSuggestion',methods=['GET','POST'])
 def deleteSuggestion():
