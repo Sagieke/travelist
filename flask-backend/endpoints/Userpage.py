@@ -5,6 +5,7 @@ from werkzeug.security import generate_password_hash
 
 UserPage = Blueprint('UserPage',__name__)
 
+#requirement number 9
 @UserPage.route('/changepassword', methods = ['GET', 'POST'])
 def ChangePassword():
     if request.method == 'POST':
