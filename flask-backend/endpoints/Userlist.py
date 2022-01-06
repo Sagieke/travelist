@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, redirect
+from flask import Blueprint, request, jsonify, redirect,session
 from app import db
 from models import User,NumberofUsers
 
@@ -63,3 +63,21 @@ def deleteUser():
         db.session.delete(user)
         db.session.commit()
         return redirect('http://localhost:3000/adminpage')
+
+@Userlist.route('/reportUser',methods=['GET','POST'])
+def reportUser():
+    if request.method == 'POST':
+        user_id = request.form['id']
+        user = User.query.filter_by(id = user_id).first()
+        if user.reported == False:
+            user.reported = True
+        elif user.reported == True:
+            user.reported = False
+        db.session.commit()
+        return redirect('http://localhost:3000/techsupport')
+
+@Userlist.route('/getCertainUserlist',methods=['GET','POST'])
+def getCertainUserlist():
+    if request.method == 'GET':
+        user_type = session.get("user_type")
+        return jsonify(user_type)

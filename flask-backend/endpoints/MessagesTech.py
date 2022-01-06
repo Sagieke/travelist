@@ -22,12 +22,12 @@ def messageSenderFromTechToUser(): #send answer to users question
         tech_id = session.get("user_id")
         message = TechSupportMessage.query.filter_by(id=id).first()
         message.answer = answer
-        message.status = 'Treated'
+        message.status = 'Answered'
         message.tech_id = tech_id
         tech = User.query.filter_by(id=tech_id).first()
         tech.answers += 1
         db.session.commit()
-        return redirect('http://localhost:3000/techsupport/')
+        return redirect('http://localhost:3000/techsupport')
 
 @MessageTech.route('/messageDeleterTech',methods=['GET','POST'])
 def messageDeleterTech():
@@ -54,10 +54,13 @@ def getMessageUserToTech():
 @MessageTech.route('/RateTechSupport',methods=['GET','POST'])
 def RateTechSupport():
     if request.method == 'POST':
-        tech_id = request.form['id']
+        tech_id = request.form['tech_id']
         rating = request.form['rating']
+        id = request.form['id']
         user = User.query.filter_by(id = tech_id).first()
-        user.rating += rating / user.answers
+        message =  TechSupportMessage.query.filter_by(id=id).first()
+        message.status = 'Treated'
+        user.rating += float(rating)/user.answers
         db.session.commit()
         return redirect('http://localhost:3000/userpage')
 

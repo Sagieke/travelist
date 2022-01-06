@@ -41,6 +41,7 @@ def Login():
         if user and check_password_hash(user.password,password):
             #save user to session
             session['user_id'] = user.id
+            session['user_type'] = user.usertype
             if user.usertype == 'Admin':
                 return redirect('http://localhost:3000/adminPage')
             elif user.usertype == 'TechSupport':
