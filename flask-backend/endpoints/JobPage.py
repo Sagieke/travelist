@@ -4,6 +4,7 @@ from models import Job
 
 JobPage = Blueprint('JobPage',__name__)
 
+#Requirement number 209
 @JobPage.route('/addJob', methods = ['GET', 'POST'])
 def addJob():
     if request.method == 'POST':

@@ -7,6 +7,7 @@ const listStyle={
     background: "white" 
     }
 
+    //Requirement number 209
 export default function JobListingsPage()  {
     const [ShowJoblist, setJobList] = useState([]);
 
@@ -19,7 +20,7 @@ export default function JobListingsPage()  {
         },[]);
 
         
-
+    //Requirement number 209
     const JobsListItem = (lji, index) => {
       return (
         <ListGroup.Item  variant="default" key={index} style={listStyle} as="li">
