@@ -1,13 +1,8 @@
-import React , { useState, useEffect, Componant}from "react";
-import {Container,Row, Col,Button,Modal,ListGroup,Table,Dropdown,DropdownButton,} from "react-bootstrap";
+import React , { useState, useEffect}from "react";
+import {Button,Modal,Table} from "react-bootstrap";
 import { BiEnvelope } from 'react-icons/bi';
 import AddMessageAdmin from "./AddmassegeAdmin";
 
-
-
-
-
-  
 const ButtonStyle1={
   mergin:"10px",
   borderColor:"black",
@@ -17,18 +12,12 @@ const ButtonStyle1={
   backgroundColor:"orange",
   margin:"10px",
 }
-
-
-
-
-
 //Requirement number 207
 export default function AdminMessage()  {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);  
     const [ShowMsglist, setMsgList] = useState([]);
-    const[UserId,setUserId]=useState('');
 
 
      useEffect(() => {

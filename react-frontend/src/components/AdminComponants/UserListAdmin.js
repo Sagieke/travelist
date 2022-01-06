@@ -1,7 +1,6 @@
 import React , { useState, useEffect, }from "react";
-import {Container,Row, Col,Button,Modal,ListGroup,Table,Dropdown,DropdownButton} from "react-bootstrap";
+import {Button,Modal,Table} from "react-bootstrap";
 import ChangeRole from "./ChangeRoleAdmin";
-import DropdownItem from "react-bootstrap/esm/DropdownItem";
 import { BsFillTrashFill } from 'react-icons/bs';
 import { FiUsers } from 'react-icons/fi';
 
@@ -36,8 +35,6 @@ export default function UserListAdmin()  {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);  
-    const [id, setid] = useState('');
-    const [role, setRole] = useState('');
     const [ShowUserList, setUserList] = useState([]);
 //Requirement number 205 
     function IfReported(name){

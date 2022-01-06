@@ -1,6 +1,5 @@
 import React,{ useState } from "react";
-import {Button,Modal,Dropdown,DropdownButton} from "react-bootstrap";
-import DropdownItem from "react-bootstrap/esm/DropdownItem";
+import {Button,Modal} from "react-bootstrap";
 import { AiFillEdit } from 'react-icons/ai';
 
 const ButtonStyle1={

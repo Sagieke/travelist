@@ -1,6 +1,5 @@
 import React,{ useState } from "react";
-import {Button,Modal,Dropdown,DropdownButton} from "react-bootstrap";
-import DropdownItem from "react-bootstrap/esm/DropdownItem";
+import {Button,Modal} from "react-bootstrap";
 
 const ButtonStyle1={
   
@@ -41,8 +40,7 @@ export default function  ChangeRole(props)  {
   const [show, setShow] = useState(false);
 const handleClose = () => setShow(false);
 const handleShow = () => setShow(true);  
-const [id, setID] = useState('');
-const [role, setrole] = useState('');
+
 
 
 
@@ -74,9 +72,9 @@ return (
   <div className="form-group">
           <label>New Role - </label>
           <p1> Choose role you want to give the user :</p1>
-          <button  type="submit" name="role" className="btn btn-primary btn-block" value={'ADMIN'} style={ButtonStyle1}onChange={event => setrole(event.target.value)}>Admin</button>
-          <button type="submit" name="role" className="btn btn-primary btn-block" value={'TECH'} style={ButtonStyle2}onChange={event => setrole(event.target.value)}>Tech support</button>
-          <button type="submit" name="role" className="btn btn-primary btn-block" value={'TRAVELER'} style={ButtonStyle3}onChange={event => setrole(event.target.value)}>Traveler</button>
+          <button  type="submit" name="role" className="btn btn-primary btn-block" value={'ADMIN'} style={ButtonStyle1}>Admin</button>
+          <button type="submit" name="role" className="btn btn-primary btn-block" value={'TECH'} style={ButtonStyle2}>Tech support</button>
+          <button type="submit" name="role" className="btn btn-primary btn-block" value={'TRAVELER'} style={ButtonStyle3}>Traveler</button>
         </div>
   </Modal.Footer>
   </form>

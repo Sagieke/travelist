@@ -1,8 +1,5 @@
 import React , { useState, useEffect, }from "react";
-import {Container,Row, Col,Button,Modal,ListGroup,Table,Dropdown,DropdownButton} from "react-bootstrap";
-import ChangeRole from "./ChangeRoleAdmin";
-import DropdownItem from "react-bootstrap/esm/DropdownItem";
-import { BsFillTrashFill } from 'react-icons/bs';
+import {Button,Modal,Table} from "react-bootstrap";
 import { FiUsers } from 'react-icons/fi';
 import AddNewJobAdmin from "./AddNewJobAdmin";
 

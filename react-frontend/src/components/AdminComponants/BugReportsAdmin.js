@@ -1,6 +1,5 @@
-import React , { useState, useEffect, Componant}from "react";
-import {Container,Row, Col,Button,Modal,ListGroup,Table,Dropdown,DropdownButton,} from "react-bootstrap";
-import AddFAQ from "../AddingComponants/AddFaq";
+import React , { useState, useEffect}from "react";
+import {Button,Modal,Table} from "react-bootstrap";
 import { BsBugFill } from 'react-icons/bs';
 
 const ButtonStyle1={
@@ -12,17 +11,6 @@ const ButtonStyle1={
     backgroundColor:"Lightgreen",
     margin:"10px",
   }
-
-  const ButtonStyle2={
-    mergin:"Auto",
-    borderColor:"black",
-    color:"white",
-    width:"80px",
-   borderColor:"black",
-    backgroundColor:"Lightblue",
-    
-  }
-
   
 //Requirement number 206
 export default function BugReportAdmin()  {

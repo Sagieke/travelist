@@ -1,6 +1,5 @@
-import React , { useState, useEffect, Componant}from "react";
-import {Container,Row, Col,Button,Modal,ListGroup,Table,Dropdown,DropdownButton,} from "react-bootstrap";
-import AddFAQ from "../AddingComponants/AddFaq";
+import React , { useState, useEffect}from "react";
+import {Button,Modal,Table} from "react-bootstrap";
 import { MdOutlineSettingsSuggest} from 'react-icons/md';
 
 const ButtonStyle1={

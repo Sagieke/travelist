@@ -1,6 +1,5 @@
 import React,{ useState } from "react";
-import {Button,Modal,Dropdown,DropdownButton} from "react-bootstrap";
-import DropdownItem from "react-bootstrap/esm/DropdownItem";
+import {Button,Modal} from "react-bootstrap";
 import { AiFillEdit } from 'react-icons/ai';
 
 const ButtonStyle1={
@@ -18,10 +17,7 @@ export default function  AddNewJobAdmin(props)  {
   const [show, setShow] = useState(false);
 const handleClose = () => setShow(false);
 const handleShow = () => setShow(true);  
-const [job_name, setTitle] = useState('');
-const [question, setDescription] = useState('');
-const [requirements, setRequirements] = useState('');
-const [id, setid] = useState('');
+
 
 return (
   <>
@@ -42,7 +38,6 @@ return (
                   type="title"
                   className="form-control"
                   placeholder="Enter title"
-                  onChange={event => setTitle(event.target.value)} 
                   required
                 />
               
@@ -54,7 +49,7 @@ return (
                   type="text"
                   className="form-control"
                   placeholder="Enter description"
-                  onChange={event => setDescription(event.target.value)}
+                  required
                 />
              </div>
               <div className="form-group">
@@ -64,7 +59,7 @@ return (
                   type="Text"
                   className="form-control"
                   placeholder="Enter requirements"
-                  onChange={event => setRequirements(event.target.value)}
+                  required
                 />
               </div>
     
