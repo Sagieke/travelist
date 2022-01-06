@@ -14,6 +14,7 @@ def getEquipmentChecklist():
         return jsonify(equipment)
     else : redirect('http://localhost:3000/pagenotfound')
 
+#Requirement number 7
 @PlacePage.route('/removeEquipment', methods=['GET','POST'])
 def removeEquipment():
     if request.method == 'POST':
@@ -27,6 +28,7 @@ def removeEquipment():
         return redirect('http://localhost:3000/userpage/places/place')
     else : redirect('http://localhost:3000/pagenotfound')
 
+#Requirement number 7
 @PlacePage.route('/addEquipment', methods=['GET','POST'])
 def addplace():
     if request.method == 'POST':
@@ -41,6 +43,7 @@ def addplace():
         return redirect('http://localhost:3000/userpage/places/place')
     else : redirect('http://localhost:3000/pagenotfound')
 
+#Requirement number 7
 @PlacePage.route('/checkEquipment', methods=['GET','POST'])
 def checkEquipment():
     if request.method == 'POST':
