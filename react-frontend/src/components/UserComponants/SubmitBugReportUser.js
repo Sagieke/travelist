@@ -16,7 +16,7 @@ const ButtonStyle1 = {
     backgroundColor: "orange",
     margin: "1px",
 }
-
+//Requirement number 11
 export default function SubmitBugReportUser() {
     const [show, setShow] = useState(true);
     const handleClose = () => setShow(false);

@@ -3,7 +3,7 @@ from app import db
 from models import BugReport
 
 bug = Blueprint('bug',__name__)
-
+#Requirement number 11
 @bug.route('/submitBug',methods=['GET','POST'])
 def submitBug():
     if request.method == 'POST':
