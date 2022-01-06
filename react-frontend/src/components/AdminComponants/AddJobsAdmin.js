@@ -50,7 +50,7 @@ return (
     <Modal size="lg" show={show} onHide={handleClose}>
     <form action='http://localhost:5000/login' method='post' >
     <Modal.Header closeButton>
-      <Modal.Title><h3> User list :</h3></Modal.Title>
+      <Modal.Title><h3> Job list :</h3></Modal.Title>
     </Modal.Header>
     <Modal.Body>
     <div style={{'height': '300px', 'overflow':'scroll', 'display': 'block'}}>
