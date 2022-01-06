@@ -33,8 +33,8 @@ export default function  ListPage()  {
  
       return ( 
               <ListGroup.Item  variant="default" key={index} style={{ textAlign: 'left', color: "black", background: "#1ca0f9" }} as="li">
-                <Row><Col><h5>place name</h5></Col><Col><h5>start date</h5></Col><Col><h5>end date</h5></Col></Row>
-                <Row><Col>{lgi.name}</Col><Col> {lgi.start_date}</Col><Col>{lgi.end_date}</Col></Row>
+                <div className="auth-inner-place"><Row><Col><h6>place name</h6></Col><Col><h5>start date</h5></Col><Col><h5>end date</h5></Col></Row>
+                <Row><Col>{lgi.name}</Col><Col> {lgi.start_date}</Col><Col>{lgi.end_date}</Col></Row></div>
                   
                       <form action="http://localhost:5000/removeplace" method="post">
                       

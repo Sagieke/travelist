@@ -1,10 +1,6 @@
 export const SliderData = [
     {
       image:
-        'https://i.postimg.cc/Jnj3GMqT/About-us-joke-1.png'
-    },
-    {
-      image:
         'https://i.postimg.cc/zXhxJXrR/image.png'
     },
     {

@@ -61,7 +61,7 @@ return (
  </Modal.Body>
   <Modal.Footer>
   <button type="submit" className="btn btn-primary btn-block" >
-          register
+          Post
         </button>
   </Modal.Footer>
   </form>

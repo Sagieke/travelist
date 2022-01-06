@@ -5,14 +5,7 @@ import DropdownItem from "react-bootstrap/esm/DropdownItem";
 import { BsFillTrashFill } from 'react-icons/bs';
 import { FiUsers } from 'react-icons/fi';
 
-const MakeAdminButtonStyle={
-  mergin:"10px",
-  borderColor:"black",
-  width: '150px',
-  height: '30px',
-  backgroundColor:"purple",
-  color:"white",
-}
+
 const ButtonStyle2={
   width: '150px',
   mergin:"10px",
@@ -23,14 +16,7 @@ const ButtonStyle2={
   backgroundColor:"red",
   
 }
-const DeleteButtonStyle={
-  width: '150px',
-  mergin:"Auto",
-  borderColor:"light black",
-  backgroundColor:"red",
-  Color:"black",
-  
-}
+
 
 const ButtonStyle1={
   
@@ -54,6 +40,19 @@ export default function UserListAdmin()  {
     const [role, setRole] = useState('');
     const [ShowUserList, setUserList] = useState([]);
 
+    function IfReported(name){
+     if(name===true)
+     {
+       return <p>reported</p>
+     }
+     else{
+       return <p>Not reported</p>
+     }
+    }
+
+
+
+
      useEffect(() => {
         fetch('http://localhost:5000/getUserlist',{
             credentials: "include"
@@ -72,14 +71,14 @@ export default function UserListAdmin()  {
         <Button style={ButtonStyle2} name= "id" class="float-end" type="submit" value={lui.id} >Delete <BsFillTrashFill/></Button>
  </form></td>
        <td> <ChangeRole id={lui.id}/></td>
-       <td>Reported</td>
+       <td>{IfReported(lui.reported)}</td>
       </tr>
              )   
   };
 return (
     <>
 
-    <Button style={ButtonStyle1} variant="primary" onClick={handleShow}>User List  <FiUsers/></Button>
+    <Button style={ButtonStyle1} variant="primary" onClick={handleShow}><FiUsers/> User List  </Button>
     <Modal size="lg" show={show} onHide={handleClose}>
     <form action='http://localhost:5000/login' method='post' >
     <Modal.Header closeButton>

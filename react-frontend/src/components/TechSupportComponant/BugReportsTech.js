@@ -1,7 +1,7 @@
 import React , { useState, useEffect, Componant}from "react";
 import {Container,Row, Col,Button,Modal,ListGroup,Table,DropdownButton} from "react-bootstrap";
 import DropdownItem from "react-bootstrap/esm/DropdownItem";
-import AddFAQ from "../AddingComponants/AddFaq";
+import { BsBugFill } from 'react-icons/bs';
 
 
 const ButtonStyle1={
@@ -68,7 +68,7 @@ export default function BugReport()  {
     <>
 
 
-<Button style={ButtonStyle1} variant="primary" onClick={handleShow}>Bug reports</Button>
+<Button style={ButtonStyle1} variant="primary" onClick={handleShow}><BsBugFill/>Bug reports</Button>
   <Modal size="lg" show={show} onHide={handleClose}>
   <form action='http://localhost:5000/ChangeBugStatusTech' method='post' >
    

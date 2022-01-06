@@ -5,33 +5,22 @@ import AddMessageAdmin from "./AddmassegeAdmin";
 
 
 
-const ButtonStyle2={
-  color:"black",
-  height:"50px",
-  borderColor:"black",
-  backgroundColor:"Lightgreen",
-  margin:"10px",
+
+
   
-}
 const ButtonStyle1={
   mergin:"10px",
   borderColor:"black",
   color:"black",
   height:"50px",
  borderColor:"black",
-  backgroundColor:"Lightgreen",
+  backgroundColor:"orange",
   margin:"10px",
-  width:"675px"
 }
 
 
-const DeleteFaqStyleButton={
-  borderColor:"black",
-  width: '150px',
-  height: '30px',
-  backgroundColor:"red",
-  color:"black",
-}
+
+
 
 
 export default function AdminMessage()  {
@@ -63,7 +52,7 @@ export default function AdminMessage()  {
     <>
 
 
-<form ><Button style={ButtonStyle1}variant="primary" onClick={handleShow}><BiEnvelope/>View masseges</Button></form>
+<Button style={ButtonStyle1}variant="primary" onClick={handleShow}><BiEnvelope/>View masseges</Button>
   <Modal size="lg" show={show} onHide={handleClose}>
   <form action='http://localhost:5000//getAllMessageTech' method='post' name="id" >
   <Modal.Header closeButton>

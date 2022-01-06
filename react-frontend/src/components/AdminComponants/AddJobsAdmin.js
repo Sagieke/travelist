@@ -6,32 +6,7 @@ import { BsFillTrashFill } from 'react-icons/bs';
 import { FiUsers } from 'react-icons/fi';
 import AddNewJobAdmin from "./AddNewJobAdmin";
 
-const MakeAdminButtonStyle={
-  mergin:"10px",
-  borderColor:"black",
-  width: '150px',
-  height: '30px',
-  backgroundColor:"purple",
-  color:"white",
-}
-const ButtonStyle2={
-  width: '150px',
-  mergin:"10px",
-  borderColor:"black",
-  color:"black",
- 
- borderColor:"black",
-  backgroundColor:"red",
-  
-}
-const DeleteButtonStyle={
-  width: '150px',
-  mergin:"Auto",
-  borderColor:"light black",
-  backgroundColor:"red",
-  Color:"black",
-  
-}
+
 
 const ButtonStyle1={
   
@@ -40,7 +15,7 @@ const ButtonStyle1={
   color:"black",
   height:"50px",
  borderColor:"black",
-  backgroundColor:"Lightblue",
+  backgroundColor:"purple",
   margin:"10px",
 }
 
@@ -77,7 +52,7 @@ export default function AddJobsAdmin()  {
 return (
     <>
 
-    <Button style={ButtonStyle1} variant="primary" onClick={handleShow}>View Jobs<FiUsers/></Button>
+    <Button style={ButtonStyle1} variant="primary" onClick={handleShow}><FiUsers/>View Jobs</Button>
     <Modal size="lg" show={show} onHide={handleClose}>
     <form action='http://localhost:5000/login' method='post' >
     <Modal.Header closeButton>

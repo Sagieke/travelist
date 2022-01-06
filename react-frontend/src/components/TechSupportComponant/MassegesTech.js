@@ -9,24 +9,20 @@ import AddAnswer from "./AddAnswer";
 
 
 
-const ButtonStyle2={
+
+const ButtonStyle1={
+  mergin:"10px",
+  borderColor:"black",
   color:"black",
   height:"50px",
-  borderColor:"black",
-  backgroundColor:"Lightgreen",
+ borderColor:"black",
+  backgroundColor:"Lightblue",
   margin:"10px",
-  
 }
- 
 
 
-const DeleteFaqStyleButton={
-  borderColor:"black",
-  width: '150px',
-  height: '30px',
-  backgroundColor:"red",
-  color:"black",
-}
+
+
 
 
 export default function TechMesseges()  {
@@ -76,7 +72,7 @@ export default function TechMesseges()  {
     <>
 
 
-<form ><Button style={ButtonStyle2}variant="primary" onClick={handleShow}><BiEnvelope/>View masseges</Button></form>
+<Button style={ButtonStyle1}  onClick={handleShow}><BiEnvelope/>View masseges</Button>
   <Modal size="lg" show={show} onHide={handleClose}>
   <form action='http://localhost:5000//getAllMessageTech' method='post' name="id" >
   <Modal.Header closeButton>
