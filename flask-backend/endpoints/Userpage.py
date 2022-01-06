@@ -16,6 +16,7 @@ def ChangePassword():
         return redirect('http://localhost:3000/userPage')
     else : redirect('http://localhost:3000/pagenotfound')
 
+#requirement number 3
 @UserPage.route('/addlist', methods=['GET','POST'])
 def addlist():
     if request.method == 'POST':
