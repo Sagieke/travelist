@@ -25,7 +25,8 @@ const ButtonStyle1={
   }
 
   
-
+//Requirement 106
+//Requirement 107
 export default function BugReport()  {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
