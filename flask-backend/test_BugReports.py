@@ -21,7 +21,7 @@ class UserListTest(MyTest):
     def test_add_bug(self):
         tester = self.app.test_client(self)  
         response = tester.post('/submitBug', data={'title': 'test', 'description': 'test'})
-        self.assertRedirects(response, 'http://localhost:3000/')
+        self.assertRedirects(response, 'http://localhost:3000/userpage')
 
     def test_delete_bug(self):
         bug = BugReport(title = 'testitle', description = 'testdescription',status= 'testing',statuscolor = '#ffffff')

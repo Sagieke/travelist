@@ -12,6 +12,7 @@ def getEquipmentChecklist():
         place_id = session.get('place_id')
         equipment = Equipment.query.filter_by(user_id=user_id,list_id=list_id,place_id=place_id).all()
         return jsonify(equipment)
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @PlacePage.route('/removeEquipment', methods=['GET','POST'])
 def removeEquipment():
@@ -24,6 +25,7 @@ def removeEquipment():
         db.session.delete(equipment)
         db.session.commit()
         return redirect('http://localhost:3000/userpage/places/place')
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @PlacePage.route('/addEquipment', methods=['GET','POST'])
 def addplace():
@@ -37,6 +39,7 @@ def addplace():
         db.session.add(new_equipment)
         db.session.commit()
         return redirect('http://localhost:3000/userpage/places/place')
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @PlacePage.route('/checkEquipment', methods=['GET','POST'])
 def checkEquipment():
@@ -54,6 +57,7 @@ def checkEquipment():
             equipment.color = "#808080"
         db.session.commit()
         return redirect('http://localhost:3000/UserPage/places/place')
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @PlacePage.route('/getPlaceInfo', methods=['GET','POST'])
 def getPlaceInfo():
@@ -62,4 +66,5 @@ def getPlaceInfo():
         list_id = session.get('list_id')
         place_id = session.get('place_id')
         place_info = Place.query.filter_by(user_id=user_id,list_id=list_id,id=place_id).first()
-    return jsonify(place_info)
+        return jsonify(place_info)
+    else : redirect('http://localhost:3000/pagenotfound')

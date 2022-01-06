@@ -24,6 +24,7 @@ def deleteJob():
         db.session.delete(job)
         db.session.commit()
         return redirect('http://localhost:3000/adminpage')
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @JobPage.route('/updateJob', methods = ['GET', 'POST'])
 def updateJob():
@@ -35,24 +36,28 @@ def updateJob():
         job.description = description
         job.requirements = requirements
         db.session.commit()
-        return redirect('https://www.youtube.com/watch?v=U06jlgpMtQs')
+        return redirect('http://localhost:3000/adminpage')
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @JobPage.route('/viewJob', methods=['GET','POST'])
 def viewJobs():
     if request.method == 'POST':
         job_id = request.form['id']
         session['job_id'] = job_id
-    return redirect('http://localhost:3000/jobs/job')
+        return redirect('http://localhost:3000/jobs/job')
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @JobPage.route('/getJobs', methods=['GET','POST'])
 def getJobs():
     if request.method == 'GET':
         jobs = Job.query.all()
         return jsonify(jobs)
+    else : redirect('http://localhost:3000/pagenotfound')
 
 @JobPage.route('/getJobInfo')
 def getJobInfo():
     if request.method == 'GET':
         job_id = session.get('job_id')
         job_info = Job.query.filter_by(id=job_id).first()
-    return jsonify(job_info)
+        return jsonify(job_info)
+    else : redirect('http://localhost:3000/pagenotfound')
