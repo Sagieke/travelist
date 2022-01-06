@@ -27,7 +27,7 @@ import UserMesseges from "./components/UserComponants/UserMessege";
 import InsideUserNavbar from "./components/NavBarItems/NavBarInsideUser";
 import LoginNavBar from "./components/Testing/ImageSliderActivate";
 import PageNotFound from "./components/UserComponants/PageNotFound";
-
+import ChangePassword from "./components/UserComponants/changepassword";
 
 import "./App.css";
 import { Container } from "react-bootstrap";
@@ -71,7 +71,8 @@ function App() {
               <Route exact path="/Aboutus" component={ImageSliderActivate2}/>
               <Route exact path="/UserAdminMessege" component={UserAdminMesseges}/>
               <Route exact path="/signup" component={SignUp}/>
-              <Route path="/" component={PageNotFound}/>
+             <Route path="/changePassword" component={ChangePassword}/>
+             <Route path="/" component={PageNotFound}/> 
               </Switch>
       
       </div>

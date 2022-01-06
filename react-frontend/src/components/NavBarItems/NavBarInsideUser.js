@@ -9,6 +9,7 @@ import { FaHandsHelping } from 'react-icons/fa';
 import {VscQuestion} from 'react-icons/vsc';
 import {AiFillBug} from 'react-icons/ai';
 import {TiMessages} from 'react-icons/ti';
+import {RiLockPasswordLine} from 'react-icons/ri';
 
 
 
@@ -55,6 +56,7 @@ export default function InsideUserNavbar()
     <Nav.Link href="/aboutus"> About us<GiBrain/> </Nav.Link>
     <Nav.Link href="/UserAdminMessege"> Admin updates <AiOutlineGlobal/></Nav.Link>
     <NavDropdown bg="dark" variant="dark" title="Help" id="collasible-nav-dropdown">
+    <NavDropdown.Item href="/changePassword"><RiLockPasswordLine/>Change my password</NavDropdown.Item>
     <NavDropdown.Item href="/Usermesseges"><TiMessages/>My support tickets </NavDropdown.Item>
     <NavDropdown.Item href="/SubmitBugUser"><AiFillBug/> Submit a bug</NavDropdown.Item>
     <NavDropdown.Item href="/Suggestions"><FaHandsHelping />Submit a suggestion</NavDropdown.Item>

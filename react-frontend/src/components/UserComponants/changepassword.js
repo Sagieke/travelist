@@ -13,19 +13,14 @@ const ButtonStyle1={
 
 export default function  ChangePassword()  {
   
-const [show, setShow] = useState(false);
+const [show, setShow] = useState(true);
 const handleClose = () => setShow(false);
 const handleShow = () => setShow(true);  
-
 const [password, setPassword] = useState('');
 
 
 return (
   <>
-  
-  <Button style={ButtonStyle1} variant="primary" onClick={handleShow}>
-   change password
-      </Button>{' '}
   <Modal show={show} onHide={handleClose}>
   <form action='http://localhost:5000/changepassword' method='post'  >
   <Modal.Header closeButton>
