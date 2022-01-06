@@ -1,7 +1,5 @@
 import React, {useEffect,useState}from "react";
-import { Button, Navbar, Nav, NavItem, NavDropdown, MenuItem ,NavDropdownItem, onClick,onSelect,use,Container} from 'react-bootstrap';
-
-import { BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import { Button, Navbar, Nav, NavDropdown,Container} from 'react-bootstrap';
 import { AiOutlineGlobal } from 'react-icons/ai';
 import { GiBrain } from 'react-icons/gi';
 import { MdOutlineWorkOutline } from 'react-icons/md';

@@ -1,5 +1,5 @@
 import React,{ useState } from "react";
-import {Button,Modal,Accordion,ListGroup, ListGroupItem} from "react-bootstrap";
+import {Modal,Accordion,ListGroup} from "react-bootstrap";
 
 //Requirement number 1
 export default function  SignUp()  {
