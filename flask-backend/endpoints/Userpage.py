@@ -62,6 +62,7 @@ def viewlist():
         return redirect('http://localhost:3000/userPage/places')
     else : redirect('http://localhost:3000/pagenotfound')
 
+#Requirement number 208
 @UserPage.route('/getMostSearchedPlaces', methods=['GET','POST'])
 def getMostSearchedPlaces():
     place_names = {}
