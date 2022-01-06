@@ -1,5 +1,5 @@
-import React , { useState, useEffect, Componant}from "react";
-import {Container,Row, Col,Button,Modal,ListGroup,Table,Dropdown,DropdownButton,} from "react-bootstrap";
+import React , { useState, useEffect}from "react";
+import {Button,Modal,Table} from "react-bootstrap";
 import { MdOutlineSettingsSuggest} from 'react-icons/md';
 
 
@@ -12,17 +12,6 @@ const ButtonStyle1={
     backgroundColor:"Lightyellow",
     margin:"10px",
   }
-
-  const ButtonStyle2={
-    mergin:"Auto",
-    borderColor:"black",
-    color:"white",
-    width:"80px",
-   borderColor:"black",
-    backgroundColor:"Lightblue",
-    
-  }
-
   
 //Requirement 109
 export default function SuggestionsTech()  {

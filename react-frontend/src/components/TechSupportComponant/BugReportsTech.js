@@ -1,5 +1,5 @@
-import React , { useState, useEffect, Componant}from "react";
-import {Container,Row, Col,Button,Modal,ListGroup,Table,DropdownButton} from "react-bootstrap";
+import React , { useState, useEffect}from "react";
+import {Button,Modal,Table,DropdownButton} from "react-bootstrap";
 import DropdownItem from "react-bootstrap/esm/DropdownItem";
 import { BsBugFill } from 'react-icons/bs';
 
@@ -14,15 +14,6 @@ const ButtonStyle1={
     margin:"10px",
   }
 
-  const ButtonStyle2={
-    mergin:"Auto",
-    borderColor:"black",
-    color:"white",
-    width:"80px",
-   borderColor:"black",
-    backgroundColor:"Lightblue",
-    
-  }
 
   
 //Requirement 106

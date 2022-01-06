@@ -1,6 +1,5 @@
 import React,{ useState } from "react";
 import {Button,Modal,Dropdown,DropdownButton} from "react-bootstrap";
-import DropdownItem from "react-bootstrap/esm/DropdownItem";
 import { AiFillEdit } from 'react-icons/ai';
 
 const ButtonStyle1={
@@ -18,9 +17,7 @@ export default function  AddAnswer(props)  {
   const [show, setShow] = useState(false);
 const handleClose = () => setShow(false);
 const handleShow = () => setShow(true);  
-const [answer, setNewAnswer] = useState('');
-const [question, setNewQuestion] = useState('');
-const [id, setid] = useState('');
+
 //Requirement 103
 return (
   <>

@@ -1,7 +1,6 @@
 import React , { useState, useEffect, }from "react";
-import {Container,Row, Col,Button,Modal,ListGroup,Table,Dropdown,DropdownButton} from "react-bootstrap";
+import {Button,Modal,Table} from "react-bootstrap";
 import ChangeRoleTech from "./ChangeRoleTech";
-import DropdownItem from "react-bootstrap/esm/DropdownItem";
 import { AiOutlineStop } from 'react-icons/ai';
 import { FiUsers } from 'react-icons/fi';
 
@@ -24,8 +23,6 @@ export default function UserListTech()  {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);  
-    const [id, setid] = useState('');
-    const [role, setRole] = useState('');
     const [ShowUserList, setUserList] = useState([]);
 
      useEffect(() => {

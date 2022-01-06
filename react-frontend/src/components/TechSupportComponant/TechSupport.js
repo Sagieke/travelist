@@ -1,36 +1,11 @@
-import AddPlace from "../AddingComponants/AddPlace";
-import Weather from "../Pages/weather";
-import React , { useState, useEffect }from "react";
-import {Container,Row, Col,Button,Modal,ListGroup} from "react-bootstrap";
+
+import React from "react";
+import {Row,ListGroup} from "react-bootstrap";
 import Faq from "../NavBarItems/FAQ";
 import UserListTech from "./UserListTech";
 import BugReportTech from "./BugReportsTech";
 import SuggestionsTech from "./SuggestionsTech";
 import TechMesseges from "./MassegesTech";
-
-
-
-const ButtonStyle1={
-  height:"50px",
- borderColor:"black",
-  backgroundColor:"Lightblue",
-  margin:"10px",
-}
-
-const ButtonStyle2={
-  height:"50px",
-  borderColor:"black",
-  backgroundColor:"Lightgreen",
-  margin:"10px",
-}
-
-const ButtonStyle3={
-  color:"black",
-  height:"50px",
-  borderColor:"black",
-  backgroundColor:"Lightyellow",
-  margin:"10px",
-}
 
 
 export default function techSupport()  {
