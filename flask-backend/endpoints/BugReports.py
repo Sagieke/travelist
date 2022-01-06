@@ -31,6 +31,7 @@ def getBugsAdmin():
         return jsonify(bugs)
     else : redirect('http://localhost:3000/pagenotfound')
 
+#Requirement 107
 @bug.route('/ChangeBugStatusTech',methods=['GET','POST'])
 def ChangeBugStatusTech():
     if request.method == 'POST':
