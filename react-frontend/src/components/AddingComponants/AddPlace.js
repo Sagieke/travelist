@@ -1,7 +1,7 @@
-import React ,{ useState,useEffect }from "react";
+import React ,{ useState }from "react";
 import Datetime from 'react-datetime';
 import moment from 'moment';
-import GooglePlacesAutocomplete, {geocodeByPlaceId, getLatLng} from "react-google-places-autocomplete";
+import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import "react-datetime/css/react-datetime.css";
 import {Container,Row, Col,Button,Modal} from "react-bootstrap";
 
@@ -18,19 +18,6 @@ export default function  AddPlace()  {
     return current.isAfter(yesterday);
 }
 
-  /*
-  useEffect(() => {
-    fetch("http://api.openweathermap.org/geo/1.0/direct?q="+Place.value.structured_formatting.main_text+"&limit=1"+"&appid="+OpenWeatherAPIKey)
-    .then(response => response.json())
-    .then(object => setGeolocObj(object))
-  });
-  */
-
-  /*let getLatPromise = (pObj) => geocodeByPlaceId(pObj.value.place_id)
-  .then(results => getLatLng(results[0]))
-  .then(({ lat, lng }) => { return {lat,lng}.lat })
-  .then(function(result){console.log(result)})*/
-
     return (
       <>
       <Button variant="primary" onClick={handleShow}>
@@ -46,10 +33,7 @@ export default function  AddPlace()  {
           <label>select place</label>
           <GooglePlacesAutocomplete
             apiKey="AIzaSyChTcMUCY9Zw3j00st0uKkqTz0RGlOpea8"
-            selectProps={{
-              Place,
-              onChange: setPlace
-            }}
+            selectProps={{ Place,onChange: setPlace }}
           />
           <input
             className="form-control"
@@ -84,8 +68,6 @@ export default function  AddPlace()  {
         <Modal.Footer>
         <Button type="submit" variant="primary" onClick={() => {
           handleClose();
-          /*console.log(StartDate);
-          console.log(EndDate);*/
           window.location.reload();
         }}>
           add place

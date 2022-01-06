@@ -1,26 +1,6 @@
 import AddEquipment from "./AddEquipment";
 import React , { useState, useEffect }from "react";
-import {Container,Row, Col,Button,Modal,ListGroup,Form} from "react-bootstrap";
-
-<Form>
-  {['checkbox', 'radio'].map((type) => (
-    <div key={`default-${type}`} className="mb-3">
-      <Form.Check 
-        type={type}
-        id={`default-${type}`}
-        label={`default ${type}`}
-      />
-
-      <Form.Check
-        disabled
-        type={type}
-        label={`disabled ${type}`}
-        id={`disabled-default-${type}`}
-      />
-    </div>
-  ))}
-</Form>
-
+import {Row,Button,ListGroup,Form} from "react-bootstrap";
 
 //requirement number 7
 export default function EquipmentChecklist()  {

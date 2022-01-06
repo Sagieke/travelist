@@ -16,9 +16,6 @@ export default function  AddList()  {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const [ListName, setListName] = useState('');
-    const [color, setcolor] = useState('');
-
 
     return (
       
@@ -37,7 +34,7 @@ export default function  AddList()  {
             name="list_name"
             className="form-control"
             placeholder="Enter name to your new list"
-            onChange={event => setListName(event.target.value)}
+            required
           />
         </div>
         <label>pick color</label>
@@ -48,11 +45,11 @@ export default function  AddList()  {
             id="exampleColorInput"
             defaultValue="#0066aa"
             title="Choose your color"
-            onChange={event => setcolor(event.target.value)}
+          required
         />
        </Modal.Body>
         <Modal.Footer>
-        <Button type="submit" variant="primary" onClick={() => { handleClose(); console.log(color);console.log(ListName)}}>
+        <Button type="submit" variant="primary" >
           add list
          </Button>
         </Modal.Footer>

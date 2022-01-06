@@ -12,44 +12,7 @@ export default function  AddFAQ()  {
 const [show, setShow] = useState(false);
 const handleClose = () => setShow(false);
 const handleShow = () => setShow(true);  
-const [userName, setUserName] = useState('');
-const [password, setPassword] = useState('');
-const [answer, setAnswer] = useState('');
-const [passwordError, setpasswordError] = useState("");
-const [emailError, setemailError] = useState("");
 
-const handleValidation = (event) => {
-  let formIsValid = true;
-
-  if (!userName.match()) {
-    formIsValid = false;
-    setemailError("Email Not Valid");
-    return false;
-  } else {
-    setemailError("");
-    formIsValid = true;
-  }
-
-  if (!password.match()) {
-    formIsValid = false;
-    setpasswordError(
-      "length must best min 8 Chracters and Max 22 Chracters"
-    );
-    return false;
-  } else {
-    setpasswordError("");
-    formIsValid = true;
-  }
-  if(formIsValid===true){ handleClose()}
-
-  return formIsValid;
-};
-
-const signupSubmit = (e) => {
-  e.preventDefault();
- handleValidation()
-
-}
 return (
   <>
   
@@ -70,11 +33,8 @@ return (
             type="question"
             className="form-control"
             placeholder="Enter Question"
-            onChange={(event) => setUserName(event.target.value)}
-          />
-           <small id="emailHelp" className="text-danger form-text">
-                  {emailError}
-                </small>
+            required
+            />
         </div>
         <div className="form-group">
           <label>Enter Answer</label>
@@ -83,16 +43,12 @@ return (
             type="answer"
             className="form-control"
             placeholder="Enter answer"
-            onChange={(event) => setPassword(event.target.value)}
-          />
-           <small id="passworderror" className="text-danger form-text">
-                  {passwordError}
-                </small>
+           required/>
         </div>
 
  </Modal.Body>
   <Modal.Footer>
-  <button type="submit" className="btn btn-primary btn-block"  onClick={() => { console.log(userName);console.log(password) }}>
+  <button type="submit" className="btn btn-primary btn-block" >
           Enter question
         </button>
   </Modal.Footer>

@@ -6,7 +6,6 @@ export default function  AddEquipment()  {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const [EquipmentName, setEquipmentName] = useState('');
 
     return (
       
@@ -26,12 +25,12 @@ export default function  AddEquipment()  {
             name="equipment_name"
             className="form-control"
             placeholder="Enter name for your equipment"
-            onChange={event => setEquipmentName(event.target.value)}
+            required
           />
         </div>
        </Modal.Body>
         <Modal.Footer>
-        <Button type="submit" variant="primary" onClick={() => { handleClose(); console.log(EquipmentName)}}>
+        <Button type="submit" variant="primary" >
           add
          </Button>
         </Modal.Footer>
