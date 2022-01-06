@@ -3,6 +3,7 @@ from app import db
 from models import FAQ
 faq = Blueprint('faq',__name__)
 
+#Requirement 104
 @faq.route('/addFAQ', methods=['GET', 'POST'])
 def addFAQ(): #adds new FAQ to the site
     if request.method == 'POST':
@@ -14,7 +15,7 @@ def addFAQ(): #adds new FAQ to the site
         return redirect('http://localhost:3000/techSupport')
     else : redirect('http://localhost:3000/pagenotfound')
     
-
+#Requirement 105
 @faq.route('/deleteFAQ', methods=['GET', 'POST'])
 def deleteFAQ(): #deletes an FAQ from the site
     if request.method == 'POST':

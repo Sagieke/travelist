@@ -33,7 +33,7 @@ def Register():
         return redirect('http://localhost:3000/')
     else : redirect('http://localhost:3000/pagenotfound')
         
-
+#requirement number 2 + 102 + 202
 @Homepage.route('/login', methods=['GET', 'POST'])
 def Login():
     if request.method == 'POST':
@@ -61,6 +61,7 @@ def logout():
         return redirect('http://localhost:3000/')
     else : redirect('http://localhost:3000/pagenotfound')
 
+#requirement number 9
 @Homepage.route('/forgotPasswordValidation', methods=['GET', 'POST']) #Security question page 
 def forgotPasswordValidation():
     if request.method == 'POST':
@@ -73,7 +74,7 @@ def forgotPasswordValidation():
             return redirect('http://localhost:3000/userpage')
     else : redirect('http://localhost:3000/pagenotfound')
        
-
+#requirement number 9
 @Homepage.route('/forgotPasswordChange', methods=['GET', 'POST']) #Password change page
 def forgotPasswordChange():
     if request.method == 'POST':

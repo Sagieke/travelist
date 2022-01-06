@@ -6,6 +6,7 @@ import requests
 
 ListPage = Blueprint('ListPage',__name__)
 
+#Requirement number 5
 @ListPage.route('/addplace', methods=['GET','POST'])
 def addplace():
     if request.method == 'POST':

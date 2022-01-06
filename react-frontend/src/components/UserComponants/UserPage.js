@@ -34,7 +34,7 @@ export default function  UserPage()  {
         </ListGroup.Item>
     )
   };
-
+  //Requirement number 208
   const ListMostSearchedPlaces = (msp, index) => {
     return(
       <ListGroup.Item  variant="default" key={index} as="li">

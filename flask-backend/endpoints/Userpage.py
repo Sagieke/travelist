@@ -5,6 +5,7 @@ from werkzeug.security import generate_password_hash
 
 UserPage = Blueprint('UserPage',__name__)
 
+#requirement number 9
 @UserPage.route('/changepassword', methods = ['GET', 'POST'])
 def ChangePassword():
     if request.method == 'POST':
@@ -61,6 +62,7 @@ def viewlist():
         return redirect('http://localhost:3000/userPage/places')
     else : redirect('http://localhost:3000/pagenotfound')
 
+#Requirement number 208
 @UserPage.route('/getMostSearchedPlaces', methods=['GET','POST'])
 def getMostSearchedPlaces():
     place_names = {}
