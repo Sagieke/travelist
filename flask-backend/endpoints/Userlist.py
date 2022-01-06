@@ -11,13 +11,6 @@ def getUserlist():
         return jsonify(users)
     else : redirect('http://localhost:3000/pagenotfound')
 
-@Userlist.route('/getCertainUserlist',methods=['GET','POST'])
-def getCertainUserlist():
-    if request.method == 'GET':
-        user_id = session.get("user_id")
-        return jsonify(user_id)
-    else : redirect('http://localhost:3000/pagenotfound')
-
 @Userlist.route('/changePermissionTech',methods=['GET','POST']) 
 def changePermissionTech():
     if request.method == 'POST':
