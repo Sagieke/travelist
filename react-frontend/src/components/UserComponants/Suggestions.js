@@ -43,9 +43,12 @@ export default function Suggestions() {
               </div>
        </Modal.Body>
         <Modal.Footer>
-        <button type="submit" className="btn btn-primary btn-block" onClick={() => history.goBack()} >
+        <form action="http://localhost:3000/userPage">
+        <button type="submit" className="btn btn-primary btn-block">
                 sumbit
-              </button>
+        </button>
+        </form>
+        
         </Modal.Footer>
         </form>
       </Modal>

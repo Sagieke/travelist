@@ -81,7 +81,7 @@
 .auth-inner-FAQ {
   width: 900px;
   height: 600x;
-  margin: 900px;
+  margin: auto;
   background: #3876af;
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
   padding: 40px 55px 45px 55px;
@@ -91,7 +91,7 @@
 
 .auth-inner-FAQ2 {
  
-  margin: 100x;
+  margin: auto;
   background: #3876af;
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
   padding: 10px 10px 10px 10px;

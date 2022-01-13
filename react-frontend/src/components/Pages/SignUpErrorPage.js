@@ -26,13 +26,18 @@ export default function SignUpErrorPage()  {
                   required
                 />
               </div>
-              <a href="http://localhost:3000/forgotPassword" target="_blank">forgot pass</a>
-        <button type="submit" className="btn btn-primary btn-block" >
+              <button type="submit" className="btn btn-primary btn-block" >
                 log in
               </button>
+              <div>or</div>
+        <form action="http://localhost:3000/signup">
+        <button 
+          type="submit" className="btn btn-primary btn-block" >
+          sign-up
+        </button>
         </form>
-            or
-            <SignUp/>
+        <a href="http://localhost:3000/forgotPassword" >forgot pass</a>
+        </form>
             </div>
         </div>
         

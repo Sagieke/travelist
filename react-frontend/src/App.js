@@ -39,6 +39,8 @@ function App() {
         <Route exact path="/" component={LoginNavBar}/>
         <Route exact path="/signup" component={LoginNavBar}/>
         <Route exact path="/login" component={LoginNavBar}/>
+        <Route exact path="/loginerror" component={LoginErrorPage}/>
+        <Route exact path="/signuperror" component={SignUpErrorPage}/>
         <Route path="/" component={InsideUserNavbar}/>
         </Switch>
         <Switch>

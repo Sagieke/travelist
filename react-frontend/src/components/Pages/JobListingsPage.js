@@ -26,7 +26,7 @@ export default function JobListingsPage()  {
         <ListGroup.Item  variant="default" key={index} style={listStyle} as="li">
             {lji.title}
             <form action="http://localhost:5000/viewJob" method="post">
-            <button className="float-end" type="submit" name="id" value={lji.id}>view list</button>
+            <button className="float-end" type="submit" name="id" value={lji.id}>View job information</button>
             </form>
         </ListGroup.Item>
         )   

@@ -1,5 +1,4 @@
 import React from "react";
-import SignUp from "../NavBarItems/signup.component";
 
 //requirement number 2 + 102 + 202
 export default function LoginErrorPage()  {
@@ -29,13 +28,19 @@ export default function LoginErrorPage()  {
                   required
                 />
               </div>
-        <a href="http://localhost:3000/forgotPassword" >forgot pass</a>
+        
         <button type="submit" className="btn btn-primary btn-block" >
                 log in
               </button>
+              <div>or</div>
+        <form action="http://localhost:3000/signup">
+        <button 
+          type="submit" className="btn btn-primary btn-block" >
+          sign-up
+        </button>
         </form>
-            or
-            <SignUp/>
+        <a href="http://localhost:3000/forgotPassword" >forgot pass</a>
+        </form>
             </div>
         </div>
         

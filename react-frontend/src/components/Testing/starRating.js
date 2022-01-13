@@ -58,7 +58,12 @@ export default function HoverRating(props) {
     
   );
       
-    }else{
+    }
+    else if(props.status==="Pending")
+    {
+      return <h6>Please await our response.</h6>
+    }
+    else{
       return <h6>thank you for rating us</h6>
     }
   }

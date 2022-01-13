@@ -40,7 +40,6 @@ export default function TechMesseges()  {
 
       return (
         <tr>
-        <td>{msg.user_id}</td>
         <td>{msg.id}</td>
         <td>{msg.title}</td>
         <td>{msg.description}</td>
@@ -57,7 +56,7 @@ export default function TechMesseges()  {
     <>
 
 
-<Button style={ButtonStyle1}  onClick={handleShow}><BiEnvelope/>View masseges</Button>
+<Button style={ButtonStyle1}  onClick={handleShow}><BiEnvelope/>Support Tickets</Button>
   <Modal size="lg" show={show} onHide={handleClose}>
   <form action='http://localhost:5000//getAllMessageTech' method='post' name="id" >
   <Modal.Header closeButton>
@@ -68,9 +67,8 @@ export default function TechMesseges()  {
     <Table striped bordered hover size="sm">
   <thead>
     <tr>
-      
-      <th> user id</th>
-       <th>massege id</th>
+    
+       <th>message id</th>
        <th>title</th>
        <th>Description</th>
        <th>answer</th>

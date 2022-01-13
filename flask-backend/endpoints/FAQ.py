@@ -39,7 +39,7 @@ def updateFAQ(): #updates existing FAQ
         faq.question = question
         faq.answer = answer
         db.session.commit() 
-        return redirect('http://localhost:3000/adminpage')
+        return redirect('http://localhost:3000/techSupport')
     else : redirect('http://localhost:3000/pagenotfound')
 
 @faq.route('/getFAQ',methods=['GET','POST'])

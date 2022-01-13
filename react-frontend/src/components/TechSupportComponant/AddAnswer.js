@@ -53,7 +53,7 @@ return (
  </Modal.Body>
   <Modal.Footer>
   <button type="submit" className="btn btn-primary btn-block" >
-          Sumbit
+          Submit
         </button>
   </Modal.Footer>
   </form>
